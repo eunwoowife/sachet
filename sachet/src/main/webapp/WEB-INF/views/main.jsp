@@ -9,6 +9,6 @@
 <body>
 	<jsp:include page="common/header.jsp"/>
 	
-	메인메뉴 확인용
+	메인메뉴 확인용이에용
 </body>
 </html>
