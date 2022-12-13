@@ -20,7 +20,7 @@
         margin: 0;
         padding: 0;
         list-style: none;
-    }
+    } 
     .outer{
         width: 70%;
         align-items: center;
