@@ -190,7 +190,11 @@ form p.success-message {
     <br>
     <button id="loginSubmit"><b>Login</b></button>
  
-    <a href="" style="margin-left:25px; text-decoration: none; font-size: 15px; color: rgba(255, 255, 255, 0.644);">아이디 찾기 | 비밀번호 찾기 | 회원가입</a> 
+  <div>
+    <a href="" style="margin-left:25px; text-decoration: none; font-size: 15px; color: rgba(255, 255, 255, 0.644);">아이디 찾기</a> | 
+    <a href="" style="text-decoration: none; font-size: 15px; color: rgba(255, 255, 255, 0.644);">비밀번호 찾기</a> | 
+    <a href="joinForm.me" style="text-decoration: none; font-size: 15px; color: rgba(255, 255, 255, 0.644);">회원가입</a>
+    </div>
     <br><br>
   </form>
 </div>
