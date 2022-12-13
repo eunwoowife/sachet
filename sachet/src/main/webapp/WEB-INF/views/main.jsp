@@ -8,5 +8,7 @@
 </head>
 <body>
 	<jsp:include page="common/header.jsp"/>
+	
+	메인메뉴 확인용
 </body>
 </html>
