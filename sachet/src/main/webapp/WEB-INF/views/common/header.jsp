@@ -22,9 +22,9 @@
         list-style: none;
     }
     .outer{
-        width: 80%;
+        width: 70%;
         align-items: center;
-        margin-left: 180px;
+        margin-left: 280px;
     }
     a {
         text-decoration: none;
@@ -152,38 +152,32 @@
         
     </div>
     <nav>
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">INFORMATION</a>
-                <ul>
-                    <li><a href="#">SUB_MENU</a></li>
-                    <li><a href="#">SUB_MENU2</a></li>
-                    <li><a href="#">SUB_MENU3</a></li>
-                </ul>
-            </li>
-            <li><a href="#">PRODUCT</a>
-                <ul>
-                    <li><a href="#">SUB_MENU</a></li>
-                    <li><a href="#">SUB_MENU2</a></li>
-                    <li><a href="#">SUB_MENU3</a></li>
-                </ul>
-            </li>
-            <li><a href="#">MENU4</a>
-                <ul>
-                    <li><a href="#">SUB_MENU</a></li>
-                    <li><a href="#">SUB_MENU2</a></li>
-                    <li><a href="#">SUB_MENU3</a></li>
-                </ul>
-            </li>
-            <li><a href="#">MENU5</a>
-                <ul>
-                    <li><a href="#">SUB_MENU</a></li>
-                    <li><a href="#">SUB_MENU2</a></li>
-                    <li><a href="#">SUB_MENU3</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+		<ul>
+			<li><a href="#">About Sachet</a></li>
+			<li><a href="#">Ticketing</a>
+				<ul>
+					<li><a href="#">SUB_MENU</a></li>
+					<li><a href="#">SUB_MENU2</a></li>
+					<li><a href="#">SUB_MENU3</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Product</a>
+				<ul>
+					<li><a href="#">BOOTH</a></li>
+					<li><a href="#">SUB_MENU2</a></li>
+					<li><a href="#">SUB_MENU3</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Booth Info</a>
+				<ul>
+					<li><a href="#">SUB_MENU</a></li>
+					<li><a href="#">SUB_MENU2</a></li>
+					<li><a href="#">SUB_MENU3</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Help</a></li>
+		</ul>
+	</nav>
 </div>
 
 
