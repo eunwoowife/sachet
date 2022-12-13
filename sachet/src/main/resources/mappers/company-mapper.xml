@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="companyMapper">
+  
+  <resultMap type="company" id="companyResultSet">
+	  	<result column="USER_NO" property="userNo"/>
+		<result column="COM_ID" property="userId"/>
+		<result column="COM_BRNUM" property="comBrnum"/>
+		<result column="COM_NAME" property="userName"/>
+		<result column="COM_PWD" property="userPwd"/>
+		<result column="COM_OWNER" property="comOwner"/>
+		<result column="COM_PHONE1" property="phone1"/>
+		<result column="COM_PHONE2" property="phone2"/>
+		<result column="COM_ADDRESS" property="address"/>
+		<result column="COM_POSTNO" property="postNo"/>
+		<result column="COM_ENROLLDATE" property="enrollDate"/>
+		<result column="COM_MODIFYDATE" property="modifyDate"/>
+		<result column="COM_STATUS" property="status"/>
+		<result column="COM_LOGO_ON" property="logoOn"/>
+		<result column="COM_LOGO_FP" property="logoFp]"/>
+  </resultMap>
+  
+  <select id="loginMember" parameterType="company" resultMap="companyResultSet">
+  	SELECT*
+  	FROM COMPANY
+  	WHERE COM_ID=#{userId}
+  	AND COM_PWD=#{userPwd}
+  	AND COM_STATUS='Y'
+  </select>
+</mapper>
