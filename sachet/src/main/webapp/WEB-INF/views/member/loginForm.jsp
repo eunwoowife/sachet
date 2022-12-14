@@ -23,6 +23,7 @@ body {
   align-content: center;
   justify-content: center;
   color: white;
+  background: #E9D4FF;
 }
 
 .container {
@@ -177,7 +178,7 @@ form p.success-message {
   
   
   
-  <img src="${pageContext.request.contextPath}/resources/images/scLOGO.png" alt="" width="200px;">
+  <img src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="200px;">
     <h1 id="message">　</h1><small id="smallMessage"> </small>
     <div class="field">
       <input type="text" name="userId" placeholder="ID" id="email" autocomplete="off"/>
