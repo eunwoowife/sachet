@@ -140,7 +140,7 @@
         	}
         	
         	function goMypage(){
-        		location.href="mypage.me";
+        		location.href="myPage.me";
         	}
         	
         	function goMycomPage(){
