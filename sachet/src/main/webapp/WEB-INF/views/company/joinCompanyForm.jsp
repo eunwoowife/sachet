@@ -64,131 +64,16 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    
-    
     
     <link href="${pageContext.request.contextPath }/resources/css/style.css" rel="stylesheet"/>
+    
   </head>
-  
-  <style>
-  * {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    } 
-    .outer{
-        width: 70%;
-        align-items: center;
-        margin-left: 180px;
-    }
-    a {
-        text-decoration: none;
-        color:#333;
-    }
-    #top{
-        height: 100px;
-    }
-    #logo{
-        float: left;
-        font-size: 60px;
-        margin-top: 10px;
-        margin-left: 100px;
-    }
-    #userarea{
-        float: right;
-        margin-top: 80px;
-        margin-left: 0;
-        width: 300px;
-    }
-    nav {
-        width: 100%;
-        mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 25%, #FFFFFF 75%, rgba(255, 255, 255, 0) 100%);
-        margin: 0 auto;
-        margin-top: 80px;
-        }
-    nav ul {
-    text-align: center;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
-    }
-    nav ul li {
-        float:left;
-        width:180px;
-        position:relative;
-    }
-    nav ul li a {
-        padding: 10px;
-        color: rgba(0, 35, 122, 0.5);
-        font-size: 18px;
-        text-decoration: none;
-        display: block;
-        }
-        nav ul li a:hover {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
-        background: rgba(255, 255, 255, 0.1);
-        color: rgba(0, 35, 122, 0.7);
-        }
-    nav ul li ul {
-        width:100%;
-        display:none;
-        position: absolute;
-        font-size:14px;
-    }
-    nav ul li:hover ul {
-        display:block;
-    }
-    nav ul li ul li:hover {
-        transition: ease 1s;
-        }
-    #userarea ul li{
-        float: left;
-        margin-left: 40px;
-    }
-    #userarea ul li img{
-        width: 25px;
-    }
-     #userarea ul li:hover{
-    	cursor:pointer;
-    }
-  </style>
 
-  
+
   <body>
   
+  <jsp:include page="../common/header.jsp" />
   
-  <div class="outer">
-  
-  <div id="top">
-        <div id="logo">
-            <img src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="300px";>
-        </div>
-        <div id="userarea">
-       <c:if test="${not empty loginUser }">
-       		${loginUser.userName }님, 안녕
-       </c:if>
-            <ul>
-            	<c:choose>
-            	<c:when test="${empty loginUser }">
-                <li><img src="${pageContext.request.contextPath}/resources/images/login.png" alt="" onclick="goLogin();"></li>
-                </c:when>
-                <c:otherwise>
-	                 <li><img src="${pageContext.request.contextPath}/resources/images/logout.png" alt=""  style="width:28px;" onclick="goLogout();"></li>
-	                <c:choose>
-	                <c:when test="${loginUser.userNo>1000 }">       
-	                 <li><img src="${pageContext.request.contextPath}/resources/images//user.png" alt="" onclick="goMypage();"></li>
-	                </c:when>
-	                <c:otherwise>
-	                <li><img src="${pageContext.request.contextPath}/resources/images//user.png" alt="" onclick="goMycomPage();"></li>
-	                </c:otherwise>
-	                </c:choose>
-                </c:otherwise>
-                </c:choose>
-                <li><img src="${pageContext.request.contextPath}/resources/images/shopping-cart.png" alt=""></li>
-                <li><img src="${pageContext.request.contextPath}/resources/images/settings.png" alt=""></li>
-            </ul>
-        </div>
-        </div>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -295,11 +180,62 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <h1 class="fw-bold py-3 mb-4">회원가입</h1>
 
-         
-                    <hr class="my-0" />
+              <div class="row">
+                <div class="col-md-12">
+                  
+                  <div class="card mb-4">
+                    <h5 class="card-header">기업 로고이미지</h5>
+                    <!-- Account -->
                     <div class="card-body">
-                      <form id="formAccountSettings" action="insert.me" method="POST">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <img
+                          src=""
+                          class="d-block rounded"
+                          height="100"
+                          width="100"
+                          id="uploadedAvatar"
+                        />
+                        <div class="button-wrapper">
+                        <br><br>
+                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">사진 등록</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="upload"
+                              class="account-file-input"
+                              hidden
+                              accept="image/png, image/jpeg"
+                            />
+                          </label>
+                          <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+                            <i class="bx bx-reset d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">취소</span>
+                          </button>
+
+                          <p class="text-muted mb-0">이미지 파일의 확장자는 JPG, GIF 또는 PNG만 가능하며, 800K를 초과할 수 없습니다.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+
+                      <form id="formAccountSettings" action="insert.co" method="POST">
                         <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">기업명</label>
+                            <input class="form-control" type="text" name="userName" id="lastName" required/>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">사업자 등록번호</label>
+                            <input class="form-control" type="text" name="comBrnum" id="lastName" required placeholder="'-'를 제외한 10자리 숫자를 입력해주세요."/>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">기업 대표자명</label>
+                            <input class="form-control" type="text" name="comOwner" id="lastName" required/>
+                          </div>
+                          <div class="mb-3 col-md-6" style="margin-top:30px;">
+                            <button type="button" class="btn rounded-pill btn-primary">사업자 확인</button>
+                          </div>
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">아이디</label>
                             <input
@@ -309,20 +245,19 @@
                               name="userId"
                               autofocus
                               required
-                            />
-                            <p id="idCheck" style="font-size: 10px; display: none;">사용중인 아이디입니다.</p>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">이름</label>
-                            <input class="form-control" type="text" name="userName" id="lastName" required/>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">비밀번호</label>
-                            <input class="form-control" type="text" name="userPwd" id="userPwd" required/>
+                              />
+                              <p id="idCheck" style="font-size: 10px;">사용중인 아이디입니다.</p>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                              
+                              </div>
+                            <div class="mb-3 col-md-6">
+                              <label for="lastName" class="form-label">비밀번호</label>
+                              <input class="form-control" type="text" name="userPwd" id="lastName" required/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">비밀번호 확인</label>
-                            <input class="form-control" type="text" name="checkPwd" id="checkPwd" required/>
+                            <input class="form-control" type="text" name="lastName" id="lastName" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">이메일</label>
@@ -330,47 +265,46 @@
                               class="form-control"
                               type="text"
                               id="email"
-                              name="email"
+                              name="comEmail"
                               placeholder="john.doe@example.com"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">휴대폰 번호</label>
+                          
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label" for="phoneNumber">대표 전화번호</label>
                             <div class="input-group input-group-merge">
                           
                               <span class="input-group-text">KR (+82)</span>
                               <input
                                 type="text"
                                 id="phoneNumber"
-                                name="phoneNumber"
+                                name="phone1"
                                 class="form-control"
                                 placeholder="010-1111-1111　'-'포함하여 입력"
                               />
                             </div>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">성별</label>
-                            <br>
-                            <input type="radio" name="gender" value="M">&nbsp;<label>남자</label>ㅤㅤㅤㅤ
-                            <input type="radio" name="gender" value="F">&nbsp;<label>여자</label>
+                            <label class="form-label" for="phoneNumber">예비 전화번호</label>
+                            <div class="input-group input-group-merge">
+                          
+                              <span class="input-group-text">KR (+82)</span>
+                              <input
+                                type="text"
+                                id="phoneNumber"
+                                name="phone2"
+                                class="form-control"
+                                placeholder="010-1111-1111　'-'포함하여 입력"
+                              />
+                            </div>
                           </div>
-                          <div class="mb-3 col-md-6 field-birth" name="userBirth">
-                            <label for="state" class="form-label">생년월일</label>
-                            <br>
-                            <select class="box" id="memberyear" name="byear" style="width: 80px; height: 30px;">  
-                              <option  selected></option>
-                            </select> 년
-                            <select class="box" id="membermonth" name="bmonth" style="width: 50px; height: 30px;">
-                                <option  selected></option>
-                            </select> 월
-                            <select class="box" id="memberday" name="bday" style="width: 50px; height: 30px;">
-                                <option  selected></option>
-                            </select> 일
-                          </div>
+                          
                           <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">주소</label>
                             <input type="button" class="form-control" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                            <input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" name="zipcode">
+                            <input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" name="postNo">
                             <input type="text" class="form-control" id="sample6_address" placeholder="주소" name="add1"><br>
                             <input type="text" class="form-control" id="sample6_detailAddress" placeholder="상세주소" name="add2">
                             <input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목" name="add3">
@@ -387,7 +321,6 @@
                     <!-- /Account -->
                   </div>
                  
-                 
 
            
             <div class="content-backdrop fade"></div>
@@ -401,7 +334,7 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-</div>
+
 
 
     <!-- Core JS -->
@@ -425,23 +358,39 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
+
+    
     <script>
-         $(document).ready(
-        		  function () {
-        		    for (var i = 2022; i > 1930; i--) {
-        		      $('#memberyear').append('<option value="' + i + '">' + i + '</option>');
-        		    }
-        		    for (var i = 1; i < 13; i++) {
-        		    	var mm = i > 9 ? i : "0"+i ;
-        		      $('#membermonth').append('<option value="' + mm + '">' + mm + '</option>');
-        		    }
-        		    for (var i = 1; i < 32; i++) {
-        		    	var dd = i > 9 ? i : "0"+i ;  
-        		      $('#memberday').append('<option value="' + dd + '">' + dd + '</option>');
-        		  	  }
-        		  		 }
-        				);
-        
+      /**
+ * Account Settings - Account
+ */
+
+'use strict';
+
+document.addEventListener('DOMContentLoaded', function (e) {
+  (function () {
+    const deactivateAcc = document.querySelector('#formAccountDeactivation');
+
+    // Update/reset user image of account page
+    let accountUserImage = document.getElementById('uploadedAvatar');
+    const fileInput = document.querySelector('.account-file-input'),
+      resetFileInput = document.querySelector('.account-image-reset');
+
+    if (accountUserImage) {
+      const resetImage = accountUserImage.src;
+      fileInput.onchange = () => {
+        if (fileInput.files[0]) {
+          accountUserImage.src = window.URL.createObjectURL(fileInput.files[0]);
+        }
+      };
+      resetFileInput.onclick = () => {
+        fileInput.value = '';
+        accountUserImage.src = resetImage;
+      };
+    }
+  })();
+});
+
     </script>
 
 
@@ -494,6 +443,7 @@
             }
         }).open();
     }
-</script>
+    </script>
+    
   </body>
 </html>
