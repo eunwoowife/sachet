@@ -102,7 +102,7 @@
     <div class="outer">
     <div id="top">
         <div id="logo">
-            <img src="${pageContext.request.contextPath}/resources/images/scLOGO.png" alt="" width="300px";>
+            <img src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="300px";>
         </div>
         <div id="userarea">
        <c:if test="${not empty loginUser }">
@@ -140,7 +140,7 @@
         	}
         	
         	function goMypage(){
-        		location.href="mypage.me";
+        		location.href="myPage.me";
         	}
         	
         	function goMycomPage(){
@@ -164,7 +164,7 @@
 			<li><a href="#">Product</a>
 				<ul>
 					<li><a href="#">BOOTH</a></li>
-					<li><a href="#">SUB_MENU2</a></li>
+					<li><a href="productListView.pro">PRODUCT</a></li>
 					<li><a href="#">SUB_MENU3</a></li>
 				</ul>
 			</li>

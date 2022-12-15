@@ -37,6 +37,7 @@ public class Company {
 	private String userName;
 	private String userPwd;
 	private String comOwner;
+	private String comEmail;
 	private String phone1;
 	private String phone2;
 	private String address;

@@ -59,4 +59,14 @@ public class MemberController {
 		session.removeAttribute("loginUser");
 		return "redirect:/";
 	}
+	
+	@RequestMapping("joinForm.me")
+	public String joinForm() {
+		return "member/joinForm";
+	}
+	
+	@RequestMapping("joinMemberForm.me")
+	public String joinMemberForm() {
+		return "member/joinMemberForm";
+	}
 }
