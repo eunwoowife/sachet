@@ -198,7 +198,7 @@ body.ml-calendar-demo {
 		
 		
 
-		
+		 
 
   .ml-calendar .clear {
     clear: both; }
