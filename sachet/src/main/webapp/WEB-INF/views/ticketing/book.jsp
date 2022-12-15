@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!doctype html>
 <html>
 <head>
@@ -11,8 +12,31 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<style>
 		@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700");
+		
+		
+		.outerarea{
+		  width: 70%;
+        margin-left: 280px;
+        margin-top: 300px;
+		
+		}
+	    .steparea{
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
+
+
+    .steparea span{
+        margin-left: 10px;
+        margin-right: 10px;
+
+    }	
+		
 body.ml-calendar-demo {
-  padding: 60px 20px; }
+  padding: 60px 20px;
+
+  }
 
 .ml-calendar {
   background: #fff;
@@ -22,7 +46,9 @@ body.ml-calendar-demo {
   max-width: 940px;
   margin: 0 auto;
   box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
-  border-radius: 1em; }
+  border-radius: 1em;
+  		margin-top: 200px;
+  }
   .ml-calendar a {
     color: #2d2e2f;
     text-decoration: none; }
@@ -133,6 +159,7 @@ body.ml-calendar-demo {
 		  
 		#ticketing{
 			font-size: 1.1rem;
+			margin-top: 20px;
 		} 
 		
 		.countbox{
@@ -168,20 +195,56 @@ body.ml-calendar-demo {
 			color: white;
 			text-decoration: wavy;
 		}
+		
+		
 
 		
 
   .ml-calendar .clear {
     clear: both; }
+    
+        #title{
+        font-size: 35px;
+        margin-bottom: 60px;
+        text-align: center;
+    }
 	</style>
 	
 </head>
+
+<jsp:include page="../common/header.jsp" />
+
+
+<div class="outerarea"> 
+
+  <div id="title"> 
+
+            	관람권 예매
+
+        </div>
+
+
+ <div class="steparea">
+            <span class="step1">
+            setp1 이용 약관 동의
+            </span>
+
+            <span class="step2">
+                setp2 날짜/인원수 선택
+            </span>
+    
+            <span class="step1">
+                setp3 결제
+            </span>
+    
+
+        </div>
+
 <body class="ml-calendar-demo">
 	<div class="ml-calendar">
 		<section class="calendar-left">
 			<div class="sidebar">
 				<p class="subheading">Sachet</p>
-				<h1>티켓 예약</h1>
 					<div id="ticketing">
 					
 					<span style="font-size: 15px;">
@@ -357,8 +420,8 @@ body.ml-calendar-demo {
 			</div>
 		</section>
 		<div class="clear"></div>
-
-
+</div>
+</div>
 		<script>
 
 			function adultCount(result){

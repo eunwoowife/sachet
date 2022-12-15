@@ -20,6 +20,8 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        z-index:999;
+        
     } 
     .outer{
         width: 70%;
@@ -156,9 +158,8 @@
 			<li><a href="#">About Sachet</a></li>
 			<li><a href="#">Ticketing</a>
 				<ul>
-					<li><a href="#">SUB_MENU</a></li>
-					<li><a href="#">SUB_MENU2</a></li>
-					<li><a href="#">SUB_MENU3</a></li>
+					<li><a href="ticketInfo.ti">관람 안내</a></li>
+					<li><a href="#">티켓 예매</a></li>
 				</ul>
 			</li>
 			<li><a href="#">Product</a>
