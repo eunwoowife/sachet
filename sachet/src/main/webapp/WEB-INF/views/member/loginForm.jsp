@@ -23,6 +23,7 @@ body {
   align-content: center;
   justify-content: center;
   color: white;
+  background: #E9D4FF;
 }
 
 .container {
@@ -177,7 +178,7 @@ form p.success-message {
   
   
   
-  <img src="${pageContext.request.contextPath}/resources/images/scLOGO.png" alt="" width="200px;">
+  <img src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="200px;">
     <h1 id="message">　</h1><small id="smallMessage"> </small>
     <div class="field">
       <input type="text" name="userId" placeholder="ID" id="email" autocomplete="off"/>
@@ -190,7 +191,11 @@ form p.success-message {
     <br>
     <button id="loginSubmit"><b>Login</b></button>
  
-    <a href="" style="margin-left:25px; text-decoration: none; font-size: 15px; color: rgba(255, 255, 255, 0.644);">아이디 찾기 | 비밀번호 찾기 | 회원가입</a> 
+  <div>
+    <a href="" style="margin-left:25px; text-decoration: none; font-size: 15px; color: rgba(255, 255, 255, 0.644);">아이디 찾기</a> | 
+    <a href="" style="text-decoration: none; font-size: 15px; color: rgba(255, 255, 255, 0.644);">비밀번호 찾기</a> | 
+    <a href="joinForm.me" style="text-decoration: none; font-size: 15px; color: rgba(255, 255, 255, 0.644);">회원가입</a>
+    </div>
     <br><br>
   </form>
 </div>
