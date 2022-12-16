@@ -15,7 +15,7 @@
 	}
 	
 	.col{
-		height:700px;
+		height:800px;
 	}
 	
 	.card img{
@@ -36,19 +36,24 @@
               
               <div id="productOuter" align="center">
               
-              <h2 class="pb-1 mb-4 text-muted">상품목록</h2>
+              <h2 class="pb-1 mb-4 text-muted">체험목록</h2>
               <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
               
               
                 <div class="col">
                   <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수1.png" alt="Card image cap" />
+                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/makePerfume.png" alt="Card image cap" />
                     <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
+                      <b style="font-size:20px;]">LOUIS VUITTION</b> <br>
+                      <p>루이비통 7향 1택 조향(30ml)</p>
                      <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
+                     	<b style="color:gray;">₩100,000</b>
+                     	<br><br><br>
                      </div>
+                      	<div class="expDetail">
+                    	<p style="font-size:12px;">시간　2023.01.11 / 10:00~12:00</p>
+                    	<p style="font-size:12px;">정원　30명</p>
+                    	</div>
                     </div>
                   </div>
                 </div>

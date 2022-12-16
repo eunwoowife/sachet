@@ -146,6 +146,7 @@
         	function goMycomPage(){
         		location.href="mypage.co";
         	}
+        	
         </script>
         
   
@@ -165,7 +166,7 @@
 				<ul>
 					<li><a href="#">BOOTH</a></li>
 					<li><a href="productListView.pro">PRODUCT</a></li>
-					<li><a href="#">SUB_MENU3</a></li>
+					<li><a href="experienceListView.exp">EXPERIENCE</a></li>
 				</ul>
 			</li>
 			<li><a href="#">Booth Info</a>

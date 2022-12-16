@@ -41,7 +41,7 @@ public class Company {
 	private String phone1;
 	private String phone2;
 	private String address;
-	private int postNo;
+	private String postNo;
 	private Date enrollDate;
 	private Date modifyDate;
 	private String status;

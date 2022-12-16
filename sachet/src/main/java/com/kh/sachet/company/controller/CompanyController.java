@@ -17,6 +17,16 @@ public class CompanyController {
 		return "company/joinCompanyForm";
 	}
 	
+	@RequestMapping("mypage.co")
+	public String myCompanyPage() {
+		return "company/myCompanyPage";
+	}
+	
+	@RequestMapping("updateForm.co")
+	public String updateCompanyInfo() {
+		return "company/companyInfoUpdateForm";
+	}
+	
 	
 	
 }
