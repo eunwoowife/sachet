@@ -30,7 +30,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Account settings - Account | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Account settings - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
 
@@ -46,165 +46,136 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+   <link href="${pageContext.request.contextPath}/resources/css/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../assets/css/demo.css" />
+<link href="${pageContext.request.contextPath}/resources/css/core.css" class="template-customizer-core-css" />
+<link href="${pageContext.request.contextPath}/resources/css/theme-default.css" class="template-customizer-theme-css" />
+<link href="${pageContext.request.contextPath}/resources/css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+<link href="${pageContext.request.contextPath}/resources/css/perfect-scrollbar/perfect-scrollbar.css" />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
-    
-    <link href="${pageContext.request.contextPath }/resources/css/style.css" rel="stylesheet"/>
-    
+    <script src="${pageContext.request.contextPath}/resources/js/config.js"></script>
+  <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
+ 
   </head>
-  <style>
-  * {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    } 
-    .outer{
-        width: 70%;
-        align-items: center;
-        margin-left: 180px;
-    }
-    a {
-        text-decoration: none;
-        color:#333;
-    }
-    #top{
-        height: 100px;
-    }
-    #logo{
-        float: left;
-        font-size: 60px;
-        margin-top: 10px;
-        margin-left: 100px;
-    }
-    #userarea{
-        float: right;
-        margin-top: 80px;
-        margin-left: 0;
-        width: 300px;
-    }
-    nav {
-        width: 100%;
-        mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 25%, #FFFFFF 75%, rgba(255, 255, 255, 0) 100%);
-        margin: 0 auto;
-        margin-top: 80px;
-        }
-    nav ul {
-    text-align: center;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
-    }
-    nav ul li {
-        float:left;
-        width:180px;
-        position:relative;
-    }
-    nav ul li a {
-        padding: 10px;
-        color: rgba(0, 35, 122, 0.5);
-        font-size: 18px;
-        text-decoration: none;
-        display: block;
-        }
-        nav ul li a:hover {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
-        background: rgba(255, 255, 255, 0.1);
-        color: rgba(0, 35, 122, 0.7);
-        }
-    nav ul li ul {
-        width:100%;
-        display:none;
-        position: absolute;
-        font-size:14px;
-    }
-    nav ul li:hover ul {
-        display:block;
-    }
-    nav ul li ul li:hover {
-        transition: ease 1s;
-        }
-    #userarea ul li{
-        float: left;
-        margin-left: 40px;
-    }
-    #userarea ul li img{
-        width: 25px;
-    }
-     #userarea ul li:hover{
-    	cursor:pointer;
-    }
-  </style>
-
 
   <body>
   
-  <div class="outer">
-  
-  <div id="top">
-        <div id="logo">
-            <img src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="300px";>
-        </div>
-        <div id="userarea">
-       <c:if test="${not empty loginUser }">
-       		${loginUser.userName }님, 안녕
-       </c:if>
-            <ul>
-            	<c:choose>
-            	<c:when test="${empty loginUser }">
-                <li><img src="${pageContext.request.contextPath}/resources/images/login.png" alt="" onclick="goLogin();"></li>
-                </c:when>
-                <c:otherwise>
-	                 <li><img src="${pageContext.request.contextPath}/resources/images/logout.png" alt=""  style="width:28px;" onclick="goLogout();"></li>
-	                <c:choose>
-	                <c:when test="${loginUser.userNo>1000 }">       
-	                 <li><img src="${pageContext.request.contextPath}/resources/images//user.png" alt="" onclick="goMypage();"></li>
-	                </c:when>
-	                <c:otherwise>
-	                <li><img src="${pageContext.request.contextPath}/resources/images//user.png" alt="" onclick="goMycomPage();"></li>
-	                </c:otherwise>
-	                </c:choose>
-                </c:otherwise>
-                </c:choose>
-                <li><img src="${pageContext.request.contextPath}/resources/images/shopping-cart.png" alt=""></li>
-                <li><img src="${pageContext.request.contextPath}/resources/images/settings.png" alt=""></li>
-            </ul>
-        </div>
-        </div>
-        
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-         
+          <div class="app-brand demo">
+            <a href="index.jsp" class="app-brand-link">
+              <span class="app-brand-logo demo">
+              </span>
+              <img style="margin-top:20px;" src="${pageContext.request.contextPath}/resources/images/로고10.png" height="80px;" >
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
 
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a href="index.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics" style="margin-bottom:45px;"></div>
+              </a>
+            </li>
 
+           
 
-          
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">MY COMPANY PAGE</span>
+            </li>
+            <li class="menu-item active open">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">ACCOUNT</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="mypage.co" class="menu-link">
+                    <div data-i18n="Notifications">회원 정보</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="updateForm.co" class="menu-link">
+                    <div data-i18n="Notifications">회원 정보 수정</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-account-settings-connections.html" class="menu-link">
+                    <div data-i18n="Connections">회원 탈퇴</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                <div data-i18n="Authentications">MY BOOTH</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                    <div data-i18n="Basic">나의 부스 조회</div>
+                  </a>
+                </li>
+                 <li class="menu-item">
+                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                    <div data-i18n="Basic">상품 관리</div>
+                  </a>
+                </li>
+                 <li class="menu-item">
+                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                    <div data-i18n="Basic">체험 관리</div>
+                  </a>
+                </li>
+             
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Misc">SALES DETAIL</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="pages-misc-error.html" class="menu-link">
+                    <div data-i18n="Error">상품 판매 내역</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Under Maintenance">체험 판매 내역</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+         
 
     
-           
+
+       
+
         </aside>
-        <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
@@ -221,24 +192,29 @@
             </div>
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-             
 
-              
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Place this tag where you want the button to render. -->
 
                 <!-- User -->
-             
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="${pageContext.request.contextPath}/resources/uploadFiles/jo.png" class="w-px-40 h-auto rounded-circle"/>
+                    </div>
+                  </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                       <a class="dropdown-item" href="#">
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block">${loginUser.userName }</span>
+                            <small class="text-muted">Company</small>
                           </div>
                         </div>
                       </a>
@@ -247,31 +223,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a class="dropdown-item" href="logout.me">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -285,7 +237,7 @@
 
           <!-- / Navbar -->
 
-          <!-- Content wrapper -->
+                 <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
 
@@ -301,7 +253,7 @@
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img
-                          src=""
+                          src="${pageContext.request.contextPath}/resources/uploadFiles/jo.png"
                           class="d-block rounded"
                           height="100"
                           width="100"
@@ -309,8 +261,9 @@
                         />
                         <div class="button-wrapper">
                         <br><br>
+                        
                           <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                            <span class="d-none d-sm-block">사진 등록</span>
+                            <span class="d-none d-sm-block">사진 변경</span>
                             <i class="bx bx-upload d-block d-sm-none"></i>
                             <input
                               type="file"
@@ -331,34 +284,33 @@
                     </div>
                     <div class="card-body">
 
-                      <form id="formAccountSettings" action="insert.co" method="POST">
+                      <form id="formAccountSettings" action="update.co" method="POST">
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">기업명</label>
-                            <input class="form-control" type="text" name="userName" id="lastName" required/>
+                            <input class="form-control" type="text" name="userName" id="lastName" value="${loginUser.userName }" readonly/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">사업자 등록번호</label>
-                            <input class="form-control" type="text" name="comBrnum" id="lastName" required placeholder="'-'를 제외한 10자리 숫자를 입력해주세요."/>
+                            <input class="form-control" type="text" name="comBrnum" id="lastName" value="${loginUser.comBrnum }" readonly/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">기업 대표자명</label>
-                            <input class="form-control" type="text" name="comOwner" id="lastName" required/>
+                            <input class="form-control" type="text" name="comOwner" id="lastName" value="${loginUser.comOwner }" readonly/>
                           </div>
-                          <div class="mb-3 col-md-6" style="margin-top:30px;">
-                            <button type="button" class="btn rounded-pill btn-primary">사업자 확인</button>
+                           <div class="mb-3 col-md-6">
+                           
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">아이디</label>
+                            <label for="firstName" class="form-label" >아이디</label>
                             <input
                               class="form-control"
                               type="text"
                               id="firstName"
                               name="userId"
-                              autofocus
-                              required
+                              value="${loginUser.userId }"
+                              readonly
                               />
-                              <p id="idCheck" style="font-size: 10px;">사용중인 아이디입니다.</p>
                             </div>
                             <div class="mb-3 col-md-6">
                               
@@ -372,13 +324,13 @@
                             <input class="form-control" type="text" name="lastName" id="lastName" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">이메일</label>
+                            <label for="email" class="form-label" >이메일</label>
                             <input
                               class="form-control"
                               type="text"
                               id="email"
                               name="comEmail"
-                              placeholder="john.doe@example.com"
+                              value="${loginUser.comEmail }"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -394,7 +346,7 @@
                                 id="phoneNumber"
                                 name="phone1"
                                 class="form-control"
-                                placeholder="010-1111-1111　'-'포함하여 입력"
+                                value="${loginUser.phone1 }"
                               />
                             </div>
                           </div>
@@ -408,7 +360,7 @@
                                 id="phoneNumber"
                                 name="phone2"
                                 class="form-control"
-                                placeholder="010-1111-1111　'-'포함하여 입력"
+                                value="${loginUser.phone2 }"
                               />
                             </div>
                           </div>
@@ -416,8 +368,8 @@
                           <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">주소</label>
                             <input type="button" class="form-control" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                            <input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" name="postNo">
-                            <input type="text" class="form-control" id="sample6_address" placeholder="주소" name="add1"><br>
+                            <input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" name="postNo" value="${loginUser.postNo }">
+                            <input type="text" class="form-control" id="sample6_address" placeholder="주소" name="add1" value="${loginUser.address }"><br>
                             <input type="text" class="form-control" id="sample6_detailAddress" placeholder="상세주소" name="add2">
                             <input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목" name="add3">
                           </div>
@@ -425,8 +377,8 @@
                         </div>
                         <br><br>
                         <div class="mt-2" align="center">
-                          <button type="submit" class="btn btn-primary me-2">회원가입</button>
-                          <button type="reset" class="btn btn-outline-secondary">취소</button>
+                          <button type="submit" class="btn btn-primary me-2">수정하기</button>
+                          <button type="reset" class="btn btn-outline-secondary" onclick="goCancel();">취소</button>
                         </div>
                       </form>
                     </div>
@@ -447,41 +399,37 @@
     </div>
     <!-- / Layout wrapper -->
 
-</div>
-</div>
-</div>
-</div>
 
-		<script>
-        	function goLogin(){
-        		location.href="loginForm.me";
-        	}
-        	</script>
-
+	<script>
+		function goCancel(){
+			location.href="mypage.co";
+		}
+	</script>
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script  src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+    <script  src="${pageContext.request.contextPath}/resources/js/popper.js"></script>
+    <script  src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+    <script  src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.js"></script>
 
-    <script src="../assets/vendor/js/menu.js"></script>
+    <script  src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
+    <script  src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+	
+
+
 
     <!-- Page JS -->
-    <script src="../assets/js/pages-account-settings-account.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-
-    
-    <script>
+   
+   
+   <script>
       /**
  * Account Settings - Account
  */
@@ -566,5 +514,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
     }
     </script>
     
+    
+
+
   </body>
+  
+ 
+ 
 </html>
