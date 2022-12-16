@@ -310,7 +310,7 @@
                               autofocus
                               required
                             />
-                            <p id="idCheck" style="font-size: 10px; display: none;">사용중인 아이디입니다.</p>
+                            <p id="idCheck" style="font-size: 10px;">사용중인 아이디입니다.</p>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">이름</label>
@@ -403,6 +403,11 @@
     <!-- / Layout wrapper -->
 </div>
 
+ 			<script>
+        	function goLogin(){
+        		location.href="loginForm.me";
+        	}
+        	</script>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
