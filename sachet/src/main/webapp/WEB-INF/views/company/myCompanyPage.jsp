@@ -134,17 +134,17 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a href="auth-login-basic.html" class="menu-link">
                     <div data-i18n="Basic">나의 부스 조회</div>
                   </a>
                 </li>
                  <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a href="productList.co" class="menu-link">
                     <div data-i18n="Basic">상품 관리</div>
                   </a>
                 </li>
                  <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a href="experienceList.co" class="menu-link">
                     <div data-i18n="Basic">체험 관리</div>
                   </a>
                 </li>
@@ -158,7 +158,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-misc-error.html" class="menu-link">
+                  <a href="productSales.co" class="menu-link">
                     <div data-i18n="Error">상품 판매 내역</div>
                   </a>
                 </li>
