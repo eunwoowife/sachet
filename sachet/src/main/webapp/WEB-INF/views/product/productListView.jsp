@@ -27,6 +27,14 @@
 		margin-top:120px;
 	}
 	
+	.col:hover{
+		cursor:pointer;
+	}
+	
+	.col:hover img {
+		filter: grayscale(100%);
+}
+	
 	
 </style>
 <body>
@@ -42,7 +50,7 @@
               
                 <div class="col">
                   <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수1.png" alt="Card image cap" />
+                    <img id="zoom" class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수1.png" alt="Card image cap" />
                     <div class="card-body">
                       <b>LOUIS VUITTION</b>
                     	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
@@ -132,6 +140,7 @@
                 <br><br><br>
                 </div>
               </div>
+              
               
 <br><br><br><br><br><br><br><br><br><br><br><br>
 </body>

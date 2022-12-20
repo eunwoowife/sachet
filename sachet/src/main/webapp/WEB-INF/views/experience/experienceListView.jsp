@@ -27,6 +27,14 @@
 		margin-top:120px;
 	}
 	
+		.col:hover{
+		cursor:pointer;
+	}
+	
+	.col:hover img {
+		filter: grayscale(100%);
+}
+	
 	
 </style>
 <body>
