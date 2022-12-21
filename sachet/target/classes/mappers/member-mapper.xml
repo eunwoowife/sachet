@@ -21,7 +21,13 @@
   	SELECT*
   	FROM MEMBER
   	WHERE USER_ID=#{userId}
-  	AND USER_PWD=#{userPwd}
+<!--   	AND USER_PWD=#{userPwd} -->
   	AND USER_STATUS='Y'
+  </select>
+  
+  <select id="idCheck" resultType="_int">
+  	SELECT COUNT(*)
+  	FROM MEMBER
+  	WHERE USER_ID=#{checkId}
   </select>
 </mapper>

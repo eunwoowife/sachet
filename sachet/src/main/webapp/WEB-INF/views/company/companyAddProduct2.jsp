@@ -41,30 +41,16 @@
   
 </head>
 <style>
-	#productOuter{
-		margin-top:200px;
+	.addProductOuter{
+		margin-top:150px;
 		margin-left:200px;
-		margin-right:300px;
 	}
 	
-	.col{
-		height:700px;
-	}
-	
-	.card img{
-		margin-top:80px;
+	.addProductTitle{
+		margin-right:200px;
 	}
 	
 
-	.col:hover{
-		cursor:pointer;
-	}
-	
-	.col:hover img {
-		filter: grayscale(100%);
-}
-	
-	
 </style>
 <body>
   <br>
@@ -157,7 +143,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="productSales.co" class="menu-link">
+                  <a href="pages-misc-error.html" class="menu-link">
                     <div data-i18n="Error">상품 판매 내역</div>
                   </a>
                 </li>
@@ -200,7 +186,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="${loginUser.logoFp}" class="w-px-40 h-auto rounded-circle"/>
+                      <img src="${pageContext.request.contextPath}/resources/uploadFiles/jo.png" class="w-px-40 h-auto rounded-circle"/>
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -235,106 +221,153 @@
           </nav>
           
           
-             <div id="productOuter" align="center">
-              
-              <h2 class="pb-1 mb-4 text-muted">판매중인 상품</h2>
-              
-              <div style="margin-left:800px;">
-              	<button type="submit" class="btn btn-primary me-2" onclick="goAddProduct();">상품추가</button>
-              </div>
-              
-              <script>
-              	function goAddProduct(){
-              		location.href="addProduct.co";
-              	}
-              </script>
-              
-              <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
-              
-              
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수1.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     	<br><br>
-                     	<b>재고수량 : 5개</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-               <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수2.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수3.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                
-               <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수4.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수5.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수6.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
+           <div class="addProductOuter">
+           		<div class="addProductTitle" align="center">
+           		<h1>상품추가</h1>
+           		<br><br>
+           		</div>
+           		
+           		<div class="addForm" style="margin-left:250px;">
+           		
+           		<form action="" method="post" enctype="multipart/form-data">
+           			  <label class="form-label">상품명</label>
+           			  <div class="form-floating">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="floatingInput"
+                          placeholder="Product Name"
+                          aria-describedby="floatingInputHelp"
+                          style="width:700px;"
+                        />
+                        <label for="floatingInput">상품명</label>
+                        </div>
+                        
+                         <label for="exampleFormControlTextarea1" class="form-label">상품설명</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"  style="resize: none; width:700px;"></textarea>
+           					
+           					
+      					  <label for="html5-number-input" class="col-md-2 col-form-label">상품재고</label>
+                        <div class="col-md-10">
+                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1"/>
+                        </div>
+                        
+                          <label for="html5-number-input" class="col-md-2 col-form-label">상품가격(￦)</label>
+                        <div class="col-md-10">
+                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1000"/>
+                        </div>
+                        
+                        <br>
+                        
+                        <table>
+                        	  <tr>
+					                <td align="center">
+					                	 <label for="exampleFormControlTextarea1" class="form-label">상품 대표이미지</label>
+					                	<input type="file" id="file1" name="file1" onchange="loadImg(this,1);" required>
+					                    <img id="titleImg" width="300" height="300">
+					                </td>
+					            <tr>
+					                 <td>
+					                 <label for="exampleFormControlTextarea1" class="form-label">상품 상세이미지</label>
+					                 <br>
+						            <input type="file" id="file2" name="file2" onchange="loadImg(this,2);">  
+									<input type="file" id="file3" name="file3" onchange="loadImg(this,3);">
+									<br>
+									<img id="contentImg1" width="300" height="300">
+					                <img id="contentImg2" width="300" height="300">
+					                </td>
+					            </tr>
+                        </table>
+                        
+						
+						<br><br>
+						
+						  <div class="mt-2" align="center" style="margin-right:430px;">
+                          <button type="submit" class="btn btn-primary me-2">등록하기</button>
+                          <button type="reset" class="btn btn-outline-secondary" onclick="goCancel();">취소</button>
+                        </div>
+                        <br><br><br>
+						
+           				<script>
+							function goCancel(){
+								location.href="productList.co";
+							}
+						</script>
+           		
+           		</form>
+           </div>
           
           
           
           </div>
           </div>
-          </div>
           
           
+           <script>
+
+   
+			$(function(){
+                $("#file-area").hide();
+
+				$("#titleImg").click(function(){
+					$("#file1").click();
+				});
+
+				$("#contentImg1").click(function(){
+					$("#file2").click();
+				});
+
+				$("#contentImg2").click(function(){
+					$("#file3").click();
+				});
+
+			});
+
+            function loadImg(inputFile,num){
+				//inputFile : 현재 변화가 생긴 input type="file" 요소 객체
+				//num : 몇번째 input 요소인지 확인 후 해당 영역에 미리보기를 위한 매개변수
+
+				//files속성은 업로드된 파일의 정보를 배열의 형태로 묶어서 반환하는 속성
+				//파일 선택시 length가 1을 반환 취소하면 0을 반환한다.
+				// console.log(inputFile.files.length);
+
+				if(inputFile.files.length==1){
+					//선택된 파일이 존재하면
+					//선택된 파일을 읽어서 해당 영역에 미리보기 띄워주기
+
+					//파일을 읽어주기 위한 객체 FileReader
+					var reader = new FileReader();
+
+					//파일을 읽어들이는 메소드 -  어떤 파일을 읽을것인지 매개변수로 제시
+					//readAsDataURL(파일);
+					//파일을 읽어들이는 순간 해당 파일만의 고유 url을 부여한다.
+					//부여된 url을 src속성에 추가하면 된다.
+					reader.readAsDataURL(inputFile.files[0]);
+
+					//파일 읽기가 완료되 시점에 src에 url을 부여하는 함수 만들기
+					reader.onload = function(e){
+						//e는 이벤트 객체
+						//부여된 url은 e객체 target의 result에 들어있음.
+						// console.log(e);
+
+						//각 영역에 맞춰서 이미지 미리보기
+						switch(num){
+							case 1 : $("#titleImg").attr("src",e.target.result); break;
+							case 2 : $("#contentImg1").attr("src",e.target.result); break;
+							case 3 : $("#contentImg2").attr("src",e.target.result); break;
+						}
+					}
+				}else{ //취소 누를 시 미리보기 없애기
+					switch(num){
+							case 1 : $("#titleImg").attr("src",null); break;
+							case 2 : $("#contentImg1").attr("src",null); break;
+							case 3 : $("#contentImg2").attr("src",null); break;
+						}
+				}
+
+			}
+        </script>
+        
           <script  src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
           <script  src="${pageContext.request.contextPath}/resources/js/popper.js"></script>
           <script  src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
@@ -357,7 +390,7 @@
           <script async defer src="https://buttons.github.io/buttons.js"></script>
          
          
-              
+     
 <br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

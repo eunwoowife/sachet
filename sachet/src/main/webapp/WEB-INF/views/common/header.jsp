@@ -99,6 +99,14 @@
     </style>
 </head>
 <body>
+	
+	<c:if test="${not empty alertMessage }">
+	<script>
+		alert("${alertMessage}");
+	</script>
+		<c:remove var="alertMessage" scope="session"/>
+	</c:if>
+	
     <div class="outer">
     <div id="top">
         <div id="logo">

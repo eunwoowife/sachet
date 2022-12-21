@@ -201,7 +201,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="${pageContext.request.contextPath}/resources/uploadFiles/jo.png" class="w-px-40 h-auto rounded-circle"/>
+                      <img src="${loginUser.logoFp}" class="w-px-40 h-auto rounded-circle"/>
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -249,7 +249,7 @@
                     <br><br><br><br><br>
                     <div class="card-body" align="center">
                     	<h5>${loginUser.userName }님, 환영합니다.</h5>
-                    	<img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/jo.png" style="width:200px;" />
+                    	<img class="card-img-top" src="${loginUser.logoFp}" style="width:200px;" />
                   </div>
                   </div>
 

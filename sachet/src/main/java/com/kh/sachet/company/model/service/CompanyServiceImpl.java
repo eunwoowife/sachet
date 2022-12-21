@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.sachet.company.model.dao.CompanyDao;
 import com.kh.sachet.company.model.vo.Company;
+import com.kh.sachet.member.model.dao.MemberDao;
 
 @Service
 public class CompanyServiceImpl implements CompanyService{
@@ -21,6 +22,21 @@ public class CompanyServiceImpl implements CompanyService{
 		Company loginUser2 = companyDao.loginMember(sqlSession, c);
 		return loginUser2;
 	}
+
+	//아이디 중복체크
+	@Override
+	public int idCheck(String checkId) {
+		int count = companyDao.idCheck(sqlSession, checkId);
+		return count;
+	}
+
+	//기업회원 가입
+	@Override
+	public int insertCompanyUser(Company c) {
+		int result = companyDao.insertCompanyUser(sqlSession, c);
+		return result;
+	}
+
 	
 	
 }
