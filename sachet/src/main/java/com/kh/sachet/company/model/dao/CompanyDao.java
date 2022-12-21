@@ -12,4 +12,12 @@ public class CompanyDao {
 		return sqlSession.selectOne("companyMapper.loginMember", c);
 	}
 
+	public int idCheck(SqlSessionTemplate sqlSession, String checkId) {
+		return sqlSession.selectOne("companyMapper.idCheck", checkId);
+	}
+
+	public int insertCompanyUser(SqlSessionTemplate sqlSession, Company c) {
+		return sqlSession.insert("companyMapper.insertCompanyUser", c);
+	}
+
 }

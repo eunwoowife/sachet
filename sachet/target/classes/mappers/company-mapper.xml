@@ -22,10 +22,45 @@
   </resultMap>
   
   <select id="loginMember" parameterType="company" resultMap="companyResultSet">
-  	SELECT*
-  	FROM COMPANY
-  	WHERE COM_ID=#{userId}
-  	AND COM_PWD=#{userPwd}
-  	AND COM_STATUS='Y'
+	  	SELECT*
+	  	FROM COMPANY
+	  	WHERE COM_ID=#{userId}
+<!-- 	  	AND COM_PWD=#{userPwd} -->
+	  	AND COM_STATUS='Y'
   </select>
+  
+  <select id="idCheck" resultType="_int">
+	  	SELECT COUNT(*)
+	  	FROM COMPANY
+	  	WHERE COM_ID=#{checkId}
+  </select>
+  
+  <insert id="insertCompanyUser" parameterType="company">
+  		INSERT INTO COMPANY(USER_NO,
+  											COM_ID,
+  											COM_BRNUM,
+  											COM_NAME,
+  											COM_PWD,
+  											COM_OWNER,
+  											COM_EMAIL,
+  											COM_PHONE1,
+  											COM_PHONE2,
+  											COM_ADDRESS,
+  											COM_POSTNO,
+  											COM_LOGO_ON,
+  											COM_LOGO_FP)
+		VALUES(SEQ_CNO.NEXTVAL,
+					#{userId},
+					#{comBrnum},
+					#{userName},
+					#{userPwd},
+					#{comOwner},
+					#{comEmail},
+					#{phone1},
+					#{phone2},
+					#{address},
+					#{postNo},
+					#{logoOn},
+					#{logoFp})
+  </insert>
 </mapper>

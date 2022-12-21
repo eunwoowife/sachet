@@ -123,12 +123,12 @@
                     <div data-i18n="Basic">나의 부스 조회</div>
                   </a>
                 </li>
-                 <li class="menu-item active">
+                 <li class="menu-item">
                   <a href="productList.co" class="menu-link" >
                     <div data-i18n="Basic">상품 관리</div>
                   </a>
                 </li>
-                 <li class="menu-item">
+                 <li class="menu-item active">
                   <a href="experienceList.co" class="menu-link" >
                     <div data-i18n="Basic">체험 관리</div>
                   </a>

@@ -33,6 +33,9 @@
     <title>Account settings - Account | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
+    
+     <!-- jQuery 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
@@ -45,25 +48,6 @@
       rel="stylesheet"
     />
 
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
-
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../assets/css/demo.css" />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
-    <!-- Page CSS -->
-
-    <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
     
     <link href="${pageContext.request.contextPath }/resources/css/style.css" rel="stylesheet"/>
     
@@ -152,6 +136,7 @@
 
 
   <body>
+ 
   
   <div class="outer">
   
@@ -233,7 +218,7 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="" class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
@@ -295,6 +280,7 @@
               <div class="row">
                 <div class="col-md-12">
                   
+                 <form id="formAccountSettings" action="insert.co" method="post" enctype="multipart/form-data">
                   <div class="card mb-4">
                     <h5 class="card-header">기업 로고이미지</h5>
                     <!-- Account -->
@@ -316,8 +302,7 @@
                               type="file"
                               id="upload"
                               class="account-file-input"
-                              hidden
-                              accept="image/png, image/jpeg"
+                              name="upfile"
                             />
                           </label>
                           <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
@@ -331,7 +316,6 @@
                     </div>
                     <div class="card-body">
 
-                      <form id="formAccountSettings" action="insert.co" method="POST">
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">기업명</label>
@@ -339,37 +323,78 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">사업자 등록번호</label>
-                            <input class="form-control" type="text" name="comBrnum" id="lastName" required placeholder="'-'를 제외한 10자리 숫자를 입력해주세요."/>
+                            <input class="form-control" type="text" name="comBrnum" id="brNumber" required placeholder="'-'를 제외한 10자리 숫자를 입력해주세요."/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">기업 대표자명</label>
                             <input class="form-control" type="text" name="comOwner" id="lastName" required/>
                           </div>
                           <div class="mb-3 col-md-6" style="margin-top:30px;">
-                            <button type="button" class="btn rounded-pill btn-primary">사업자 확인</button>
+                            <button id="checkCom" type="button" class="btn rounded-pill btn-primary">사업자 확인</button>
                           </div>
+                          
+                          <script>
+                          	$(function(){
+                          		$("#checkCom").click(function(){
+                          		   
+//                           			var data = $("#brNumber").val();
+//                           			var data = '['+data+']';
+//                           			console.log(data);
+									var data = {
+										"b_no": [$("#brNumber").val()], // 사업자번호 "xxxxxxx" 로 조회 시,
+									}; 
+                          			
+                          			$.ajax({
+                          			  url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=f%2B2P%2FOamXbhdo2LxA3sYOUqdyo5yMBrotkYV4I1XM2nS7xlXDZWPuZ7vbVTxb%2B7DyDP0gexZuIlncEiIdDlxDQ%3D%3D",
+                          			  type: "POST",
+                          			  data: JSON.stringify(data), // json 을 string으로 변환하여 전송
+                          			  dataType: "JSON",
+                          			  contentType: "application/json",
+                          			  accept: "application/json",
+                          			  success: function(result) {
+                          				 console.log(result);
+                          				console.log(result.data[0].tax_type);
+                          				
+                          				
+                          				if(result.data[0].tax_type!="국세청에 등록되지 않은 사업자등록번호입니다."){
+                          					$("#enrollBtn").removeAttr("disabled");
+                          					alert("사업자 상태가 확인되었습니다. ("+result.data[0].tax_type+")");
+                          				}else{
+                          					alert(result.data[0].tax_type+"\n사업자 정보를 다시 확인해주세요.");
+                          				}
+                          			  },
+                          			  error: function(result) {
+                          			      console.log(result.responseText); //responseText의 에러메세지 확인
+                          			  }
+                          			});
+                          			
+                          		})
+                          	})
+                          </script>
+                          
+                          
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">아이디</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="firstName"
+                              id="inputId"
                               name="userId"
                               autofocus
                               required
                               />
-                              <p id="idCheck" style="font-size: 10px;">사용중인 아이디입니다.</p>
+                              <p id="checkResult" style="font-size: 10px; display:none;">헤헤</p>
                             </div>
                             <div class="mb-3 col-md-6">
                               
                               </div>
                             <div class="mb-3 col-md-6">
                               <label for="lastName" class="form-label">비밀번호</label>
-                              <input class="form-control" type="text" name="userPwd" id="lastName" required/>
+                              <input class="form-control" type="password" name="userPwd" id="userPwd" required/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">비밀번호 확인</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" />
+                            <input class="form-control" type="password" id="checkPwd" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">이메일</label>
@@ -425,15 +450,42 @@
                         </div>
                         <br><br>
                         <div class="mt-2" align="center">
-                          <button type="submit" class="btn btn-primary me-2">회원가입</button>
+                          <button type="submit" class="btn btn-primary me-2" disabled id="enrollBtn">회원가입</button>
                           <button type="reset" class="btn btn-outline-secondary">취소</button>
                         </div>
                       </form>
                     </div>
                     <!-- /Account -->
                   </div>
+                  
+                  
+                 <script>
+                  	$(function(){
+                  		var $idInput = $("#inputId");
+                  		
+                  		$idInput.keyup(function(){
+                  		
+                  		if($idInput.val().length>=3){
+                  			$.ajax({
+                  				url : "idCheck.co",
+                  				data : {checkId : $idInput.val()},
+                  				success : function(result){
+                  					if(result=='NNNNN'){
+                  						$("#checkResult").css("display", "block").css("color", "red").text("이미 존재하거나 탈퇴한 회원입니다.");
+                  						$("#inputId").focus();
+                  					}else{
+                  						$("#checkResult").css("display", "block").css("color", "green").text("사용가능한 아이디입니다.");
+                  					}
+                  				},
+                  				error : function(){
+                  					console.log("통신실패");
+                  				}
+                  			})
+                  		}
+                  		})
+                  	})
+                  </script>
                  
-
            
             <div class="content-backdrop fade"></div>
           </div>
@@ -457,27 +509,6 @@
         		location.href="loginForm.me";
         	}
         	</script>
-
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-    <script src="../assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
-
-    <!-- Page JS -->
-    <script src="../assets/js/pages-account-settings-account.js"></script>
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 
     
