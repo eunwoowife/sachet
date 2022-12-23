@@ -166,7 +166,7 @@
 			<li><a href="ticketInfo.ti">Ticketing</a>
 				<ul>
 					<li><a href="ticketInfo.ti">티켓 안내 </a></li>
-					<li><a href="#">티켓 예매</a></li>
+					<li><a href="ticketBook1.ti">티켓 예매</a></li>
 				</ul>
 			</li>
 			<li><a href="#">Product</a>
