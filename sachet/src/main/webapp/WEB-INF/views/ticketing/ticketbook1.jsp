@@ -14,15 +14,23 @@
 body.ml-calendar-demo {
   padding: 60px 20px; }
 
+.outerArea{
+
+	width: 70%;
+	margin-top: 300px;
+	
+
+}
 .ml-calendar {
   background: #fff;
   color: #2d2e2f;
   font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   max-width: 940px;
-  margin: 0 auto;
+  margin-left: 500px;
   box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
-  border-radius: 1em; }
+  border-radius: 1em; 
+ }
   .ml-calendar a {
     color: #2d2e2f;
     text-decoration: none; }
@@ -41,7 +49,7 @@ body.ml-calendar-demo {
     font-weight: 400;
     letter-spacing: 2px;
     margin-bottom: -10px;
-    font-size: 1rem;
+    font-size: 2rem;
     color: #73C3E3; }
   .ml-calendar .calendar-btn {
     background: #ececec;
@@ -158,7 +166,7 @@ body.ml-calendar-demo {
 			background-color:#e4e4e4;
 			border-radius: 100px;
 			border: none;
-			width: 220px;
+			width: 180px;
 			height: 30px;
 			font-size: 1em;
 		}
@@ -177,14 +185,18 @@ body.ml-calendar-demo {
 	
 </head>
 <body class="ml-calendar-demo">
+
+<jsp:include page="../common/header.jsp" />
+
+<div class ="outerArea">
 	<div class="ml-calendar">
 		<section class="calendar-left">
 			<div class="sidebar">
 				<p class="subheading">Sachet</p>
-				<h1>티켓 예약</h1>
 					<div id="ticketing">
 					
 					<span style="font-size: 15px;">
+					<br>
 					성인: ￦20,000 <br/>
 					아동: ￦8,000 <br/>
 					무료: 증빙서류 필참<br/><br/>
@@ -219,7 +231,7 @@ body.ml-calendar-demo {
 					<span> 합계: </span>  ￦ <span id="totalSum"> 20,000 </span>
 					<br><br>
 			</div>
-			<button type="button" id="ticketSubmit" disabled> 예매하기 </button>
+			<button type="submit" id="ticketSubmit" disabled onclick="book2();"> 예매하기 </button>
 
 			</div>
 
@@ -357,7 +369,8 @@ body.ml-calendar-demo {
 			</div>
 		</section>
 		<div class="clear"></div>
-
+</div>
+</div>
 
 		<script>
 
@@ -440,6 +453,10 @@ body.ml-calendar-demo {
 
 			}
 
+			function book2(){
+				location.href="ticketBook2.ti";
+				
+			}
 
 
 		</script>

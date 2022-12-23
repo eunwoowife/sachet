@@ -298,6 +298,8 @@
 </head>
 <body>
 
+<jsp:include page="../common/header.jsp" />
+
 	<div class="outer">
 
 		<div id="main">
