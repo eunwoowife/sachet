@@ -20,4 +20,8 @@ public class CompanyDao {
 		return sqlSession.insert("companyMapper.insertCompanyUser", c);
 	}
 
+	public int updateCompanyUser(SqlSessionTemplate sqlSession, Company c) {
+		return sqlSession.update("companyMapper.updateCompanyUser", c);
+	}
+
 }

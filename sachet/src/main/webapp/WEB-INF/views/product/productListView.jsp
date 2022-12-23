@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,91 +48,54 @@
               <h2 class="pb-1 mb-4 text-muted">상품목록</h2>
               <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
               
-              
-                <div class="col">
+               <c:forEach var="p" items="${pList }">
+                <div class="col" onclick="location.href='detail.pro?pno=${p.productNo}'">
                   <div class="card h-100">
-                    <img id="zoom" class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수1.png" alt="Card image cap" />
+                    <img id="zoom" class="card-img-top" src="${p.productImgFp}" />
                     <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
+                      <b>${p.boothName }</b>
+                    	<p style="font-size:12px;">${p.productName }</p>
                      <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
+                     	<b style="color:gray;">₩<fmt:formatNumber value="${p.productPrice }" type="number"/></b>
                      </div>
                     </div>
                   </div>
                 </div>
-               <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수2.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수3.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                
-               <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수4.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수5.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수6.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
+                </c:forEach>
                 
                 
-                   <div id="pagingArea" align="center">
+                   <div id="pagingArea" style="margin-left:550px;">
                 		<ul class="pagination">
-		                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-		                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-		                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-		                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-		                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-		                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-		                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                		
+                		<c:choose>
+                		<c:when test="${pi.currentPage!=1 }">
+		                    <li class="page-item"><a class="page-link" href="productListView.pro?currentPage=${pi.currentPage-1 }">Previous</a></li>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<li class="page-item disabled"><a class="page-link" href="productListView.pro?currentPage=${pi.currentPage-1 }">Previous</a></li>
+	                    </c:otherwise>
+                    	</c:choose>
+                    	
+                    	<c:forEach var="g" begin="${pi.startPage }" end="${pi.endPage }">
+                    	<c:choose>
+                    	<c:when test="${pi.currentPage eq g }">
+		                    <li class="page-item disabled"><a class="page-link" href="productListView.pro?currentPage=${g }">${g }</a></li>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<li class="page-item"><a class="page-link" href="productListView.pro?currentPage=${g }">${g }</a></li>
+	                    </c:otherwise>
+	                    </c:choose>
+	                    </c:forEach>
+	                    
+	                    <c:choose>
+	                    <c:when test="${pi.currentPage ne pi.maxPage }">
+		                    <li class="page-item"><a class="page-link" href="productListView.pro?currentPage=${pi.currentPage+1}">Next</a></li>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<li class="page-item disabled"><a class="page-link" href="productListView.pro?currentPage=${pi.currentPage+1}">Next</a></li>
+	                    </c:otherwise>
+	                    </c:choose>
+	                    
                 		</ul>
           		  </div>
 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="productMapper">
+
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM PRODUCT
+		WHERE PRODUCT_STATUS='Y'
+	</select>
+	
+	<resultMap type="product" id="productResultSet">
+		<result column="PRODUCT_NO" property="productNo"/>
+		<result column="BOOTH_NO" property="boothNo"/>
+		<result column="PRODUCT_NAME" property="productName"/>
+		<result column="PRODUCT_DETAIL" property="productDetail"/>
+		<result column="PRODUCT_STOCK" property="productStock"/>
+		<result column="PRODUCT_STATUS" property="productStatus"/>
+		<result column="PRODUCT_PRICE" property="productPrice"/>
+		<result column="PRODUCT_IMG_ON" property="productImgOn"/>
+		<result column="PRODUCT_IMG_FP" property="productImgFp"/>
+		<result column="PRODUCT_ENROLLDATE" property="productEnrolldate"/>
+		<result column="BOOTH_NAME" property="boothName"/>
+	</resultMap>
+	
+	<select id="selectProductList" resultMap="productResultSet">
+		SELECT PRODUCT_NO,
+					BOOTH_NO,
+					PRODUCT_NAME,
+					PRODUCT_DETAIL,
+					PRODUCT_STOCK,
+					PRODUCT_STATUS,
+					PRODUCT_PRICE,
+					PRODUCT_IMG_ON,
+					PRODUCT_IMG_FP,
+					BOOTH_NAME
+		FROM PRODUCT
+		JOIN BOOTH USING(BOOTH_NO)
+		JOIN COMPANY ON(USER_NO = COM_NO)
+		WHERE PRODUCT_STATUS='Y'
+		ORDER BY PRODUCT_ENROLLDATE DESC 
+	</select>
+	
+	<select id="selectProduct" resultMap="productResultSet">
+		SELECT PRODUCT_NO,
+					BOOTH_NO,
+					PRODUCT_NAME,
+					PRODUCT_DETAIL,
+					PRODUCT_STOCK,
+					PRODUCT_STATUS,
+					PRODUCT_PRICE,
+					PRODUCT_IMG_ON,
+					PRODUCT_IMG_FP,
+					BOOTH_NAME
+		FROM PRODUCT
+		JOIN BOOTH USING(BOOTH_NO)
+		WHERE PRODUCT_NO=#{productNo}
+		AND PRODUCT_STATUS='Y'
+	</select>
+	
+</mapper>

@@ -9,4 +9,6 @@ public interface CompanyService {
 	int idCheck(String checkId);
 	
 	int insertCompanyUser(Company c);
+	
+	int updateCompanyUser(Company c);
 }
