@@ -165,21 +165,20 @@
 			<li><a href="#">About Sachet</a></li>
 			<li><a href="#">Ticketing</a>
 				<ul>
-					<li><a href="#">SUB_MENU</a></li>
-					<li><a href="#">SUB_MENU2</a></li>
-					<li><a href="#">SUB_MENU3</a></li>
+					<li><a href="#">티켓 안내 </a></li>
+					<li><a href="#">티켓 예매</a></li>
 				</ul>
 			</li>
 			<li><a href="#">Product</a>
 				<ul>
-					<li><a href="#">BOOTH</a></li>
+					<li><a href="boothListView.boo">BOOTH</a></li>
 					<li><a href="productListView.pro">PRODUCT</a></li>
 					<li><a href="experienceListView.exp">EXPERIENCE</a></li>
 				</ul>
 			</li>
 			<li><a href="#">Booth Info</a>
 				<ul>
-					<li><a href="#">SUB_MENU</a></li>
+					<li><a href="#">부스 목록</a></li>
 					<li><a href="#">SUB_MENU2</a></li>
 					<li><a href="#">SUB_MENU3</a></li>
 				</ul>
