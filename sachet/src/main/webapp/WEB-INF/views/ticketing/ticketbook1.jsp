@@ -184,9 +184,10 @@ body.ml-calendar-demo {
 	</style>
 	
 </head>
-<body class="ml-calendar-demo">
-
 <jsp:include page="../common/header.jsp" />
+<body>
+
+<div class="ml-calendar-demo">
 
 <div class ="outerArea">
 	<div class="ml-calendar">
@@ -371,6 +372,7 @@ body.ml-calendar-demo {
 		<div class="clear"></div>
 </div>
 </div>
+</div>
 
 		<script>
 
@@ -436,27 +438,71 @@ body.ml-calendar-demo {
 				var total = (adultPrice*parseInt($("#adultCount").val())) + (kidsPrice*parseInt($("#kidsCount").val()));
                 var totalPriceComma = (total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 				$("#totalSum").text(totalPriceComma);
-
-
 			}
 
 
 			function changeDate(result){
 
 				var date= result;
-
 				var totaldate = "2023-01-"+result;
 				
 				$("#selectDay").html("<b>"+totaldate+"</b>");
-
 				$("#ticketSubmit").removeAttr("disabled");
-
 			}
 
 			function book2(){
-				location.href="ticketBook2.ti";
 				
-			}
+				
+				
+			var bookDate = $("#selectDay").text();
+			var adultCount = $("#adultCount").val();
+			var kidsCount = $("#kidsCount").val();
+			var freeCount = $("#freeCount").val();
+			const date = new Date();
+										    		       	
+			var form = document.createElement("form");
+			form.setAttribute("charset", "UTF-8");
+			form.setAttribute("method", "Post"); 
+			form.setAttribute("action", "ticketBook2.ti"); 
+			
+			var hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "bookDate");
+			hiddenField.setAttribute("value",bookDate);
+			form.appendChild(hiddenField);
+							         
+			hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "adultCount");
+			hiddenField.setAttribute("value", adultCount);
+			form.appendChild(hiddenField);
+			
+			hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "kidsCount");
+			hiddenField.setAttribute("value", kidsCount);
+			form.appendChild(hiddenField);
+			
+			hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "freeCount");
+			hiddenField.setAttribute("value", freeCount);
+			form.appendChild(hiddenField);
+			
+			hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "bookingtime");
+			hiddenField.setAttribute("value", date.toLocaleString());
+			form.appendChild(hiddenField);
+			
+			
+			document.body.appendChild(form);
+							         
+			form.submit();
+				    	
+				    	
+				    }
+				
 
 
 		</script>
