@@ -37,6 +37,12 @@ public class CompanyServiceImpl implements CompanyService{
 		return result;
 	}
 
+	@Override
+	public int updateCompanyUser(Company c) {
+		int result = companyDao.updateCompanyUser(sqlSession, c);
+		return result;
+	}
+
 	
 	
 }

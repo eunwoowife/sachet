@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,15 +115,29 @@ button {
         line-height: 3rem;
       }
 
-      #quantity{
-        margin-top: 5px;
-        width: 20px;
-        height: 27px;
-        text-align:center;
-        border: none;
-        background: transparent;
-       }
 
+			.countbox{
+			width: 25px;
+			border: none;
+			text-align: center;
+		}
+
+		.counting{
+			border: none;
+			background-color: #e4e4e4;
+			width: 18px;
+		}
+
+		.counting:hover{
+			border: none;
+			background-color: #acacac;
+			color: #fff;
+		}
+		
+		.wonArea{
+			margin-left:150px;
+		}
+		
     
 </style>
 <body>
@@ -133,52 +148,19 @@ button {
     <div class="productDetailContainer">
         <div class="prodetailLeft" align="center">
             <a href="http://image.jtbcplus.kr/data/contents/jam_photo/202109/06/f8cd9254-5e56-4fc9-a82a-83d071337a7c.jpg" data-lightbox="example-set">
-                <img src="${pageContext.request.contextPath}/resources/uploadFiles/향수1.png" alt="">
+                <img src="${p.productImgFp }" alt="">
             </a>
             <br><br><br><br>
 
 
             <div class="prodetailContent">
                 <img src="${pageContext.request.contextPath}/resources/images/ProductNotice.jpg" alt="">
-                <br><br><br><br><br><br><br><br><br><br><br>
-                <img src="${pageContext.request.contextPath}/resources/uploadFiles/spellDetail.png" alt="" width="500px;" height="500px;">
-                <img src="${pageContext.request.contextPath}/resources/uploadFiles/spellDetail2.jpg" alt="" width="500px;" height="500px;">
                 <br><br><br><br><br><br><br>
             </div>
             
             <div class="prodetailContent2">
 <pre >
-Available exclusively on louisvuitton.com and in selected Louis Vuitton stores.
-
-Order your Louis Vuitton fragrance and receive a complimentary sample
-so you can discover the fragrance before wearing or gifting it.
-That way, should you wish to,
-you can return your unopened bottle for reimbursement.
-
-A magnetic iris conjures the ecstasy of love, blending sensuality and lightness.
-
-Passionate love is the most exciting of all games.
-Oscillating between sensuality and complicity,
-that delicious tension inspired Master Perfumer Jacques Cavallier Belletrud to create a romantic,
-mischievous fragrance that becomes one with the skin.
-An ode to the iris pallida from Florence,
-its composition exalts the duality of a precious flower that symbolizes feminine seduction.
-The iris insinuates its violet notes into a radiant bouquet of rose and Sambac jasmine,
-then unfurls the force of its powdery notes within the honeyed accents of acacia flower.
-Evolving from carnal seduction and an intimate impression,
-Spell on You has a hypnotic,heady aura, like an unforgettable refrain...
-
-The bottle is refillable in stores equipped with a perfume fountain.
-
-
-
-
-● Key notes:
-Iris from Florence
-Rose from Grasse
-Sambac jasmine
-Acacia flower from Egypt
-Musk
+${p.productDetail}
 </pre>
     <br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -187,12 +169,20 @@ Musk
         </div>
         <div class="prodetailRight">
             <div class="card-body">
-                <b style="font-size: 20px;">LOUIS VUITTION</b>
-                  <p style="font-size:23px; color: gray;">스펠 온 유 (SPELL ON YOU)</p>
+                <b style="font-size: 20px;">${p.boothName }</b>
+                  <p style="font-size:23px; color: gray;">${p.productName }</p>
                <div class="productPrice">
-                   <b style="font-size: 20px; color: rgb(97, 97, 97);">₩ 410,000</b>
+                   <b style="font-size: 20px; color: rgb(97, 97, 97);">₩<fmt:formatNumber value="${p.productPrice }" type="number"/></b>
                </div>
-
+               <hr width="380px;">
+               <button class="counting" onclick="proCount(1);"> - </button>
+				<input type="text" class="countbox" id="proCount" value="1" disabled >
+				<button class="counting" onclick="proCount(2);"> + </button>
+				<br><br>
+				
+				<span class="totalArea" style="font-weight:bold;">TOTAL </span>
+				<span class="wonArea" style="font-weight:bold;">￦</span>
+				<span class="totalPriArea" id="totalSum" style="font-weight:bold;"><fmt:formatNumber value="${p.productPrice }" type="number"/></span>
 
                <div class="proButtonArea">
                <button class="w-btn w-btn-gray" type="button">
@@ -209,6 +199,34 @@ Musk
         
     </div>
 
+	<script>
+		function proCount(result){
+			var count = parseInt($("#proCount").val());
+	
+			if(result==1){
+				count--;
+				if(count<2){
+					count=1;
+				}
+			}else{
+			    count++;
+				if(count>${p.productStock}){
+	       		 count=${p.productStock};
+	    		}
+			}
+			$("#proCount").val(count);
+			priceCal();
+		}
+		
+		function priceCal(){
+			
+			var proPrice = ${p.productPrice};
+			
+			var total = (proPrice*parseInt($("#proCount").val()));
+		  	var totalPriceComma = (total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+			$("#totalSum").text(totalPriceComma);
+		}
+	</script>
 
 </body>
 </html>

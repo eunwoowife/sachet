@@ -9,12 +9,14 @@
 	<typeAliases>
 		<typeAlias type="com.kh.sachet.member.model.vo.Member" alias="member"/>
 		<typeAlias type="com.kh.sachet.company.model.vo.Company" alias="company"/>
+		<typeAlias type="com.kh.sachet.product.model.vo.Product" alias="product"/>
 	</typeAliases>
 
 
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/company-mapper.xml"/>
+		<mapper resource="/mappers/product-mapper.xml"/>
 	</mappers>
 
 	

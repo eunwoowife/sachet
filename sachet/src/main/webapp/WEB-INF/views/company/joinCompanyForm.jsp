@@ -287,7 +287,6 @@
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img
-                          src=""
                           class="d-block rounded"
                           height="100"
                           width="100"
@@ -303,6 +302,7 @@
                               id="upload"
                               class="account-file-input"
                               name="upfile"
+                              hidden
                             />
                           </label>
                           <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">

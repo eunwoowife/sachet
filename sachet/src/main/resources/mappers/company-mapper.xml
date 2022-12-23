@@ -63,4 +63,17 @@
 					#{logoOn},
 					#{logoFp})
   </insert>
+  
+  <update id="updateCompanyUser" parameterType="company">
+  		UPDATE COMPANY SET COM_EMAIL=#{comEmail},
+  											COM_PHONE1=#{phone1},
+  											COM_PHONE2=#{phone2},
+  											COM_POSTNO=#{postNo},
+  											COM_ADDRESS=#{address},
+  											COM_LOGO_ON=#{logoOn},
+  											COM_LOGO_FP=#{logoFp},
+  											COM_MODIFYDATE=SYSDATE
+		WHERE COM_ID=#{userId}
+		AND COM_STATUS='Y'
+  </update>
 </mapper>

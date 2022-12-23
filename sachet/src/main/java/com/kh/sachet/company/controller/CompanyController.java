@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kh.sachet.company.model.service.CompanyService;
 import com.kh.sachet.company.model.vo.Company;
 import com.kh.sachet.member.model.service.MemberService;
+import com.kh.sachet.member.model.vo.Member;
 
 @Controller
 public class CompanyController {
@@ -61,7 +62,7 @@ public class CompanyController {
 		//1. 원본 파일명 뽑기
 		String originName = upfile.getOriginalFilename();
 		
-		//3. 파일을 업로드할 실질적인 위치(물리경로)찾기
+		//2. 파일을 업로드할 실질적인 위치(물리경로)찾기
 		String savePath = session.getServletContext().getRealPath("/resources/uploadFiles/");
 	
 		try {
@@ -109,7 +110,55 @@ public class CompanyController {
 			model.addAttribute("errorMsg", "회원가입 실패");
 			return "common/errorPage";
 		}
+	}
+	
+	
+	//기업회원 정보 수정하기
+	@RequestMapping("update.co")
+	public String updateCompanyUser(Company c, String postNo, String add1, MultipartFile upfile, HttpSession session, Model model) {
+		int result = 0;
+		c.setPostNo(postNo);
+		c.setAddress(add1);
 		
+		//새로운 사진이 첨부됐는지 확인 (사진 변경을 했는지?)
+		if(!upfile.getOriginalFilename().equals("")) {
+			//기존에 첨부파일이 있었던 경우 -> 기존 첨부파일 삭제
+			if(c.getLogoOn() != null) {
+				new File(session.getServletContext().getRealPath(c.getLogoFp())).delete();
+			}
+			//새로운 사진으로 업로드하기->모듈화 시킨 saveFile 메소드 활용
+			String originName = saveFile(upfile, session);
+			c.setLogoOn(upfile.getOriginalFilename());
+			c.setLogoFp("resources/uploadFiles/"+originName);
+		}
+		result = companyService.updateCompanyUser(c);
+		
+		if(result>0) {
+			Company updateCompanyUser = companyService.loginMember(c);
+			session.setAttribute("loginUser", updateCompanyUser);
+			session.setAttribute("alertMessage", "회원정보가 정상적으로 수정되었습니다.");
+			return "company/companyInfoUpdateForm";
+		}else {
+			model.addAttribute("errorMsg", "회원정보 수정 실패");
+			return "common/errorPage";
+		}
+	}
+	
+	//기업회원정보 수정하기 시, 비밀번호 체크
+	@ResponseBody
+	@RequestMapping(value="pwdCheck.co")
+	public String pwdCheck(String checkPwd, HttpSession session, Model model) {
+		String result = "";
+		
+		Company c = (Company)session.getAttribute("loginUser");
+		String userPwd = c.getUserPwd();
+		
+		if(bcryptpasswordEncoder.matches(checkPwd, userPwd)) {
+			result = "YYYYY";
+		}else {
+			result = "NNNNN";
+		}
+		return result;
 	}
 	
 	//마이컴퍼니 페이지

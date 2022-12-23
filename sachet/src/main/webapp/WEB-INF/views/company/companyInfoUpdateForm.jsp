@@ -33,6 +33,9 @@
     <title>Account settings - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
+    
+     <!-- jQuery 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
@@ -70,6 +73,13 @@
 
   <body>
   
+  <c:if test="${not empty alertMessage }">
+	<script>
+		alert("${alertMessage}");
+	</script>
+		<c:remove var="alertMessage" scope="session"/>
+	</c:if>
+	
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -242,11 +252,12 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h1 class="fw-bold py-3 mb-4">회원가입</h1>
+              <h1 class="fw-bold py-3 mb-4">기업 정보 수정</h1>
 
               <div class="row">
                 <div class="col-md-12">
                   
+                 <form id="formAccountSettings" action="update.co" method="post" enctype="multipart/form-data">
                   <div class="card mb-4">
                     <h5 class="card-header">기업 로고이미지</h5>
                     <!-- Account -->
@@ -271,8 +282,13 @@
                               class="account-file-input"
                               hidden
                               accept="image/png, image/jpeg"
+                              name="upfile"
                             />
                           </label>
+                       		<!--기존 파일이 있으면 수정하기 버튼을 눌렀을 때 해당 파일정보가 같이 전송될 수 있도록 hidden으로 작업 -->
+                       		<input type="hidden" name="logoOn" value="${loginUser.logoOn }">
+                       		<input type="hidden" name="logoFp" value="${loginUser.logoFp }">
+                       		
                           <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
                             <i class="bx bx-reset d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">취소</span>
@@ -284,7 +300,6 @@
                     </div>
                     <div class="card-body">
 
-                      <form id="formAccountSettings" action="update.co" method="POST">
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">기업명</label>
@@ -315,14 +330,7 @@
                             <div class="mb-3 col-md-6">
                               
                               </div>
-                            <div class="mb-3 col-md-6">
-                              <label for="lastName" class="form-label">비밀번호</label>
-                              <input class="form-control" type="text" name="userPwd" id="lastName" required/>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">비밀번호 확인</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" />
-                          </div>
+                         
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label" >이메일</label>
                             <input
@@ -374,10 +382,23 @@
                             <input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목" name="add3">
                           </div>
                           
+                          
                         </div>
                         <br><br>
+                        
+                        
+                         <div class="mb-3 col-md-6" align="center">
+                            <label for="lastName" class="form-label">비밀번호 확인</label>
+                            <input class="form-control" type="password" name="userPwd" id="inputPwd" />
+                            <p id="checkResult" style="font-size: 10px; display:none;">헤헤</p>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                          
+                          </div>
+                          <br><br>
+                          
                         <div class="mt-2" align="center">
-                          <button type="submit" class="btn btn-primary me-2">수정하기</button>
+                          <button type="submit" class="btn btn-primary me-2" disabled id="updateBtn">수정하기</button>
                           <button type="reset" class="btn btn-outline-secondary" onclick="goCancel();">취소</button>
                         </div>
                       </form>
@@ -398,6 +419,34 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
+    
+    <script>
+    	$(function(){
+    		var $pwdInput = $("#inputPwd");
+    		
+    		$pwdInput.keyup(function(){
+    			
+   			if($pwdInput.val().length>=3){
+    			$.ajax({
+    				url : "pwdCheck.co",
+    				data : {checkPwd : $pwdInput.val()},
+    				success : function(result){
+    					if(result=='NNNNN'){
+    						$("#checkResult").css("display", "block").css("color", "red").text("비밀번호가 일치하지 않아, 정보 수정이 어렵습니다.");
+      						$("#inputId").focus();
+			    			}else{
+			    				$("#checkResult").css("display", "block").css("color", "green").text("비밀번호가 일치하여 정보 수정이 가능합니다.");
+			    				$("#updateBtn").removeAttr("disabled");
+			    			}
+    					},
+    					error : function(){
+    						console.log("통신실패");
+    					}
+    				})
+    			}
+    		})
+    	})
+    </script>
 
 
 	<script>
