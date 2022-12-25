@@ -1,4 +1,4 @@
-package com.kh.sachet.ticketing.model.vo;
+package com.kh.sachet.order.model.vo;
 
 import java.sql.Date;
 
@@ -13,16 +13,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Ticket {
+public class Order {
 	
-	private int ticketNo;
+	private int orderNo;
 	private int userNo;
-	private int ticketAdult;
-	private int ticketKid;
-	private int ticketFree;
-	private String ticketDate;
-	private Date ticketBookingTime;
-	private String ticketStatus;
-	
+	private int totalPay;
 
 }

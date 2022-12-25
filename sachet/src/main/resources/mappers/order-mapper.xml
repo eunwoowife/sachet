@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="OrderMapper">
+
+  <resultMap type="order" id="orderResultSet">
+	  	<result column="ORDER_NO" property="orderNo"/>
+		<result column="USER_NO" property="userNo"/>
+		<result column="ORDER_TOTALPAY" property="totalPay"/>
+  </resultMap>
+  
+  
+  <select id="insertOrder" parameterType="order" resultMap="orderResultSet">
+  
+ 	 INSERT INTO ORDER1 VALUES 
+ 	 (SEQ_ONO.NEXTVAL, #{userNo}, #{totalPrice})
+
+	</select>
+	
+	
+	<select id="selectOrderNo" parameterType="order" resultMap="orderResultSet">
+  
+	SELECT A.*
+	FROM   
+		(SELECT ORDER_NO
+		FROM ORDER1
+		WHERE USER_NO=#{userNo}
+		ORDER BY ORDER_NO DESC) A
+	WHERE ROWNUM = 1
+
+	</select>
+  
+  
+  
+  
+
+</mapper>

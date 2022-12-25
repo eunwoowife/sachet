@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="orderDetailMapper">
+
+  <resultMap type="orderDetail" id="orderDetaiResultSet">
+	  	<result column="ODRDER_DETAIL_NO" property="orderDetailNo"/>
+		<result column="ORDER_NO" property ="orderNo"/>
+		<result column="USER_NO" property="userNo"/>
+		<result column="PRODUCT_NO" property="productNo"/>
+		<result column="EXPER_NO" property="experNo"/>
+		<result column="TICKET_NO" property="ticketNo"/>
+		<result column="COUNT" property="count"/>
+		<result column="ORDER_SATUS" property="orderStatus"/>
+  		<result column="ORDER_DATE" property="orderDate"/>
+  </resultMap>
+
+
+
+</mapper>
