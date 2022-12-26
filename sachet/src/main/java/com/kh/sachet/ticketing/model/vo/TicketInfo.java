@@ -15,7 +15,8 @@ import lombok.ToString;
 @ToString
 public class TicketInfo {
 	
-	private String ticketDate; 
+	private String ticketDate;
+	private String userName;
 	private String phone;
 	private String email;
 	private int totalPrice;

@@ -111,20 +111,20 @@ border: none;
             <td class="confirm-td">10:00~19:00</td>
           </tr>
           <tr>
-            <td class="confirm-th">휴대전화</td>
-            <td class="confirm-td">${t.phone}</td>
+            <td class="confirm-th">신청자명</td>
+            <td class="confirm-td">${t.userName}</td>
             <td class="confirm-th">이메일</td>
             <td class="confirm-td">${t.email }</td>
           </tr>
           <tr>
-            <td class="confirm-th">전체 요금</td>
-            <td class="confirm-td">${t.totalPrice}</td>
+            <td class="confirm-th">휴대전화</td>
+            <td class="confirm-td">${t.phone}</td>
             <td class="confirm-th">전체 인원</td>
             <td class="confirm-td">${t.totalPeople}명</td>
           </tr>
           <tr>
-            <td class="confirm-th">신청 일시</td>
-            <td colspan="3" class="confirm-td">${t.bookingtime}</td>
+            <td class="confirm-th">전체요금</td>
+            <td colspan="3" class="confirm-td">${t.totalPrice}</td>
           </tr>
           <tr>
             <td class="confirm-th">진행 상태</td>
@@ -217,32 +217,55 @@ border: none;
 		IMP.init("imp46720743");
 	    
         function requestPay() {
+        
+        	//merchan_uid는 고유번호를 따야하므로 결제시 시간으로함
+        	var today = new Date();   
+        	var year = today.getFullYear();
+        	var month = today.getMonth();
+        	var date = today.getDate();
+        	var hours = ('0' + today.getHours()).slice(-2); 
+        	var minutes = ('0' + today.getMinutes()).slice(-2);
+        	var seconds = ('0' + today.getSeconds()).slice(-2); 
+
+        	var paydate = "sa-"+year+month+date+hours+ minutes+ seconds;
+        	
             // IMP.request_pay(param, callback) 결제창 호출
-            IMP.request_pay({ // param
+               IMP.request_pay({ // param
             	
                 pg: "html5_inicis.INIpayTest",
                 pay_method: "card",
-                merchant_uid: "sachet-1231sad",
+                merchant_uid: paydate,
                 name: "Sachet 티켓 예매",
                 amount: "150",
-                buyer_email: "gildong@gmail.com",
-                buyer_name: "홍길동",
-                buyer_tel: ${t.phone},
-                buyer_addr: "adsf",
-                buyer_postcode: "gaesd"
+                buyer_email: '${t.email }',
+                buyer_name: '${t.userName }',
+                buyer_tel: '${t.phone}'
             }, 
             
             function (rsp) { // callback
                 if (rsp.success) {
-                	 jQuery.ajax({
-                         url: "ticketPayment.ti", // 예: https://www.myservice.com/payments/complete
-                         method: "POST",
-                         headers: { "Content-Type": "application/json" },
-                         data: {
-                             imp_uid: a,
-                             merchant_uid: b
-                         }
-                	 })
+                	
+                	$.ajax({
+    	    			url : "ticketPayment.ti",
+    	    			data : {
+    	    				ticketDate : '${t.ticketDate}',
+    	    				userName : '${t.userName}',
+    	    				phone : '${t.phone}', 
+    	    				email :'${t.email}',
+    	    				totalPrice : '${t.totalPrice}',
+    	    				totalPeople : '${t.totalPeople}',
+    	    				ticketAdult : '${t.ticketAdult}',
+    	    				ticketKid : '${t.ticketKid}',
+    	    				ticketFree : '${t.ticketFree}'
+    	    			},
+    	    			success : function(){
+    							console.log("도ㅓㅐㅆ으멵호겟다ㅠ");
+    	    			},
+    	    			error : function(){
+    	    				console.log("통신 실패");
+    	    			}
+    	    		})
+                	 
                 } else {
                     // 결제 실패 시 로직,
                 	 alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
@@ -250,7 +273,13 @@ border: none;
             });
           
         
-        
+				
+            
+            	
+   
+                	 
+                	 
+                	 
         
         }
             
