@@ -1,5 +1,7 @@
 package com.kh.sachet.product.model.vo;
 
+import com.kh.sachet.company.model.vo.Company;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,5 +38,5 @@ public class Product {
 	
 	private String boothName;
 	
-	private String comName;
+	private int userNo;
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.sachet.common.model.vo.PageInfo;
+import com.kh.sachet.company.model.vo.Company;
 import com.kh.sachet.product.model.dao.ProductDao;
 import com.kh.sachet.product.model.vo.Product;
 
@@ -35,6 +36,12 @@ public class ProductServiceImpl implements ProductService{
 	public Product selectProduct(int pno) {
 		Product p = productDao.selectProduct(sqlSession, pno);
 		return p;
+	}
+
+	@Override
+	public ArrayList<Product> selectCompanyProductList(int userNo) {
+		ArrayList<Product> pList = productDao.selectCompanyProductList(sqlSession, userNo);
+		return pList;
 	}
 
 }

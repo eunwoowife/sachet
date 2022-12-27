@@ -2,6 +2,7 @@ package com.kh.sachet.company.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kh.sachet.company.model.service.CompanyService;
 import com.kh.sachet.company.model.vo.Company;
 import com.kh.sachet.member.model.service.MemberService;
-import com.kh.sachet.member.model.vo.Member;
+import com.kh.sachet.product.model.service.ProductService;
+import com.kh.sachet.product.model.vo.Product;
 
 @Controller
 public class CompanyController {
@@ -25,6 +27,8 @@ public class CompanyController {
 	private CompanyService companyService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private ProductService productService;
 
 	@Autowired
 	private BCryptPasswordEncoder bcryptpasswordEncoder;
@@ -112,6 +116,17 @@ public class CompanyController {
 		}
 	}
 	
+	//마이컴퍼니 페이지
+	@RequestMapping("mypage.co")
+	public String myCompanyPage() {
+		return "company/myCompanyPage";
+	}
+	
+	//기업정보 수정폼 페이지로 이동
+	@RequestMapping("updateForm.co")
+	public String updateCompanyInfo() {
+		return "company/companyInfoUpdateForm";
+	}
 	
 	//기업회원 정보 수정하기
 	@RequestMapping("update.co")
@@ -161,21 +176,17 @@ public class CompanyController {
 		return result;
 	}
 	
-	//마이컴퍼니 페이지
-	@RequestMapping("mypage.co")
-	public String myCompanyPage() {
-		return "company/myCompanyPage";
-	}
-	
-	//기업정보 수정
-	@RequestMapping("updateForm.co")
-	public String updateCompanyInfo() {
-		return "company/companyInfoUpdateForm";
-	}
-	
 	//상품관리(상품 리스트 페이지)
 	@RequestMapping("productList.co")
-	public String productList() {
+	public String productList(HttpSession session, Model model) {
+		Company c = (Company)session.getAttribute("loginUser");
+		int userNo = c.getUserNo();
+		
+//		System.out.println("기업번호는? : "+userNo);
+		
+		ArrayList<Product>pList = productService.selectCompanyProductList(userNo);
+		
+		model.addAttribute("pList", pList);
 		return "company/companyProductListView";
 	}
 	

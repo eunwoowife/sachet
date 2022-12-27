@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,9 +39,10 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="${pageContext.request.contextPath}/resources/js/config.js"></script>
   <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
-  
 </head>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+
 	#productOuter{
 		margin-top:200px;
 		margin-left:200px;
@@ -63,8 +65,6 @@
 	.col:hover img {
 		filter: grayscale(100%);
 }
-	
-	
 </style>
 <body>
   <br>
@@ -237,10 +237,10 @@
           
              <div id="productOuter" align="center">
               
-              <h2 class="pb-1 mb-4 text-muted">판매중인 상품</h2>
+              <h2 class="pb-1 mb-4 text-muted" style="font-family: 'IBM Plex Sans KR', sans-serif;">판매중인 상품</h2>
               
               <div style="margin-left:800px;">
-              	<button type="submit" class="btn btn-primary me-2" onclick="goAddProduct();">상품추가</button>
+              	<button type="submit" class="btn btn-primary me-2" onclick="goAddProduct();" style="font-family: 'IBM Plex Sans KR', sans-serif;">상품추가</button>
               </div>
               
               <script>
@@ -251,84 +251,27 @@
               
               <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
               
-              
-                <div class="col">
+              <c:if test="${not empty pList }">
+                 <c:forEach var="p" items="${pList }">
+                <div class="col" onclick="location.href='productDetail.co?pno=${p.productNo}'">
                   <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수1.png" alt="Card image cap" />
+                    <img id="zoom" class="card-img-top" src="${p.productImgFp}" />
                     <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
+                    	<p style="font-size:12px; font-family: 'IBM Plex Sans KR', sans-serif;">${p.productName }</p>
                      <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
+                     	<b style="color:gray; font-family: 'IBM Plex Sans KR', sans-serif;">₩<fmt:formatNumber value="${p.productPrice }" type="number"/></b>
                      	<br><br>
-                     	<b>재고수량 : 5개</b>
+                     	<b style="font-family: 'IBM Plex Sans KR', sans-serif;">재고수량 : ${p.productStock }개</b>
                      </div>
                     </div>
                   </div>
                 </div>
-               <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수2.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수3.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                
-               <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수4.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수5.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수6.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-          
-          
+                </c:forEach>
+               </c:if>
+               
+              <c:if test="${empty pList }">
+              	 <h5 style="font-family: 'IBM Plex Sans KR', sans-serif;">등록된 상품이 없습니다.</h5>
+              </c:if>
           
           </div>
           </div>

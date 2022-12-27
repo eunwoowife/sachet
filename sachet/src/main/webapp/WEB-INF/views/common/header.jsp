@@ -12,6 +12,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- 부트스트랩에서 제공하고 있는 스타일 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">    
+    
     <!-- 부트스트랩에서 제공하고 있는 스크립트 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
@@ -96,6 +99,15 @@
     	cursor:pointer;
     }
     
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    
+    *{
+    	font-family: 'IBM Plex Sans KR', sans-serif;
+    }
+    
+    #gomain:hover{
+    	cursor:pointer;
+    }
     </style>
 </head>
 <body>
@@ -110,7 +122,7 @@
     <div class="outer">
     <div id="top">
         <div id="logo">
-            <img src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="300px";>
+            <img id="gomain" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="300px";>
         </div>
         <div id="userarea">
        <c:if test="${not empty loginUser }">
