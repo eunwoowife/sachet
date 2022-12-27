@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>+
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
@@ -199,6 +199,12 @@ border: none;
             </div>
         </div>
     </div>
+    
+    
+    <a href="ticketBook3.ti">bokk3 </a>
+    
+    <br><br><br><br><br><br><br><br><br>
+    
     <script>
 
     
@@ -211,7 +217,8 @@ border: none;
 			  $("#submit").attr("disabled", true);
 			 }
 	 	  }
-        
+	    
+
 	    
 	    var IMP = window.IMP;
 		IMP.init("imp46720743");
@@ -245,27 +252,85 @@ border: none;
             function (rsp) { // callback
                 if (rsp.success) {
                 	
-                	$.ajax({
-    	    			url : "ticketPayment.ti",
-    	    			data : {
-    	    				ticketDate : '${t.ticketDate}',
-    	    				userName : '${t.userName}',
-    	    				phone : '${t.phone}', 
-    	    				email :'${t.email}',
-    	    				totalPrice : '${t.totalPrice}',
-    	    				totalPeople : '${t.totalPeople}',
-    	    				ticketAdult : '${t.ticketAdult}',
-    	    				ticketKid : '${t.ticketKid}',
-    	    				ticketFree : '${t.ticketFree}'
-    	    			},
-    	    			success : function(){
-    							console.log("도ㅓㅐㅆ으멵호겟다ㅠ");
-    	    			},
-    	    			error : function(){
-    	    				console.log("통신 실패");
-    	    			}
-    	    		})
-                	 
+//                 	$.ajax({
+//     	    			url : "ticketPayment.ti",
+//     	    			data : {
+//     	    				ticketDate : '${t.ticketDate}',
+//     	    				userName : '${t.userName}',
+//     	    				phone : '${t.phone}', 
+//     	    				email :'${t.email}',
+//     	    				totalPrice : '${t.totalPrice}',
+//     	    				totalPeople : '${t.totalPeople}',
+//     	    				ticketAdult : '${t.ticketAdult}',
+//     	    				ticketKid : '${t.ticketKid}',
+//     	    				ticketFree : '${t.ticketFree}'
+//     	    			}
+    	    			
+//     	    		})
+
+                	var form = document.createElement("form");
+        			form.setAttribute("charset", "UTF-8");
+        			form.setAttribute("method", "Post"); 
+        			form.setAttribute("action", "ticketPayment.ti"); 
+        			
+        			var hiddenField = document.createElement("input");
+        			hiddenField.setAttribute("type", "hidden");
+        			hiddenField.setAttribute("name", "ticketDate");
+        			hiddenField.setAttribute("value",'${t.ticketDate}');
+        			form.appendChild(hiddenField);
+        							         
+        			hiddenField = document.createElement("input");
+        			hiddenField.setAttribute("type", "hidden");
+        			hiddenField.setAttribute("name", "userName");
+        			hiddenField.setAttribute("value", '${t.userName}');
+        			form.appendChild(hiddenField);
+        			
+        			hiddenField = document.createElement("input");
+        			hiddenField.setAttribute("type", "hidden");
+        			hiddenField.setAttribute("name", "phone");
+        			hiddenField.setAttribute("value", '${t.phone}');
+        			form.appendChild(hiddenField);
+        			
+        			hiddenField = document.createElement("input");
+        			hiddenField.setAttribute("type", "hidden");
+        			hiddenField.setAttribute("name", "email");
+        			hiddenField.setAttribute("value", '${t.email}');
+        			form.appendChild(hiddenField);
+        			
+        			hiddenField = document.createElement("input");
+        			hiddenField.setAttribute("type", "hidden");
+        			hiddenField.setAttribute("name", "totalPrice");
+        			hiddenField.setAttribute("value",'${t.totalPrice}');
+        			form.appendChild(hiddenField);
+        			
+        			hiddenField = document.createElement("input");
+        			hiddenField.setAttribute("type", "hidden");
+        			hiddenField.setAttribute("name", "totalPeople");
+        			hiddenField.setAttribute("value", '${t.totalPeople}');
+        			form.appendChild(hiddenField);
+        			
+        			hiddenField = document.createElement("input");
+        			hiddenField.setAttribute("type", "hidden");
+        			hiddenField.setAttribute("name", "ticketAdult");
+        			hiddenField.setAttribute("value", '${t.ticketAdult}');
+        			form.appendChild(hiddenField);
+        			
+        			hiddenField = document.createElement("input");
+        			hiddenField.setAttribute("type", "hidden");
+        			hiddenField.setAttribute("name", "ticketKid");
+        			hiddenField.setAttribute("value", '${t.ticketKid}');
+        			form.appendChild(hiddenField);
+        			
+        			hiddenField = document.createElement("input");
+        			hiddenField.setAttribute("type", "hidden");
+        			hiddenField.setAttribute("name", "ticketFree");
+        			hiddenField.setAttribute("value", '${t.ticketFree}');
+        			form.appendChild(hiddenField); 
+        			
+        			document.body.appendChild(form);
+        			form.submit();
+
+
                 } else {
                     // 결제 실패 시 로직,
                 	 alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);

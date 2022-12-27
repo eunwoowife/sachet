@@ -23,7 +23,7 @@
   </resultMap>
 
 	<select id="selectUserInfo" parameterType="member" resultMap="memberResultSet">
-  	SELECT*
+  	SELECT *
   	FROM MEMBER
   	WHERE USER_NO=#{userNo}
   	AND USER_STATUS='Y'
@@ -56,6 +56,26 @@
 		 	 #{ticketDate},
 		 	 SYSDATE,
 		 	 DEFAULT)
+	</select>
+	
+	<select id="selectTicketNo" parameterType="ticket" resultMap="ticketResultSet">
+  
+  
+	SELECT A.*
+	FROM   
+		(SELECT TICKET_NO
+		FROM TICKET
+		WHERE USER_NO=#{userNo}
+		ORDER BY TICKET_NO DESC) A
+	WHERE ROWNUM = 1
 
 	</select>
+	
+
+	
+	
+	
+	
+	
+	
 </mapper>

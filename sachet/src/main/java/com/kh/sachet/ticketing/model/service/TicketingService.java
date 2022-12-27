@@ -14,6 +14,10 @@ public interface TicketingService {
 
 	int selectOrderNo(int userNo);
 
+	int insertOrderDetail(TicketInfo t);
+
+	int selectTicketNo(int userNo);
+
 
 
 }

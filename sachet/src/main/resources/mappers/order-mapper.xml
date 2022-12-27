@@ -8,24 +8,43 @@
 		<result column="ORDER_TOTALPAY" property="totalPay"/>
   </resultMap>
   
+    <resultMap type="orderDetail" id="orderDetailResultSet">
+	  	<result column="ODRDER_DETAIL_NO" property="orderDetailNo"/>
+		<result column="ORDER_NO" property ="orderNo"/>
+		<result column="USER_NO" property="userNo"/>
+		<result column="PRODUCT_NO" property="productNo"/>
+		<result column="EXPER_NO" property="experNo"/>
+		<result column="TICKET_NO" property="ticketNo"/>
+		<result column="COUNT" property="count"/>
+		<result column="ORDER_SATUS" property="orderStatus"/>
+  		<result column="ORDER_DATE" property="orderDate"/>
+  </resultMap>
+  
   
   <select id="insertOrder" parameterType="order" resultMap="orderResultSet">
   
- 	 INSERT INTO ORDER1 VALUES 
+ 	 INSERT INTO ORDERS VALUES 
  	 (SEQ_ONO.NEXTVAL, #{userNo}, #{totalPrice})
 
 	</select>
 	
 	
 	<select id="selectOrderNo" parameterType="order" resultMap="orderResultSet">
-  
-	SELECT A.*
+	SELECT *
 	FROM   
 		(SELECT ORDER_NO
-		FROM ORDER1
+		FROM ORDERS
 		WHERE USER_NO=#{userNo}
-		ORDER BY ORDER_NO DESC) A
+		ORDER BY ORDER_NO DESC)
 	WHERE ROWNUM = 1
+    
+	</select>
+	
+	
+	<select id="insertOrderDetail" parameterType="orderDetail" resultMap="orderDetailResultSet">
+  
+ 	 INSERT INTO ORDER_DETAIL VALUES
+ 	 (SEQ_ODNO.NEXTVAL, #{orderNo}, #{userNo}, NULL, NULL, #{ticketNo}, 1, 1, SYSDATE)
 
 	</select>
   

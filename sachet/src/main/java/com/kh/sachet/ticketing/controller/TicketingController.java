@@ -47,18 +47,14 @@ public class TicketingController {
 		int ticketKid = Integer.parseInt(kidsCount);
 		int ticketFree = Integer.parseInt(freeCount);
 		String ticketDate = bookDate;
-		System.out.println(bookingtime);
 		
 		//유저넘버 가지고 유저이름과 폰넘버와 이메일 가져오기
 		Member m = ticketService.selectUserInfo(userNo);
 		
-		
 		int totalPrice = (ticketAdult*20000)+(ticketKid*8000);
 		int totalPeople = ticketAdult+ticketKid+ticketFree;
 		
-		
 		TicketInfo t = new TicketInfo ();
-		
 		
 		t.setTicketDate(ticketDate);
 		t.setPhone(m.getPhone());
@@ -70,10 +66,6 @@ public class TicketingController {
 		t.setTicketKid(ticketKid);
 		t.setTicketFree(ticketFree);
 
-		//티켓 insert
-		//int result = ticketService.insertTicket(t);
-		
-		//정상적으로 insert되었을 경우 insert한 거 select 해서 결과값 가지고 가기
 		
 			mv.addObject("t",t);
 			mv.setViewName("ticketing/ticketBook2");
@@ -81,15 +73,9 @@ public class TicketingController {
 		
 		return mv;
 	}
+
 	
-	@RequestMapping("ticketBook3.ti")
-	public String ticketBook3View () {
-		return "ticketing/ticketBook3";
-	}
-	
-	
-	@ResponseBody
-	@RequestMapping(value="ticketPayment.ti",produces="text/html; charset=UTF-8")
+	@RequestMapping("ticketPayment.ti")
 	public void insertTicket(TicketInfo t) {
 		
 		Ticket insertT = new Ticket ();
@@ -102,29 +88,35 @@ public class TicketingController {
 		insertT.setTicketFree(t.getTotalPeople());
 		
 		
+		//티켓 insert
 		int result1 = ticketService.insertTicket(insertT);
+		//insert된 ticketNo가져오기
+		int ticketNo = ticketService.selectTicketNo(userNo);
 		
-		
+		//order insert
+		t.setTicketNo(ticketNo);
+		t.setUserNo(userNo);
 		int result2 = ticketService.insertOrder(t);
-		
+		//insert된 orderNo 가져오기
 		int orderNo = ticketService.selectOrderNo(userNo);
+		t.setOrderNo(orderNo);
 		
-		//int result3 = ticketService.insertOrderDetail(t);
-
-		
-		//하 인절트 몇개해야하냐 일단 티켓 / 오더 / 오더 디테일? ㅇㅋ // 페이먼트도...
+		//orderDetail insert
+		int result3 = ticketService.insertOrderDetail(t);
 		
 		
+		ModelAndView mv = new ModelAndView();
 		//티켓 테이블 insert 여부
-		if (result1>0) {
 			
-		}
-		
-		
+			mv.addObject("t",t);
+			mv.setViewName("ticketing/ticketBook3");
+			
 		
 	}
 	
 	
-	
 
+	
+	
+	
 }

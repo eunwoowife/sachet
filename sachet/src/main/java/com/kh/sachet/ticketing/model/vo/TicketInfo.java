@@ -1,6 +1,5 @@
 package com.kh.sachet.ticketing.model.vo;
 
-import java.sql.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +15,7 @@ import lombok.ToString;
 public class TicketInfo {
 	
 	private String ticketDate;
+	private int userNo;
 	private String userName;
 	private String phone;
 	private String email;
@@ -25,5 +25,7 @@ public class TicketInfo {
 	private int ticketAdult;
 	private int ticketKid;
 	private int ticketFree;
-
+	private int ticketNo;
+	private int orderNo;
+	
 }
