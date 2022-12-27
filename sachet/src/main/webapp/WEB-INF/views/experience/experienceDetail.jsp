@@ -148,7 +148,7 @@ button {
     <div class="productDetailContainer">
         <div class="prodetailLeft" align="center">
             <a href="http://image.jtbcplus.kr/data/contents/jam_photo/202109/06/f8cd9254-5e56-4fc9-a82a-83d071337a7c.jpg" data-lightbox="example-set">
-                <img src="${p.productImgFp }" alt="">
+                <img src="${e.experImgFp }" alt="">
             </a>
             <br><br><br><br>
 
@@ -160,7 +160,7 @@ button {
             
             <div class="prodetailContent2">
 <pre style="font-family: 'IBM Plex Sans KR', sans-serif;" >
-${p.productDetail}
+${e.experDetail}
 </pre>
     <br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -169,27 +169,38 @@ ${p.productDetail}
         </div>
         <div class="prodetailRight">
             <div class="card-body">
-                <b style="font-size: 20px;">${p.boothName }</b>
-                  <p style="font-size:23px; color: gray;">${p.productName }</p>
+                <b style="font-size: 20px;">${e.boothName }</b>
+                  <p style="font-size:23px; color: gray;">${e.experTitle }</p>
                <div class="productPrice">
-                   <b style="font-size: 20px; color: rgb(97, 97, 97);">₩<fmt:formatNumber value="${p.productPrice }" type="number"/></b>
+                   <b style="font-size: 20px; color: rgb(97, 97, 97);">₩<fmt:formatNumber value="${e.experPrice }" type="number"/></b>
                </div>
                <hr width="380px;">
                <button class="counting" onclick="proCount(1);"> - </button>
-				<input type="text" class="countbox" id="proCount" value="1" disabled >
+				<input type="text" class="countbox" id="proCount" value="1" disabled >명
 				<button class="counting" onclick="proCount(2);"> + </button>
 				<br><br>
 				
 				<span class="totalArea" style="font-weight:bold;">TOTAL </span>
 				<span class="wonArea" style="font-weight:bold;">￦</span>
-				<span class="totalPriArea" id="totalSum" style="font-weight:bold;"><fmt:formatNumber value="${p.productPrice }" type="number"/></span>
+				<span class="totalPriArea" id="totalSum" style="font-weight:bold;"><fmt:formatNumber value="${e.experPrice }" type="number"/></span>
+				<br><br>
+				
+			   <div>
+                <p>시간　${e.experDate } / 
+                	<c:if test="${e.experTime == 1 }">10:00~12:00</c:if>
+          			<c:if test="${e.experTime == 2 }">13:00~15:00</c:if>
+           			<c:if test="${e.experTime == 3 }">15:00~17:00</c:if>
+           			<c:if test="${e.experTime == 4 }">17:00~19:00</c:if>
+   				</p>
+                <p>정원　${e.capacity }명</p>
+               </div>
 
                <div class="proButtonArea">
                <button class="w-btn w-btn-gray" type="button">
                 장바구니 담기
                  </button>
                 <button class="w-btn w-btn-gra2 w-btn-gra-anim" type="button">
-                바로 구매하기
+                체험 신청하기
                 </button>
                 </div>
               </div>
@@ -210,8 +221,8 @@ ${p.productDetail}
 				}
 			}else{
 			    count++;
-				if(count>${p.productStock}){
-	       		 count=${p.productStock};
+				if(count>${e.capacity}){
+	       		 count=${e.capacity};
 	    		}
 			}
 			$("#proCount").val(count);
@@ -220,7 +231,7 @@ ${p.productDetail}
 		
 		function priceCal(){
 			
-			var proPrice = ${p.productPrice};
+			var proPrice = ${e.experPrice};
 			
 			var total = (proPrice*parseInt($("#proCount").val()));
 		  	var totalPriceComma = (total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

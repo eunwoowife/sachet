@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="experienceMapper">
+
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM EXPERIENCE
+		WHERE EXPER_STATUS='Y'
+	</select>
+	
+	<resultMap type="experience" id="experienceResultSet">
+		<result column="EXPER_NO" property="experNo"/>
+		<result column="BOOTH_NO" property="boothNo"/>
+		<result column="EXPER_TIME" property="experTime"/>
+		<result column="EXPER_DATE" property="experDate"/>
+		<result column="EXPER_TITLE" property="experTitle"/>
+		<result column="EXPER_DETAIL" property="experDetail"/>
+		<result column="EXPER_PRICE" property="experPrice"/>
+		<result column="CAPACITY" property="capacity"/>
+		<result column="EXPER_IMG_ON" property="experImgOn"/>
+		<result column="EXPER_IMG_FP" property="experImgFp"/>
+		<result column="EXPER_ENROLLDATE" property="experEnrolldate"/>
+		<result column="EXPER_STATUS" property="experStatus"/>
+		<result column="BOOTH_NAME" property="boothName"/>
+	</resultMap>
+	
+	<select id="selectExperienceList" resultMap="experienceResultSet">
+		SELECT EXPER_NO,
+					BOOTH_NO,
+					EXPER_TIME,
+					EXPER_DATE,
+					EXPER_TITLE,
+					EXPER_DETAIL,
+					EXPER_PRICE,
+					CAPACITY,
+					EXPER_IMG_ON,
+					EXPER_IMG_FP,
+					BOOTH_NAME
+	FROM EXPERIENCE
+	JOIN BOOTH USING(BOOTH_NO)
+	WHERE EXPER_STATUS='Y'
+	ORDER BY EXPER_ENROLLDATE DESC
+	</select>
+	
+	<select id="selectExperience" resultMap="experienceResultSet">
+		SELECT EXPER_NO,
+					BOOTH_NO,
+					EXPER_TIME,
+					EXPER_DATE,
+					EXPER_TITLE,
+					EXPER_DETAIL,
+					EXPER_PRICE,
+					CAPACITY,
+					EXPER_IMG_ON,
+					EXPER_IMG_FP,
+					BOOTH_NAME
+		FROM EXPERIENCE
+		JOIN BOOTH USING(BOOTH_NO)
+		WHERE EXPER_NO=#{experNo}
+		AND EXPER_STATUS='Y'
+	</select>
+	
+</mapper>

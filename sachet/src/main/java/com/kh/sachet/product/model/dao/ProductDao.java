@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.sachet.common.model.vo.PageInfo;
+import com.kh.sachet.company.model.vo.Company;
 import com.kh.sachet.product.model.vo.Product;
 
 @Repository
@@ -28,6 +29,11 @@ public class ProductDao {
 
 	public Product selectProduct(SqlSessionTemplate sqlSession, int pno) {
 		return sqlSession.selectOne("productMapper.selectProduct", pno);
+	}
+
+	public ArrayList<Product> selectCompanyProductList(SqlSessionTemplate sqlSession, int userNo) {
+		ArrayList<Product> pList = (ArrayList)sqlSession.selectList("productMapper.selectCompanyProductList", userNo);
+		return pList;
 	}
 
 }

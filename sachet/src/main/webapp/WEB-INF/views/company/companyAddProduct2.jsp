@@ -266,16 +266,6 @@
 					                	<input type="file" id="file1" name="file1" onchange="loadImg(this,1);" required>
 					                    <img id="titleImg" width="300" height="300">
 					                </td>
-					            <tr>
-					                 <td>
-					                 <label for="exampleFormControlTextarea1" class="form-label">상품 상세이미지</label>
-					                 <br>
-						            <input type="file" id="file2" name="file2" onchange="loadImg(this,2);">  
-									<input type="file" id="file3" name="file3" onchange="loadImg(this,3);">
-									<br>
-									<img id="contentImg1" width="300" height="300">
-					                <img id="contentImg2" width="300" height="300">
-					                </td>
 					            </tr>
                         </table>
                         
@@ -312,15 +302,6 @@
 				$("#titleImg").click(function(){
 					$("#file1").click();
 				});
-
-				$("#contentImg1").click(function(){
-					$("#file2").click();
-				});
-
-				$("#contentImg2").click(function(){
-					$("#file3").click();
-				});
-
 			});
 
             function loadImg(inputFile,num){
@@ -353,15 +334,11 @@
 						//각 영역에 맞춰서 이미지 미리보기
 						switch(num){
 							case 1 : $("#titleImg").attr("src",e.target.result); break;
-							case 2 : $("#contentImg1").attr("src",e.target.result); break;
-							case 3 : $("#contentImg2").attr("src",e.target.result); break;
 						}
 					}
 				}else{ //취소 누를 시 미리보기 없애기
 					switch(num){
 							case 1 : $("#titleImg").attr("src",null); break;
-							case 2 : $("#contentImg1").attr("src",null); break;
-							case 3 : $("#contentImg2").attr("src",null); break;
 						}
 				}
 

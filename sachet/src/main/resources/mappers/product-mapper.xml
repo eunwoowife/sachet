@@ -20,6 +20,7 @@
 		<result column="PRODUCT_IMG_FP" property="productImgFp"/>
 		<result column="PRODUCT_ENROLLDATE" property="productEnrolldate"/>
 		<result column="BOOTH_NAME" property="boothName"/>
+		<result column="USER_NO" property="userNo"/>
 	</resultMap>
 	
 	<select id="selectProductList" resultMap="productResultSet">
@@ -55,6 +56,22 @@
 		JOIN BOOTH USING(BOOTH_NO)
 		WHERE PRODUCT_NO=#{productNo}
 		AND PRODUCT_STATUS='Y'
+	</select>
+	
+	<select id="selectCompanyProductList" resultMap="productResultSet">
+		  SELECT PRODUCT_NO,
+					PRODUCT_NAME,
+					PRODUCT_DETAIL,
+					PRODUCT_STOCK,
+					PRODUCT_STATUS,
+					PRODUCT_PRICE,
+					PRODUCT_IMG_ON,
+					PRODUCT_IMG_FP
+		FROM PRODUCT
+		JOIN BOOTH USING(BOOTH_NO)
+		JOIN COMPANY ON(USER_NO = COM_NO)
+		WHERE USER_NO=#{userNo}
+		ORDER BY PRODUCT_ENROLLDATE DESC
 	</select>
 	
 </mapper>
