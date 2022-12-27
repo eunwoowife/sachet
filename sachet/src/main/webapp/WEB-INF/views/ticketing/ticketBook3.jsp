@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,30 +122,30 @@ border: none;
         </thead>
         <tbody>
           <tr>
-            <td class="confirm-th">관람일 </td>
-            <td class="confirm-td">2023-01-12</td>
+            <td class="confirm-th">관람일</td>
+            <td class="confirm-td">${t.ticketDate}</td>
             <td class="confirm-th">관람 시간</td>
             <td class="confirm-td">10:00~19:00</td>
           </tr>
           <tr>
-            <td class="confirm-th">휴대전화</td>
-            <td class="confirm-td">010-1234-4567</td>
+            <td class="confirm-th">신청자명</td>
+            <td class="confirm-td">${t.userName}</td>
             <td class="confirm-th">이메일</td>
-            <td class="confirm-td">aaa@naver.com</td>
+            <td class="confirm-td">${t.email }</td>
           </tr>
           <tr>
-            <td class="confirm-th">전체 요금</td>
-            <td class="confirm-td">45,000원</td>
+            <td class="confirm-th">휴대전화</td>
+            <td class="confirm-td">${t.phone}</td>
             <td class="confirm-th">전체 인원</td>
-            <td class="confirm-td">3명</td>
+            <td class="confirm-td">${t.totalPeople}명</td>
           </tr>
           <tr>
-            <td class="confirm-th">신청 일시</td>
-            <td colspan="3" class="confirm-td">2022-12-16 09:54:21</td>
+            <td class="confirm-th">전체요금</td>
+            <td colspan="3" class="confirm-td">${t.totalPrice}</td>
           </tr>
           <tr>
             <td class="confirm-th">진행 상태</td>
-            <td colspan="3" class="confirm-td">결제 완료</td>
+            <td colspan="3" class="confirm-td">결제 전</td>
           </tr>
         </tbody>
         </table>
@@ -162,19 +163,19 @@ border: none;
               <tr>
                 <td>성인</td>
                 <td>20,000</td>
-                <td>1명</td>
+                <td>${t.ticketAdult}명</td>
                 <td></td>
               </tr>
               <tr>
                 <td>아동</td>
                 <td>8,000</td>
-                <td>0명</td>
+                <td>${t.ticketKid}명</td>
                 <td>만 6세 미만</td>
               </tr>
               <tr>
                 <td>무료</td>
                 <td>0</td>
-                <td>1명</td>
+                <td>${t.ticketFree}명</td>
                 <td>증빙서류 필참</td>
               </tr>
             </tbody>
@@ -183,7 +184,7 @@ border: none;
             <table class="paymentTable">
                   <tr>
                     <th>결제자명</th>
-                    <td>김김이</td>
+                    <td>${t.userName}</td>
                   </tr>
                   <tr>
                     <th>결제일시</th>
@@ -191,7 +192,7 @@ border: none;
                   </tr>
                   <tr>
                     <th>결제금액</th>
-                    <td>28,000</td>
+                    <td>${t.totalPrice}</td>
                   </tr>
                   <tr>
                     <th>결제수단</th>
@@ -199,8 +200,13 @@ border: none;
                   </tr>
                 </table>
                 <div class="btnarea">
-                  <button class="btn">메인으로</button>
+                  <button class="btn" onclick="location.href='${pageContext.request.contextPath}/index.jsp'">메인으로</button>
                   <button class="btn">마이페이지로</button>
                   </div>
+                  
+                  
+            </div>
+            </div>
+                  
 </body>
 </html>

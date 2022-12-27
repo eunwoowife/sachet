@@ -46,6 +46,20 @@ public class TicketingServiceImpl implements TicketingService {
 		return orderNo;
 	}
 
+
+	@Override
+	public int insertOrderDetail(TicketInfo t) {
+		int result = ticketDao.insertOrderDetail(sqlSession, t);
+		return result;
+	}
+
+
+	@Override
+	public int selectTicketNo(int userNo) {
+		int ticketNo = ticketDao.selectTicketNo(sqlSession, userNo);
+		return ticketNo;
+	}
+
 	
 	
 	
