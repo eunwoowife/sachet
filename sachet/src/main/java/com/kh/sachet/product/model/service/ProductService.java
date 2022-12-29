@@ -15,4 +15,12 @@ public interface ProductService {
 	Product selectProduct(int pno);
 	
 	ArrayList<Product> selectCompanyProductList(int userNo);
+	
+	int selectBoothNo(int userNo);
+	
+	int  insertProduct(Product p);
+
+	int updateProduct(Product p);
+
+	int deleteProduct(int pno);
 }

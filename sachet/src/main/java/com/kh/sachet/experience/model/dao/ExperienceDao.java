@@ -30,4 +30,22 @@ public class ExperienceDao {
 		return sqlSession.selectOne("experienceMapper.selectExperience", eno);
 	}
 
+	public ArrayList<Experience> selectCompanyExperienceList(SqlSessionTemplate sqlSession, int userNo) {
+		ArrayList<Experience> eList = (ArrayList)sqlSession.selectList("experienceMapper.selectCompanyExperienceList", userNo);
+		return eList;
+	}
+
+	public int selectBoothNo(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.selectOne("experienceMapper.selectBoothNo", userNo);
+	}
+
+	public int insertExperience(SqlSessionTemplate sqlSession, Experience e) {
+		return sqlSession.insert("experienceMapper.insertExperience", e);
+	}
+
+	public int updateExperience(SqlSessionTemplate sqlSession, Experience e) {
+		return sqlSession.update("experienceMapper.updateExperience", e);
+	}
+
+
 }

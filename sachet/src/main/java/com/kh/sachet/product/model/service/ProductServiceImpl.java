@@ -44,4 +44,28 @@ public class ProductServiceImpl implements ProductService{
 		return pList;
 	}
 
+	@Override
+	public int selectBoothNo(int userNo) {
+		int boothNo = productDao.selectBoothNo(sqlSession, userNo);
+		return boothNo;
+	}
+
+	@Override
+	public int insertProduct(Product p) {
+		int result = productDao.insertProduct(sqlSession, p);
+		return result;
+	}
+
+	@Override
+	public int updateProduct(Product p) {
+		int result = productDao.updateProduct(sqlSession, p);
+		return result;
+	}
+
+	@Override
+	public int deleteProduct(int pno) {
+		int result = productDao.deleteProduct(sqlSession, pno);
+		return result;
+	}
+
 }

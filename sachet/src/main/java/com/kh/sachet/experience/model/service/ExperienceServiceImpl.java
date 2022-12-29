@@ -32,9 +32,31 @@ public class ExperienceServiceImpl implements ExperienceService{
 	}
 
 	@Override
-	public Experience selectExperienceList(int eno) {
+	public Experience selectExperience(int eno) {
 		Experience e = experienceDao.selectExperience(sqlSession, eno);
 		return e;
+	}
+
+	@Override
+	public ArrayList<Experience> selectCompanyExperienceList(int userNo) {
+		ArrayList<Experience> eList = experienceDao.selectCompanyExperienceList(sqlSession, userNo);
+		return eList;
+	}
+
+	@Override
+	public int selectBoothNo(int userNo) {
+		int boothNo = experienceDao.selectBoothNo(sqlSession, userNo);
+		return boothNo;
+	}
+
+	@Override
+	public int insertExperience(Experience e) {
+		return experienceDao.insertExperience(sqlSession, e);
+	}
+
+	@Override
+	public int updateExperience(Experience e) {
+		return experienceDao.updateExperience(sqlSession, e);
 	}
 	
 	

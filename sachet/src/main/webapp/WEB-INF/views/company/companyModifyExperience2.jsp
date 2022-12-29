@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+   <!-- jQuery 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
@@ -41,12 +43,12 @@
   
 </head>
 <style>
-	.addExperienceOuter{
+	.addProductOuter{
 		margin-top:150px;
 		margin-left:200px;
 	}
 	
-	.addExperienceTitle{
+	.addProductTitle{
 		margin-right:200px;
 	}
 	
@@ -143,7 +145,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="productSales.co" class="menu-link">
+                  <a href="pages-misc-error.html" class="menu-link">
                     <div data-i18n="Error">상품 판매 내역</div>
                   </a>
                 </li>
@@ -221,15 +223,15 @@
           </nav>
           
           
-           <div class="addExperienceOuter">
-           		<div class="addExperienceTitle" align="center">
-           		<h1>체험추가</h1>
+           <div class="addProductOuter">
+           		<div class="addProductTitle" align="center">
+           		<h1>체험수정</h1>
            		<br><br>
            		</div>
            		
            		<div class="addForm" style="margin-left:250px;">
            		
-           		<form action="" method="post" enctype="multipart/form-data">
+  					<form action="experienceUpdate.co?eno=${e.experNo }" method="post" enctype="multipart/form-data">
            			  <label class="form-label">체험명</label>
            			  <div class="form-floating">
                         <input
@@ -239,73 +241,96 @@
                           placeholder="Product Name"
                           aria-describedby="floatingInputHelp"
                           style="width:700px;"
+                          value="${e.experTitle }"
+                          name="experTitle"
+                          required
                         />
                         <label for="floatingInput">체험명</label>
                         </div>
                         
                          <div class="mb-3">
                         <label for="defaultSelect" class="form-label">체험일</label>
-                        <select id="defaultSelect" class="form-select" style="width:700px;">
+                        <select id="defaultSelect" class="form-select experDateList" style="width:700px;" name="experDate">
                           <option>체험일</option>
-                          <option value="1">1/10</option>
-                          <option value="2">1/11</option>
-                          <option value="3">1/12</option>
+                          <option value="1">1/11</option>
+                          <option value="2">1/12</option>
+                          <option value="3">1/13</option>
                         </select>
                       </div>
+                      
+                      <script>
+                      	$(function(){
+//                       		var hehe = $(".experDateList option");
+//                       		console.log(hehe);
+								$(".experDateList option").each(function(){
+// 									console.log($(this).val());
+									if($(this).val()=="${e.experDate}"){
+										$(this).attr("selected", true);
+									}
+								})
+                      	})
+                      </script>
                         
                          <div class="mb-3">
                         <label for="defaultSelect" class="form-label">체험시간</label>
-                        <select id="defaultSelect" class="form-select" style="width:700px;">
+                        <select id="defaultSelect" class="form-select experTimeList" style="width:700px;"name="experTime">
                           <option>체험시간</option>
                           <option value="1">10:00 ~ 12:00</option>
                           <option value="2">13:00 ~ 15:00</option>
                           <option value="3">15:00 ~ 17:00</option>
-                          <option value="3">17:00 ~ 19:00</option>
+                          <option value="4">17:00 ~ 19:00</option>
                         </select>
                       </div>
                       
+                      <script>
+                      	$(function(){
+                      		$(".experTimeList option").each(function(){
+                      			if($(this).val()=="${e.experTime}"){
+                      				$(this).attr("selected", true);
+                      			}
+                      		})
+                      	})
+                      </script>
+                      
                          <label for="exampleFormControlTextarea1" class="form-label">체험설명</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"  style="resize: none; width:700px;"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"  style="resize: none; width:700px;" name="experDetail">${e.experDetail }</textarea>
            				
            					
       					  <label for="html5-number-input" class="col-md-2 col-form-label">체험정원</label>
                         <div class="col-md-10">
-                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1"/>
+                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1" name="capacity" value="${e.capacity }"/>
                         </div>
                         
                           <label for="html5-number-input" class="col-md-2 col-form-label">체험가격(￦)</label>
                         <div class="col-md-10">
-                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1000"/>
+                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1000" name="experPrice" value="${e.experPrice }"/>
                         </div>
                         
-                      
-                      
                         
                         <br>
                         
                         <table>
                         	  <tr>
 					                <td align="center">
-					                	 <label for="exampleFormControlTextarea1" class="form-label">체험 대표이미지</label>
-					                	<input type="file" id="file1" name="file1" onchange="loadImg(this,1);" required>
-					                    <img id="titleImg" width="300" height="300">
+					                	 <label for="exampleFormControlTextarea1" class="form-label">상품 대표이미지</label>
+					                	<input type="file" id="file1" onchange="loadImg(this,1);" name="upfile">
+					                    <img src="${e.experImgFp}" id="titleImg" width="300" height="300">
+					                     <!--기존 파일이 있으면 수정하기 버튼을 눌렀을 때 해당 파일정보가 같이 전송될 수 있도록 hidden으로 작업 -->
+			                       		<input type="hidden" name="experImgOn" value="${e.experImgOn }">
+			                       		<input type="hidden" name="experImgFp" value="${e.experImgFp }">
 					                </td>
+					            </tr>
                         </table>
                         
 						
 						<br><br>
 						
 						  <div class="mt-2" align="center" style="margin-right:430px;">
-                          <button type="submit" class="btn btn-primary me-2">등록하기</button>
-                          <button type="reset" class="btn btn-outline-secondary" onclick="goCancel();">취소</button>
+                          <button type="submit" class="btn btn-primary me-2">수정하기</button>
+                          <button type="button" class="btn btn-outline-secondary" onclick="history.back();">취소</button>
                         </div>
                         <br><br><br>
 						
-           				<script>
-							function goCancel(){
-								location.href="experienceList.co";
-							}
-						</script>
            		
            		</form>
            </div>
@@ -325,7 +350,6 @@
 				$("#titleImg").click(function(){
 					$("#file1").click();
 				});
-
 			});
 
             function loadImg(inputFile,num){

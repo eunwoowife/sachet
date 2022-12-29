@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <!-- Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
@@ -38,8 +38,8 @@
   <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
 </head>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 button {
     margin: 20px;
 }
@@ -118,8 +118,8 @@ button {
 }
 
     .proButtonArea{
-        margin-top: 70px;
-        margin-left: -20px;
+        margin-top: 50px;
+        margin-left:3px;
     }
 
       #productCount>tbody{
@@ -136,13 +136,11 @@ button {
         border: none;
         background: transparent;
        }
-
     
 </style>
 <body>
- <br>
-        
-    <!-- Layout wrapper -->
+
+<!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
@@ -206,17 +204,17 @@ button {
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" >
+                  <a href="auth-login-basic.html" class="menu-link">
                     <div data-i18n="Basic">나의 부스 조회</div>
                   </a>
                 </li>
-                 <li class="menu-item active">
-                  <a href="productList.co" class="menu-link" >
+                 <li class="menu-item">
+                  <a href="productList.co" class="menu-link">
                     <div data-i18n="Basic">상품 관리</div>
                   </a>
                 </li>
-                 <li class="menu-item">
-                  <a href="experienceList.co" class="menu-link" >
+                 <li class="menu-item active">
+                  <a href="experienceList.co" class="menu-link">
                     <div data-i18n="Basic">체험 관리</div>
                   </a>
                 </li>
@@ -242,6 +240,8 @@ button {
               </ul>
             </li>
          
+
+    
 
        
 
@@ -304,18 +304,19 @@ button {
               </ul>
             </div>
           </nav>
-
+          
 	<br><br>
     <div class="productDetailContainer">
         <div class="prodetailLeft" align="center">
             <a href="http://image.jtbcplus.kr/data/contents/jam_photo/202109/06/f8cd9254-5e56-4fc9-a82a-83d071337a7c.jpg" data-lightbox="example-set">
-                <img src="${p.productImgFp }" alt="">
+                <img src="${e.experImgFp }" alt="">
             </a>
-            <br><br><br><br> <br><br><br><br>
 
+                <br><br><br><br><br><br><br>
+            
             <div class="prodetailContent2">
 <pre >
-${p.productDetail }
+${e.experDetail }
 </pre>
     <br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -324,18 +325,30 @@ ${p.productDetail }
         </div>
         <div class="prodetailRight">
             <div class="card-body">
-                <b style="font-size: 20px;">${p.boothName }</b>
-                  <p style="font-size:23px; color: gray;">${p.productName }</p>
+                <b style="font-size: 20px;">${e.boothName }</b>
+                  <p style="font-size:23px; color: gray;">${e.experTitle }</p>
                <div class="productPrice">
-                   <b style="font-size: 20px; color: rgb(97, 97, 97);">₩<fmt:formatNumber value="${p.productPrice }" type="number"/></b>
-               		<br>
-               		<p>재고수량 : ${p.productStock }개</p>
+                   <b style="font-size: 20px; color: rgb(97, 97, 97);">₩<fmt:formatNumber value="${e.experPrice }" type="number"/></b>
+               		<br><br>		
                </div>
-
+               
+                <p>시간　
+                	<c:if test="${e.experDate == 1 }">2022.01.11</c:if>
+                	<c:if test="${e.experDate == 2 }">2022.01.12</c:if>
+                	<c:if test="${e.experDate == 3 }">2022.01.13</c:if>
+                	/ 
+                	<c:if test="${e.experTime == 1 }">10:00~12:00</c:if>
+          			<c:if test="${e.experTime == 2 }">13:00~15:00</c:if>
+           			<c:if test="${e.experTime == 3 }">15:00~17:00</c:if>
+           			<c:if test="${e.experTime == 4 }">17:00~19:00</c:if>
+   				</p>
+                <p>정원　${e.capacity }명</p>
+                </div>
+          
 
                <div class="proButtonArea">
                <button class="w-btn w-btn-gray" type="button" onclick="goModify();">
-               	수정하기
+               수정하기
                  </button>
                 <button class="w-btn w-btn-gra2 w-btn-gra-anim" type="button" style="margin-left:-10px;" onclick="goDelete();">
                 삭제하기
@@ -343,6 +356,7 @@ ${p.productDetail }
                 </div>
               </div>
         </div>
+        
 
 
         
@@ -350,19 +364,19 @@ ${p.productDetail }
     
     <script>
     	function goModify(){
-    		location.href="productModifyForm.co?pno=${p.productNo}";
+    		location.href="experienceModifyForm.co?eno=${e.experNo}";
     	}
     	
     	function goDelete(){
     		var question = window.confirm("정말로 삭제하시겠습니까?");
     		if(question){
-    			location.href="productDelete.co?pno=${p.productNo}";
+    			location.href="experienceDelete.co?eno=${e.experNo}";
     		}else{
-    			location.href="productDetail.co?pno=${p.productNo}";
+    			location.href="experienceDetail.co?eno=${e.experNo}";
     		}
     	}
     </script>
-
+    
       <script  src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
           <script  src="${pageContext.request.contextPath}/resources/js/popper.js"></script>
           <script  src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
@@ -385,5 +399,7 @@ ${p.productDetail }
           <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
+
+
 </body>
 </html>

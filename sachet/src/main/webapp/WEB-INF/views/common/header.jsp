@@ -112,11 +112,11 @@
 </head>
 <body>
 	
-	<c:if test="${not empty alertMessage }">
+	<c:if test="${not empty alertMsg }">
 	<script>
-		alert("${alertMessage}");
+		alert("${alertMsg}");
 	</script>
-		<c:remove var="alertMessage" scope="session"/>
+		<c:remove var="alertMsg" scope="session"/>
 	</c:if>
 	
     <div class="outer">

@@ -16,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.sachet.company.model.service.CompanyService;
 import com.kh.sachet.company.model.vo.Company;
+import com.kh.sachet.experience.model.service.ExperienceService;
+import com.kh.sachet.experience.model.vo.Experience;
 import com.kh.sachet.member.model.service.MemberService;
 import com.kh.sachet.product.model.service.ProductService;
 import com.kh.sachet.product.model.vo.Product;
@@ -29,6 +31,8 @@ public class CompanyController {
 	private MemberService memberService;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ExperienceService experienceService;
 
 	@Autowired
 	private BCryptPasswordEncoder bcryptpasswordEncoder;
@@ -108,7 +112,7 @@ public class CompanyController {
 		}
 		
 		if(result>0) {
-			session.setAttribute("alertMessage", "회원가입이 완료되었습니다.\n로그인 후, 이용해주세요.");
+			session.setAttribute("alertMsg", "회원가입이 완료되었습니다.\n로그인 후, 이용해주세요.");
 			return "redirect:/";
 		}else {
 			model.addAttribute("errorMsg", "회원가입 실패");
@@ -151,7 +155,7 @@ public class CompanyController {
 		if(result>0) {
 			Company updateCompanyUser = companyService.loginMember(c);
 			session.setAttribute("loginUser", updateCompanyUser);
-			session.setAttribute("alertMessage", "회원정보가 정상적으로 수정되었습니다.");
+			session.setAttribute("alertMsg", "회원정보가 정상적으로 수정되었습니다.");
 			return "company/companyInfoUpdateForm";
 		}else {
 			model.addAttribute("errorMsg", "회원정보 수정 실패");
@@ -184,7 +188,7 @@ public class CompanyController {
 		
 //		System.out.println("기업번호는? : "+userNo);
 		
-		ArrayList<Product>pList = productService.selectCompanyProductList(userNo);
+		ArrayList<Product> pList = productService.selectCompanyProductList(userNo);
 		
 		model.addAttribute("pList", pList);
 		return "company/companyProductListView";
@@ -192,21 +196,184 @@ public class CompanyController {
 	
 	//체험관리(체험 리스트 페이지)
 	@RequestMapping("experienceList.co")
-	public String experienceList() {
+	public String experienceList(HttpSession session, Model model) {
+		Company c = (Company)session.getAttribute("loginUser");
+		int userNo = c.getUserNo();
+		
+		ArrayList<Experience> eList = experienceService.selectCompanyExperienceList(userNo);
+		
+		model.addAttribute("eList", eList);
 		return "company/companyExperienceListView";
 	}
 	
-	//상품추가
+	//상품추가 폼으로 이동
 	@RequestMapping("addProduct.co")
-	public String insertProduct() {
-		return "company/companyAddProduct2";
+	public String insertProductForm() {
+		return "company/companyAddProduct";
 	}
 	
-	//체험추가
+	//체험추가 폼으로 이동
 	@RequestMapping("addExperience.co")
-	public String insertExperience() {
-		return "company/companyAddExperienct";
+	public String insertExperienceForm() {
+		return "company/companyAddExperience";
 	}
+	
+	//상품추가하기
+	@RequestMapping("insertProduct.co")
+	public String insertProduct(Product p, Model model, HttpSession session, MultipartFile upfile) {
+//		System.out.println(p);
+		
+		//부스번호 찾기 위해서 로그인된 기업의 userNo 가져오기
+		Company c = (Company)session.getAttribute("loginUser");
+		int userNo = c.getUserNo();
+		
+		//부스번호부터 찾은 뒤, 넣어주기
+		int boothNo = productService.selectBoothNo(userNo);
+//		System.out.println("부스번호는?"+boothNo);
+		p.setBoothNo(boothNo);
+		
+		//상품썸네일 이미지 추가하기
+		String originName = saveFile(upfile, session);
+		p.setProductImgOn(upfile.getOriginalFilename());
+		p.setProductImgFp("resources/uploadFiles/"+originName);
+
+		int result = productService.insertProduct(p);
+		
+		if(result>0) {
+			session.setAttribute("alertMsg", "상품이 정상적으로 등록되었습니다.");
+			return "redirect:/productList.co";
+		}else {
+			model.addAttribute("errorMsg", "상품 등록 실패");
+			return "common/errorPage";
+		}
+	}
+	
+	//체험추가하기
+	@RequestMapping("insertExperience.co")
+	public String insertExperience(Experience e, Model model, MultipartFile upfile, HttpSession session) {
+		//부스번호 찾기
+		Company c = (Company)session.getAttribute("loginUser");
+		int userNo = c.getUserNo();
+		int boothNo = experienceService.selectBoothNo(userNo);
+		e.setBoothNo(boothNo);
+		
+		//체험썸네일 이미지 추가하기
+		String originName = saveFile(upfile, session);
+		e.setExperImgOn(upfile.getOriginalFilename());
+		e.setExperImgFp("resources/uploadFiles/"+originName);
+		
+		int result = experienceService.insertExperience(e);
+		
+		if(result>0) {
+			session.setAttribute("alertMsg", "체험이 정상적으로 등록되었습니다.");
+			return "redirect:/experienceList.co";
+		}else {
+			model.addAttribute("errorMsg", "체험 등록 실패");
+			return "common/errorPage";
+		}
+	}
+	
+	//상품상세페이지로 이동
+	@RequestMapping("productDetail.co")
+	public String companyProductDetailForm(int pno, Model model) {
+		Product p = productService.selectProduct(pno);
+		model.addAttribute("p", p);
+		return "company/companyProductDetail";
+	}
+	
+	//체험상세페이지로 이동
+	@RequestMapping("experienceDetail.co")
+	public String companyExperienceDetailForm(int eno, Model model) {
+		Experience e = experienceService.selectExperience(eno);
+		model.addAttribute("e", e);
+		return "company/companyExperienceDetail";
+	}
+	
+	//상품수정폼으로 이동
+	@RequestMapping("productModifyForm.co")
+	public String productModifyForm(int pno, Model model) {
+		Product p = productService.selectProduct(pno);
+		model.addAttribute("p", p);
+		return "company/companyModifyProduct2";
+	}
+	
+	//체험수정폼으로 이동
+	@RequestMapping("experienceModifyForm.co")
+	public String experienceModifyForm(int eno, Model model) {
+		Experience e = experienceService.selectExperience(eno);
+		model.addAttribute("e", e);
+		return "company/companyModifyExperience2";
+	}
+	
+	//상품 수정
+	@RequestMapping("productUpdate.co")
+	public String updateProduct(Product p, int pno, Model model, MultipartFile upfile, HttpSession session) {
+//		System.out.println("pno:"+pno);
+		//상품번호 심어주기
+		p.setProductNo(pno);
+		
+		//사진이 변경됐는지?
+		if(!upfile.getOriginalFilename().equals("")) {
+			//기존 사진 삭제
+			if(p.getProductImgOn() != null) {
+				new File(session.getServletContext().getRealPath(p.getProductImgFp())).delete();
+			}
+			//변경된 사진으로 업로드
+			String originName = saveFile(upfile, session);
+			p.setProductImgOn(upfile.getOriginalFilename());
+			p.setProductImgFp("resources/uploadFiles/"+originName);
+		}
+		int result = productService.updateProduct(p);
+		
+		if(result>0) {
+			session.setAttribute("alertMsg", "상품 정보가 정상적으로 수정되었습니다.");
+			return "redirect:/productDetail.co?pno="+pno;
+		}else {
+			model.addAttribute("errorMsg", "상품 수정 실패");
+			return "common/errrorPage";
+		}
+	}
+	
+	//체험 수정
+	@RequestMapping("experienceUpdate.co")
+	public String updateExperience(Experience e, int eno, HttpSession session, Model model, MultipartFile upfile) {
+		e.setExperNo(eno);
+		
+		if(!upfile.getOriginalFilename().equals("")) {
+			if(e.getExperImgOn() != null) {
+				new File(session.getServletContext().getRealPath(e.getExperImgFp())).delete();
+			}
+			String originName = saveFile(upfile, session);
+			e.setExperImgOn(upfile.getOriginalFilename());
+			e.setExperImgFp("resources/uploadFiles/"+originName);
+		}
+		int result = experienceService.updateExperience(e);
+		
+		if(result>0) {
+			session.setAttribute("alertMsg", "체험 정보가 정상적으로 수정되었습니다.");
+			return "redirect:/experienceDetail.co?eno="+eno;
+		}else {
+			model.addAttribute("errorMsg", "체험 수정 실패");
+			return "common/errorPage";
+		}
+	}
+	
+	//상품 삭제
+	@RequestMapping("productDelete.co")
+	public String deleteProduct(int pno, Model model, HttpSession session) {
+		int result = productService.deleteProduct(pno);
+		
+		if(result>0) {
+			session.setAttribute("alertMsg", "상품을 삭제하였습니다.");
+			return "redirect:/productList.co";
+		}else {
+			model.addAttribute("errorMsg", "상품 삭제 실패");
+			return "common/errorPage";
+		}
+	}
+	
+
+	
 	
 	//상품판매관리
 	@RequestMapping("productSales.co")

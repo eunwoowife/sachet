@@ -240,7 +240,7 @@
               <h2 class="pb-1 mb-4 text-muted" style="font-family: 'IBM Plex Sans KR', sans-serif;">판매중인 상품</h2>
               
               <div style="margin-left:800px;">
-              	<button type="submit" class="btn btn-primary me-2" onclick="goAddProduct();" style="font-family: 'IBM Plex Sans KR', sans-serif;">상품추가</button>
+              	<button type="button" class="btn btn-primary me-2" onclick="goAddProduct();" style="font-family: 'IBM Plex Sans KR', sans-serif;">상품추가</button>
               </div>
               
               <script>
@@ -269,9 +269,12 @@
                 </c:forEach>
                </c:if>
                
+              <div style="margin-left:390px;">
               <c:if test="${empty pList }">
-              	 <h5 style="font-family: 'IBM Plex Sans KR', sans-serif;">등록된 상품이 없습니다.</h5>
+              <br><br><br><br><br><br><br><br>
+              	 <h5 style="font-family: 'IBM Plex Sans KR', sans-serif; color:#696CFF;'">등록된 상품이 없습니다.</h5>
               </c:if>
+              </div>
           
           </div>
           </div>

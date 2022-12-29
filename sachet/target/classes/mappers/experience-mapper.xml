@@ -60,4 +60,66 @@
 		AND EXPER_STATUS='Y'
 	</select>
 	
+	<select id="selectCompanyExperienceList" resultMap="experienceResultSet">
+		SELECT EXPER_NO,
+					BOOTH_NO,
+					EXPER_TIME,
+					EXPER_DATE,
+					EXPER_TITLE,
+					EXPER_DETAIL,
+					EXPER_PRICE,
+					CAPACITY,
+					EXPER_IMG_ON,
+					EXPER_IMG_FP,
+					BOOTH_NAME
+		FROM EXPERIENCE
+		JOIN BOOTH USING(BOOTH_NO)
+		JOIN COMPANY ON(USER_NO = COM_NO)
+		WHERE USER_NO=#{userNo}
+		AND EXPER_STATUS='Y'
+		ORDER BY EXPER_ENROLLDATE DESC
+	</select>
+	
+	<select id="selectBoothNo" resultType="_int">
+		SELECT BOOTH_NO
+		FROM BOOTH
+		JOIN COMPANY ON(COM_NO=USER_NO)
+		WHERE USER_NO=#{userNo}
+	</select>
+	
+	<insert id="insertExperience">
+		INSERT INTO EXPERIENCE(EXPER_NO,
+												BOOTH_NO,
+												EXPER_TITLE,
+												EXPER_DETAIL,
+												EXPER_TIME,
+												EXPER_DATE,
+												EXPER_PRICE,
+												CAPACITY,
+												EXPER_IMG_ON,
+												EXPER_IMG_FP)
+		VALUES(SEQ_ENO.NEXTVAL,
+					#{boothNo},
+					#{experTitle},
+					#{experDetail},
+					#{experTime},
+					#{experDate},
+					#{experPrice},
+					#{capacity},
+					#{experImgOn},
+					#{experImgFp})
+	</insert>
+	
+	<update id="updateExperience">
+		UPDATE EXPERIENCE SET EXPER_TITLE=#{experTitle},
+												EXPER_DETAIL=#{experDetail},
+												EXPER_DATE=#{experDate},
+												EXPER_TIME=#{experTime},
+												CAPACITY=#{capacity},
+												EXPER_PRICE=#{experPrice},
+												EXPER_IMG_ON=#{experImgOn},
+												EXPER_IMG_FP=#{experImgFp}
+		WHERE EXPER_NO=#{experNo}
+	</update>
+	
 </mapper>

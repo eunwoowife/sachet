@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+   <!-- jQuery 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
@@ -223,13 +225,13 @@
           
            <div class="addProductOuter">
            		<div class="addProductTitle" align="center">
-           		<h1>상품추가</h1>
+           		<h1>상품수정</h1>
            		<br><br>
            		</div>
            		
            		<div class="addForm" style="margin-left:250px;">
            		
-           		<form action="" method="post" enctype="multipart/form-data">
+           		<form action="productUpdate.co?pno=${p.productNo }" method="post" enctype="multipart/form-data">
            			  <label class="form-label">상품명</label>
            			  <div class="form-floating">
                         <input
@@ -239,22 +241,25 @@
                           placeholder="Product Name"
                           aria-describedby="floatingInputHelp"
                           style="width:700px;"
+                          name="productName"
+                          value="${p.productName }"
+                          required
                         />
                         <label for="floatingInput">상품명</label>
                         </div>
                         
                          <label for="exampleFormControlTextarea1" class="form-label">상품설명</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"  style="resize: none; width:700px;"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"  style="resize: none; width:700px;" name="productDetail">${p.productDetail }</textarea>
            					
            					
       					  <label for="html5-number-input" class="col-md-2 col-form-label">상품재고</label>
                         <div class="col-md-10">
-                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1"/>
+                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1" name="productStock" value="${p.productStock }"/>
                         </div>
                         
                           <label for="html5-number-input" class="col-md-2 col-form-label">상품가격(￦)</label>
                         <div class="col-md-10">
-                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1000"/>
+                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1000" name="productPrice" value="${p.productPrice }"/>
                         </div>
                         
                         <br>
@@ -263,8 +268,11 @@
                         	  <tr>
 					                <td align="center">
 					                	 <label for="exampleFormControlTextarea1" class="form-label">상품 대표이미지</label>
-					                	<input type="file" id="file1" name="file1" onchange="loadImg(this,1);" required>
-					                    <img id="titleImg" width="300" height="300">
+					                	<input type="file" id="file1" onchange="loadImg(this,1);" name="upfile">
+					                    <img src="${p.productImgFp}" id="titleImg" width="300" height="300">
+					                    <!--기존 파일이 있으면 수정하기 버튼을 눌렀을 때 해당 파일정보가 같이 전송될 수 있도록 hidden으로 작업 -->
+			                       		<input type="hidden" name="productImgOn" value="${p.productImgOn }">
+			                       		<input type="hidden" name="productImgFp" value="${p.productImgFp }">
 					                </td>
 					            </tr>
                         </table>
@@ -273,16 +281,11 @@
 						<br><br>
 						
 						  <div class="mt-2" align="center" style="margin-right:430px;">
-                          <button type="submit" class="btn btn-primary me-2">등록하기</button>
-                          <button type="reset" class="btn btn-outline-secondary" onclick="goCancel();">취소</button>
+                          <button type="submit" class="btn btn-primary me-2">수정하기</button>
+                          <button type="button" class="btn btn-outline-secondary" onclick="history.back();">취소</button>
                         </div>
                         <br><br><br>
 						
-           				<script>
-							function goCancel(){
-								location.href="productList.co";
-							}
-						</script>
            		
            		</form>
            </div>
