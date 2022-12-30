@@ -31,7 +31,7 @@ public class Experience {
 	private int experNo;
 	private int boothNo;
 	private int experTime;
-	private Date experDate;
+	private int experDate;
 	private String experTitle;
 	private String experDetail;
 	private int experPrice;
@@ -42,4 +42,6 @@ public class Experience {
 	private String experStatus;
 	
 	private String boothName;
+	
+	private int userNo;
 }

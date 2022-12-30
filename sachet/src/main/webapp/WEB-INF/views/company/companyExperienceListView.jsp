@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +42,8 @@
   
 </head>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+
 	#productOuter{
 		margin-top:200px;
 		margin-left:200px;
@@ -237,10 +240,10 @@
           
              <div id="productOuter" align="center">
               
-              <h2 class="pb-1 mb-4 text-muted">판매중인 체험</h2>
+              <h2 class="pb-1 mb-4 text-muted" style="font-family: 'IBM Plex Sans KR', sans-serif;">판매중인 체험</h2>
               
               <div style="margin-left:800px;">
-              	<button type="submit" class="btn btn-primary me-2" onclick="goAddExperience();">체험추가</button>
+              	<button type="submit" class="btn btn-primary me-2" onclick="goAddExperience();" style="font-family: 'IBM Plex Sans KR', sans-serif;">체험추가</button>
               </div>
               <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
               
@@ -250,87 +253,44 @@
               	}
               </script>
               
-              <div class="col">
+               <c:if test="${not empty eList }">
+                 <c:forEach var="e" items="${eList }">
+                <div class="col" onclick="location.href='experienceDetail.co?eno=${e.experNo}'">
                   <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/makePerfume.png" alt="Card image cap" />
+                    <img id="zoom" class="card-img-top" src="${e.experImgFp}" />
                     <div class="card-body">
-                      <b style="font-size:20px;]">LOUIS VUITTION</b> <br>
-                      <p>루이비통 7향 1택 조향(30ml)</p>
+                    	<p style="font-size:12px; font-family: 'IBM Plex Sans KR', sans-serif;">${e.experTitle }</p>
                      <div class="productPrice">
-                     	<b style="color:gray;">₩100,000</b>
-                     	<br><br><br>
-                     </div>
-                      	<div class="expDetail">
-                    	<p style="font-size:12px;">시간　2023.01.11 / 10:00~12:00</p>
-                    	<p style="font-size:12px;">정원　30명</p>
+                     	<b style="color:gray; font-family: 'IBM Plex Sans KR', sans-serif;">₩<fmt:formatNumber value="${e.experPrice }" type="number"/></b>
+                     	<br><br>
+                   	</div>
+                   		<div class="expDetail">
+	                    	<p style="font-size:12px;">시간　
+	                    	<c:if test="${e.experDate == 1 }">2022.01.11</c:if>
+	                    	<c:if test="${e.experDate == 2 }">2022.01.12</c:if>
+	                    	<c:if test="${e.experDate == 3 }">2022.01.13</c:if>
+	                    	 / 
+                  			<c:if test="${e.experTime == 1 }">10:00~12:00</c:if>
+                   			<c:if test="${e.experTime == 2 }">13:00~15:00</c:if>
+                   			<c:if test="${e.experTime == 3 }">15:00~17:00</c:if>
+                   			<c:if test="${e.experTime == 4 }">17:00~19:00</c:if>
+	                    	</p>
+	                    	<p style="font-size:12px;">정원　${e.capacity }명</p>
                     	</div>
-                    </div>
-                  </div>
-                </div>
-               <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수2.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
+                    	
                      </div>
                     </div>
-                  </div>
                 </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수3.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                
-               <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수4.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수5.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="${pageContext.request.contextPath}/resources/uploadFiles/향수6.png" alt="Card image cap" />
-                    <div class="card-body">
-                      <b>LOUIS VUITTION</b>
-                    	<p style="font-size:12px;">스펠 온 유 (SPELL ON YOU)</p>
-                     <div class="productPrice">
-                     	<b style="color:gray;">₩410,000</b>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-          
-          
-          
+                </c:forEach>
+               </c:if>
+               
+              <div style="margin-left:390px;">
+              <c:if test="${empty eList }">
+              <br><br><br><br><br><br><br><br>
+              	 <h5 style="font-family: 'IBM Plex Sans KR', sans-serif; color:#696CFF;'">등록된 체험이 없습니다.</h5>
+              </c:if>
+              </div>
+              
           </div>
           </div>
           </div>

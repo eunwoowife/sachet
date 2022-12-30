@@ -38,7 +38,7 @@ public class ExperienceController {
 	
 	@RequestMapping("detail.exp")
 	public String selectExperience(int eno, Model model) {
-		Experience e = experienceService.selectExperienceList(eno);
+		Experience e = experienceService.selectExperience(eno);
 		
 		model.addAttribute("e", e);
 		
