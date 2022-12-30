@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="boothMapper">
+
+<resultMap type="booth" id="boothResultSet">
+	<result column="BOOTH_NO" property="boothNo"/>
+	<result column="COM_NO" property="comNo"/>
+	<result column="BOOTH_NAME" property="boothName"/>
+	<result column="BOOTH_DETAIL" property="boothDetail"/>
+	<result column="BOOTH_IMG_ON" property="boothImgOn"/>
+	<result column="BOOTH_IMG_FP" property="boothImgFp"/>
+	<result column="BOOTH_PRICE" property="boothPrice"/>
+	<result column="BOOTH_SECTION" property="boothSection"/>
+	<result column="BOOTH_STATUS" property="boothStatus"/>
+</resultMap>
+  
+  <select id="selectBoothList" resultMap="boothResultSet">
+  		SELECT BOOTH_NO,
+  					COM_NO,
+  					BOOTH_NAME,
+  					BOOTH_DETAIL,
+  					BOOTH_IMG_ON,
+  					BOOTH_IMG_FP,
+  					BOOTH_PRICE,
+  					BOOTH_SECTION
+		FROM BOOTH
+		WHERE BOOTH_STATUS='Y'
+		ORDER BY BOOTH_NAME DESC
+  </select>
+</mapper>
