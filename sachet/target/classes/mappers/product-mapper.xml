@@ -71,7 +71,48 @@
 		JOIN BOOTH USING(BOOTH_NO)
 		JOIN COMPANY ON(USER_NO = COM_NO)
 		WHERE USER_NO=#{userNo}
+		AND PRODUCT_STATUS='Y'
 		ORDER BY PRODUCT_ENROLLDATE DESC
 	</select>
 	
+	<select id="selectBoothNo" resultType="_int">
+		SELECT BOOTH_NO
+		FROM BOOTH
+		JOIN COMPANY ON(COM_NO=USER_NO)
+		WHERE USER_NO=#{userNo}
+	</select>
+	
+	<insert id="insertProduct">
+		INSERT INTO PRODUCT(PRODUCT_NO,
+											BOOTH_NO,
+											PRODUCT_NAME,
+											PRODUCT_DETAIL,
+											PRODUCT_STOCK,
+											PRODUCT_PRICE,
+											PRODUCT_IMG_ON,
+											PRODUCT_IMG_FP)
+		VALUES(SEQ_PNO.NEXTVAL,
+					#{boothNo},
+					#{productName},
+					#{productDetail},
+					#{productStock},
+					#{productPrice},
+					#{productImgOn},
+					#{productImgFp})
+	</insert>
+	
+	<update id="updateProduct">
+		UPDATE PRODUCT SET PRODUCT_NAME=#{productName},
+											PRODUCT_DETAIL=#{productDetail},
+											PRODUCT_STOCK=#{productStock},
+											PRODUCT_PRICE=#{productPrice},
+											PRODUCT_IMG_ON=#{productImgOn},
+											PRODUCT_IMG_FP=#{productImgFp}
+		WHERE PRODUCT_NO=#{productNo}
+	</update>
+	
+	<update id="deleteProduct">
+		UPDATE PRODUCT SET PRODUCT_STATUS='N'
+		WHERE PRODUCT_NO=#{pno}
+	</update>
 </mapper>

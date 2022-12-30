@@ -154,7 +154,7 @@ button {
 
 
             <div class="prodetailContent">
-                <img src="${pageContext.request.contextPath}/resources/images/ProductNotice.jpg" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/expNotice.jpg" alt="">
                 <br><br><br><br><br><br><br>
             </div>
             
@@ -186,7 +186,11 @@ ${e.experDetail}
 				<br><br>
 				
 			   <div>
-                <p>시간　${e.experDate } / 
+                <p>시간　
+                	<c:if test="${e.experDate == 1 }">2022.01.11</c:if>
+                	<c:if test="${e.experDate == 2 }">2022.01.12</c:if>
+                	<c:if test="${e.experDate == 3 }">2022.01.13</c:if>
+                	/ 
                 	<c:if test="${e.experTime == 1 }">10:00~12:00</c:if>
           			<c:if test="${e.experTime == 2 }">13:00~15:00</c:if>
            			<c:if test="${e.experTime == 3 }">15:00~17:00</c:if>

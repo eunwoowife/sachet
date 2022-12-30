@@ -11,5 +11,15 @@ public interface ExperienceService {
 
 	ArrayList<Experience> selectExperienceList(PageInfo pi);
 	
-	Experience selectExperienceList(int eno);
+	Experience selectExperience(int eno);
+	
+	ArrayList<Experience> selectCompanyExperienceList(int userNo);
+
+	int selectBoothNo(int userNo);
+
+	int insertExperience(Experience e);
+
+	int updateExperience(Experience e);
+	
+	int deleteExperience(int eno);
 }
