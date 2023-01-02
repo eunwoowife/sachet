@@ -200,7 +200,7 @@ ${e.experDetail}
                </div>
 
                <div class="proButtonArea">
-               <button class="w-btn w-btn-gray" type="button">
+               <button class="w-btn w-btn-gray" type="button" id="addToCart">
                 장바구니 담기
                  </button>
                 <button class="w-btn w-btn-gra2 w-btn-gra-anim" type="button">
@@ -241,6 +241,36 @@ ${e.experDetail}
 		  	var totalPriceComma = (total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 			$("#totalSum").text(totalPriceComma);
 		}
+	</script>
+	
+		<script>
+		$(function(){
+			$("#addToCart").click(function(){
+				if(${not empty loginUser}){
+				$.ajax({
+					url : "insertCart.ca",
+					data : {experNo : ${e.experNo},
+								productNo : 0,
+								count : $("#proCount").val()},
+					type : "post",
+					success : function(result){
+						console.log("장바구니 추가 성공"+result);
+						var goCart = confirm("장바구니에 해당 상품이 담겼습니다. 장바구니로 이동하시겠습니까?");
+						if(goCart){
+							location.href="selectCart.ca";
+						}else{
+							return false;
+						}
+					},
+					error : function(){
+						console.log("통신실패")
+					}
+				})
+				}else{
+					alert("로그인 후, 이용 가능한 서비스입니다.");
+				}
+			})
+		})
 	</script>
 
 </body>

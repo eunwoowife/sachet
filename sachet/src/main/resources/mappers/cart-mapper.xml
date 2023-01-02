@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cartMapper">
+
+<resultMap type="cart" id="cartResultSet">
+	<result column="USER_NO" property="userNo"/>
+	<result column="PRODUCT_NO" property="productNo"/>
+	<result column="EXPER_NO" property="experNo"/>
+	<result column="COUNT" property="count"/>
+</resultMap>
+
+<insert id="insertCart">
+	INSERT INTO CART(USER_NO,
+								PRODUCT_NO,
+								EXPER_NO,
+								COUNT)
+	VALUES(#{userNo},
+				#{productNo},
+				#{experNo},
+				#{count})
+</insert>
+  
+</mapper>

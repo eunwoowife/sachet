@@ -105,16 +105,13 @@
                     </div>
                 </div>
             </div>
-            <div class="jeonsi_group">
+            <div class="jeonsi_group" style="width:1280px;">
                 <h1>부스안내 <span>(VAT 포함)</span></h1>
                 <div class="jeonsi_position jeonsi_padding">
                     <div class="holder_position">
-                        <img src="${pageContext.request.contextPath}/resources/images/boothEx2.png" style="margin-top:550px;">
-                        <p><span>부스 이미지는 제작 상황에 따라 변경될 수 있습니다.</span>
-                            <span>모든 가격은 부가세 별도입니다.</span></p>
                         </div>
                         <div class="jeonsi_table_div">
-                            <h2>VIP부스<em>VIP</em></h2>
+                            <h2>프리미엄 부스<em>Premium</em></h2>
                             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="jeonsi_table2">
                                 <tbody>
                                     <tr>
@@ -133,7 +130,7 @@
                             </table>
                         </div>
                         <div class="jeonsi_table_div margin_top_1">
-                            <h2>디럭스부스<em>Deluxe </em></h2>
+                            <h2>디럭스 부스<em>Deluxe </em></h2>
                             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="jeonsi_table2">
                                 <tbody>
                                     <tr>
@@ -152,7 +149,7 @@
                             </table>
                         </div>
                           <div class="jeonsi_table_div margin_top_1">
-                            <h2>일반부스<em>Default</em></h2>
+                            <h2>일반 부스<em>Standard</em></h2>
                             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="jeonsi_table2">
                                 <tbody>
                                     <tr>
@@ -172,7 +169,16 @@
                         </div>
                     </div>
                 </div>
-                
+                <br>
+		                <img src="${pageContext.request.contextPath}/resources/images/boothChart.png" style="display:inline-block; width:500px;">
+                        <img src="${pageContext.request.contextPath}/resources/images/boothEx2.png" style="display:inline-block; width:500px;">
+                        <br><br>
+                        <ul style="margin-left:400px;">
+                        	<li style="color:gray; font-size:11px;">▶부스 이미지는 제작 상황에 따라 변경될 수 있습니다.</li>
+                        	<li style="color:gray; font-size:11px;">▶모든 가격은 부가세 별도입니다.</li>
+                        </ul>
+                         <p><span></span>
+                            <span></span></p>
                 <div class="jeonsi_group">
                     <h1>광고안내 <span>(VAT 포함)</span></h1>
                     <div class="jeonsi_position2">
