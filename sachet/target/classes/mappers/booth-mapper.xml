@@ -12,6 +12,12 @@
 	<result column="BOOTH_PRICE" property="boothPrice"/>
 	<result column="BOOTH_SECTION" property="boothSection"/>
 	<result column="BOOTH_STATUS" property="boothStatus"/>
+	<result column="COM_NAME" property="comName"/>
+	<result column="COM_OWNER" property="comOwner"/>
+	<result column="COM_PHONE1" property="comPhone1"/>
+	<result column="COM_ADDRESS" property="comAddress"/>
+	<result column="COM_LOGO_FP" property="comLogoFp"/>
+	<result column="COM_BRNUM" property="comBrnum"/>
 </resultMap>
   
   <select id="selectBoothList" resultMap="boothResultSet">
@@ -22,8 +28,14 @@
   					BOOTH_IMG_ON,
   					BOOTH_IMG_FP,
   					BOOTH_PRICE,
-  					BOOTH_SECTION
-		FROM BOOTH
+  					BOOTH_SECTION,
+  					COM_NAME,
+  					COM_OWNER,
+  					COM_PHONE1,
+  					COM_ADDRESS,
+  					COM_LOGO_FP
+		FROM BOOTH B
+		JOIN COMPANY ON(USER_NO=COM_NO)
 		WHERE BOOTH_STATUS='Y'
 		ORDER BY BOOTH_NAME DESC
   </select>
