@@ -10,11 +10,13 @@
 <style>
 .outerarea{
     width: 70%;
-    margin-left: 280px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .centerarea{
-    margin-left: 145px;
-    width: 80%;
+    width: 1100px;
+      margin: 0 auto;
 }
 .confirm{
     border-spacing: 2px;

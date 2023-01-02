@@ -13,11 +13,13 @@
 
 .outerarea{
     width: 70%;
-    margin-left: 280px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .centerarea{
-    margin-left: 145px;
-    width: 80%;
+    width: 1100px;
+      margin: 0 auto;
 }
 .confirm{
     margin-top: 200px;
@@ -271,7 +273,7 @@ border: none;
                 	var form = document.createElement("form");
         			form.setAttribute("charset", "UTF-8");
         			form.setAttribute("method", "Post"); 
-        			form.setAttribute("action", "ticketPayment.ti"); 
+        			form.setAttribute("action", "ticketBook3.ti"); 
         			
         			var hiddenField = document.createElement("input");
         			hiddenField.setAttribute("type", "hidden");

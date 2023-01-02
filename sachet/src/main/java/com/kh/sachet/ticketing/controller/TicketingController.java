@@ -75,8 +75,8 @@ public class TicketingController {
 	}
 
 	
-	@RequestMapping("ticketPayment.ti")
-	public void insertTicket(TicketInfo t) {
+	@RequestMapping("ticketBook3.ti")
+	public ModelAndView insertTicket(TicketInfo t) {
 		
 		Ticket insertT = new Ticket ();
 		
@@ -110,6 +110,8 @@ public class TicketingController {
 			
 			mv.addObject("t",t);
 			mv.setViewName("ticketing/ticketBook3");
+			
+			return mv;
 			
 		
 	}
