@@ -32,4 +32,11 @@ public class Booth {
 	private int boothPrice;
 	private int boothSection;
 	private String boothStatus;
+	
+	private String comName;
+	private String comOwner;
+	private String comPhone1;
+	private String comAddress;
+	private String comLogoFp;
+	private int comBrnum;
 }

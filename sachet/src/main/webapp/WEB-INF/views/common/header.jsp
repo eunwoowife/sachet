@@ -190,7 +190,7 @@
 			</li>
 			<li><a href="#">Booth Info</a>
 				<ul>
-					<li><a href="#">부스 목록</a></li>
+					<li><a href="boothParticipatingInfo.boo">부스 참가 안내</a></li>
 					<li><a href="#">SUB_MENU2</a></li>
 					<li><a href="#">SUB_MENU3</a></li>
 				</ul>
