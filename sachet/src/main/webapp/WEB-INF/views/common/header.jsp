@@ -174,7 +174,12 @@
     </div>
     <nav>
 		<ul>
-			<li><a href="#">About Sachet</a></li>
+			<li><a href="#">Sachet</a>
+				<ul>
+					<li><a href="#">About Sachet</a></li>
+					<li><a href="noticeListView.no">공지사항</a></li>
+				</ul>
+			</li>
 			<li><a href="ticketInfo.ti">Ticketing</a>
 				<ul>
 					<li><a href="ticketInfo.ti">티켓 안내 </a></li>
@@ -183,14 +188,14 @@
 			</li>
 			<li><a href="#">Product</a>
 				<ul>
-					<li><a href="boothListView.boo">BOOTH</a></li>
+					<li><a href="boothListView.bo">BOOTH</a></li>
 					<li><a href="productListView.pro">PRODUCT</a></li>
 					<li><a href="experienceListView.exp">EXPERIENCE</a></li>
 				</ul>
 			</li>
 			<li><a href="#">Booth Info</a>
 				<ul>
-					<li><a href="boothParticipatingInfo.boo">부스 참가 안내</a></li>
+					<li><a href="boothParticipatingInfo.bo">부스 참가 안내</a></li>
 					<li><a href="#">SUB_MENU2</a></li>
 					<li><a href="#">SUB_MENU3</a></li>
 				</ul>
