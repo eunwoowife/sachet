@@ -16,6 +16,7 @@
 		<typeAlias type="com.kh.sachet.payment.model.vo.Payment" alias="payment"/>
 		<typeAlias type="com.kh.sachet.experience.model.vo.Experience" alias="experience"/>
 		<typeAlias type="com.kh.sachet.booth.model.vo.Booth" alias="booth"/>
+		<typeAlias type="com.kh.sachet.notice.model.vo.Notice" alias="notice"/>
 	</typeAliases>
 
 
@@ -28,6 +29,7 @@
 		<mapper resource="/mappers/payment-mapper.xml"/>
 		<mapper resource="/mappers/experience-mapper.xml"/>
 		<mapper resource="/mappers/booth-mapper.xml"/>
+		<mapper resource="/mappers/notice-mapper.xml"/>
 	</mappers>
 
 	
