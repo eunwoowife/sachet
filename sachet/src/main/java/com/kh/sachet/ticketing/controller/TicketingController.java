@@ -40,9 +40,10 @@ public class TicketingController {
 	@RequestMapping("ticketBook2.ti")
 	public ModelAndView ticketBook2View
 	(HttpSession session,ModelAndView mv, String bookDate, String adultCount, String kidsCount, String freeCount, String bookingtime) {
+
+		Member mm = (Member)session.getAttribute("loginUser");
+		int userNo = mm.getUserNo();
 		
-		//임의 유저번호
-		int userNo = 1003;
 		int ticketAdult = Integer.parseInt(adultCount);
 		int ticketKid = Integer.parseInt(kidsCount);
 		int ticketFree = Integer.parseInt(freeCount);
@@ -76,11 +77,13 @@ public class TicketingController {
 
 	
 	@RequestMapping("ticketBook3.ti")
-	public ModelAndView insertTicket(TicketInfo t) {
+	public ModelAndView insertTicket(HttpSession session, TicketInfo t) {
 		
 		Ticket insertT = new Ticket ();
 		
-		int userNo = 1003;
+		Member m = (Member)session.getAttribute("loginUser");
+		
+		int userNo = m.getUserNo();
 		insertT.setUserNo(userNo);
 		insertT.setTicketDate(t.getTicketDate());
 		insertT.setTicketAdult(t.getTicketAdult());
