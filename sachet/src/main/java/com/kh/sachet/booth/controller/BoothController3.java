@@ -42,7 +42,6 @@ public class BoothController3 {
 
 		mv.addObject("c",c);
 		mv.setViewName("booth/boothparticipationForm");
-
 	
 		return mv;
 
