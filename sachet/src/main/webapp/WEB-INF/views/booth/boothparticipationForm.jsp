@@ -119,7 +119,6 @@ margin-top : 100px;
   padding: 17px;
   height: 580px;
 }
-
 .btnA{
   float: right;
   margin: 5px;
