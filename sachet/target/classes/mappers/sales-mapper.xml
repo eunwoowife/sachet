@@ -11,6 +11,8 @@
 	<result column="USER_ID" property="userId"/>
 	<result column="USER_NAME" property="userName"/>
 	<result column="USER_PHONE" property="userPhone"/>
+	<result column="COUNT" property="count"/>
+	<result column="PRODUCT_PRICE" property="productPrice"/>
 </resultMap>
 
 <select id="selectProductSales"  resultMap="salesResultSet">
@@ -20,7 +22,9 @@
         USER_ID,
         USER_NAME,
         USER_PHONE,
-        USE_STATUS
+        USE_STATUS,
+        COUNT,
+        PRODUCT_PRICE
 	FROM RECEIVE_USE_STATUS
 	JOIN ORDER_DETAIL OD USING(ORDER_DETAIL_NO)
 	JOIN PRODUCT P USING(PRODUCT_NO)

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,11 +51,19 @@
 	}
 	
 	 th, td{
-        padding-left: 130px;
+        padding-left: 100px;
     }
 
     th, td{
         text-align: center;
+    }
+    
+    td{
+    	padding-bottom:40px;
+    }
+    
+    th{
+    	padding-bottom:20px;
     }
 	
 </style>
@@ -234,8 +243,8 @@
             <h1>판매상품관리</h1>
         </div>
     <br><br>
-    <div style="margin-left: 150px;">
-        <p>총 5건</p>
+    <div style="margin-left: 100px;">
+        <p>총 ${sList.size() }건</p>
         <select class="form-select" id="exampleFormControlSelect1" style="width:300px; float:left;">
             <option value="">상품 수령상태 변경처리</option>
             <option value="">미수령</option>
@@ -254,6 +263,8 @@
                 <th>주문번호</th>
                 <th>주문일</th>
                 <th>주문상품정보</th>
+                <th>수량</th>
+                <th>금액</th>
                 <th>주문자정보</th>
                 <th>상품수령상태</th>
             </tr>
@@ -264,6 +275,8 @@
                 <td>${s.orderDetailNo}</td>
                 <td>${s.orderDate }</td>
                 <td>${s.productName }</td>
+                <td>${s.count }</td>
+                <td><fmt:formatNumber value="${s.productPrice * s.count }" type="number"/></td>
                 <td>${s.userId }<br>
                    	${s.userName }<br>
                     ${s.userPhone }<br>
