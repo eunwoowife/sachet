@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/demo.css" />
 
-
     <!-- Page CSS -->
 
     <!-- Helpers -->

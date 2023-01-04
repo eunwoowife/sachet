@@ -70,6 +70,7 @@ public class BoothController3 {
 		}
 		
 		
+		
 	
 	@RequestMapping("boothFormInsert.boo")
 	public ModelAndView boothFormInsert
