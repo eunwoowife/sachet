@@ -10,14 +10,6 @@
    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-
     <!-- Icons. Uncomment required icon fonts -->
    <link href="${pageContext.request.contextPath}/resources/css/boxicons.css" />
 
@@ -41,6 +33,12 @@
   
 </head>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+
+	*{
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+	
 	.addProductOuter{
 		margin-top:150px;
 		margin-left:200px;
@@ -259,17 +257,23 @@
                 <th>주문자정보</th>
                 <th>상품수령상태</th>
             </tr>
+            
+            	<c:forEach var="s" items="${sList }">
             <tr>
                 <td><input class="form-check-input" type="checkbox" name="" id=""></td>
-                <td>20220105-591319972</td>
-                <td>2022-01-05</td>
-                <td>스펠 온 유 (SPELL ON YOU)</td>
-                <td>eunwoo<br>
-                    차은우<br>
-                    010-1234-1234<br>
+                <td>${s.orderDetailNo}</td>
+                <td>${s.orderDate }</td>
+                <td>${s.productName }</td>
+                <td>${s.userId }<br>
+                   	${s.userName }<br>
+                    ${s.userPhone }<br>
                 </td>
-                <td>미수령</td>
+                
+                <c:if test="${s.useStatus eq 'N' }"><td>미수령</td></c:if>
+                <c:if test="${s.useStatus eq 'Y' }"><td>수령</td></c:if>
             </tr>
+            </c:forEach>
+            
         </table>
     </div>
 

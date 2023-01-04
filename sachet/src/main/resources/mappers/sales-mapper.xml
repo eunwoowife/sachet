@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="salesMapper">
+  
+<resultMap type="sales" id="salesResultSet">
+	<result column="ORDER_DETAIL_NO" property="orderDetailNo"/>
+	<result column="USE_STATUS" property="useStatus"/>
+	<result column="COM_NO" property="comNo"/>
+	<result column="ORDER_DATE" property="orderDate"/>
+	<result column="PRODUCT_NAME" property="productName"/>
+	<result column="USER_ID" property="userId"/>
+	<result column="USER_NAME" property="userName"/>
+	<result column="USER_PHONE" property="userPhone"/>
+</resultMap>
+
+<select id="selectProductSales"  resultMap="salesResultSet">
+	SELECT ORDER_DETAIL_NO,
+        ORDER_DATE,
+        PRODUCT_NAME,
+        USER_ID,
+        USER_NAME,
+        USER_PHONE,
+        USE_STATUS
+	FROM RECEIVE_USE_STATUS
+	JOIN ORDER_DETAIL OD USING(ORDER_DETAIL_NO)
+	JOIN PRODUCT P USING(PRODUCT_NO)
+	JOIN MEMBER M USING(USER_NO)
+	JOIN BOOTH B USING(BOOTH_NO)
+	WHERE B.COM_NO=#{comNo}
+	ORDER BY ORDER_DATE DESC
+</select>
+
+</mapper>
