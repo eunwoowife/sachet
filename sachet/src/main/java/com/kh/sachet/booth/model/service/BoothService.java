@@ -8,4 +8,6 @@ public interface BoothService {
 	
 	ArrayList<Booth> selectBoothList();
 
+	int boothFormInsert(Booth insertB);
+
 }

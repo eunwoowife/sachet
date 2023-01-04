@@ -39,4 +39,19 @@
 		WHERE BOOTH_STATUS='Y'
 		ORDER BY BOOTH_NAME DESC
   </select>
+  
+  <insert id="boothFormInsert">
+  	INSERT INTO BOOTH VALUES 
+  							(SEQ_BTNO.NEXTVAL,
+  							 #{comNo},
+  							 #{boothName},
+  							 #{boothDetail},
+  							 #{boothImgOn},
+  							 #{boothImgFp},
+  							 #{boothPrice},
+  							 #{boothSection},
+  							 DEFAULT)
+  
+  
+  </insert>
 </mapper>
