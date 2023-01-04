@@ -1,11 +1,14 @@
 package com.kh.sachet.company.model.service;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.sachet.company.model.dao.CompanyDao;
 import com.kh.sachet.company.model.vo.Company;
+import com.kh.sachet.company.model.vo.Sales;
 import com.kh.sachet.member.model.dao.MemberDao;
 
 @Service
@@ -41,6 +44,12 @@ public class CompanyServiceImpl implements CompanyService{
 	public int updateCompanyUser(Company c) {
 		int result = companyDao.updateCompanyUser(sqlSession, c);
 		return result;
+	}
+
+	@Override
+	public ArrayList<Sales> selectProductSales(int comNo) {
+		ArrayList<Sales> sList = companyDao.selectProductSales(sqlSession, comNo);
+		return sList;
 	}
 
 	

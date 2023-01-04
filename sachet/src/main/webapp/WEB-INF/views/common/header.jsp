@@ -178,6 +178,7 @@
 				<ul>
 					<li><a href="#">About Sachet</a></li>
 					<li><a href="noticeListView.no">공지사항</a></li>
+					<li><a href="map.sc">찾아오시는 길</a></li>
 				</ul>
 			</li>
 			<li><a href="ticketInfo.ti">Ticketing</a>

@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.sachet.company.model.service.CompanyService;
 import com.kh.sachet.company.model.vo.Company;
+import com.kh.sachet.company.model.vo.Sales;
 import com.kh.sachet.experience.model.service.ExperienceService;
 import com.kh.sachet.experience.model.vo.Experience;
 import com.kh.sachet.member.model.service.MemberService;
@@ -392,7 +393,12 @@ public class CompanyController {
 	
 	//상품판매관리
 	@RequestMapping("productSales.co")
-	public String productSalesForm() {
+	public String productSalesForm(HttpSession session, Model model) {
+		Company c = (Company)session.getAttribute("loginUser");
+		int comNo = c.getUserNo();
+		
+		ArrayList<Sales> sList = companyService.selectProductSales(comNo);
+		model.addAttribute("sList", sList);
 		return "company/companyProductSales";
 	}
 	
