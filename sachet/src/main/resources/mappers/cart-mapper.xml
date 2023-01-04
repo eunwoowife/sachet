@@ -9,6 +9,24 @@
 	<result column="COUNT" property="count"/>
 </resultMap>
 
+<resultMap type="cartList" id="cartProList">
+	<result column="USER_NO" property="userNo"/>
+	<result column="PRODUCT_NO" property="goodsNo"/>
+	<result column="BOOTH_NAME" property="boothName"/>
+	<result column="PRODUCT_NAME" property="goodsName"/>
+	<result column="PRODUCT_PRICE" property="goodsPrice"/>
+	<result column="COUNT" property="goodsCount"/>
+</resultMap>
+
+<resultMap type="cartList" id="cartExperList">
+	<result column="USER_NO" property="userNo"/>
+	<result column="EXPER_NO" property="goodsNo"/>
+	<result column="BOOTH_NAME" property="boothName"/>
+	<result column="EXPER_TITLE" property="goodsName"/>
+	<result column="EXPER_PRICE" property="goodsPrice"/>
+	<result column="COUNT" property="goodsCount"/>
+</resultMap>
+
 <insert id="insertCart">
 	INSERT INTO CART(USER_NO,
 								PRODUCT_NO,
@@ -45,5 +63,28 @@
 	WHERE USER_NO=#{userNo}
 	AND EXPER_NO=#{experNo}
 </update>
+
+
+<select id="selectCartPro" resultMap="cartProList">
+	SELECT C.USER_NO, P.PRODUCT_NO, B.BOOTH_NO, B.BOOTH_NAME, P.PRODUCT_NAME, P.PRODUCT_PRICE, C.COUNT
+	FROM CART C
+	JOIN PRODUCT P ON (P.PRODUCT_NO=C.PRODUCT_NO)
+	JOIN BOOTH B ON (B.BOOTH_NO=p.BOOTH_NO)
+	WHERE USER_NO= #{userNo}
+
+</select>
+
+
+
+<select id="selectCartExper" resultMap="cartExperList">
+	SELECT C.USER_NO,C.EXPER_NO, B.BOOTH_NAME, E.EXPER_TITLE, E.EXPER_PRICE, C.COUNT
+	FROM CART C
+    JOIN EXPERIENCE E ON(E.EXPER_NO=C.EXPER_NO)
+	JOIN BOOTH B ON (B.BOOTH_NO=E.BOOTH_NO)
+	WHERE USER_NO= #{userNo}
+
+</select>
+
+
   
 </mapper>

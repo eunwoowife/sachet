@@ -126,7 +126,7 @@
         </div>
         <div id="userarea">
        <c:if test="${not empty loginUser }">
-       		${loginUser.userName }님, 안녕
+       		${loginUser.userName }님, 안녕	
        </c:if>
             <ul>
             	<c:choose>

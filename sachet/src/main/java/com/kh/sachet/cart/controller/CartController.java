@@ -1,14 +1,19 @@
 package com.kh.sachet.cart.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.sachet.cart.model.service.CartService;
 import com.kh.sachet.cart.model.vo.Cart;
+import com.kh.sachet.cart.model.vo.CartList;
+import com.kh.sachet.company.model.vo.Company;
 import com.kh.sachet.member.model.vo.Member;
 
 @Controller
@@ -64,5 +69,37 @@ public class CartController {
 	
 	
 	
-	//장바구니 맵핑값 selectCart.ca로 해주시궜어요?????ㅎㅎㅎ
+	@RequestMapping("selectCart.ca")
+	public ModelAndView  selectCart(HttpSession session,ModelAndView mv) {
+		
+		Member m= (Member) session.getAttribute("loginUser");
+		int userNo = m.getUserNo();
+		
+		//수령상품 담기
+		ArrayList <CartList> cartPro = new ArrayList<CartList>();
+		cartPro= cartService.selectCartPro(userNo);
+		
+		//체험상품 장바구니에 담기
+		ArrayList <CartList> cartExper = new ArrayList<CartList>();
+		cartExper= cartService.selectCartExper(userNo);
+		
+		//두개 합친 최종 장바구니 껍데기
+		ArrayList <CartList> cartList = new ArrayList<CartList>();
+		
+		//담는다.
+		cartList.addAll(cartPro);
+		cartList.addAll(cartExper);
+		
+		//보낸다.
+		
+		mv.addObject("c", cartList);
+		mv.setViewName("cart/cartListView");
+		
+		
+		return mv;
+		
+	}
+
+	
+	
 }

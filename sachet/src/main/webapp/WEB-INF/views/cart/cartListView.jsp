@@ -12,15 +12,13 @@
 <title>Document</title>
 <!-- jQuery 라이브러리 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">    
 <style>
 	.outerarea{
         width: 70%;
-        margin-top: 200px;
+        margin-top: 100px;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-
 	}
 
     .contentarea{
@@ -208,7 +206,7 @@
 		position: sticky;
         vertical-align:top;
 		margin-top: 50px;
-		position: fixed; 
+		position:sticky;
 
 	}
 
@@ -229,6 +227,8 @@
 		padding: 10px;
         border: 2px solid #666666;
         border-radius: 10px;
+                 
+
 		
 	}
 
@@ -297,15 +297,9 @@
 	
     }
 
-
-
-
-
-	
-
 </style>
 <body>
-
+<jsp:include page="../common/header.jsp" />
 	<img src="" alt="">
 	<div class="outerarea">
 
@@ -348,33 +342,46 @@
 
 
 
+                
 
-
+<c:forEach var="c" items="${c}">
 				<div class="productRow">
 
 					<input type="hidden" value="3">
 
 					<div class="cartheader thumbnail"> <img src="https://mblogthumb-phinf.pstatic.net/20160817_259/retspe_14714118890125sC2j_PNG/%C7%C7%C4%AB%C3%F2_%281%29.png?type=w800" alt=""></div>
 					<div class="cartheader productDetail">
-						<div class="productCinfo">[수령 상품] 조말론 - 말론조</div> <br>
-						<div class="productName">타타</div>
+						<div class="productCinfo">[수령 상품] ${c.boothName}</div> <br>
+						<div class="productName">${c.goodsName }</div>
 					</div>
-					<div class="cartheader productPrice" id="pPrice3">35000</div>
+					<div class="cartheader productPrice" id="pPrice${c.goodsNo}">${c.goodsPrice }</div>
 					<div class="cartheader productCount">
-					<input type="button" class="countbtn" value="-" onclick="pCount(1, 3)">	
-					<input type="number" name="pCount" class="pCount" value="2" disabled id="ppCount3">
-					<input type="button" class="countbtn" value="+" onclick="pCount(2, 3)">
+					<input type="button" class="countbtn" value="-" onclick="pCount(1, ${c.goodsNo})">	
+					<input type="number" name="pCount" class="pCount" value="${c.goodsCount}" id="ppCount${c.goodsNo}" disabled>
+					<input type="button" class="countbtn" value="+" onclick="pCount(2, ${c.goodsNo})">
 					</div>
-					<div class="cartheader productSelectPrice"><input type="number" value="40000" id="psPrice3" class="sump" disabled></div>
+					<div class="cartheader productSelectPrice"><input type="number" value="40000" id="psPrice${c.goodsNo}" class="sump" disabled></div>
 					<div class="cartheader productbtnarea">
-						<input type="button" class="pbtn selOderBtn" id="spayment3" value="주문하기">
-						<input type="button" class="pbtn selWishBtn" id="swish3" value="위시리스트">
-						<input type="button" class="pbtn selDelBtn" id="sdelete3"value="삭제하기">
+						<input type="button" class="pbtn selOderBtn" id="spayment${c.goodsNo}" value="주문하기">
+						<input type="button" class="pbtn selWishBtn" id="swish${c.goodsNo}" value="위시리스트">
+						<input type="button" class="pbtn selDelBtn" id="sdelete${c.goodsNo}"value="삭제하기">
 					</div>
 
 					<hr class="hr1">
 
 				</div>
+				
+				
+</c:forEach>			
+				
+
+
+				
+				
+				
+				
+				
+				
 
 				<div class="cartbtnarea">
                     <input type="button" class="pbtn cartbtn" value="돌아가기">
@@ -431,18 +438,11 @@
 
 				</div>
 
-
-
 			</div>
 			
 
-			
-
-
-
 			<br><br>
 		</div>
-
 
 
 
@@ -464,6 +464,10 @@
 
 function pCount(result, pnum) {
 	var count = $('#ppCount'+pnum).val();
+	
+	console.log("1은 빼기, 2는 더하기인 리절트 값: "+result);
+	console.log("상품 넘버"+pnum);
+	
 
 	if(result==1){
 		count--;
@@ -476,6 +480,7 @@ function pCount(result, pnum) {
             count=10;
         }
 	}
+	console.log("상품 수량"+count);
 
 	$('#ppCount'+pnum).val(count);
 	onePriceCal(count, pnum);
@@ -499,7 +504,7 @@ function pCount(result, pnum) {
 //재계산
 
 
-	//개별개산
+	//개별수량변경에 따른 계산
 	function onePriceCal(count, pnum){
 
 	var onePrice = $('#pPrice'+pnum).text();
@@ -509,32 +514,18 @@ function pCount(result, pnum) {
 	$('#psPrice'+pnum).val(selectP);
 
 	totalPriceCal();
+}
 
 	//토탈계{산알먼아ㅣ러먀ㅣㄴ ㄷ아ㅓ사ㅣ;ㅂ덪4ㄱ시ㅏ;ㅓㅂ34디ㅑ;ㅓㅅ ㅑㅐ}
 
 	function totalPriceCal(){
 
-		// this.totalCount = 0;
-        // this.totalPrice = 0;
-        // document.querySelectorAll(".pCount").forEach(function (item) {
-
-		// 	console.log(item);
-
-        //     if(item.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.checked == true){
-        //         var count = parseInt(item.getAttribute('value'));
-        //         this.totalCount += count;
-
-        //         var price = item.parentElement.parentElement.previousElementSibling.firstElementChild.getAttribute('value');
-        //         this.totalPrice += count * price;
-        //     }
-        // }, this); // forEach 2번째 파라메터로 객체를 넘겨서 this 가 객체리터럴을 가리키도록 함. - thisArg
-
 		
 		var sum=0;
 
-		$('.sump').each(function(){ //클래스가 money인 항목의 갯수만큼 진행
+		$('.sump').each(function(){
 			sum += parseInt($(this).val()); 
-			console.log(sum);
+			console.log("토탈썸"+sum);
 		});
 
 		sum+=" 원";
@@ -551,7 +542,6 @@ function pCount(result, pnum) {
 
 
 
-}
 
 
 

@@ -1,6 +1,9 @@
 package com.kh.sachet.cart.model.service;
 
+import java.util.ArrayList;
+
 import com.kh.sachet.cart.model.vo.Cart;
+import com.kh.sachet.cart.model.vo.CartList;
 
 public interface CartService {
 	
@@ -13,4 +16,8 @@ public interface CartService {
 	int insertCartUpdateProductCount(Cart c);
 
 	int insertCartupdateExperiecne(Cart c);
+
+	ArrayList<CartList> selectCartPro(int userNo);
+
+	ArrayList<CartList> selectCartExper(int userNo);
 }
