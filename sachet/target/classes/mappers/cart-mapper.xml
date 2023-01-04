@@ -19,5 +19,31 @@
 				#{experNo},
 				#{count})
 </insert>
+
+<select id="checkCartProduct" resultType="_int">
+	SELECT COUNT(*)
+	FROM CART
+	WHERE USER_NO=#{userNo}
+	AND PRODUCT_NO=#{productNo}
+</select>
+
+<select id="checkCartExperience" resultType="_int">
+	SELECT COUNT(*)
+	FROM CART
+	WHERE USER_NO=#{	userNo}
+	AND EXPER_NO=#{experNo}
+</select>
+
+<update id="insertCartUpdateProductCount">
+	UPDATE CART SET COUNT=COUNT+#{count}
+	WHERE USER_NO=#{userNo}
+	AND PRODUCT_NO=#{productNo}
+</update>
+
+<update id="insertCartupdateExperiecne">
+	UPDATE CART SET COUNT=COUNT+#{count}
+	WHERE USER_NO=#{userNo}
+	AND EXPER_NO=#{experNo}
+</update>
   
 </mapper>

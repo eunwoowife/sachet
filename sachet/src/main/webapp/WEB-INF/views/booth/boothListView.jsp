@@ -118,9 +118,7 @@
                               대표자명 : ${b.comOwner }<br>
                               주소 : ${b.comAddress }
                               </span>
-                              <br><br><br>
                               
-                              부스위치<br>
                               </div>
                               <div class="modal-footer">
                                 <button

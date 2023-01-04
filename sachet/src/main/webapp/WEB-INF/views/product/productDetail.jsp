@@ -240,9 +240,11 @@ ${p.productDetail}
 					type : "post",
 					success : function(result){
 						console.log("장바구니 추가 성공"+result);
+						if(result>0){
 						var goCart = confirm("장바구니에 해당 상품이 담겼습니다. 장바구니로 이동하시겠습니까?");
-						if(goCart){
-							location.href="selectCart.ca";
+							if(goCart){
+								location.href="selectCart.ca";
+						}
 						}else{
 							return false;
 						}

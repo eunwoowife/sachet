@@ -28,4 +28,6 @@ public class Sales {
 	private String userId;
 	private String userName;
 	private String userPhone;
+	private int count;
+	private int productPrice;
 }

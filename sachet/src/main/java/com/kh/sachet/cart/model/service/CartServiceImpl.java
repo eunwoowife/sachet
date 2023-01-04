@@ -21,4 +21,28 @@ public class CartServiceImpl implements CartService{
 		int result = cartDao.insertCart(sqlSession, c);
 		return result;
 	}
+
+	@Override
+	public int checkCartProduct(Cart c) {
+		int checkOverlap = cartDao.checkCartProduct(sqlSession, c);
+		return checkOverlap;
+	}
+
+	@Override
+	public int checkCartExperience(Cart c) {
+		int checkOverlap = cartDao.checkCartExperience(sqlSession, c);
+		return checkOverlap;
+	}
+
+	@Override
+	public int insertCartUpdateProductCount(Cart c) {
+		int result = cartDao.insertCartUpdateProductCount(sqlSession, c);
+		return result;
+	}
+
+	@Override
+	public int insertCartupdateExperiecne(Cart c) {
+		int result = cartDao.insertCartupdateExperiecne(sqlSession, c);
+		return result;
+	}
 }

@@ -34,7 +34,31 @@ public class CartController {
 		c.setUserNo(userNo);
 //		System.out.println("유저번호 : "+userNo);
 		
-		int result = cartService.insertCart(c);
+		int result = 0;
+		
+		//장바구니에 추가하려는 품목이 이미 장바구니에 담겨져있는지 확인하기
+		//해당 상품이 장바구니에 이미 있는지?
+		int checkOverlap1 = cartService.checkCartProduct(c);
+		System.out.println("상품result갯수 : "+checkOverlap1);
+		//해당 체험이 장바구니에 이미 있는지?
+		int checkOverlap2 = cartService.checkCartExperience(c);
+		System.out.println("체험result갯수 : "+checkOverlap1);
+		
+		System.out.println(c);
+		//상품 체크하고 장바구니에 넣기
+		if(experNo==0 && checkOverlap1>=1) { //이미 있는 상품이라면 갯수를 count만큼 +해줘서 업데이트하기
+			result = cartService.insertCartUpdateProductCount(c);
+		}else if(experNo==0 && checkOverlap1==0){ //없는 상품이라면 장바구니에 상품이 담길 수 있게 새로 추가하기
+			result = cartService.insertCart(c);
+		}
+		
+		//체험 체크하고 장바구니에 넣기
+		if(productNo==0 && checkOverlap2>=1) { //이미 있는 체험이라면 갯수를 count만큼 +해줘서 업데이트하기
+			result = cartService.insertCartupdateExperiecne(c);
+		}else if(productNo==0 && checkOverlap2==0){ //없는 체험이라면 장바구니에 상품이 담길 수 있게 새로 추가하기
+			result = cartService.insertCart(c);
+		}
+		
 		return result;
 	}
 	
