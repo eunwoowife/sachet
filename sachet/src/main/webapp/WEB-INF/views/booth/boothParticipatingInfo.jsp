@@ -28,7 +28,7 @@
         
         <div class="sub_content">
             <div class="jeonsi_top">
-                <div class="jeonsi_btn" style="cursor: pointer;"onclick="location.href='boothparticipationForm.boo'">
+                <div class="jeonsi_btn" style="cursor: pointer;"onclick="boothInsertGo();">
                     <a style="color:white;">참가<br>신청하기</a>
                 </div>
                 <div class="agreementImg" style="float:left; margin-left:-120px;">
@@ -236,6 +236,35 @@
                 </div>
             </div>
 
-            
+         </div>   
+         
+         
+		<script>
+		   
+		function boothInsertGo(){
+			
+			
+		    <c:if test="${not empty loginUser }">
+		    
+				const loginUser = '${loginUser.userNo}';				
+				if(loginUser<=1000){
+					location.href='boothparticipationForm.boo';
+				}else if(loginUser>1000){
+					window.alert("기업 로그인 후 이용 가능한 서비스입니다.");
+					return false;
+				}
+
+     		</c:if>
+     		<c:if test="${empty loginUser }">
+     			alert("기업 로그인 후 이용 가능한 서비스입니다.");
+ 			</c:if>
+     		
+	
+			
+		}
+		   
+		   
+		   
+		</script>
            
 </html>

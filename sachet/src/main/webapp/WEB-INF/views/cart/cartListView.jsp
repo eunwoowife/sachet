@@ -1,33 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>가보자고t</title>
+	<title>CART</title>
 </head>
 <title>Document</title>
 <!-- jQuery 라이브러리 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">    
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
-    
-    *{
-    	font-family: 'IBM Plex Sans KR', sans-serif;
-    }
-
-
 	.outerarea{
-		width: 70%;
-		margin-left: 300px;
+        width: 70%;
+        margin-top: 200px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
 	}
 
+    .contentarea{
+        width: 1300px;
+    }
+
 	.steparea{
-		background-color: gray;
+        width: 100%;
+		background-color:  #858585;
 		height: 170px;
 		margin-top: 2em;
 	}
@@ -35,7 +37,7 @@
 	.step {
 		margin-top: 70px;
 		display: inline-block;
-		color: aliceblue;
+		color: white;
 		font-size: 1.2em;
 		padding-left: 3.5em;
 	}
@@ -43,24 +45,26 @@
 	.stepTitle{
 		font-size: 2em;
 	}
+
+    .two, .three{
+        color: rgb(94, 94, 94)
+    }
 	
 
 	.productarea{
-		margin-left: 25px;
 		display: inline-block;
 		background-color: white;
 		padding: 20px;
 		vertical-align:top;
 		margin-top: 10px;
+        width: 70%;
 	}
 
 	.cartheader{
 		display: inline-block;
-		text-align: center;
 		color: gray;
 		font-weight: bold;
 		width: 100%;
-		padding-inline-start: 10px;
 		margin-top: 30px;
 		margin-bottom: 20px;
 
@@ -72,10 +76,6 @@
 		color: gray;
 		font-weight: bold;
 		width: 100%;
-	}
-
-	.checkarea{
-		width: 30px;
 	}
 
 	.thumbnail{
@@ -106,7 +106,6 @@
 	}
 
 
-
 	.productbtnarea{
 		width: 150px;
 	}
@@ -116,7 +115,6 @@
 		text-align: center;
 		width: 100%;
 		height: 150px;
-		align-items: center;
 	}
 
 	.productRow div{
@@ -133,8 +131,12 @@
 	}
 
 	.productName{
-		float: left;
+        display: inline-block;
+        text-align: left;    
+		font-size: 14px;
 		display: block;
+
+
 	}
 
 
@@ -161,12 +163,23 @@
 	}
 
 	.pbtn{
-		border-radius: 0;
-		border: 1px solid gray;
+		border-radius: 5px;
+		border: 1px solid #a8a8a8;
 		width: 100px;
 		font-size: 0.8em;
+        cursor: pointer;
+        background-color: rgb(255, 255, 255);
 
 	}
+
+    .pbtn:hover{
+        color: aliceblue;
+        background-color:  #cecece;
+        transition: 0.3s;
+
+	}
+
+    
 
 	.countbtn{
 		border: none;
@@ -181,14 +194,7 @@
 	.countbtn:hover{
 		color: white;
 		background-color: rgb(128, 128, 128);
-	}
 
-	input[type=checkbox]{
-		width:17px;
-		height:17px;
-		border:2px solid #F47C7C;
-		border-radius: 4px;
-		vertical-align:middle;
 	}
 
 
@@ -199,7 +205,10 @@
 		margin-top: 80px;
 		background-color: white;
 		margin-left: 10px;
-		 position: sticky;
+		position: sticky;
+        vertical-align:top;
+		margin-top: 50px;
+		position: fixed; 
 
 	}
 
@@ -215,16 +224,11 @@
 		border: 0;
 	}
 
-	.payarea{
-		vertical-align:top;
-		margin-top: 50px;
-		width: 18%;
-		position: fixed; 
-	}
-
 
 	.paymentarea{
 		padding: 10px;
+        border: 2px solid #666666;
+        border-radius: 10px;
 		
 	}
 
@@ -252,6 +256,7 @@
 		margin-bottom: 20px;
 		border: 1px solid gray;
 		padding: 10px;
+        font-size: 0.8em;
 
 	}
 
@@ -270,19 +275,41 @@
 		margin: 0;
 	}
 
+    .cartbtn{
+        height: 30px;
+        width: 130px;
+    }
+
+    .lastbtn{
+        width: 100%;
+        height: 50px;
+        font-size: 20px;
+        background-color:  #a8a8a8;
+        color: white;
+    }
+
+    .lastbtn:hover{
+        width: 100%;
+        height: 50px;
+        font-size: 20px;
+        background-color:  #686868;
+        color: white;
 	
+    }
 
 
 
 
 
-
-
+	
 
 </style>
 <body>
 
+	<img src="" alt="">
 	<div class="outerarea">
+
+        <div class="contentarea">
 
 		<div class="steparea">
 
@@ -307,11 +334,9 @@
 			<div class="productarea">
 				<span class="listtitle" >장바구니 목록</span>
 
-				<hr style="height: 2px; background-color: black;">
+				<hr style="height: 2px; background-color: black; border: none;">
 
 				<div class="cartheader1">
-
-					<div class="cartheader hh  checkarea"> <input type="checkbox" name="allCheckbox" id=""  onclick='selectAll(this)' checked> </div>
 					<div class="cartheader hh thumbnail"></div>
 					<div class="cartheader hh productDetail">상품 정보</div>
 					<div class="cartheader hh productPrice">상품 금액</div>
@@ -323,70 +348,12 @@
 
 
 
-				<div class="productRow">
-					<input type="hidden" value="1">
-
-					<div class="cartheader checkarea"> <input type="checkbox" name="allCheckbox" id="" checked> </div>
-					<div class="cartheader thumbnail"> <img src="https://mblogthumb-phinf.pstatic.net/20160817_259/retspe_14714118890125sC2j_PNG/%C7%C7%C4%AB%C3%F2_%281%29.png?type=w800" alt=""></div>
-					<div class="cartheader productDetail">
-						<div class="productCinfo">[수령 상품] 조말론 - 말론조</div> <br>
-						<div class="productName">타타</div>
-					</div>
-					<div class="cartheader productPrice" id="pPrice1">20000</div>
-					<div class="cartheader productCount">
-					<input type="button" class="countbtn" value="-" onclick="pCount(1, 1)">	
-					<input type="number" name="pCount" class="pCount" value="2" id="ppCount1" disabled>
-					<input type="button" class="countbtn" value="+" onclick="pCount(2, 1)">
-					</div>
-					<div class="cartheader productSelectPrice"> <input type="number" value="40000" id="psPrice1" class="sump" disabled></div>
-					<div class="cartheader productbtnarea">
-						<input type="button" class="pbtn" id="spayment1" value="주문하기">
-						<input type="button" class="pbtn" id="swish1" value="위시리스트">
-						<input type="button" class="pbtn" id="sdelete1"value="삭제하기">
-					</div>
-
-					<hr class="hr1">
-
-				</div>
-
-
-
-				<div class="productRow">
-
-					<input type="hidden" value="2">
-
-
-					<div class="cartheader checkarea"> <input type="checkbox" name="allCheckbox" id="" checked> </div>
-					<div class="cartheader thumbnail"> <img src="https://mblogthumb-phinf.pstatic.net/20160817_259/retspe_14714118890125sC2j_PNG/%C7%C7%C4%AB%C3%F2_%281%29.png?type=w800" alt=""></div>
-					<div class="cartheader productDetail">
-						<div class="productCinfo">[수령 상품] 조말론 - 말론조</div> <br>
-						<div class="productName">타타</div>
-					</div>
-					<div class="cartheader productPrice" id="pPrice2">80000</div>
-					<div class="cartheader productCount">
-					<input type="button" class="countbtn" value="-" onclick="pCount(1, 2)">	
-					<input type="number" name="pCount" class="pCount" value="2" id="ppCount2" disabled>
-					<input type="button" class="countbtn" value="+" onclick="pCount(2, 2)">
-					</div>
-					<div class="cartheader productSelectPrice"><input type="number" value="40000" id="psPrice2" class="sump" disabled></div>
-					<div class="cartheader productbtnarea">
-						<input type="button" class="pbtn" id="spayment2" value="주문하기">
-						<input type="button" class="pbtn" id="swish2" value="위시리스트">
-						<input type="button" class="pbtn" id="sdelete2"value="삭제하기">
-					</div>
-
-					<hr class="hr1">
-
-				</div>
-
-
 
 
 				<div class="productRow">
 
 					<input type="hidden" value="3">
 
-					<div class="cartheader checkarea"> <input type="checkbox" name="allCheckbox" id="" checked> </div>
 					<div class="cartheader thumbnail"> <img src="https://mblogthumb-phinf.pstatic.net/20160817_259/retspe_14714118890125sC2j_PNG/%C7%C7%C4%AB%C3%F2_%281%29.png?type=w800" alt=""></div>
 					<div class="cartheader productDetail">
 						<div class="productCinfo">[수령 상품] 조말론 - 말론조</div> <br>
@@ -400,9 +367,9 @@
 					</div>
 					<div class="cartheader productSelectPrice"><input type="number" value="40000" id="psPrice3" class="sump" disabled></div>
 					<div class="cartheader productbtnarea">
-						<input type="button" class="pbtn" id="spayment3" value="주문하기">
-						<input type="button" class="pbtn" id="swish3" value="위시리스트">
-						<input type="button" class="pbtn" id="sdelete3"value="삭제하기">
+						<input type="button" class="pbtn selOderBtn" id="spayment3" value="주문하기">
+						<input type="button" class="pbtn selWishBtn" id="swish3" value="위시리스트">
+						<input type="button" class="pbtn selDelBtn" id="sdelete3"value="삭제하기">
 					</div>
 
 					<hr class="hr1">
@@ -410,8 +377,8 @@
 				</div>
 
 				<div class="cartbtnarea">
-					<input type="button" value="선택 삭제">
-					<input type="button" value="장바구니 비우기">
+                    <input type="button" class="pbtn cartbtn" value="돌아가기">
+					<input type="button" class="pbtn cartbtn" value="장바구니 비우기">
 				</div>
 			
 
@@ -442,12 +409,10 @@
 					</div>
 
 					<div class="payNoticeArea">
-						체험상품의경우 어쩌구저쩌구<br>
-						수령방식의 경우 저쩌구어쩌구<br>
-						체험상품의경우 어쩌구저쩌구<br>
-						수령방식의 경우 저쩌구어쩌구<br>
-						체험상품의경우 어쩌구저쩌구<br>
-						수령방식의 경우 저쩌구어쩌구<br>
+                        ◎ 체험 상품의 경우 예약 시간의 10분 전 대기하실 것을 권장드립니다. <br><br>
+                        ◎ 상품 수령 시간 및 미수령 상품에 관해서는 각 부스에 문의 해주십시오. <br><br>
+						◎ Sachet 주최측은 결제 대행 시스템만 제공하므로 자세한 상품 설명 및 교환/환불 약관은 각 기업의 설명을 참고하시기 바랍니다. <br>
+
 
 					</div>
 
@@ -459,8 +424,7 @@
 					</div>
 					
 					<div class="paybtnArea">
-					<input type="button" value="선택 구매">
-					<input type="button" value="전체 구매">
+					<input type="button" class="pbtn lastbtn" value="결제하기">
 					</div>
 
 
@@ -479,10 +443,14 @@
 			<br><br>
 		</div>
 
+
+
+
+    </div>
 	</div>
 	
 </body>
-</html>
+
 
 <script>
 //윈도우 온로드용 함수
@@ -490,15 +458,6 @@
 
 
 
-//ALL 체크
-
-function selectAll(selectAll)  {
-  const checkboxes 
-       = document.getElementsByName('allCheckbox');
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = selectAll.checked;
-  })
-}
 
 
 //상품 수량 변경
@@ -607,3 +566,4 @@ function pCount(result, pnum) {
 
 //전체 구매
 </script>
+</html>

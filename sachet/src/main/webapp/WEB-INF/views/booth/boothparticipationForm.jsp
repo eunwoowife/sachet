@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -85,6 +85,10 @@ margin-top : 100px;
  .row12{
     height: 5%;
  }
+ 
+ .row13{
+ 	height: 15%;
+ }
 
  .boothSelect{
     width: 100%;
@@ -158,7 +162,7 @@ margin-left: 20px;
                 <div class="d-flex align-items-start align-items-sm-center gap-4">
                   <label class="col-sm-2 col-form-label" for="basic-default-name">부스 썸네일</label>
                   <img
-                    src="https://pbs.twimg.com/profile_images/1523892825481392128/rO3aJYod_400x400.jpg"
+                    src="${pageContext.request.contextPath}/resources/images/defaultX.png"
                     alt="user-avatar"
                     class="d-block rounded"
                     height="100"
@@ -178,8 +182,8 @@ margin-left: 20px;
                         onchange="readURL(this);"
                       />
                     </label>
-                    <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                      <i class="bx bx-reset d-block d-sm-none"></i>
+                    <button type="button" class="btn btn-outline-secondary account-image-reset mb-4" onclick="imgReset();">
+                      <i class="bx bx-reset d-block d-sm-none" ></i>
                       <span class="d-none d-sm-block">Reset</span>
                     </button>
 
@@ -192,7 +196,7 @@ margin-left: 20px;
                   <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-default-name">부스 이름</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="basic-default-name" name="boothName"/>
+                      <input type="text" class="form-control" id="basic-default-name" name="boothName" required/>
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -229,6 +233,7 @@ margin-left: 20px;
                         placeholder="부스 소개 글을 입력해주세요."
                         aria-describedby="basic-icon-default-message2"
                         name="boothDetail"
+                        required
                       ></textarea>
                     </div>
                   </div>
@@ -239,12 +244,11 @@ margin-left: 20px;
                       <div id="listarea">
                         <table>
                               <tr class="row1">
-                                <td colspan="4" rowspan="2" width=""><input type="button" name="b1" class="boothSelect premium" value="A1" onclick="selectNo(1);"></td>
-
+                                <td colspan="4" rowspan="2" width=""><input type="button" name="b1" class="boothSelect premium booth1" value="A1" onclick="selectNo(1);"></td>
                                 <td></td>
-                                <td colspan="7" rowspan="2" width=""><input type="button" name="b2" class="boothSelect premium" value="B1" onclick="selectNo(2);"></td>
+                                <td colspan="7" rowspan="2" width=""><input type="button" name="b2" class="boothSelect premium booth2" value="B1" onclick="selectNo(2);"></td>
                                 <td width="8%"></td>
-                                <td colspan="2" rowspan="2" width="20%"><input type="button" name="b5" class="boothSelect deruxe" value="C1" onclick="selectNo(5);"></td>
+                                <td colspan="2" rowspan="2" width="20%"><input type="button" name="b5" class="boothSelect deruxe booth5" value="C1" onclick="selectNo(5);"></td>
                               </tr>
                               <tr class="row2">
                                 <td width="3%"></td>
@@ -268,15 +272,15 @@ margin-left: 20px;
                                 <td></td>
                               </tr>
                               <tr class="row4">
-                                <td rowspan="7"><input type="button" name="b3" class="boothSelect premium" value="A2" onclick="selectNo(3);"></td>
+                                <td rowspan="7"><input type="button" name="b3" class="boothSelect premium booth3" value="A2" onclick="selectNo(3);"></td>
                                 <td></td>
-                                <td colspan="2" rowspan="2"><input type="button" name="b8" class="boothSelect" value="A4" onclick="selectNo(8);"></td>
+                                <td colspan="2" rowspan="2"><input type="button" name="b8" class="boothSelect booth8" value="A4" onclick="selectNo(8);"></td>
                                 <td></td>
-                                <td colspan="5" rowspan="2"><input type="button" name="b9" class="boothSelect" value="B2" onclick="selectNo(9);"></td>
+                                <td colspan="5" rowspan="2"><input type="button" name="b9" class="boothSelect booth9" value="B2" onclick="selectNo(9);"></td>
                                 <td></td>
-                                <td colspan="2" rowspan="2"><input type="button" name="b10" class="boothSelect" value="A6" onclick="selectNo(10);" ></td>
+                                <td colspan="2" rowspan="2"><input type="button" name="b10" class="boothSelect booth10" value="A6" onclick="selectNo(10);" ></td>
                                 <td></td>
-                                <td rowspan="2"><input type="button" name="b11" class="boothSelect" value="C2" value="A6" onclick="selectNo(11);"></td>
+                                <td rowspan="2"><input type="button" name="b11" class="boothSelect booth11" value="C2" value="A6" onclick="selectNo(11);"></td>
                               </tr>
                               <tr class="row5">
                                 <td></td>
@@ -303,14 +307,14 @@ margin-left: 20px;
                               </tr>
                               <tr class="row7">
                                 <td></td>
-                                <td colspan="2" rowspan="2"><input type="button" name="b12" class="boothSelect" value="A5" onclick="selectNo(12);"></td>
+                                <td colspan="2" rowspan="2"><input type="button" name="b12" class="boothSelect booth12" value="A5" onclick="selectNo(12);"></td>
                                 <td></td>
                                 <td></td>
-                                <td colspan="3" rowspan="2" width="15%"><input type="button" name="b13" class="boothSelect" value="B3" onclick="selectNo(13);"></td>
-                                <td colspan="3" rowspan="2"><input type="button" name="b14" class="boothSelect" value="A8" onclick="selectNo(14);"></td>
+                                <td colspan="3" rowspan="2" width="15%"><input type="button" name="b13" class="boothSelect booth13" value="B3" onclick="selectNo(13);"></td>
+                                <td colspan="3" rowspan="2"><input type="button" name="b14" class="boothSelect booth14" value="A8" onclick="selectNo(14);"></td>
                                 <td></td>
                                 <td></td>
-                                <td rowspan="7"><input type="button" name="b4" class="boothSelect premium" value="a14" onclick="selectNo(4);"></td>
+                                <td rowspan="7"><input type="button" name="b4" class="boothSelect premium booth4" value="a14" onclick="selectNo(4);"></td>
                               </tr>
                               <tr class="row8">
                                 <td></td>
@@ -337,11 +341,11 @@ margin-left: 20px;
                               <tr class="row10">
                                 
                                 <td></td>
-                                <td colspan="2" rowspan="2"><input type="button" name="b15" class="boothSelect" value="A6" onclick="selectNo(15);"></td>
+                                <td colspan="2" rowspan="2"><input type="button" name="b15" class="boothSelect booth15" value="A6" onclick="selectNo(15);"></td>
                                 <td></td>
                                 <td rowspan="2"></td>
-                                <td colspan="3" rowspan="2"><input type="button" name="b16" class="boothSelect" value="B4" onclick="selectNo(16);"></td>
-                                <td colspan="3" rowspan="2"><input type="button" name="b17" class="boothSelect" value="A9" onclick="selectNo(17);"></td>
+                                <td colspan="3" rowspan="2"><input type="button" name="b16" class="boothSelect booth16" value="B4" onclick="selectNo(16);"></td>
+                                <td colspan="3" rowspan="2"><input type="button" name="b17" class="boothSelect booth17" value="A9" onclick="selectNo(17);"></td>
                                 <td></td>
                                 <td></td>
                               </tr>
@@ -353,7 +357,7 @@ margin-left: 20px;
                                 <td></td>
                               </tr>
                               <tr class="row12">
-                                <td rowspan="3" ><input type="button" name="b6" class="boothSelect deruxe" value="A3" onclick="selectNo(6);"></td>
+                                <td rowspan="3" ><input type="button" name="b6" class="boothSelect deruxe booth6" value="A3" onclick="selectNo(6);"></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -376,7 +380,7 @@ margin-left: 20px;
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td colspan="2" rowspan="2"><input type="button" name="b18" class="boothSelect deruxe" value="B5" onclick="selectNo(7);"></td>
+                                <td colspan="2" rowspan="2"><input type="button" name="b18" class="boothSelect deruxe booth7" value="B5" onclick="selectNo(7);"></td>
                                 <td></td>
                                 <td></td>
                                 <td colspan="2" rowspan="2"><img width="50px;" src="${pageContext.request.contextPath}/resources/images/entrance.png" alt=""></td>
@@ -485,10 +489,10 @@ margin-left: 20px;
                     <label class="col-sm-2 col-form-label" for="basic-default-message">신청 후 <br>주의사항</label>
                     <div class="col-sm-10">
                       <div>
-	- <b>참가비 납입방법</b> : 계좌 입금 및 신용카드 납부  참가신청계약시 참가비의 50% 납부(부가세 포함 금액) <br>
+	- <b>참가비 납입방법</b> : 계좌 입금  참가신청계약시 참가비의 50% 납부(부가세 포함 금액) <br>
 	※ 참가신청금이 납입되지 않은 신청서는 정식계약서로 인정하지 않음 <br>
 	- <b>잔금 납입</b> : 아래 행사별 기한 참조 <br>
-	- <b>입금 계좌</b> : 우리은행 1005-302-026248 (예금주 : (주)이엑스스포테인먼트) <br>
+	- <b>입금 계좌</b> : 우리은행 1111-222-33333 (예금주 : (주)SACHET) <br>
 	※ 온라인 입금시 업체명을 필히 명기하시기 바람
                       </div>
                     </div>
@@ -514,6 +518,38 @@ margin-left: 20px;
 
     
     <script>
+    $(document).ready(function(){
+		$.ajax({
+			url : "boothSectionList.boo",
+			success : function(result){
+				console.log(result);
+				var booSection = new Array();
+				
+				for(var i=0; i<result.length; i++){
+					booSection.push(result[i].boothSection);
+				}
+				
+				
+				
+				for(var j=0; j<18; j++){
+					if(booSection.includes(j)){
+						console.log(".booth"+[j]);
+						$(".booth"+[j]).attr('disabled', 'true');
+						}
+				}
+				
+			},
+			error : function(){
+				console.log("통신실패")
+			}
+			
+			
+		});
+    	
+    	
+    });  
+    
+    
       function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -525,11 +561,15 @@ margin-left: 20px;
     document.getElementById('preview').src = "";
   }
 }
-    
-      
+
+      function imgReset() {
+    	  document.getElementById('preview').src = '${pageContext.request.contextPath}/resources/images/defaultX.png';
+      }
+    	   
       function selectNo(number){
     	  $("#boothSection").val(number);
       }
+      
       
       
       

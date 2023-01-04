@@ -15,4 +15,8 @@ public class BoothDao {
 		return booList;
 	}
 
+	public int boothFormInsert(SqlSessionTemplate sqlSession, Booth insertB) {
+		return sqlSession.insert("boothMapper.boothFormInsert", insertB);
+	}
+
 }

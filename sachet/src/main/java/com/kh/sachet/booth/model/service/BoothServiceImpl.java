@@ -13,15 +13,21 @@ import com.kh.sachet.booth.model.vo.Booth;
 public class BoothServiceImpl implements BoothService{
 	
 	@Autowired
-	private BoothDao boothDao;
+	private BoothDao boothdao;
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
 	@Override
 	public ArrayList<Booth> selectBoothList() {
-		ArrayList<Booth> booList = boothDao.selectBoothList(sqlSession);
+		ArrayList<Booth> booList = boothdao.selectBoothList(sqlSession);
 		return booList;
+	}
+
+	@Override
+	public int boothFormInsert(Booth insertB) {
+		int result = boothdao.boothFormInsert(sqlSession, insertB);
+		return result;
 	}
 
 }
