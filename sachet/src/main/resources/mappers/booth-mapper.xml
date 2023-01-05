@@ -12,6 +12,7 @@
 	<result column="BOOTH_PRICE" property="boothPrice"/>
 	<result column="BOOTH_SECTION" property="boothSection"/>
 	<result column="BOOTH_STATUS" property="boothStatus"/>
+	<result column="REPORTING_DATE" property="reportingDate"/>
 	<result column="COM_NAME" property="comName"/>
 	<result column="COM_OWNER" property="comOwner"/>
 	<result column="COM_PHONE1" property="comPhone1"/>
@@ -33,7 +34,11 @@
   					COM_OWNER,
   					COM_PHONE1,
   					COM_ADDRESS,
-  					COM_LOGO_FP
+  					COM_LOGO_FP,
+  					COM_BRNUM,
+  					REPORTING_DATE,
+  					BOOTH_STATUS,
+  					REPORTING_DATE
 		FROM BOOTH B
 		JOIN COMPANY ON(USER_NO=COM_NO)
 		WHERE BOOTH_STATUS='Y'
@@ -50,8 +55,100 @@
   							 #{boothImgFp},
   							 #{boothPrice},
   							 #{boothSection},
-  							 DEFAULT)
-  
-  
+  							 DEFAULT, SYSDATE)
   </insert>
+  
+  <select id="selectBooth" resultMap="boothResultSet">
+  		SELECT BOOTH_NO,
+  					BOOTH_NAME,
+  					BOOTH_DETAIL,
+  					BOOTH_IMG_ON,
+  					BOOTH_IMG_FP,
+  					BOOTH_PRICE,
+  					BOOTH_SECTION,
+  					BOOTH_STATUS,
+  					REPORTING_DATE
+		FROM BOOTH
+		WHERE COM_NO=#{comNo}
+  </select>
+  
+  <select id="selectWaitingBoothList" resultMap="boothResultSet">
+  		SELECT BOOTH_NO,
+  					REPORTING_DATE,
+  					COM_NAME,
+  					BOOTH_NAME,
+  					BOOTH_PRICE,
+  					BOOTH_STATUS,
+  					COM_NO,
+  					BOOTH_SECTION,
+  					BOOTH_IMG_FP
+		FROM BOOTH
+		JOIN COMPANY ON(USER_NO=COM_NO)
+		WHERE BOOTH_STATUS='N'
+			OR BOOTH_STATUS='P'
+			OR BOOTH_STATUS='J'
+  </select>
+  
+  <select id="selectWaitingBooth">
+  	SELECT BOOTH_NO,
+  				REPORTING_DATE,
+  				BOOTH_NAME,
+  				BOOTH_PRICE,
+  				BOOTH_STATUS,
+  				BOOTH_SECTION,
+  				BOOTH_IMG_FP,
+  				BOOTH_DETAIL
+	FROM BOOTH
+	WHERE COM_NO=${cno}
+  </select>
+  
+  <update id="changeToPayComplete">
+  	UPDATE BOOTH SET BOOTH_STATUS='P'
+  	WHERE BOOTH_NO=#{boothNo}
+  </update>
+  
+  <update id="changeToBoothJudge">
+  	UPDATE BOOTH SET BOOTH_STATUS='J'
+  	WHERE BOOTH_NO=#{boothNo}
+  </update>
+  
+  <update id="changeToBoothApprove">
+  	UPDATE BOOTH SET BOOTH_STATUS='Y'
+  	WHERE BOOTH_NO=#{boothNo}
+  </update>
+  
+  <update id="changeToBoothDeny">
+  	UPDATE BOOTH SET BOOTH_STATUS='D'
+  	WHERE BOOTH_NO=#{boothNo}
+  </update>
+  
+  <select id="checkBoothStatus" resultType="string">
+  	 SELECT BOOTH_STATUS
+    FROM BOOTH
+    WHERE COM_NO=#{comNo}
+  </select>
+  
+  <select id="selectDeniedBoothList" resultMap="boothResultSet">
+  	SELECT BOOTH_NO,
+  					COM_NO,
+  					BOOTH_NAME,
+  					BOOTH_DETAIL,
+  					BOOTH_IMG_ON,
+  					BOOTH_IMG_FP,
+  					BOOTH_PRICE,
+  					BOOTH_SECTION,
+  					COM_NAME,
+  					COM_OWNER,
+  					COM_PHONE1,
+  					COM_ADDRESS,
+  					COM_LOGO_FP,
+  					COM_BRNUM,
+  					REPORTING_DATE,
+  					BOOTH_STATUS,
+  					REPORTING_DATE
+		FROM BOOTH B
+		JOIN COMPANY ON(USER_NO=COM_NO)
+		WHERE BOOTH_STATUS='D'
+		ORDER BY BOOTH_NAME DESC
+  </select>
 </mapper>

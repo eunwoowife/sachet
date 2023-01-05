@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-   <!-- jQuery 라이브러리 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
@@ -41,16 +40,32 @@
 		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	
-	.addExperienceOuter{
+	.addProductOuter{
 		margin-top:150px;
 		margin-left:200px;
-	}
-	
-	.addExperienceTitle{
 		margin-right:200px;
 	}
 	
+	.addProductTitle{
+		margin-right:200px;
+	}
+	
+	 th, td{
+        padding-left: 80px;
+    }
 
+    th, td{
+        text-align: center;
+    }
+    
+    td{
+    	padding-bottom:40px;
+    }
+    
+    th{
+    	padding-bottom:20px;
+    }
+	
 </style>
 <body>
   <br>
@@ -87,32 +102,32 @@
            
 
             <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">MY COMPANY PAGE</span>
+              <span class="menu-header-text">ADMINISTRATOR PAGE</span>
             </li>
-            <li class="menu-item">
+            <li class="menu-item active open">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">ACCOUNT</div>
+                <div data-i18n="Account Settings">BOOTH APPROVAL</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="mypage.co" class="menu-link">
-                    <div data-i18n="Notifications">회원 정보</div>
+                <li class="menu-item active">
+                  <a href="boothSetting.boo" class="menu-link">
+                    <div data-i18n="Notifications">승인 대기중인 부스</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="updateForm.co" class="menu-link">
-                    <div data-i18n="Notifications">회원 정보 수정</div>
+                  <a href="approvedBooth.boo" class="menu-link">
+                    <div data-i18n="Notifications">승인된 부스</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-connections.html" class="menu-link">
-                    <div data-i18n="Connections">회원 탈퇴</div>
+                  <a href="DeniedBooth.boo" class="menu-link">
+                    <div data-i18n="Notifications">승인 거절된 부스</div>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="menu-item active open">
+            <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">MY BOOTH</div>
@@ -128,7 +143,7 @@
                     <div data-i18n="Basic">상품 관리</div>
                   </a>
                 </li>
-                 <li class="menu-item active">
+                 <li class="menu-item">
                   <a href="experienceList.co" class="menu-link" >
                     <div data-i18n="Basic">체험 관리</div>
                   </a>
@@ -148,7 +163,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                  <a href="experienceSales.co" class="menu-link">
                     <div data-i18n="Under Maintenance">체험 판매 내역</div>
                   </a>
                 </li>
@@ -186,7 +201,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="${pageContext.request.contextPath}/resources/uploadFiles/jo.png" class="w-px-40 h-auto rounded-circle"/>
+                      <img src="" class="w-px-40 h-auto rounded-circle"/>
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -199,7 +214,6 @@
                           </div>
                           <div class="flex-grow-1">
                             <span class="fw-semibold d-block">${loginUser.userName }</span>
-                            <small class="text-muted">Company</small>
                           </div>
                         </div>
                       </a>
@@ -221,155 +235,175 @@
           </nav>
           
           
-           <div class="addExperienceOuter">
-           		<div class="addExperienceTitle" align="center">
-           		<h1>체험추가</h1>
-           		<br><br>
-           		</div>
-           		
-           		<div class="addForm" style="margin-left:250px;">
-           		
-           		<form action="insertExperience.co" method="post" enctype="multipart/form-data">
-           			  <label class="form-label">체험명</label>
-           			  <div class="form-floating">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="floatingInput"
-                          placeholder="Product Name"
-                          aria-describedby="floatingInputHelp"
-                          style="width:700px;"
-                          name="experTitle"
-                          required
-                        />
-                        <label for="floatingInput">체험명</label>
-                        </div>
-                        
-                         <div class="mb-3">
-                        <label for="defaultSelect" class="form-label">체험일</label>
-                        <select id="defaultSelect" class="form-select" style="width:700px;" name="experDate">
-                          <option>체험일</option>
-                          <option value="1">1/11</option>
-                          <option value="2">1/12</option>
-                          <option value="3">1/13</option>
-                        </select>
-                      </div>
-                        
-                         <div class="mb-3">
-                        <label for="defaultSelect" class="form-label">체험시간</label>
-                        <select id="defaultSelect" class="form-select" style="width:700px;"name="experTime">
-                          <option>체험시간</option>
-                          <option value="1">10:00 ~ 12:00</option>
-                          <option value="2">13:00 ~ 15:00</option>
-                          <option value="3">15:00 ~ 17:00</option>
-                          <option value="4">17:00 ~ 19:00</option>
-                        </select>
-                      </div>
-                      
-                         <label for="exampleFormControlTextarea1" class="form-label">체험설명</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"  style="resize: none; width:700px;" name="experDetail"></textarea>
-           				
-           					
-      					  <label for="html5-number-input" class="col-md-2 col-form-label">체험정원</label>
-                        <div class="col-md-10">
-                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1" name="capacity"/>
-                        </div>
-                        
-                          <label for="html5-number-input" class="col-md-2 col-form-label">체험가격(￦)</label>
-                        <div class="col-md-10">
-                          <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1000" name="experPrice"/>
-                        </div>
-                        
-                      
-                      
-                        
-                        <br>
-                        
-                        <table>
-                        	  <tr>
-					                <td align="center">
-					                	 <label for="exampleFormControlTextarea1" class="form-label">체험 대표이미지</label>
-					                	<input type="file" id="file1" name="upfile" onchange="loadImg(this,1);" required>
-					                    <img id="titleImg" width="300" height="300">
-					                </td>
-                        </table>
-                        
-						
-						<br><br>
-						
-						  <div class="mt-2" align="center" style="margin-right:430px;">
-                          <button type="submit" class="btn btn-primary me-2">등록하기</button>
-                          <button type="button" class="btn btn-outline-secondary" onclick="goCancel();">취소</button>
-                        </div>
-                        <br><br><br>
-						
-           				<script>
-							function goCancel(){
-								location.href="experienceList.co";
-							}
-						</script>
-           		
-           		</form>
-           </div>
+            <div class="productSalesOuter">
+        
+        <br><br><br><br><br><br>
+        <div class="psHead" align="center" style="margin-right:100px;">
+            <h1>부스 승인 대기 리스트</h1>
+        </div>
+    <br><br>
+    <div style="margin-left: 115px;">
+        <p>총${booList.size() }건</p>
+        
+    </div>
+    <hr>
+
+    <div class="psBody">
+        <table>
+        		<c:if test="${empty booList }">
+        		<br><br>
+        		 <div style="margin-left:650px;">
+        			<h5 style="font-family: 'IBM Plex Sans KR', sans-serif; color:#696CFF;'">승인 대기중인 부스가 없습니다.</h5>
+        		 </div>
+        		</c:if>
+            
+            	<c:if test="${not empty booList }">
+            <tr>
+                <th>부스신청일</th>
+                <th>기업명</th>
+                <th>부스명</th>
+                <th>부스등급</th>
+                <th>부스금액</th>
+                <th>부스상태</th>
+                <th>상태변경</th>
+            </tr>
+            
+				<c:forEach var="boo" items="${booList }">
+            <tr>
+                <td>${boo.reportingDate }</td>
+                <td onclick="location.href='boothDetail.boo?cno=${boo.comNo }'" style="cursor:pointer;">${boo.comName }</td>
+                <td onclick="location.href='boothDetail.boo?cno=${boo.comNo }'" style="cursor:pointer;">${boo.boothName }</td>
+                <td>
+                	<c:if test="${boo.boothPrice eq 3 }">Premium</c:if>
+                	<c:if test="${boo.boothPrice eq 2 }">Deluxe</c:if>
+                	<c:if test="${boo.boothPrice eq 1 }">Standard</c:if>
+                </td>
+                <td>
+                	<c:if test="${boo.boothPrice eq 3 }"><fmt:formatNumber value="7000000" type="number"/></c:if>
+                	<c:if test="${boo.boothPrice eq 2 }"><fmt:formatNumber value="4000000" type="number"/></c:if>
+                	<c:if test="${boo.boothPrice eq 1 }"><fmt:formatNumber value="3000000" type="number"/></c:if>
+                </td>
+                <td>
+               		<c:if test="${boo.boothStatus eq 'N'}"><span class="badge bg-label-primary">부스접수</span></c:if>
+                	<c:if test="${boo.boothStatus eq 'P'}"><span class="badge bg-label-info">결제완료</span></c:if>
+                	<c:if test="${boo.boothStatus eq 'J'}"><span class="badge bg-label-warning">부스심사</span></c:if>
+                </td>
+                <td>
+                	<c:if test="${boo.boothStatus eq 'N' }">
+                	<button type="button" class="btn btn-secondary" onclick="payComplete(${boo.boothNo});">결제완료</button>
+                	<button type="button" class="btn btn-info" onclick="boothJudge(${boo.boothNo});">부스심사</button>
+                	<button type="button" class="btn btn-primary" onclick="boothApprove(${boo.boothNo});">승인완료</button>
+                	<button type="button" class="btn btn-danger" onclick="boothDeny(${boo.boothNo});">승인거절</button>
+                	</c:if>
+                	
+                	<c:if test="${boo.boothStatus eq 'P' }">
+                	<button type="button" class="btn btn-info" onclick="boothJudge(${boo.boothNo});">부스심사</button>
+                	<button type="button" class="btn btn-primary" onclick="boothApprove(${boo.boothNo});">승인완료</button>
+                	<button type="button" class="btn btn-danger" onclick="boothDeny(${boo.boothNo});">승인거절</button>
+                	</c:if>
+                	
+                	<c:if test="${boo.boothStatus eq 'J' }">
+                	<button type="button" class="btn btn-primary" onclick="boothApprove(${boo.boothNo});">승인완료</button>
+                	<button type="button" class="btn btn-danger" onclick="boothDeny(${boo.boothNo});">승인거절</button>
+                	</c:if>
+                </td>
+            </tr>
+            
+            	
+            	<script>
+            		function payComplete(number){
+            			var question = window.confirm("해당 부스를 결제완료 상태로 변경하시겠습니까?");
+            			if(question){
+            			$.ajax({
+            				url : "payComplete.boo",
+            				data : {boothNo : number},
+            				success : function(result){
+           						location.reload();
+            				},
+            				error : function(){
+            					console.log("결제완료 통신실패");
+            					}
+            				})
+       					}else{
+							return false;
+       					}
+            		}
+            		
+            		
+            		
+            		function boothJudge(number){
+            			var question = window.confirm("해당 부스를 부스심사 상태로 변경하시겠습니까?");
+            			if(question){
+            				$.ajax({
+            					url : "boothJudge.boo",
+            					data : {boothNo : number},
+            					success : function(result){
+            						location.reload();
+            					},
+            					error : function(){
+            						console.log("부스심사 통신실패");
+            					}
+            				})
+            			}else{
+            				return false;
+            			}
+            		}
+            		
+		
+            		
+            		function boothApprove(number){
+            			var question = window.confirm("해당 부스를 승인완료 상태로 변경하시겠습니까?");
+            			if(question){
+            				$.ajax({
+            					url : "boothApprove.boo",
+            					data : {boothNo : number},
+            					success : function(result){
+            						console.log("승인완료 통신성공");
+            						location.reload();
+            					},
+            					error : function(){
+            						console.log("승인완료 통신실패");
+            					}
+            				})
+            			}else{
+            				return false;
+            			}
+            		}
+            		
+            		
+            		function boothDeny(number){
+            			var question = window.confirm("해당 부스를 승인거절 상태로 변경하시겠습니까?");
+            			if(question){
+            				$.ajax({
+            					url : "boothDeny.boo",
+            					data : {boothNo : number},
+            					success : function(result){
+            						console.log("승인거절 통신성공");
+            						location.reload();
+            					},
+            					error : function(){
+            						console.log("승인거절 통신실패");
+            					}
+            				})
+            			}else{
+            				return false;
+            			}
+            		}
+            	</script>
+            
+                </c:forEach>
+            </c:if>
+            
+        </table>
+    </div>
+
+    </div>
           
           
           
           </div>
           </div>
           
-          
-           <script>
-
-   
-			$(function(){
-                $("#file-area").hide();
-
-				$("#titleImg").click(function(){
-					$("#file1").click();
-				});
-
-			});
-
-            function loadImg(inputFile,num){
-				//inputFile : 현재 변화가 생긴 input type="file" 요소 객체
-				//num : 몇번째 input 요소인지 확인 후 해당 영역에 미리보기를 위한 매개변수
-
-				//files속성은 업로드된 파일의 정보를 배열의 형태로 묶어서 반환하는 속성
-				//파일 선택시 length가 1을 반환 취소하면 0을 반환한다.
-				// console.log(inputFile.files.length);
-
-				if(inputFile.files.length==1){
-					//선택된 파일이 존재하면
-					//선택된 파일을 읽어서 해당 영역에 미리보기 띄워주기
-
-					//파일을 읽어주기 위한 객체 FileReader
-					var reader = new FileReader();
-
-					//파일을 읽어들이는 메소드 -  어떤 파일을 읽을것인지 매개변수로 제시
-					//readAsDataURL(파일);
-					//파일을 읽어들이는 순간 해당 파일만의 고유 url을 부여한다.
-					//부여된 url을 src속성에 추가하면 된다.
-					reader.readAsDataURL(inputFile.files[0]);
-
-					//파일 읽기가 완료되 시점에 src에 url을 부여하는 함수 만들기
-					reader.onload = function(e){
-						//e는 이벤트 객체
-						//부여된 url은 e객체 target의 result에 들어있음.
-						// console.log(e);
-
-						//각 영역에 맞춰서 이미지 미리보기
-						switch(num){
-							case 1 : $("#titleImg").attr("src",e.target.result); break;
-						}
-					}
-				}else{ //취소 누를 시 미리보기 없애기
-					switch(num){
-							case 1 : $("#titleImg").attr("src",null); break;
-						}
-				}
-
-			}
-        </script>
         
           <script  src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
           <script  src="${pageContext.request.contextPath}/resources/js/popper.js"></script>

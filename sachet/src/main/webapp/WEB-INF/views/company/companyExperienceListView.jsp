@@ -132,7 +132,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link">
+                  <a href="boothStatus.co" class="menu-link">
                     <div data-i18n="Basic">나의 부스 조회</div>
                   </a>
                 </li>
@@ -245,7 +245,21 @@
               
               <script>
               	function goAddExperience(){
-              		location.href="addExperience.co";
+              		$.ajax({
+              			url : "checkBoothStatus",
+              			data : {comNo : ${loginUser.userNo}},
+              			success : function(result){
+              				console.log("통신성공"+result);
+              				if(result=='Y'){
+			              		location.href="addExperience.co";
+              				}else{
+              					alert("부스승인이 완료된 후, 체험 등록이 가능합니다.");
+              				}
+              			},
+              			error : function(){
+              				console.log("통신실패");
+              			}
+              		})
               	}
               </script>
               

@@ -146,7 +146,7 @@
                 </c:otherwise>
                 </c:choose>
                 <li><img src="${pageContext.request.contextPath}/resources/images/shopping-cart.png" alt=""></li>
-                <li><img src="${pageContext.request.contextPath}/resources/images/settings.png" alt=""></li>
+                <li><img src="${pageContext.request.contextPath}/resources/images/settings.png" alt="" onclick="goSettingPage();"></li>
             </ul>
         </div>
         
@@ -165,6 +165,10 @@
         	
         	function goMycomPage(){
         		location.href="mypage.co";
+        	}
+        	
+        	function goSettingPage(){
+        		location.href="boothSetting.boo";
         	}
         	
         </script>
