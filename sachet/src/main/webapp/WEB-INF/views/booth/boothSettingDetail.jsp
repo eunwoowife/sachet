@@ -176,17 +176,17 @@ margin-left: 20px;
               </a>
               <ul class="menu-sub">
                 <li class="menu-item active">
-                  <a href="mypage.co" class="menu-link">
+                  <a href="boothSetting.boo" class="menu-link">
                     <div data-i18n="Notifications">승인 대기중인 부스</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="updateForm.co" class="menu-link">
+                  <a href="approvedBooth.boo" class="menu-link">
                     <div data-i18n="Notifications">승인된 부스</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="updateForm.co" class="menu-link">
+                  <a href="deniedBooth.boo" class="menu-link">
                     <div data-i18n="Notifications">승인 거절된 부스</div>
                   </a>
                 </li>

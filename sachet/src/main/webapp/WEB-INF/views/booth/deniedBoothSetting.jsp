@@ -121,7 +121,7 @@
                   </a>
                 </li>
                 <li class="menu-item active">
-                  <a href="DeniedBooth.boo" class="menu-link">
+                  <a href="deniedBooth.boo" class="menu-link">
                     <div data-i18n="Notifications">승인 거절된 부스</div>
                   </a>
                 </li>
