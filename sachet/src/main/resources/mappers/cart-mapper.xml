@@ -16,6 +16,7 @@
 	<result column="PRODUCT_NAME" property="goodsName"/>
 	<result column="PRODUCT_PRICE" property="goodsPrice"/>
 	<result column="COUNT" property="goodsCount"/>
+	<result column="PRODUCT_IMG_FP" property="goodsImgFp"/>
 </resultMap>
 
 <resultMap type="cartList" id="cartExperList">
@@ -25,6 +26,7 @@
 	<result column="EXPER_TITLE" property="goodsName"/>
 	<result column="EXPER_PRICE" property="goodsPrice"/>
 	<result column="COUNT" property="goodsCount"/>
+	<result column="EXPER_IMG_FP" property="goodsImgFp"/>
 </resultMap>
 
 <insert id="insertCart">
@@ -66,7 +68,7 @@
 
 
 <select id="selectCartPro" resultMap="cartProList">
-	SELECT C.USER_NO, P.PRODUCT_NO, B.BOOTH_NO, B.BOOTH_NAME, P.PRODUCT_NAME, P.PRODUCT_PRICE, C.COUNT
+	SELECT C.USER_NO, P.PRODUCT_NO, B.BOOTH_NAME, P.PRODUCT_NAME, P.PRODUCT_PRICE, C.COUNT, P.PRODUCT_IMG_FP
 	FROM CART C
 	JOIN PRODUCT P ON (P.PRODUCT_NO=C.PRODUCT_NO)
 	JOIN BOOTH B ON (B.BOOTH_NO=p.BOOTH_NO)
@@ -77,13 +79,37 @@
 
 
 <select id="selectCartExper" resultMap="cartExperList">
-	SELECT C.USER_NO,C.EXPER_NO, B.BOOTH_NAME, E.EXPER_TITLE, E.EXPER_PRICE, C.COUNT
+	SELECT C.USER_NO,C.EXPER_NO, B.BOOTH_NAME, E.EXPER_TITLE, E.EXPER_PRICE, C.COUNT, E.EXPER_IMG_FP
 	FROM CART C
     JOIN EXPERIENCE E ON(E.EXPER_NO=C.EXPER_NO)
 	JOIN BOOTH B ON (B.BOOTH_NO=E.BOOTH_NO)
 	WHERE USER_NO= #{userNo}
 
 </select>
+
+
+
+
+<delete id="allDeleteCart">
+	DELETE CART
+    WHERE USER_NO = #{userNo}
+
+</delete>
+
+<delete id="selectProDelete">
+	DELETE CART
+    WHERE USER_NO = #{userNo}
+    AND PRODUCT_NO = #{goodsNo}
+</delete>
+
+
+
+<delete id="selectExperDelete">
+	DELETE CART
+    WHERE USER_NO = #{userNo}
+    AND EXPER_NO = #{goodsNo}
+</delete>
+
 
 
   

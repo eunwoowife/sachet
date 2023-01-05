@@ -27,9 +27,10 @@
 
 	.steparea{
         width: 100%;
-		background-color:  #858585;
+		background-color: #c4cbd1;
 		height: 170px;
 		margin-top: 2em;
+		border-radius: 20px;
 	}
 
 	.step {
@@ -284,7 +285,7 @@
         width: 100%;
         height: 50px;
         font-size: 20px;
-        background-color:  #a8a8a8;
+        background-color: #67B4D2;
         color: white;
     }
 
@@ -292,8 +293,8 @@
         width: 100%;
         height: 50px;
         font-size: 20px;
-        background-color:  #686868;
-        color: white;
+        background-color: #FFFFFF;
+        color: #67B4D2;
 	
     }
 
@@ -313,11 +314,15 @@
 			</span>
 			<span class="step two">
 				step 02<br>
-				<span class="stepTitle">주문결제</span>	
+				<span class="stepTitle"> 
+				<img src="${pageContext.request.contextPath}\resources\images\cartArrow.png" width="50px;">
+				주문결제</span>	
 			</span>
 			<span class="step three">
 				step 03<br>
-				<span class="stepTitle">주문완료</span>	
+				<span class="stepTitle">
+				<img src="${pageContext.request.contextPath}\resources\images\cartArrow.png" width="50px;">
+				 주문완료</span>	
 			</span>
 		</div>
 
@@ -328,7 +333,7 @@
 			<div class="productarea">
 				<span class="listtitle" >장바구니 목록</span>
 
-				<hr style="height: 2px; background-color: black; border: none;">
+				<hr style="height: 2px; background-color: black; border: none; border-radius:10px;">
 
 				<div class="cartheader1">
 					<div class="cartheader hh thumbnail"></div>
@@ -336,22 +341,44 @@
 					<div class="cartheader hh productPrice">상품 금액</div>
 					<div class="cartheader hh productCount">상품 개수</div>
 					<div class="cartheader hh productSelectPrice">주문금액</div>
-					<div class="cartheader hh productbtnarea">버튼영역</div>
+					<div class="cartheader hh productbtnarea"></div>
 				</div>
 				<hr style="background-color: gray;">
 
 
+					<c:choose>
+				         <c:when test = "${empty c}">
+				        		 장바구니가 비어있습니다.
+				         </c:when>
+				         <c:otherwise>
+				        		  
+				 
 
                 
 
-<c:forEach var="c" items="${c}">
+	<c:forEach var="c" items="${c}">
 				<div class="productRow">
 
 					<input type="hidden" value="3">
 
-					<div class="cartheader thumbnail"> <img src="https://mblogthumb-phinf.pstatic.net/20160817_259/retspe_14714118890125sC2j_PNG/%C7%C7%C4%AB%C3%F2_%281%29.png?type=w800" alt=""></div>
+					<div class="cartheader thumbnail"> <img src="${pageContext.request.contextPath}/${c.goodsImgFp}" alt=""></div>
 					<div class="cartheader productDetail">
-						<div class="productCinfo">[수령 상품] ${c.boothName}</div> <br>
+						<div class="productCinfo">
+					<c:choose>
+				         <c:when test = "${c.goodsNo<1000}">
+				        		   [수령상품]
+				         </c:when>
+				         <c:when test = "${c.goodsNo > 1000}">
+				          		  [체험상품]
+				         </c:when>
+				         <c:otherwise>
+				        		   [구매 상품]
+				         </c:otherwise>
+				      </c:choose>
+										
+						${c.boothName}
+						</div>
+						<br>
 						<div class="productName">${c.goodsName }</div>
 					</div>
 					<div class="cartheader productPrice" id="pPrice${c.goodsNo}">${c.goodsPrice }</div>
@@ -360,23 +387,33 @@
 					<input type="number" name="pCount" class="pCount" value="${c.goodsCount}" id="ppCount${c.goodsNo}" disabled>
 					<input type="button" class="countbtn" value="+" onclick="pCount(2, ${c.goodsNo})">
 					</div>
-					<div class="cartheader productSelectPrice"><input type="number" value="40000" id="psPrice${c.goodsNo}" class="sump" disabled></div>
+					<div class="cartheader productSelectPrice">
+					<input type="number" value="${c.selectSum}" id="psPrice${c.goodsNo}"
+					class="
+					<c:choose>
+				         <c:when test = "${c.goodsNo<1000}">
+				        		   pTotalSum
+				         </c:when>
+				         <c:otherwise>
+				        		   eTotalSum
+				         </c:otherwise>
+				      </c:choose>"
+					
+					
+					
+					disabled></div>
 					<div class="cartheader productbtnarea">
 						<input type="button" class="pbtn selOderBtn" id="spayment${c.goodsNo}" value="주문하기">
 						<input type="button" class="pbtn selWishBtn" id="swish${c.goodsNo}" value="위시리스트">
-						<input type="button" class="pbtn selDelBtn" id="sdelete${c.goodsNo}"value="삭제하기">
+						<input type="button" class="pbtn selDelBtn" id="sdelete${c.goodsNo}"value="삭제하기" onclick="selectDelete(${c.goodsNo});">
 					</div>
 
 					<hr class="hr1">
-
 				</div>
 				
-				
 </c:forEach>			
-				
-
-
-				
+				        </c:otherwise>
+				      </c:choose>
 				
 				
 				
@@ -385,7 +422,7 @@
 
 				<div class="cartbtnarea">
                     <input type="button" class="pbtn cartbtn" value="돌아가기">
-					<input type="button" class="pbtn cartbtn" value="장바구니 비우기">
+					<input type="button" class="pbtn cartbtn" value="장바구니 비우기" onclick="delAllItem();">
 				</div>
 			
 
@@ -402,8 +439,12 @@
 					<div class="totalPrice T">
 						상품금액
 					</div>
-					<div class="totalPrice count" id="totalPrice">
-						120000 원
+					
+					<div class="totalPrice count" style="right:0">
+						원
+					</div>
+					<div class="totalPrice count" id="totalPrice1">
+						120000
 					</div>
 					<br>
 
@@ -411,14 +452,17 @@
 					<div class="totalPrice T">
 						체험금액
 					</div>
-					<div class="totalPrice count">
-						120000 원
+					<div class="totalPrice count" style="right:0">
+						원
+					</div>
+					<div class="totalPrice count" id="totalPrice2">
+						120000
 					</div>
 
 					<div class="payNoticeArea">
-                        ◎ 체험 상품의 경우 예약 시간의 10분 전 대기하실 것을 권장드립니다. <br><br>
-                        ◎ 상품 수령 시간 및 미수령 상품에 관해서는 각 부스에 문의 해주십시오. <br><br>
-						◎ Sachet 주최측은 결제 대행 시스템만 제공하므로 자세한 상품 설명 및 교환/환불 약관은 각 기업의 설명을 참고하시기 바랍니다. <br>
+                        ▶ 체험 상품의 경우 예약 시간의 10분 전 대기하실 것을 권장드립니다. <br><br>
+                        ▶ 상품 수령 시간 및 미수령 상품에 관해서는 각 부스에 문의 해주십시오. <br><br>
+		 ▶ Sachet 주최측은 결제 대행 시스템만 제공하므로 자세한 상품 설명 및 교환/환불 약관은 각 기업의 설명을 참고하시기 바랍니다. <br>
 
 
 					</div>
@@ -427,7 +471,7 @@
 						합계
 					</div>
 					<div class="totalPrice2 count" id="totalPrice0">
-						20000 원
+						
 					</div>
 					
 					<div class="paybtnArea">
@@ -454,7 +498,11 @@
 
 <script>
 //윈도우 온로드용 함수
-
+	window.onload = function(){
+		onePriceCal();
+		totalProCal();
+		totalExperCal();
+    }
 
 
 
@@ -462,12 +510,10 @@
 
 //상품 수량 변경
 
+
 function pCount(result, pnum) {
 	var count = $('#ppCount'+pnum).val();
-	
-	console.log("1은 빼기, 2는 더하기인 리절트 값: "+result);
-	console.log("상품 넘버"+pnum);
-	
+		
 
 	if(result==1){
 		count--;
@@ -490,13 +536,54 @@ function pCount(result, pnum) {
 
 
 
-//개별 삭제
-
-
 //전체 삭제
+ function delAllItem(){
+	
+	 $.ajax({
+			url: "allDeleteCart.ca",
+			data : {
+				result : "YYYY",
+			},
+			type : "post",
+			success :function(result){
+				
+				if(result!=0){
+				alert("장바구니 비우기가 완료되었습니다.");
+				location.reload();
+				}else{
+					alert("장바구니 비우기에 실패했습니다.");
+					return false;
+				}
+				
+			},
+			error : function (){
+				alert("장바구니 비우기에 실패했습니다.");
+				return false;
+			}
+		});
+	
+}
+	    
 
 
-//선택 삭제
+
+
+//개별 삭제
+ function selectDelete(pnum){
+	 $.ajax({
+			url: "selectDelete.ca",
+			data : {
+				goodsNum : pnum,
+			},
+			type : "post",
+			success :function(result){
+				location.reload();
+			},
+			error : function (){
+				location.reload();
+			}
+		});
+	}
 
 
 
@@ -513,28 +600,39 @@ function pCount(result, pnum) {
 
 	$('#psPrice'+pnum).val(selectP);
 
-	totalPriceCal();
+	if(pnum<1000){
+	
+		totalProCal();
+	}else if(pnum>1000){
+		totalExperCal();
+	}
 }
 
 	//토탈계{산알먼아ㅣ러먀ㅣㄴ ㄷ아ㅓ사ㅣ;ㅂ덪4ㄱ시ㅏ;ㅓㅂ34디ㅑ;ㅓㅅ ㅑㅐ}
 
-	function totalPriceCal(){
-
-		
+	function totalProCal(){
 		var sum=0;
-
-		$('.sump').each(function(){
+		$('.pTotalSum').each(function(){
 			sum += parseInt($(this).val()); 
-			console.log("토탈썸"+sum);
 		});
-
-		sum+=" 원";
-
-		$("#totalPrice").text(sum);
-
-		$("#totalPrice0").text(sum);
-
-
+		$("#totalPrice1").text(sum);
+		
+		totalPriceCal();
+	}
+	
+	function totalExperCal(){
+		var eSum=0;
+		$('.eTotalSum').each(function(){
+			eSum += parseInt($(this).val()); 
+		});
+		$("#totalPrice2").text(eSum);
+		totalPriceCal();
+	}
+	
+	function totalPriceCal() {
+		var proTotal = parseInt($("#totalPrice1").text());
+		var experTotal = parseInt($("#totalPrice2").text());
+		$("#totalPrice0").text(proTotal+experTotal);
 	}
 
 

@@ -61,4 +61,19 @@ public class CartServiceImpl implements CartService{
 		ArrayList <CartList> cartExper = cartDao.selectCartExper(sqlSession,userNo);
 		return cartExper;
 	}
+
+	@Override
+	public int allDeleteCart(int userNo) {
+		return cartDao.allDeleteCart(sqlSession,userNo);
+	}
+
+	@Override
+	public int selectProDelete(CartList c) {
+		return cartDao.selectProDelete(sqlSession,c);
+	}
+
+	@Override
+	public int selectExperDelete(CartList c) {
+		return cartDao.selectExperDelete(sqlSession,c);
+	}
 }

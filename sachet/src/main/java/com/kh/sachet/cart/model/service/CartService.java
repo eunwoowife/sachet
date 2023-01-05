@@ -20,4 +20,10 @@ public interface CartService {
 	ArrayList<CartList> selectCartPro(int userNo);
 
 	ArrayList<CartList> selectCartExper(int userNo);
+
+	int allDeleteCart(int userNo);
+
+	int selectProDelete(CartList c);
+
+	int selectExperDelete(CartList c);
 }

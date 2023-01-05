@@ -40,5 +40,18 @@ public class CartDao {
 		ArrayList<CartList> cartExper= (ArrayList)sqlSession.selectList("cartMapper.selectCartExper",userNo);
 		return cartExper;
 	}
+
+	public int allDeleteCart(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.delete("cartMapper.allDeleteCart",userNo);
+				
+	}
+
+	public int selectProDelete(SqlSessionTemplate sqlSession, CartList c) {
+		return sqlSession.delete("cartMapper.selectProDelete",c);
+	}
+
+	public int selectExperDelete(SqlSessionTemplate sqlSession, CartList c) {
+		return sqlSession.delete("cartMapper.selectExperDelete",c);
+	}
 	
 }

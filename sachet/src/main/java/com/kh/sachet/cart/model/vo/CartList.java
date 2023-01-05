@@ -17,8 +17,10 @@ public class CartList {
 	private int goodsNo;
 	private String boothName;
 	private String goodsName;
+	private String goodsImgFp;
 	private int goodsPrice;
 	private int goodsCount;
+	private int selectSum;
 	
 	
 

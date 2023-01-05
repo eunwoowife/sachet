@@ -20,7 +20,7 @@
 }
 .confirm{
     border-spacing: 2px;
-    margin-top: 200px;
+    margin-top: 100px;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 70px;
@@ -110,16 +110,23 @@ border: none;
 .paymentTable th{
     width: 150px;
 }
+
+.titlearea{
+	text-align: center;
+	font-size: 2em;
+	margin-top: 150px;
+}
 </style>
 <body>
 
 <jsp:include page="../common/header.jsp" />
     <div class="outerarea">
     <div class="centerarea">
+    <div class="titlearea"> 결제가 완료되었습니다. </div>
     <table class="confirm">
         <thead>
           <tr>
-            <th colspan="4" class="confirmTitle"><h2>결제 확인</h2></th>
+            <th colspan="4" class="confirmTitle"><h2>티켓 정보 확인</h2></th>
           </tr>
         </thead>
         <tbody>
@@ -147,7 +154,7 @@ border: none;
           </tr>
           <tr>
             <td class="confirm-th">진행 상태</td>
-            <td colspan="3" class="confirm-td">결제 전</td>
+            <td colspan="3" class="confirm-td">결제 완료</td>
           </tr>
         </tbody>
         </table>

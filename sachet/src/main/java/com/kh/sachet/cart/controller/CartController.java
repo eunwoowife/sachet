@@ -44,12 +44,9 @@ public class CartController {
 		//장바구니에 추가하려는 품목이 이미 장바구니에 담겨져있는지 확인하기
 		//해당 상품이 장바구니에 이미 있는지?
 		int checkOverlap1 = cartService.checkCartProduct(c);
-		System.out.println("상품result갯수 : "+checkOverlap1);
 		//해당 체험이 장바구니에 이미 있는지?
 		int checkOverlap2 = cartService.checkCartExperience(c);
-		System.out.println("체험result갯수 : "+checkOverlap1);
 		
-		System.out.println(c);
 		//상품 체크하고 장바구니에 넣기
 		if(experNo==0 && checkOverlap1>=1) { //이미 있는 상품이라면 갯수를 count만큼 +해줘서 업데이트하기
 			result = cartService.insertCartUpdateProductCount(c);
@@ -90,6 +87,9 @@ public class CartController {
 		cartList.addAll(cartPro);
 		cartList.addAll(cartExper);
 		
+		for(int i=0; i<cartList.size(); i++) {
+			cartList.get(i).setSelectSum(cartList.get(i).getGoodsCount()*cartList.get(i).getGoodsPrice());
+		}
 		//보낸다.
 		
 		mv.addObject("c", cartList);
@@ -99,6 +99,50 @@ public class CartController {
 		return mv;
 		
 	}
+	
+	@ResponseBody
+	@RequestMapping("allDeleteCart.ca")
+	public int allDeleteCart (HttpSession session, String result) {
+		Member m= (Member) session.getAttribute("loginUser");
+		int userNo = m.getUserNo();
+		
+		
+		int selectResult = 0;
+		selectResult = cartService.allDeleteCart(userNo);
+		
+		
+		return selectResult;
+	}
+	
+	@ResponseBody
+	@RequestMapping("selectDelete.ca")
+	public int selectDelete (HttpSession session, int goodsNum) {
+		Member m= (Member) session.getAttribute("loginUser");
+		int userNo = m.getUserNo();
+		
+		int result = 0;
+		
+		CartList c = new CartList();
+		
+		c.setUserNo(userNo);
+		c.setGoodsNo(goodsNum);
+		
+		//프로덕트 삭제
+		if(goodsNum<1000) {
+			result = cartService.selectProDelete(c);
+		}else if(goodsNum>1000) {
+			result = cartService.selectExperDelete(c);
+		}else {
+			
+		}
+		
+		
+
+		
+		
+		return result;
+	}
+	
 
 	
 	
