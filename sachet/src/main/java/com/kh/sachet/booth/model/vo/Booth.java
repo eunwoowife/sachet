@@ -1,5 +1,7 @@
 package com.kh.sachet.booth.model.vo;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,11 +34,12 @@ public class Booth {
 	private int boothPrice;
 	private int boothSection;
 	private String boothStatus;
+	private Date reportingDate;
 	
 	private String comName;
 	private String comOwner;
 	private String comPhone1;
 	private String comAddress;
 	private String comLogoFp;
-	private int comBrnum;
+	private String comBrnum;
 }

@@ -116,7 +116,8 @@
                               <img src="${b.comLogoFp }" width="300px;" height="300px;"><br>
                               <span>기업명 : ${b.comName }<br>
                               대표자명 : ${b.comOwner }<br>
-                              주소 : ${b.comAddress }
+                              주소 : ${b.comAddress }<br>
+                              사업자등록번호 : ${b.comBrnum }
                               </span>
                               
                               </div>

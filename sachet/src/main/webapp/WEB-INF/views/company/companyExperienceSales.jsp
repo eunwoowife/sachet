@@ -125,7 +125,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" >
+                  <a href="boothStatus.co" class="menu-link" >
                     <div data-i18n="Basic">나의 부스 조회</div>
                   </a>
                 </li>

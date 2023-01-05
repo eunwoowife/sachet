@@ -19,4 +19,42 @@ public class BoothDao {
 		return sqlSession.insert("boothMapper.boothFormInsert", insertB);
 	}
 
+	public Booth selectBooth(SqlSessionTemplate sqlSession, int comNo) {
+		return sqlSession.selectOne("boothMapper.selectBooth", comNo);
+	}
+
+	public ArrayList<Booth> selectWaitingBoothList(SqlSessionTemplate sqlSession) {
+		ArrayList<Booth> booList = (ArrayList)sqlSession.selectList("boothMapper.selectWaitingBoothList");
+		return booList;
+	}
+
+	public Booth selectWaitingBooth(SqlSessionTemplate sqlSession, int cno) {
+		return sqlSession.selectOne("boothMapper.selectBooth", cno);
+	}
+
+	public int changeToPayComplete(SqlSessionTemplate sqlSession, int boothNo) {
+		return sqlSession.update("boothMapper.changeToPayComplete", boothNo);
+	}
+
+	public int changeToBoothJudge(SqlSessionTemplate sqlSession, int boothNo) {
+		return sqlSession.update("boothMapper.changeToBoothJudge", boothNo);
+	}
+
+	public int changeToBoothApprove(SqlSessionTemplate sqlSession, int boothNo) {
+		return sqlSession.update("boothMapper.changeToBoothApprove", boothNo);
+	}
+
+	public int changeToBoothDeny(SqlSessionTemplate sqlSession, int boothNo) {
+		return sqlSession.update("boothMapper.changeToBoothDeny", boothNo);
+	}
+
+	public String checkBoothStatus(SqlSessionTemplate sqlSession, int comNo) {
+		return sqlSession.selectOne("boothMapper.checkBoothStatus", comNo);
+	}
+
+	public ArrayList<Booth> selectDeniedBoothList(SqlSessionTemplate sqlSession) {
+		ArrayList<Booth> booList = (ArrayList)sqlSession.selectList("boothMapper.selectDeniedBoothList");
+		return booList;
+	}
+
 }

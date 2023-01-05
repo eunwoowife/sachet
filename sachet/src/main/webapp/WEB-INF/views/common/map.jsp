@@ -42,13 +42,16 @@
 				<br><br><br><br><br><br><br><br><br><br>
 	
 	<div align="center">
-	<h2 style="color:gray;">찾아오시는 길</h2>
+	<h1 style="color:gray;">찾아오시는 길</h1>
 	</div>
-	<br>
+	<br><br><br>
 	
+		<img src="${pageContext.request.contextPath}/resources/images/map.jpg" style="margin-left:620px;">
+		<br><br>
 		<div id="map" style="width:60%;height:600px; margin-left:400px;"></div>
+		<br><br>
 	
-	<br><br>
+	<br>
 	<div style="margin-left:400px;">
 		<h3>주차안내</h3>
 <p>- 호수공원 내 주차장(유료)을 이용해 주시기 바랍니다. <br>

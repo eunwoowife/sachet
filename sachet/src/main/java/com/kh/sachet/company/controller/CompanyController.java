@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.sachet.booth.model.service.BoothService;
+import com.kh.sachet.booth.model.vo.Booth;
 import com.kh.sachet.company.model.service.CompanyService;
 import com.kh.sachet.company.model.vo.Company;
 import com.kh.sachet.company.model.vo.Sales;
@@ -34,6 +36,8 @@ public class CompanyController {
 	private ProductService productService;
 	@Autowired
 	private ExperienceService experienceService;
+	@Autowired
+	private BoothService boothService;
 
 	@Autowired
 	private BCryptPasswordEncoder bcryptpasswordEncoder;
@@ -219,6 +223,15 @@ public class CompanyController {
 		return "company/companyAddExperience";
 	}
 	
+	//상품 및 체험 추가시, 부스가 승인된 상태인지 확인하기
+	@ResponseBody
+	@RequestMapping("checkBoothStatus")
+	public String checkBoothStatus(int comNo) {
+//		System.out.println(comNo);
+		String status = boothService.checkBoothStatus(comNo);
+		return status;
+	}
+	
 	//상품추가하기
 	@RequestMapping("insertProduct.co")
 	public String insertProduct(Product p, Model model, HttpSession session, MultipartFile upfile) {
@@ -387,10 +400,6 @@ public class CompanyController {
 		}
 	}
 	
-	
-
-	
-	
 	//상품판매관리
 	@RequestMapping("productSales.co")
 	public String productSalesForm(HttpSession session, Model model) {
@@ -408,5 +417,16 @@ public class CompanyController {
 		return "company/companyExperienceSales";
 	}
 	
+	//나의 부스 조회(부스 상태 조회)
+	@RequestMapping("boothStatus.co")
+	public String selectBooth(HttpSession session, Model model) {
+		Company c = (Company)session.getAttribute("loginUser");
+		int comNo = c.getUserNo();
+		
+		Booth boo = boothService.selectBooth(comNo);
+		model.addAttribute("boo", boo);
+		
+		return "company/companyBoothStatus";
+	}
 	
 }

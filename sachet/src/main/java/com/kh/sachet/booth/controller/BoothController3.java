@@ -128,7 +128,74 @@ public class BoothController3 {
 
  
 	}
-
+	
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~여기서부터 부스 관리 페이지~~~~~~~~~~~~~~~~~~~~~~~~~
+	//승인 대기중인 부스 리스트 뽑기
+	@RequestMapping("boothSetting.boo")
+	public String selectWaitingBoothList(Model model) {
+		ArrayList<Booth> booList = boothService.selectWaitingBoothList();
+		model.addAttribute("booList", booList);
+		return "booth/boothSetting";
+	}
+	
+	//부스 리스트 중 해당 부스 상세화면으로 이동
+	@RequestMapping("boothDetail.boo")
+	public String selectWaitingBooth(Model model, int cno) {
+		Booth b = boothService.selectWaitingBooth(cno);
+		
+		model.addAttribute("b", b);
+		return "booth/boothSettingDetail";
+	}
+	
+	//부스접수->결제완료로 상태 변경하기
+	@ResponseBody
+	@RequestMapping(value="payComplete.boo")
+	public int changeToPayComplete(int boothNo) {
+//		System.out.println(boothNo);
+		int result = boothService.changeToPayComplete(boothNo);
+		return result;
+	}
+	
+	//결제완료->부스심사로 상태 변경하기
+	@ResponseBody
+	@RequestMapping(value="boothJudge.boo")
+	public int changeToBoothJudge(int boothNo) {
+		int result = boothService.changeToBoothJudge(boothNo);
+		return result;
+	}
+	
+	//부스심사->승인완료 상태 변경하기
+	@ResponseBody
+	@RequestMapping(value="boothApprove.boo")
+	public int changeToBoothApprove(int boothNo) {
+		int result = boothService.changeToBoothApprove(boothNo);
+		return result;
+	}
+	
+	//승인거절로 상태 변경하기
+	 @ResponseBody
+	 @RequestMapping(value="boothDeny.boo")
+	 public int changeToBoothDeny(int boothNo) {
+		 int result = boothService.changeToBoothDeny(boothNo);
+		 return result;
+	 }
+	 
+	 //승인된 부스리스트 페이지
+	 @RequestMapping("approvedBooth.boo")
+	 public String selectApprovedBoothList(Model model) {
+		 ArrayList<Booth> booList = boothService.selectBoothList();
+		model.addAttribute("booList", booList);
+		return "booth/approvedBoothSetting";
+	 }
+	 
+	 //승인거절된 부스리스트 페이지
+	 @RequestMapping("DeniedBooth.boo")
+	 public String selectDeniedBoothList(Model model) {
+		 ArrayList<Booth> booList = boothService.selectDeniedBoothList();
+		 model.addAttribute("booList", booList);
+		 return "booth/deniedBoothSetting";
+	 }
 	
 
 }
