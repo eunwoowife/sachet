@@ -190,7 +190,7 @@ public class BoothController3 {
 	 }
 	 
 	 //승인거절된 부스리스트 페이지
-	 @RequestMapping("DeniedBooth.boo")
+	 @RequestMapping("deniedBooth.boo")
 	 public String selectDeniedBoothList(Model model) {
 		 ArrayList<Booth> booList = boothService.selectDeniedBoothList();
 		 model.addAttribute("booList", booList);
