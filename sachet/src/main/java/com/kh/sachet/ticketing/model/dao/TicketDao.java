@@ -36,11 +36,9 @@ public class TicketDao {
 	}
 
 
-
-
 	public int insertOrderDetail(SqlSessionTemplate sqlSession, TicketInfo t) {
 		int result= sqlSession.insert("OrderMapper.insertOrderDetail", t);
-		return 1;
+		return result;
 	}
 	
 	

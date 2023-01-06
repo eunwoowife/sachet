@@ -184,7 +184,7 @@ body.ml-calendar-demo {
 	</style>
 	
 </head>
-<jsp:include page="../common/header.jsp" />
+<jsp:include page="../common/newheader.jsp" />
 <body>
 
 <div class="ml-calendar-demo">
