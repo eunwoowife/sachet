@@ -147,12 +147,13 @@ public class OrderController {
 		//해당 주문번호에 대한 회사번호를 가져온다.
 		ArrayList<Integer> comNoList = new ArrayList<Integer>();
 		for(int i=0; i<odnList.size(); i++) {
-			//해당 주문상세번호에 상품이 있다면?
+			//해당 주문상세번호에 상품이 있는지 확인하기
 			int pnoCount = orderService.selectProductNo(odnList.get(i));
-			if(pnoCount==0) { //해당 상품를 판매하고 있는 회사번호를 찾아준다.
+			if(pnoCount==0) { //해당 주문상세번호에 상품이 없다면->그건 체험판매겠지
+				//해당 체험을 판매하고 있는 회사번호를 찾아준다.
 				comNoList.add(orderService.selectComNoList2(odnList.get(i)));
-			//해당 주문상세번호에 상품이 없다면->그건 체험판매겠지
-			}else { //해당 체험을 판매하고 있는 회사번호를 찾아준다.
+			}else { //해당 주문상세번호에 상품이 있다면
+				//해당 상품을 판매하고 있는 회사번호를 찾아준다.
 				comNoList.add(orderService.selectComNoList(odnList.get(i)));
 			}
 		}
