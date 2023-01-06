@@ -52,6 +52,12 @@ public class CompanyServiceImpl implements CompanyService{
 		return sList;
 	}
 
+	@Override
+	public ArrayList<Sales> selectExperienceSales(int comNo) {
+		ArrayList<Sales> sList = companyDao.selectExperienceSales(sqlSession, comNo);
+		return sList;
+	}
+
 	
 	
 }

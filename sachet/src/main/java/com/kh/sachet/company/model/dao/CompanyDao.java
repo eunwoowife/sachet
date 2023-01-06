@@ -32,4 +32,9 @@ public class CompanyDao {
 		return sList;
 	}
 
+	public ArrayList<Sales> selectExperienceSales(SqlSessionTemplate sqlSession, int comNo) {
+		ArrayList<Sales> sList = (ArrayList)sqlSession.selectList("salesMapper.selectExperienceSales", comNo);
+		return sList;
+	}
+
 }

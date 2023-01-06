@@ -413,7 +413,12 @@ public class CompanyController {
 	
 	//체험판매관리
 	@RequestMapping("experienceSales.co")
-	public String experienceSalesForm() {
+	public String experienceSalesForm(HttpSession session, Model model) {
+		Company c = (Company)session.getAttribute("loginUser");
+		int comNo = c.getUserNo();
+		
+		ArrayList<Sales> sList = companyService.selectExperienceSales(comNo);
+		model.addAttribute("sList", sList);
 		return "company/companyExperienceSales";
 	}
 	

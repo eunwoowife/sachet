@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.sachet.cart.model.vo.CartList;
+import com.kh.sachet.company.model.vo.Sales;
 import com.kh.sachet.member.model.vo.Member;
 import com.kh.sachet.order.model.service.OrderService;
 import com.kh.sachet.order.model.vo.Order;
@@ -116,7 +117,6 @@ public class OrderController {
 					cartOd.setProductNo(cartPro.get(i).getGoodsNo());
 					cartOd.setCount(cartPro.get(i).getGoodsCount());
 					
-					
 					result2 = orderService.insertOdPro(cartOd);
 				}
 				
@@ -124,23 +124,40 @@ public class OrderController {
 			
 			//체험 디테일 집어넣는 insert
 			if(!cartExper.isEmpty()) {
+				OrderDetail cartEx = new OrderDetail();
 				for(int i=0; i<cartExper.size(); i++) {
-					OrderDetail cartEx = new OrderDetail();
 					
 					cartEx.setOrderNo(orderNo);
 					cartEx.setUserNo(userNo);
-					cartEx.setProductNo(cartPro.get(i).getGoodsNo());
-					cartEx.setCount(cartPro.get(i).getGoodsCount());
+					cartEx.setExperNo(cartExper.get(i).getGoodsNo());
+					cartEx.setCount(cartExper.get(i).getGoodsCount());
 					
 					result3 = orderService.insertOdExer(cartEx);
 					
 				}
 			}
-			
-		
 		}
 		
+		ArrayList<Integer> odnList = new ArrayList<Integer>();
+		odnList = orderService.selectOdnList(orderNo);
+//		System.out.println(odnList);
+		ArrayList<Integer> comNoList = new ArrayList<Integer>();
+		for(int i=0; i<odnList.size(); i++) {
+			int pnoCount = orderService.selectProductNo(odnList.get(i));
+			if(pnoCount==0) {
+				comNoList.add(orderService.selectComNoList2(odnList.get(i)));
+			}else {
+				comNoList.add(orderService.selectComNoList(odnList.get(i)));
+			}
+		}
 		
+		Sales sales = new Sales();
+		for(int j=0; j<odnList.size(); j++) {
+			sales.setOrderDetailNo(odnList.get(j));
+			sales.setComNo(comNoList.get(j));
+			
+			orderService.insertSales(sales);
+		}
 	
 		mv.addObject("m",m);
 		

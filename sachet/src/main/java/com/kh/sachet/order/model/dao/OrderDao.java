@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.sachet.cart.model.vo.CartList;
+import com.kh.sachet.company.model.vo.Sales;
 import com.kh.sachet.order.model.vo.Order;
 import com.kh.sachet.order.model.vo.OrderDetail;
 
@@ -40,6 +41,30 @@ public class OrderDao {
 	public int insertOdExer(SqlSessionTemplate sqlSession, OrderDetail orderDetail) {
 		int result= sqlSession.insert("OrderMapper.insertOdExer", orderDetail);
 		return result;
+	}
+
+	public ArrayList<Integer> selectOdnList(SqlSessionTemplate sqlSession, int orderNo) {
+		ArrayList<Integer> odnList = (ArrayList)sqlSession.selectList("OrderMapper.selectOdnList", orderNo);
+		return odnList;
+	}
+
+	public Integer selectComNoList(SqlSessionTemplate sqlSession, Integer integer) {
+		Integer comNo = sqlSession.selectOne("OrderMapper.selectComNoList", integer);
+		return comNo;
+	}
+
+	public void insertSales(SqlSessionTemplate sqlSession, Sales sales) {
+		sqlSession.insert("salesMapper.insertProductSales", sales);
+	}
+
+	public Integer selectComNoList2(SqlSessionTemplate sqlSession, Integer integer) {
+		Integer comNo = sqlSession.selectOne("OrderMapper.selectComNoList2", integer);
+		return comNo;
+	}
+
+	public int selectProductNo(SqlSessionTemplate sqlSession, Integer integer) {
+		int pnoCount = sqlSession.selectOne("OrderMapper.selectProductNo", integer);
+		return pnoCount;
 	}
 	
 

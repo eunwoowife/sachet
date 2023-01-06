@@ -30,4 +30,9 @@ public class Sales {
 	private String userPhone;
 	private int count;
 	private int productPrice;
+	private int productNo;
+	
+	private String experTitle;
+	private int experPrice;
+	private int experNo;
 }

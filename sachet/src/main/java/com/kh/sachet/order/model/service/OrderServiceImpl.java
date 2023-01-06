@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.sachet.cart.model.vo.CartList;
+import com.kh.sachet.company.model.vo.Sales;
 import com.kh.sachet.order.model.dao.OrderDao;
 import com.kh.sachet.order.model.vo.Order;
 import com.kh.sachet.order.model.vo.OrderDetail;
@@ -52,4 +53,34 @@ public class OrderServiceImpl implements OrderService {
 	public int insertOdExer(OrderDetail cartEx) {
 		return orderDao.insertOdExer(sqlSession, cartEx);
 	}
+
+	@Override
+	public ArrayList<Integer> selectOdnList(int orderNo) {
+		ArrayList<Integer> odnList = orderDao.selectOdnList(sqlSession, orderNo);
+		return odnList;
+	}
+
+	@Override
+	public Integer selectComNoList(Integer integer) {
+		Integer comNo = orderDao.selectComNoList(sqlSession, integer);
+		return  comNo;
+	}
+
+	@Override
+	public void insertSales(Sales sales) {
+		orderDao.insertSales(sqlSession, sales);
+	}
+
+	@Override
+	public Integer selectComNoList2(Integer integer) {
+		Integer comNo = orderDao.selectComNoList2(sqlSession, integer);
+		return comNo;
+	}
+
+	@Override
+	public int selectProductNo(Integer integer) {
+		return orderDao.selectProductNo(sqlSession, integer);
+	}
+
+	
 }

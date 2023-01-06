@@ -11,7 +11,16 @@
 	<result column="USER_ID" property="userId"/>
 	<result column="USER_NAME" property="userName"/>
 	<result column="USER_PHONE" property="userPhone"/>
+	<result column="PRODUCT_PRICE" property="productPrice"/>
+	<result column="PRODUCT_NO" property="productNo"/>
+	<result column="EXPER_TITLE"	 property="experTitle"/>
+	<result column="EXPER_PRICE"	 property="experPrice"/>
+	<result column="EXPER_NO"	 property="experNo"/>
 </resultMap>
+
+<insert id="insertProductSales">
+	INSERT INTO SALES VALUES(#{orderDetailNo}, DEFAULT, #{comNo})
+</insert>
 
 <select id="selectProductSales"  resultMap="salesResultSet">
 	SELECT ORDER_DETAIL_NO,
@@ -20,12 +29,35 @@
         USER_ID,
         USER_NAME,
         USER_PHONE,
-        USE_STATUS
-	FROM RECEIVE_USE_STATUS
-	JOIN ORDER_DETAIL OD USING(ORDER_DETAIL_NO)
-	JOIN PRODUCT P USING(PRODUCT_NO)
-	JOIN MEMBER M USING(USER_NO)
-	JOIN BOOTH B USING(BOOTH_NO)
+        USE_STATUS,
+        COUNT,
+        PRODUCT_PRICE,
+        PRODUCT_NO
+	FROM SALES
+	RIGHT JOIN ORDER_DETAIL OD USING(ORDER_DETAIL_NO)
+	RIGHT JOIN PRODUCT P USING(PRODUCT_NO)
+	RIGHT JOIN MEMBER M USING(USER_NO)
+	RIGHT JOIN BOOTH B USING(BOOTH_NO)
+	WHERE B.COM_NO=#{comNo}
+	ORDER BY ORDER_DATE DESC
+</select>
+
+<select id="selectExperienceSales" resultMap="salesResultSet">
+	SELECT ORDER_DETAIL_NO,
+        ORDER_DATE,
+        EXPER_TITLE,
+        USER_ID,
+        USER_NAME,
+        USER_PHONE,
+        USE_STATUS,
+        COUNT,
+        EXPER_PRICE,
+        EXPER_NO
+	FROM SALES
+	RIGHT JOIN ORDER_DETAIL OD USING(ORDER_DETAIL_NO)
+	RIGHT JOIN EXPERIENCE E USING(EXPER_NO)
+	RIGHT JOIN MEMBER M USING(USER_NO)
+	RIGHT JOIN BOOTH B USING(BOOTH_NO)
 	WHERE B.COM_NO=#{comNo}
 	ORDER BY ORDER_DATE DESC
 </select>

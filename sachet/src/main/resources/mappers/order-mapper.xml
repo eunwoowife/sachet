@@ -63,6 +63,36 @@
  	 (SEQ_ODNO.NEXTVAL, #{orderNo}, #{userNo}, 0, #{experNo}, 0, #{count}, 1, SYSDATE)
 
 	</select>
+	
+	<select id="selectOdnList" resultType="_int">
+	SELECT ORDER_DETAIL_NO
+	FROM ORDER_DETAIL
+	WHERE ORDER_NO=#{orderNo}
+	</select>
+	
+	<select id="selectProductNo" resultType="_int">
+	SELECT PRODUCT_NO
+	FROM ORDER_DETAIL
+	WHERE ORDER_DETAIL_NO=#{integer}
+	</select>
+	
+	<select id="selectComNoList" resultType="_int">
+	SELECT COM_NO
+	FROM ORDER_DETAIL
+	JOIN PRODUCT USING (PRODUCT_NO)
+	JOIN MEMBER M USING(USER_NO)
+	JOIN BOOTH B USING(BOOTH_NO)
+	WHERE ORDER_DETAIL_NO=#{integer}
+	</select>
+	
+	<select id="selectComNoList2" resultType="_int">
+   SELECT COM_NO
+	FROM ORDER_DETAIL
+    JOIN EXPERIENCE USING (EXPER_NO)
+	JOIN MEMBER M USING(USER_NO)
+	JOIN BOOTH B USING(BOOTH_NO)
+	WHERE ORDER_DETAIL_NO=#{integer}
+	</select>
   
   
 
