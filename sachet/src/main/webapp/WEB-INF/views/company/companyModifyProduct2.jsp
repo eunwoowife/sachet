@@ -142,12 +142,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-misc-error.html" class="menu-link">
+                  <a href="productSales.co" class="menu-link">
                     <div data-i18n="Error">상품 판매 내역</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                  <a href="experienceSales.co" class="menu-link">
                     <div data-i18n="Under Maintenance">체험 판매 내역</div>
                   </a>
                 </li>

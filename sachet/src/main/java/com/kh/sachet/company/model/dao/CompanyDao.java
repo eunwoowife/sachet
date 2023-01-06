@@ -37,4 +37,14 @@ public class CompanyDao {
 		return sList;
 	}
 
+	public ArrayList<Integer> selectProductPayList(SqlSessionTemplate sqlSession, int comNo) {
+		ArrayList<Integer> payList = (ArrayList)sqlSession.selectList("OrderMapper.selectProductPayList", comNo);
+		return payList;
+	}
+
+	public ArrayList<Integer> selectExperiencePayList(SqlSessionTemplate sqlSession, int comNo) {
+		ArrayList<Integer> payList = (ArrayList)sqlSession.selectList("OrderMapper.selectExperiencePayList", comNo);
+		return payList;
+	}
+
 }

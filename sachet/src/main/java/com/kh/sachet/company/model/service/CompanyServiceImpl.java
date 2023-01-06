@@ -58,6 +58,18 @@ public class CompanyServiceImpl implements CompanyService{
 		return sList;
 	}
 
+	@Override
+	public ArrayList<Integer> selectProductPayList(int comNo) {
+		ArrayList<Integer> payList = companyDao.selectProductPayList(sqlSession, comNo);
+		return payList;
+	}
+
+	@Override
+	public ArrayList<Integer> selectExperiencePayList(int comNo) {
+		ArrayList<Integer> payList = companyDao.selectExperiencePayList(sqlSession, comNo);
+		return payList;
+	}
+
 	
 	
 }

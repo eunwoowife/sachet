@@ -18,6 +18,8 @@
 		<result column="COUNT" property="count"/>
 		<result column="ORDER_SATUS" property="orderStatus"/>
   		<result column="ORDER_DATE" property="orderDate"/>
+  		<result column="PRODUCT_PRICE" property="productPrice"/>
+  		<result column="EXPER_PRICE" property="experPrice"/>
   </resultMap>
   
   
@@ -93,6 +95,25 @@
 	JOIN BOOTH B USING(BOOTH_NO)
 	WHERE ORDER_DETAIL_NO=#{integer}
 	</select>
+  
+  <select id="selectProductPayList" resultType="_int">
+  	SELECT COUNT*PRODUCT_PRICE PAY
+	FROM ORDER_DETAIL
+	JOIN PRODUCT USING(PRODUCT_NO)
+	JOIN BOOTH B USING(BOOTH_NO)
+	JOIN COMPANY C ON (C.USER_NO=B.COM_NO)
+	AND COM_NO=#{comNo}
+  </select>
+  
+  <select id="selectExperiencePayList" resultType="_int">
+  	SELECT COUNT*EXPER_PRICE PAY
+	FROM ORDER_DETAIL
+	JOIN EXPERIENCE USING(EXPER_NO)
+	JOIN BOOTH B USING(BOOTH_NO)
+	JOIN COMPANY C ON (C.USER_NO=B.COM_NO)
+	AND COM_NO=#{comNo}
+  </select>
+  
   
   
 
