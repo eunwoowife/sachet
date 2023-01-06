@@ -26,4 +26,6 @@ public class OrderDetail {
 	private String orderStatus;
 	private String orderDate;
 
+	private int productPrice;
+	private int experPrice;
 }

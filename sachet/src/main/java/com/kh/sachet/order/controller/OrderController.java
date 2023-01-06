@@ -138,19 +138,27 @@ public class OrderController {
 			}
 		}
 		
+		//-----------------------주현이꼬~~~-------------------------------------------
+		//해당 주문번호에 대한 주문상세번호를 가져온다..
 		ArrayList<Integer> odnList = new ArrayList<Integer>();
 		odnList = orderService.selectOdnList(orderNo);
 //		System.out.println(odnList);
+		
+		//해당 주문번호에 대한 회사번호를 가져온다.
 		ArrayList<Integer> comNoList = new ArrayList<Integer>();
 		for(int i=0; i<odnList.size(); i++) {
+			//해당 주문상세번호에 상품이 있다면?
 			int pnoCount = orderService.selectProductNo(odnList.get(i));
-			if(pnoCount==0) {
+			if(pnoCount==0) { //해당 상품를 판매하고 있는 회사번호를 찾아준다.
 				comNoList.add(orderService.selectComNoList2(odnList.get(i)));
-			}else {
+			//해당 주문상세번호에 상품이 없다면->그건 체험판매겠지
+			}else { //해당 체험을 판매하고 있는 회사번호를 찾아준다.
 				comNoList.add(orderService.selectComNoList(odnList.get(i)));
 			}
 		}
 		
+		//Sales 테이블에 위에서 찾아준 주문상세번호와 그 주문에 대한
+		//회사번호를 통해 insert 시켜준다.
 		Sales sales = new Sales();
 		for(int j=0; j<odnList.size(); j++) {
 			sales.setOrderDetailNo(odnList.get(j));

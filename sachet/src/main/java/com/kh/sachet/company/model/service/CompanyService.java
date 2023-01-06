@@ -18,4 +18,8 @@ public interface CompanyService {
 	ArrayList<Sales> selectProductSales(int comNo);
 
 	ArrayList<Sales> selectExperienceSales(int comNo);
+
+	ArrayList<Integer> selectProductPayList(int comNo);
+
+	ArrayList<Integer> selectExperiencePayList(int comNo);
 }

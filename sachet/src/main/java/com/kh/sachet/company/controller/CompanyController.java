@@ -403,22 +403,45 @@ public class CompanyController {
 	//상품판매관리
 	@RequestMapping("productSales.co")
 	public String productSalesForm(HttpSession session, Model model) {
+		//판매된 상품 리스트 뽑기
 		Company c = (Company)session.getAttribute("loginUser");
 		int comNo = c.getUserNo();
-		
 		ArrayList<Sales> sList = companyService.selectProductSales(comNo);
+		
+		//판매된 상품 총 금액 가져오기
+		ArrayList<Integer> payList = companyService.selectProductPayList(comNo);
+//		System.out.println(payList);
+		int sum = 0;
+		for(int i=0; i<payList.size(); i++) {
+			sum=sum+payList.get(i);
+		}
+//		System.out.println(sum);
+		
 		model.addAttribute("sList", sList);
+		model.addAttribute("sum", sum);
+		
 		return "company/companyProductSales";
 	}
 	
 	//체험판매관리
 	@RequestMapping("experienceSales.co")
 	public String experienceSalesForm(HttpSession session, Model model) {
+		//판매된 체험 리스트 뽑기
 		Company c = (Company)session.getAttribute("loginUser");
 		int comNo = c.getUserNo();
-		
 		ArrayList<Sales> sList = companyService.selectExperienceSales(comNo);
+		
+		//판매된 체험 총 금액 가져오기
+		ArrayList<Integer> payList = companyService.selectExperiencePayList(comNo);
+		int sum = 0;
+		for(int i=0; i<payList.size(); i++) {
+			sum=sum+payList.get(i);
+		}
+//		System.out.println(sum);
+		
 		model.addAttribute("sList", sList);
+		model.addAttribute("sum", sum);
+		
 		return "company/companyExperienceSales";
 	}
 	

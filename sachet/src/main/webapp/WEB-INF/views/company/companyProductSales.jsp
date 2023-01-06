@@ -279,8 +279,8 @@
                             </div>
                           </div>
                           <span class="fw-semibold d-block mb-1">기업 상품 누적 수입</span>
-                          <h3 class="card-title mb-2">$12,628</h3>
-                          <small class="fw-semibold" style="color:blue;"><i class="bx bx-up-arrow-alt"></i>총2건</small>
+                          <h3 class="card-title mb-2">₩<fmt:formatNumber value="${sum }" type="number"/></h3>
+                          <small class="fw-semibold" style="color:blue;"><i class="bx bx-up-arrow-alt"></i>총 ${sList.size() }건</small>
                         </div>
                       </div>
                     </div>
