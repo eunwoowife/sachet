@@ -254,21 +254,6 @@ border: none;
             function (rsp) { // callback
                 if (rsp.success) {
                 	
-//                 	$.ajax({
-//     	    			url : "ticketPayment.ti",
-//     	    			data : {
-//     	    				ticketDate : '${t.ticketDate}',
-//     	    				userName : '${t.userName}',
-//     	    				phone : '${t.phone}', 
-//     	    				email :'${t.email}',
-//     	    				totalPrice : '${t.totalPrice}',
-//     	    				totalPeople : '${t.totalPeople}',
-//     	    				ticketAdult : '${t.ticketAdult}',
-//     	    				ticketKid : '${t.ticketKid}',
-//     	    				ticketFree : '${t.ticketFree}'
-//     	    			}
-    	    			
-//     	    		})
 
                 	var form = document.createElement("form");
         			form.setAttribute("charset", "UTF-8");

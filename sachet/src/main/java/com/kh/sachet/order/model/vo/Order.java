@@ -1,6 +1,5 @@
 package com.kh.sachet.order.model.vo;
 
-import java.sql.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +16,6 @@ public class Order {
 	
 	private int orderNo;
 	private int userNo;
-	private int totalPay;
+	private int totalPrice;
 
 }

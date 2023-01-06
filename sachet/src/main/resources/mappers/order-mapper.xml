@@ -44,7 +44,23 @@
 	<select id="insertOrderDetail" parameterType="orderDetail" resultMap="orderDetailResultSet">
   
  	 INSERT INTO ORDER_DETAIL VALUES
- 	 (SEQ_ODNO.NEXTVAL, #{orderNo}, #{userNo}, NULL, NULL, #{ticketNo}, 1, 1, SYSDATE)
+ 	 (SEQ_ODNO.NEXTVAL, #{orderNo}, #{userNo}, 0, 0, #{ticketNo}, 1, 1, SYSDATE)
+
+	</select>
+	
+	<select id="insertOdPro" parameterType="orderDetail" resultMap="orderDetailResultSet">
+  
+ 	 INSERT INTO ORDER_DETAIL VALUES
+ 	 (SEQ_ODNO.NEXTVAL, #{orderNo}, #{userNo}, #{productNo}, 0, 0, #{count}, 1, SYSDATE)
+
+	</select>
+	
+	
+	
+	<select id="insertOdExer" parameterType="orderDetail" resultMap="orderDetailResultSet">
+  
+ 	 INSERT INTO ORDER_DETAIL VALUES
+ 	 (SEQ_ODNO.NEXTVAL, #{orderNo}, #{userNo}, 0, #{experNo}, 0, #{count}, 1, SYSDATE)
 
 	</select>
   
