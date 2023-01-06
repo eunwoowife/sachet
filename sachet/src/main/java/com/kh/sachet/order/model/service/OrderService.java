@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
 import com.kh.sachet.cart.model.vo.CartList;
+import com.kh.sachet.company.model.vo.Sales;
 import com.kh.sachet.order.model.vo.Order;
 import com.kh.sachet.order.model.vo.OrderDetail;
 
@@ -24,4 +25,13 @@ public interface OrderService {
 
 	int insertOdExer(OrderDetail cartEx);
 
+	ArrayList<Integer> selectOdnList(int orderNo);
+
+	Integer selectComNoList(Integer integer);
+
+	void insertSales(Sales sales);
+
+	Integer selectComNoList2(Integer integer);
+
+	int selectProductNo(Integer integer);
 }

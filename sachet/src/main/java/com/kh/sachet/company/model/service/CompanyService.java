@@ -16,4 +16,6 @@ public interface CompanyService {
 	int updateCompanyUser(Company c);
 
 	ArrayList<Sales> selectProductSales(int comNo);
+
+	ArrayList<Sales> selectExperienceSales(int comNo);
 }
