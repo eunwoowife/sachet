@@ -53,5 +53,14 @@ public class CartDao {
 	public int selectExperDelete(SqlSessionTemplate sqlSession, CartList c) {
 		return sqlSession.delete("cartMapper.selectExperDelete",c);
 	}
+
+	public int countUpdate(SqlSessionTemplate sqlSession, CartList c) {
+		if(c.getGoodsNo()<1000) {
+			return sqlSession.update("cartMapper.countUpdatePro",c);
+		}else {
+			return sqlSession.update("cartMapper.countUpdateExper", c);
+		}
+		
+	}
 	
 }

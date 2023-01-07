@@ -29,7 +29,6 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 
-
 	@Override
 	public ArrayList<Notice> selectNoticeList(PageInfo pi) {
 		ArrayList<Notice> nList = noticeDao.selectNoticeList(sqlSession, pi);
@@ -48,6 +47,32 @@ public class NoticeServiceImpl implements NoticeService {
 	public int countPlus(int nno) {
 		int countView = noticeDao.countPlus(sqlSession, nno);
 		return countView;
+	}
+
+
+
+	@Override
+	public int noticeInsert(Notice n) {
+		return noticeDao.noticeInsert(sqlSession, n);
+	}
+
+
+
+	@Override
+	public String selectPre(int i) {
+		return noticeDao.selectPre(sqlSession, i);
+	}
+
+
+	@Override
+	public int noticeInsertNo() {
+		return noticeDao.noticeInsertNo(sqlSession);
+	}
+
+
+	@Override
+	public int noticeDelete(int nno) {
+		return noticeDao.noticeDelete(sqlSession,nno);
 	}
 
 }

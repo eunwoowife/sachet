@@ -35,4 +35,19 @@ public class NoticeDao {
 		return sqlSession.update("noticeMapper.countPlus", nno);
 	}
 
+	public int noticeInsert(SqlSessionTemplate sqlSession, Notice n) {
+		return sqlSession.insert("noticeMapper.noticeInsert", n);
+	}
+
+	public String selectPre(SqlSessionTemplate sqlSession, int i) {
+		return sqlSession.selectOne("noticeMapper.selectPre", i);
+	}
+
+	public int noticeInsertNo(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("noticeMapper.noticeInsertNo");
+	}
+
+	public int noticeDelete(SqlSessionTemplate sqlSession, int nno) {
+		return sqlSession.update("noticeMapper.noticeDelete",nno);
+	}
 }

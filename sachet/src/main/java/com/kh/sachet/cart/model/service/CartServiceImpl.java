@@ -76,4 +76,9 @@ public class CartServiceImpl implements CartService{
 	public int selectExperDelete(CartList c) {
 		return cartDao.selectExperDelete(sqlSession,c);
 	}
+
+	@Override
+	public int countUpdate(CartList c) {
+		return cartDao.countUpdate(sqlSession, c);
+	}
 }
