@@ -22,4 +22,8 @@ public interface CompanyService {
 	ArrayList<Integer> selectProductPayList(int comNo);
 
 	ArrayList<Integer> selectExperiencePayList(int comNo);
+
+	int changeStatusYes(Integer integer);
+
+	int changeStatusNo(Integer integer);
 }

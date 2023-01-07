@@ -47,4 +47,12 @@ public class CompanyDao {
 		return payList;
 	}
 
+	public int changeStatusYes(SqlSessionTemplate sqlSession, Integer integer) {
+		return sqlSession.update("salesMapper.changeStatusYes", integer);
+	}
+
+	public int changeStatusNo(SqlSessionTemplate sqlSession, Integer integer) {
+		return sqlSession.update("salesMapper.changeStatusNo", integer);
+	}
+
 }

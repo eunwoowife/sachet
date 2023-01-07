@@ -51,7 +51,7 @@
 	}
 	
 	 th, td{
-        padding-left: 100px;
+        padding-left: 98px;
     }
 
     th, td{
@@ -287,12 +287,12 @@
     <br><br>
     <div style="margin-left: 100px;">
         <p>총 ${sList.size() }건</p>
-        <select class="form-select" id="exampleFormControlSelect1" style="width:300px; float:left;">
+        <select class="form-select sortList" id="exampleFormControlSelect1" style="width:300px; float:left;">
             <option value="">체험 상태 변경처리</option>
-            <option value="">미체험</option>
-            <option value="">체험완료</option>
+            <option value="N">미체험</option>
+            <option value="Y">체험완료</option>
         </select>
-            <button class="btn btn-primary" style="float:left;">변경</button>
+            <button class="btn btn-primary" style="float:left;" onclick="changeStatus();">변경</button>
         
         <br clear="both">
     </div>
@@ -313,7 +313,7 @@
             
             <c:forEach var="s" items="${sList }">
             <tr>
-                <td><input class="form-check-input" type="checkbox" name="" id=""></td>
+                <td><input class="form-check-input" type="checkbox" name="checkedOrderDetailNo" id="orderDetailNo" value="${s.orderDetailNo }"></td>
                 <td>${s.orderDetailNo}</td>
                 <td>${s.orderDate }</td>
                 <td>${s.experTitle }</td>
@@ -323,8 +323,8 @@
                    	${s.userName }<br>
                     ${s.userPhone }<br>
                 </td>
-                 <c:if test="${s.useStatus eq 'N' }"><td>미체험</td></c:if>
-                <c:if test="${s.useStatus eq 'Y' }"><td>체험완료</td></c:if>
+                 <c:if test="${s.useStatus eq 'N' }"><td><span class="badge rounded-pill bg-label-warning">미체험</span></td></c:if>
+                <c:if test="${s.useStatus eq 'Y' }"><td><span class="badge rounded-pill bg-label-primary">체험완료</span></td></c:if>
             </tr>
             </c:forEach>
             
@@ -339,6 +339,33 @@
           </div>
           </div>
           
+          <script>
+          	function changeStatus(){
+          		var value = $(".sortList").val();
+          		var odNoList = [];
+          		$("input[name='checkedOrderDetailNo']:checked").each(function(i){
+          			odNoList.push($(this).val());
+          		})
+//           		alert(odNoList);
+//           		alert(value);
+				$.ajax({
+					url : "changeStatus.co",
+					data : {status : value,
+								odNoList : odNoList},
+					success : function(result){
+						console.log("통신성공");
+						if(result>0){
+							location.reload();
+						}else{
+							alert("현재 상태를 변경할 수 없습니다.");
+						}
+					},
+					error : function(){
+						console.log("통신실패");
+					}
+				})
+          	}
+          </script>
           
         
           <script  src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>

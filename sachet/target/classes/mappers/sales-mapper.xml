@@ -62,4 +62,14 @@
 	ORDER BY ORDER_DATE DESC
 </select>
 
+<update id="changeStatusYes">
+	UPDATE SALES SET USE_STATUS='Y'
+	WHERE ORDER_DETAIL_NO=#{integer}
+</update>
+
+<update id="changeStatusNo">
+	UPDATE SALES SET USE_STATUS='N'
+	WHERE ORDER_DETAIL_NO=#{integer}
+</update>
+
 </mapper>
