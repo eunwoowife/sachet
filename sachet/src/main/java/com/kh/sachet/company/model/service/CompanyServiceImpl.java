@@ -70,6 +70,18 @@ public class CompanyServiceImpl implements CompanyService{
 		return payList;
 	}
 
+	@Override
+	public int changeStatusYes(Integer integer) {
+		int result = companyDao.changeStatusYes(sqlSession, integer);
+		return result;
+	}
+
+	@Override
+	public int changeStatusNo(Integer integer) {
+		int result = companyDao.changeStatusNo(sqlSession, integer);
+		return result;
+	}
+
 	
 	
 }

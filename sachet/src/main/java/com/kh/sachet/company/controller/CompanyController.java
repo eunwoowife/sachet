@@ -3,6 +3,7 @@ package com.kh.sachet.company.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -455,6 +457,36 @@ public class CompanyController {
 		model.addAttribute("boo", boo);
 		
 		return "company/companyBoothStatus";
+	}
+	
+	//판매 상품 및 체험 관리-상품 및 체험 수령상태 변경하기
+	@ResponseBody
+	@RequestMapping(value="changeStatus.co")
+	public int changeStatus(Sales s, Model model,
+			@RequestParam(value="status") String status,
+			@RequestParam(value="odNoList[]") List<Integer> odNoList
+			) {
+//		System.out.println(status);
+//		System.out.println(odNoList);
+		
+		int result = 0;
+		
+		//셀렉트에서 옵션을 수령완료나 체험완료를 선택했을 때,
+		//해당 상품 및 체험의 사용상태를 Y로 바꾼다~
+		if(status.equals("Y")) {
+//			s.setUseStatus(status);
+			for(int i=0; i<odNoList.size(); i++) {
+				result = companyService.changeStatusYes(odNoList.get(i));
+//				System.out.println("Y Result : "+result);
+			}
+		}else { //옵션을 미수령이나 미체험으로 선택했을 때,
+			//해당 상품 및 체험의 사용상태를 N으로 바꾼다~
+			for(int i=0; i<odNoList.size(); i++) {
+				result = companyService.changeStatusNo(odNoList.get(i));
+//				System.out.println("N Result : "+result);
+			}
+		}
+		return result;
 	}
 	
 }
