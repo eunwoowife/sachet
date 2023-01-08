@@ -250,7 +250,7 @@ section.notice {
                   <form action="searchNotice.no">
                       <div class="search-wrap">
                           <label for="search" class="blind">공지사항 내용 검색</label>
-                          <input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
+                          <input id="search" type="search" name="keyword" placeholder="${keyword }" value="">
                           <button type="submit" class="btn btn-dark">검색</button>
                       </div>
                   </form>
@@ -273,7 +273,7 @@ section.notice {
                   </thead>
                   <tbody>
 
-                  <c:forEach var="n" items="${nList }">
+                  <c:forEach var="n" items="${searchL}">
                   <tr>
                       <td>${n.noticeNo }</td>
                       <th>
@@ -291,6 +291,15 @@ section.notice {
                       <td>${n.count}</td>
                       <td>${n.noticeFile}</td>
                   </tr>
+                  
+                  
+                  <tr>
+                  <td colspan="5">
+                  ${n.noticeContent}
+                  <td>
+                  </tr>
+                  
+                  
   				</c:forEach>
                   
                   </tbody>
@@ -303,40 +312,40 @@ section.notice {
         <a href="noticeInsert.no">공지사항쓰는 하퍼링크~</a>
   
   
-  <div id="pagingArea">
-                		<ul class="pagination">
+<!--   <div id="pagingArea"> -->
+<!--                 		<ul class="pagination"> -->
                 		
-                		<c:choose>
-                		<c:when test="${pi.currentPage!=1 }">
-		                    <li class="page-item"><a class="page-link" href="noticeListView.no?currentPage=${pi.currentPage-1 }">Previous</a></li>
-	                    </c:when>
-	                    <c:otherwise>
-	                    	<li class="page-item disabled"><a class="page-link" href="noticeListView.no?currentPage=${pi.currentPage-1 }">Previous</a></li>
-	                    </c:otherwise>
-                    	</c:choose>
+<%--                 		<c:choose> --%>
+<%--                 		<c:when test="${pi.currentPage!=1 }"> --%>
+<%-- 		                    <li class="page-item"><a class="page-link" href="noticeListView.no?currentPage=${pi.currentPage-1 }">Previous</a></li> --%>
+<%-- 	                    </c:when> --%>
+<%-- 	                    <c:otherwise> --%>
+<%-- 	                    	<li class="page-item disabled"><a class="page-link" href="noticeListView.no?currentPage=${pi.currentPage-1 }">Previous</a></li> --%>
+<%-- 	                    </c:otherwise> --%>
+<%--                     	</c:choose> --%>
                     	
-                    	<c:forEach var="g" begin="${pi.startPage }" end="${pi.endPage }">
-                    	<c:choose>
-                    	<c:when test="${pi.currentPage eq g }">
-		                    <li class="page-item disabled"><a class="page-link" href="noticeListView.no?currentPage=${g }">${g }</a></li>
-	                    </c:when>
-	                    <c:otherwise>
-	                    	<li class="page-item"><a class="page-link" href="noticeListView.no?currentPage=${g }">${g }</a></li>
-	                    </c:otherwise>
-	                    </c:choose>
-	                    </c:forEach>
+<%--                     	<c:forEach var="g" begin="${pi.startPage }" end="${pi.endPage }"> --%>
+<%--                     	<c:choose> --%>
+<%--                     	<c:when test="${pi.currentPage eq g }"> --%>
+<%-- 		                    <li class="page-item disabled"><a class="page-link" href="noticeListView.no?currentPage=${g }">${g }</a></li> --%>
+<%-- 	                    </c:when> --%>
+<%-- 	                    <c:otherwise> --%>
+<%-- 	                    	<li class="page-item"><a class="page-link" href="noticeListView.no?currentPage=${g }">${g }</a></li> --%>
+<%-- 	                    </c:otherwise> --%>
+<%-- 	                    </c:choose> --%>
+<%-- 	                    </c:forEach> --%>
 	                    
-	                    <c:choose>
-	                    <c:when test="${pi.currentPage ne pi.maxPage }">
-		                    <li class="page-item"><a class="page-link" href="noticeListView.no?currentPage=${pi.currentPage+1}">Next</a></li>
-	                    </c:when>
-	                    <c:otherwise>
-	                    	<li class="page-item disabled"><a class="page-link" href="noticeListView.no?currentPage=${pi.currentPage+1}">Next</a></li>
-	                    </c:otherwise>
-	                    </c:choose>
+<%-- 	                    <c:choose> --%>
+<%-- 	                    <c:when test="${pi.currentPage ne pi.maxPage }"> --%>
+<%-- 		                    <li class="page-item"><a class="page-link" href="noticeListView.no?currentPage=${pi.currentPage+1}">Next</a></li> --%>
+<%-- 	                    </c:when> --%>
+<%-- 	                    <c:otherwise> --%>
+<%-- 	                    	<li class="page-item disabled"><a class="page-link" href="noticeListView.no?currentPage=${pi.currentPage+1}">Next</a></li> --%>
+<%-- 	                    </c:otherwise> --%>
+<%-- 	                    </c:choose> --%>
 	                    
-                		</ul>
-          		  </div>
+<!--                 		</ul> -->
+<!--           		  </div> -->
  
 
 </body>

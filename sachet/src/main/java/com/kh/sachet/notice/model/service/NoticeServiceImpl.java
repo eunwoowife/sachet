@@ -75,4 +75,10 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDao.noticeDelete(sqlSession,nno);
 	}
 
+
+	@Override
+	public ArrayList<Notice> searchNotice(String keyword) {
+		return noticeDao.searchNotice(sqlSession, keyword);
+	}
+
 }

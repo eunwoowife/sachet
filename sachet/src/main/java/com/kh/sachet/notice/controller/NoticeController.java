@@ -253,6 +253,55 @@ public class NoticeController {
 	}
 	
 	
+	@RequestMapping("searchNotice.no")
+	public ModelAndView searchNotice (ModelAndView mv, String keyword) {
+		
+		
+		String keyword2 = "%"+keyword+"%";
+		
+		ArrayList <Notice> searchL = new ArrayList <Notice>();
+		
+		searchL = noticeService.searchNotice(keyword2);
+		
+		
+		for(int i=0; i<searchL.size(); i++) {
+		
+			//키워드 시작하는 인덱스
+			int keywordIndex = searchL.get(i).getNoticeContent().indexOf(keyword)+keyword.length();
+			
+			//키워드 시작하는 인덱스부터 미리보기 할 인덱스까지 +120자
+			int keywordLast = keywordIndex+200;
+			
+			//내용 영역의 총 글자 수
+			int content = searchL.get(i).getNoticeContent().length();
+			
+			String searchContent ="";
+			//내용이 만약 키워드 시작부터 120자 이상까지 없다면, 마지막 인덱스까지 substring
+			if(content-keywordLast>0) {
+				searchContent= searchL.get(i).getNoticeContent().substring(keywordIndex,keywordLast);
+			}else {
+				searchContent=searchL.get(i).getNoticeContent().substring(keywordIndex,content);
+			}
+			
+			//<br>과 <p>태그의 엔터 없애주기
+			String finalContent = searchContent.replace("<br>", "").replace("<p>", "").replace("</p>", "");
+			
+			//만약 키워드가 제목에만 있고 내용에는 없다면
+			String boldContent=finalContent;
+
+			boldContent = "<b>"+keyword+"</b>"+finalContent;
+			searchL.get(i).setNoticeContent(boldContent);
+		}
+		
+		
+		mv.addObject("searchL", searchL);
+		mv.addObject("keyword", keyword);
+		mv.setViewName("notice/noticeSearchList");
+		
+		return mv;
+	}
+	
+	
 	
 
 }

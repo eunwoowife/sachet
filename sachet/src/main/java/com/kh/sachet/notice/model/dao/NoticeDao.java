@@ -50,4 +50,15 @@ public class NoticeDao {
 	public int noticeDelete(SqlSessionTemplate sqlSession, int nno) {
 		return sqlSession.update("noticeMapper.noticeDelete",nno);
 	}
+
+	public ArrayList<Notice> searchNotice(SqlSessionTemplate sqlSession, String keyword) {
+		
+		ArrayList<Notice> l = (ArrayList)sqlSession.selectList("noticeMapper.searchNotice", keyword);
+		return l;
+	
+	}
+
+
+
+
 }

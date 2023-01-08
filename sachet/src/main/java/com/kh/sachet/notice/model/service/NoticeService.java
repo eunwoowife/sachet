@@ -23,4 +23,6 @@ public interface NoticeService  {
 
 	int noticeDelete(int nno);
 
+	ArrayList<Notice> searchNotice(String keyword);
+
 }

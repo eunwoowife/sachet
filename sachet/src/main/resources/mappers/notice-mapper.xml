@@ -85,6 +85,13 @@
 	WHERE NOTICE_NO = #{nno}
 	</update>
 	
+	<select id="searchNotice" resultMap="noticeResultSet">
+	SELECT *
+	FROM NOTICE
+	WHERE NOTICE_CONTENT LIKE  #{keyword}
+	
+	</select>
+	
 	
 	
 	
