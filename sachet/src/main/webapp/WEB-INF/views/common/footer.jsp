@@ -23,10 +23,6 @@
 .footUtil .utilInner .util li:first-child::before { display:none; }
 .footUtil .utilInner .util li a { display:block; padding:5px 12px; color:#f0f0f0; }
 .footUtil .utilInner .sns a { display:block; overflow:hidden; width:24px; height:24px; margin:0 10px; background:center no-repeat; background-size:contain; text-indent:-999px; }
-.footUtil .utilInner .sns li.sns01 a { background-image:url(../img/main_2022/icon_sns01.png); }
-.footUtil .utilInner .sns li.sns02 a { background-image:url(../img/main_2022/icon_sns02.png); }
-.footUtil .utilInner .sns li.sns03 a { background-image:url(../img/main_2022/icon_sns03.png); }
-.footUtil .utilInner .sns li.sns04 a { background-image:url(../img/main_2022/icon_sns04.png); }
 #footer .footerWrap { overflow:hidden; max-width:980px; margin:0 auto; padding:120px 5%; }
  #footer .footerWrap .fLogo { float:left; } 
 #footer .footerWrap .ftInfo { float:right; width:90%; }
@@ -87,7 +83,7 @@
             <div class="footerWrap">
                 <p class="fLogo"><a href="/kr/">
                        <picture>
-                            <source media="(max-width: 960px)" srcset="/kr/img/common/logo_footer_2023_mo.jpg" />
+                            <source media="(max-width: 960px)" srcset="" />
                             <img src="${pageContext.request.contextPath}/resources/images/로고10.png"  height="70px" alt="2023 BIAF 2023 BUCHEON INTERNATIONAL ANIMATION FESTIVAL">
                         </picture> 
                     </a></p>

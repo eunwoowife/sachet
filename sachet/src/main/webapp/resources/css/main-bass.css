@@ -425,10 +425,6 @@ ul.BackgroundNone li {background:none !important;}
 .footUtil .utilInner .util li:first-child::before { display:none; }
 .footUtil .utilInner .util li a { display:block; padding:5px 12px; color:#f0f0f0; }
 .footUtil .utilInner .sns a { display:block; overflow:hidden; width:24px; height:24px; margin:0 10px; background:center no-repeat; background-size:contain; text-indent:-999px; }
-.footUtil .utilInner .sns li.sns01 a { background-image:url(../img/main_2022/icon_sns01.png); }
-.footUtil .utilInner .sns li.sns02 a { background-image:url(../img/main_2022/icon_sns02.png); }
-.footUtil .utilInner .sns li.sns03 a { background-image:url(../img/main_2022/icon_sns03.png); }
-.footUtil .utilInner .sns li.sns04 a { background-image:url(../img/main_2022/icon_sns04.png); }
 #footer .footerWrap { overflow:hidden; max-width:980px; margin:0 auto; padding:60px 5%; }
 #footer .footerWrap .fLogo { float:left; }
 #footer .footerWrap .ftInfo { float:right; width:71%; }

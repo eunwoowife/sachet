@@ -26,11 +26,13 @@
         margin: 0;
         padding: 0;
         list-style: none;
+       
     } 
     .outer1{
         width: 70%;
         align-items: center;
         margin-left: 280px;
+        
     }
     .sachetA {
         text-decoration: none;
@@ -56,6 +58,7 @@
         mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 25%, #FFFFFF 75%, rgba(255, 255, 255, 0) 100%);
         margin: 0 auto;
         margin-top: 80px;
+        
         }
     #sachetNav #nav1 {
     text-align: center;
@@ -179,7 +182,7 @@
   
         
     </div>
-    <nav id="sachetNav">
+    <nav id="sachetNav" style="background-color:white;">
 		<ul id="nav1">
 			<li class="nav2"><a class="sachetA" href="#">Sachet</a>
 				<ul class="nav3">
@@ -214,7 +217,6 @@
 </div>
 
 
-</body>
 </body>
 
 </html>
