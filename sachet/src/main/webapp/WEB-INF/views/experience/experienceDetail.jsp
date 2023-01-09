@@ -203,7 +203,8 @@ ${e.experDetail}
                <button class="w-btn w-btn-gray" type="button" id="addToCart">
                 장바구니 담기
                  </button>
-                <button class="w-btn w-btn-gra2 w-btn-gra-anim" type="button">
+                <button class="w-btn w-btn-gra2 w-btn-gra-anim" type="button"
+                onclick = "selectOrder('${e.experNo}','${e.experPrice}','${e.experTitle}','${e.boothName}','${e.experImgFp}');" >
                 체험 신청하기
                 </button>
                 </div>
@@ -240,6 +241,64 @@ ${e.experDetail}
 			var total = (proPrice*parseInt($("#proCount").val()));
 		  	var totalPriceComma = (total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 			$("#totalSum").text(totalPriceComma);
+			
+		}
+		
+		
+		function selectOrder(goodsNo,goodsPrice,goodsName,boothName,goodsImgFp){
+			var goodsNo = goodsNo;
+			var goodsCount = $("#proCount").val();
+			var goodsPrice= goodsPrice;
+			var goodsName=goodsName;
+			var boothName=boothName;
+			var goodsImgFp =goodsImgFp;
+			
+			
+			var form = document.createElement("form");
+			form.setAttribute("charset", "UTF-8");
+			form.setAttribute("method", "Post"); 
+			form.setAttribute("action", "selectOrderForm.or"); 
+			
+			hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "goodsNo");
+			hiddenField.setAttribute("value", goodsNo);
+			form.appendChild(hiddenField);
+			
+			var hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "boothName");
+			hiddenField.setAttribute("value", boothName);
+			form.appendChild(hiddenField);
+			
+			hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "goodsName");
+			hiddenField.setAttribute("value", goodsName);
+			form.appendChild(hiddenField);
+			
+			hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "goodsPrice");
+			hiddenField.setAttribute("value", goodsPrice);
+			form.appendChild(hiddenField);
+							         
+			hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "goodsCount");
+			hiddenField.setAttribute("value", goodsCount);
+			form.appendChild(hiddenField);
+			
+			hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "goodsImgFp");
+			hiddenField.setAttribute("value", goodsImgFp);
+			form.appendChild(hiddenField);
+			
+			document.body.appendChild(form);
+			
+			form.submit();
+			
 		}
 	</script>
 	

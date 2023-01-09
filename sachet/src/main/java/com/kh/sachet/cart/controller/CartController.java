@@ -153,7 +153,6 @@ public class CartController {
 		
 		result = cartService.countUpdate(c);
 		
-		
 		return result;
 	}
 
