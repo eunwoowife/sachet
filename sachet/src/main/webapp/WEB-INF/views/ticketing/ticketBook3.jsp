@@ -6,6 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/demo.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="${pageContext.request.contextPath}/resources/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="${pageContext.request.contextPath}/resources/js/config.js"></script>
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
 </head>
 <style>
 .outerarea{
@@ -78,18 +98,11 @@
     margin-bottom: 100px;
 }
 .btn{
-    width: 100px;
-    height: 30px;
-    background-color:white;
-    border: none;
-    cursor: pointer;
+    width: 130px;
+    height: 50px;
+    margin-left:20px;
 }
-.btn:hover{
-width: 100px;
-height: 30px;
-background-color: rgb(193, 205, 224);
-border: none;
-}
+
 .paymentTable{
     width: 100%;
     border-collapse: collapse;
@@ -116,11 +129,25 @@ border: none;
 	font-size: 2em;
 	margin-top: 150px;
 }
+
+.stepArea{
+		  position: absolute;
+ 		 left: 50%;
+ 		 transform: translateX(-50%);
+ 		 margin-top: 150px;
+		}
+		
+		.stepArea img{
+		  width: 500px;
+		}
 </style>
 <body>
 
 <jsp:include page="../common/header.jsp" />
     <div class="outerarea">
+    <div class="stepArea">
+		<img src="${pageContext.request.contextPath}/resources/images/ticket-step3.png">
+		</div>
     <div class="centerarea">
     <div class="titlearea"> 결제가 완료되었습니다. </div>
     <table class="confirm">
@@ -209,8 +236,8 @@ border: none;
                   </tr>
                 </table>
                 <div class="btnarea">
-                  <button class="btn" onclick="location.href='${pageContext.request.contextPath}/index.jsp'">메인으로</button>
-                  <button class="btn">마이페이지로</button>
+                  <button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/index.jsp'">메인으로</button>
+                  <button class="btn btn-info">마이페이지로</button>
                   </div>
                   
                   

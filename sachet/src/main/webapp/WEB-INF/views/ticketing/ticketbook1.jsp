@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!doctype html>
 <html>
 <head>
@@ -9,16 +10,46 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	
+	<!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+	 <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/demo.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="${pageContext.request.contextPath}/resources/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="${pageContext.request.contextPath}/resources/js/config.js"></script>
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
+	
 	<style>
 		@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700");
 body.ml-calendar-demo {
-  padding: 60px 20px; }
+  padding: 60px 20px;
+  margin-bottom: 100px;
+  }
 
 .outerArea{
 
 	width: 70%;
-	margin-top: 300px;
-	
+	margin-top: 250px;
+	position: absolute;
+  	left: 50%;
+  	transform: translateX(-50%);
+  	margin-bottom: 250px;
 
 }
 .ml-calendar {
@@ -27,9 +58,12 @@ body.ml-calendar-demo {
   font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   max-width: 940px;
-  margin-left: 500px;
   box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
-  border-radius: 1em; 
+  border-radius: 1em;
+  width: 1000px; 
+	position: absolute;
+  	left: 50%;
+  	transform: translateX(-50%); 
  }
   .ml-calendar a {
     color: #2d2e2f;
@@ -177,31 +211,37 @@ body.ml-calendar-demo {
 
 
 		#ticketSubmit{
-			background-color:#e4e4e4;
-			border-radius: 100px;
-			border: none;
-			width: 180px;
-			height: 30px;
+			width: 200px;
+			height: 50px;
 			font-size: 1em;
-		}
-
-		#ticketSubmit:hover:enabled{
-			background-color: #525355;
-			color: white;
-			text-decoration: wavy;
-		}
-
+	}
 		
+		.stepArea{
+		  position: absolute;
+ 		 left: 50%;
+ 		 transform: translateX(-50%);
+ 		 margin-top: 150px;
+		}
+		
+		.stepArea img{
+		  width: 500px;
+		}
 
-  .ml-calendar .clear {
-    clear: both; }
+
+  	.ml-calendar .clear {
+    clear: both; 
+    }
 	</style>
 	
 </head>
-<jsp:include page="../common/newheader.jsp" />
+<jsp:include page="../common/header.jsp" />
 <body>
 
 <div class="ml-calendar-demo">
+
+		<div class="stepArea">
+		<img src="${pageContext.request.contextPath}/resources/images/ticket-step1.png">
+		</div>
 
 <div class ="outerArea">
 	<div class="ml-calendar">
@@ -219,7 +259,7 @@ body.ml-calendar-demo {
 					</span>
 					<hr>
 					<br/>
-					<span id="selectDay"> <b>날짜를 선택해주세요 </b></span>
+					<span id="selectDay" > <b>날짜를 선택해주세요 </b></span>
 					<br><br>
 
 					<div id="counting">
@@ -246,7 +286,7 @@ body.ml-calendar-demo {
 					<span> 합계: </span>  ￦ <span id="totalSum"> 20,000 </span>
 					<br><br>
 			</div>
-			<button type="submit" id="ticketSubmit" disabled onclick="book2();"> 예매하기 </button>
+			<button type="submit" id="ticketSubmit" class="btn btn-info" disabled onclick="book2();"> 예매하기 </button>
 
 			</div>
 
@@ -255,6 +295,7 @@ body.ml-calendar-demo {
 		<section class="calendar-right">
 			<div class="calendar">
 				<section class="calendar-header">
+				<br><br>
 					<h2><strong>January</strong> 2023</h2>
 				</section>
 				<section class="calendar-row">
@@ -386,8 +427,8 @@ body.ml-calendar-demo {
 		<div class="clear"></div>
 </div>
 </div>
-</div>
 
+</div>
 		<script>
 
 			function adultCount(result){
@@ -466,59 +507,74 @@ body.ml-calendar-demo {
 
 			function book2(){
 				
+
+			    <c:if test="${not empty loginUser }">
+			    
+					const loginUser = '${loginUser.userNo}';				
+					if(loginUser>1000){
+						var bookDate = $("#selectDay").text();
+						var adultCount = $("#adultCount").val();
+						var kidsCount = $("#kidsCount").val();
+						var freeCount = $("#freeCount").val();
+						const date = new Date();
+													    		       	
+						var form = document.createElement("form");
+						form.setAttribute("charset", "UTF-8");
+						form.setAttribute("method", "Post"); 
+						form.setAttribute("action", "ticketBook2.ti"); 
+						
+						var hiddenField = document.createElement("input");
+						hiddenField.setAttribute("type", "hidden");
+						hiddenField.setAttribute("name", "bookDate");
+						hiddenField.setAttribute("value",bookDate);
+						form.appendChild(hiddenField);
+										         
+						hiddenField = document.createElement("input");
+						hiddenField.setAttribute("type", "hidden");
+						hiddenField.setAttribute("name", "adultCount");
+						hiddenField.setAttribute("value", adultCount);
+						form.appendChild(hiddenField);
+						
+						hiddenField = document.createElement("input");
+						hiddenField.setAttribute("type", "hidden");
+						hiddenField.setAttribute("name", "kidsCount");
+						hiddenField.setAttribute("value", kidsCount);
+						form.appendChild(hiddenField);
+						
+						hiddenField = document.createElement("input");
+						hiddenField.setAttribute("type", "hidden");
+						hiddenField.setAttribute("name", "freeCount");
+						hiddenField.setAttribute("value", freeCount);
+						form.appendChild(hiddenField);
+						
+						hiddenField = document.createElement("input");
+						hiddenField.setAttribute("type", "hidden");
+						hiddenField.setAttribute("name", "bookingtime");
+						hiddenField.setAttribute("value", date.toLocaleString());
+						form.appendChild(hiddenField);
+						
+						
+						document.body.appendChild(form);
+										         
+						form.submit();
+					}else if(loginUser<1000){
+						window.alert("회원 로그인 후 이용 가능한 서비스입니다.");
+						return false;
+					}
+
+	     		</c:if>
+	     		<c:if test="${empty loginUser }">
+	     			alert("회원 로그인 후 이용 가능한 서비스입니다.");
+	 			</c:if>
+	     		
 				
-				
-			var bookDate = $("#selectDay").text();
-			var adultCount = $("#adultCount").val();
-			var kidsCount = $("#kidsCount").val();
-			var freeCount = $("#freeCount").val();
-			const date = new Date();
-										    		       	
-			var form = document.createElement("form");
-			form.setAttribute("charset", "UTF-8");
-			form.setAttribute("method", "Post"); 
-			form.setAttribute("action", "ticketBook2.ti"); 
-			
-			var hiddenField = document.createElement("input");
-			hiddenField.setAttribute("type", "hidden");
-			hiddenField.setAttribute("name", "bookDate");
-			hiddenField.setAttribute("value",bookDate);
-			form.appendChild(hiddenField);
-							         
-			hiddenField = document.createElement("input");
-			hiddenField.setAttribute("type", "hidden");
-			hiddenField.setAttribute("name", "adultCount");
-			hiddenField.setAttribute("value", adultCount);
-			form.appendChild(hiddenField);
-			
-			hiddenField = document.createElement("input");
-			hiddenField.setAttribute("type", "hidden");
-			hiddenField.setAttribute("name", "kidsCount");
-			hiddenField.setAttribute("value", kidsCount);
-			form.appendChild(hiddenField);
-			
-			hiddenField = document.createElement("input");
-			hiddenField.setAttribute("type", "hidden");
-			hiddenField.setAttribute("name", "freeCount");
-			hiddenField.setAttribute("value", freeCount);
-			form.appendChild(hiddenField);
-			
-			hiddenField = document.createElement("input");
-			hiddenField.setAttribute("type", "hidden");
-			hiddenField.setAttribute("name", "bookingtime");
-			hiddenField.setAttribute("value", date.toLocaleString());
-			form.appendChild(hiddenField);
-			
-			
-			document.body.appendChild(form);
-							         
-			form.submit();
-				    	
 				    	
 				    }
 				
 
 
 		</script>
+
+<br><br><br><br><br><br><br><br><br>
 </body>
 </html>
