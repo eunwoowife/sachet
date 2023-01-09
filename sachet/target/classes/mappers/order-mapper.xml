@@ -20,6 +20,9 @@
   		<result column="ORDER_DATE" property="orderDate"/>
   		<result column="PRODUCT_PRICE" property="productPrice"/>
   		<result column="EXPER_PRICE" property="experPrice"/>
+  		<result column="BOOTH_NAME" property="boothName"/>
+  		<result column="PAY" property="pay"/>
+  		<result column="COM_NAME" property="comName"/>
   </resultMap>
   
   
@@ -112,6 +115,15 @@
 	JOIN BOOTH B USING(BOOTH_NO)
 	JOIN COMPANY C ON (C.USER_NO=B.COM_NO)
 	AND COM_NO=#{comNo}
+  </select>
+  
+  <select id="productCalculationList" resultMap="orderDetailResultSet" parameterType="orderDetail">
+  	SELECT BOOTH_NAME, SUM(COUNT*PRODUCT_PRICE) PAY, COM_NAME
+    FROM ORDER_DETAIL OD
+    JOIN PRODUCT P USING(PRODUCT_NO)
+    JOIN BOOTH B USING(BOOTH_NO)
+    JOIN COMPANY C ON (C.USER_NO=B.COM_NO)
+    GROUP BY BOOTH_NAME, COM_NAME
   </select>
   
   

@@ -8,9 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- jQuery 라이브러리 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
 
@@ -54,7 +51,7 @@
 	}
 	
 	 th, td{
-        padding-left: 90px;
+        padding-left: 220px;
     }
 
     th, td{
@@ -67,10 +64,6 @@
     
     th{
     	padding-bottom:20px;
-    }
-    
-    #hohoho:hover{
-    	cursor:pointer;
     }
 	
 </style>
@@ -109,62 +102,57 @@
            
 
             <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">MY COMPANY PAGE</span>
+              <span class="menu-header-text">ADMINISTRATOR PAGE</span>
             </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">ACCOUNT</div>
+                <div data-i18n="Account Settings">BOOTH APPROVAL</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="mypage.co" class="menu-link">
-                    <div data-i18n="Notifications">회원 정보</div>
+                  <a href="boothSetting.boo" class="menu-link">
+                    <div data-i18n="Notifications">승인 대기중인 부스</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="updateForm.co" class="menu-link">
-                    <div data-i18n="Notifications">회원 정보 수정</div>
+                  <a href="approvedBooth.boo" class="menu-link">
+                    <div data-i18n="Notifications">승인된 부스</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-connections.html" class="menu-link">
-                    <div data-i18n="Connections">회원 탈퇴</div>
+                  <a href="deniedBooth.boo" class="menu-link">
+                    <div data-i18n="Notifications">승인 거절된 부스</div>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">MY BOOTH</div>
+                <div data-i18n="Authentications">CALCULATION</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item active open">
                   <a href="boothStatus.co" class="menu-link" >
-                    <div data-i18n="Basic">나의 부스 조회</div>
+                    <div data-i18n="Basic">판매 상품 정산</div>
                   </a>
                 </li>
                  <li class="menu-item">
                   <a href="productList.co" class="menu-link" >
-                    <div data-i18n="Basic">상품 관리</div>
-                  </a>
-                </li>
-                 <li class="menu-item">
-                  <a href="experienceList.co" class="menu-link" >
-                    <div data-i18n="Basic">체험 관리</div>
+                    <div data-i18n="Basic">판매 체험 정산</div>
                   </a>
                 </li>
              
               </ul>
             </li>
-            <li class="menu-item active open">
+            <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Misc">SALES DETAIL</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item active">
+                <li class="menu-item">
                   <a href="productSales.co" class="menu-link">
                     <div data-i18n="Error">상품 판매 내역</div>
                   </a>
@@ -208,7 +196,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="${loginUser.logoFp}" class="w-px-40 h-auto rounded-circle"/>
+                      <img src="" class="w-px-40 h-auto rounded-circle"/>
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -221,7 +209,6 @@
                           </div>
                           <div class="flex-grow-1">
                             <span class="fw-semibold d-block">${loginUser.userName }</span>
-                            <small class="text-muted">Company</small>
                           </div>
                         </div>
                       </a>
@@ -247,48 +234,12 @@
         
         <br><br><br><br><br><br>
         <div class="psHead" align="center" style="margin-right:100px;">
-            <h1>판매상품관리</h1>
+            <h1>상품 정산</h1>
         </div>
         
-        <div style="margin-left:100px;">
-                <div class="col-lg-4 col-md-4 order-1">
+           <div class="col-lg-4 col-md-4 order-1">
                   <div class="row">
-                    <div class="col-lg-6 col-md-12 col-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">
-                            <div class="avatar flex-shrink-0">
-                              <img
-                                src="${pageContext.request.contextPath}/resources/images/wallet-info.png"
-                                alt="chart success"
-                                class="rounded"
-                              />
-                            </div>
-                            <div class="dropdown">
-                              <button
-                                class="btn p-0"
-                                type="button"
-                                id="cardOpt3"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                              </div>
-                            </div>
-                          </div>
-                          <span class="fw-semibold d-block mb-1">기업 상품 누적 수입</span>
-                          <h3 class="card-title mb-2">₩<fmt:formatNumber value="${sum }" type="number"/></h3>
-                          <small class="fw-semibold" style="color:blue;"><i class="bx bx-up-arrow-alt"></i>총 ${sList.size() }건</small>
-                        </div>
-                      </div>
-                    </div>
-                    
-                     <div class="col-6 mb-4">
+         <div class="col-6 mb-4">
                       <div class="card">
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
@@ -312,97 +263,57 @@
                               </div>
                             </div>
                           </div>
-                          <span class="w-semibold d-block mb-1" style="font-weight:bold;">정산받은 금액</span>
-                          <h3 class="card-title text-nowrap mb-2">₩2,456</h3>
-                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i>남은 금액 : ₩1000</small>
+                          <span class="w-semibold d-block mb-1" style="font-weight:bold;">잔고</span>
+                          <h3 class="card-title text-nowrap mb-2">₩<fmt:formatNumber value="${sachetMoney.balance }" type="number"/></h3>
+                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i>누적 출금액 : ₩<fmt:formatNumber value="${sachetMoney.withdraw }" type="number"/></small>
                         </div>
                       </div>
                     </div>
-        </div>
-        </div>
-        </div>
+                    </div>
+                    </div>
+                    
     <br><br>
-    <div style="margin-left: 100px;">
-        <p>총 ${sList.size() }건</p>
-        <select class="form-select sortList" id="exampleFormControlSelect1" style="width:300px; float:left;">
-            <option value="">상품 수령상태 변경처리</option>
-            <option value="N">미수령</option>
-            <option value="Y">수령완료</option>
-        </select>
-            <button class="btn btn-primary" style="float:left;" onclick="changeStatus();">변경</button>
+    <div style="margin-left: 150px;">
+        <p>총${pcList.size() }부스</p>
         
-        <br clear="both">
     </div>
     <hr>
 
     <div class="psBody">
         <table>
+        		<c:if test="">
+        		<br><br>
+        		 <div style="margin-left:650px;">
+        			<h5 style="font-family: 'IBM Plex Sans KR', sans-serif; color:#696CFF;'">정산이 필요한 부스가 없습니다.</h5>
+        		 </div>
+        		</c:if>
+            
             <tr>
-                <th>선택</th>
-                <th>주문번호</th>
-                <th>주문일</th>
-                <th>주문상품정보</th>
-                <th>수량</th>
-                <th>금액</th>
-                <th>주문자정보</th>
-                <th>상품수령상태</th>
+                <th>기업명</th>
+                <th>부스명</th>
+                <th>판매된 상품 누적 금액</th>
             </tr>
             
-            	<c:forEach var="s" items="${sList }">
+            <c:forEach var="pc" items="${pcList}">
             <tr>
-                <td><input class="form-check-input" type="checkbox" name="checkedOrderDetailNo" id="orderDetailNo" value="${s.orderDetailNo }"></td>
-                <td>SACHET-20230112${s.orderDetailNo}</td>
-                <td>${s.orderDate }</td>
-                <td id="hohoho" onclick="location.href='productDetail.co?pno=${s.productNo}'">${s.productName }</td>
-                <td>${s.count }</td>
-                <td><fmt:formatNumber value="${s.productPrice * s.count }" type="number"/></td>
-                <td>${s.userId }<br>
-                   	${s.userName }<br>
-                    ${s.userPhone }<br>
+                <td style="cursor:pointer;">${pc.comName }</td>
+                <td style="cursor:pointer;">${pc.boothName }</td>
+                <td>₩<fmt:formatNumber value="${pc.pay }" type="number"/></td>
+                <td>
+                	<button type="button" class="btn btn-primary">정산하기</button>
                 </td>
-                <c:if test="${s.useStatus eq 'N' }"><td><span class="badge rounded-pill bg-label-warning">미수령</span></td></c:if>
-                <c:if test="${s.useStatus eq 'Y' }"><td><span class="badge rounded-pill bg-label-primary">수령완료</span></td></c:if>
             </tr>
             </c:forEach>
             
+            	
+            
         </table>
-        <br><br><br><br>
     </div>
 
     </div>
-          
-          
-          
           </div>
           </div>
           
-          <script>
-          	function changeStatus(){
-          		var value = $(".sortList").val();
-          		var odNoList = [];
-          		$("input[name='checkedOrderDetailNo']:checked").each(function(i){
-          			odNoList.push($(this).val());
-          		})
-//           		alert(odNoList);
-//           		alert(value);
-				$.ajax({
-					url : "changeStatus.co",
-					data : {status : value,
-								odNoList : odNoList},
-					success : function(result){
-						console.log("통신성공");
-						if(result>0){
-							location.reload();
-						}else{
-							alert("현재 상태를 변경할 수 없습니다.");
-						}
-					},
-					error : function(){
-						console.log("통신실패");
-					}
-				})
-          	}
-          </script>
         
           <script  src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
           <script  src="${pageContext.request.contextPath}/resources/js/popper.js"></script>

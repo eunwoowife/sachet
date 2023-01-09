@@ -24,6 +24,9 @@
   data-template="vertical-menu-template-free"
 >
   <head>
+      <!-- jQuery 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -108,8 +111,8 @@
                 <div data-i18n="Account Settings">ACCOUNT</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item active">
-                  <a href="pages-account-settings-notifications.html" class="menu-link">
+                <li class="menu-item">
+                  <a href="mypage.co" class="menu-link">
                     <div data-i18n="Notifications">회원 정보</div>
                   </a>
                 </li>
@@ -118,7 +121,7 @@
                     <div data-i18n="Notifications">회원 정보 수정</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item active">
                   <a href="withdrawalForm.co" class="menu-link">
                     <div data-i18n="Connections">회원 탈퇴</div>
                   </a>
@@ -238,18 +241,78 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-
+				
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h1 class="fw-bold py-3 mb-4">My Page</h1>
+              <h1 class="fw-bold py-3 mb-4">회원 탈퇴</h1>
 
          
                     <hr class="my-0" />
-                    <br><br><br><br><br>
                     <div class="card-body" align="center">
-                    	<h5>${loginUser.userName }님, 환영합니다.</h5>
-                    	<img class="card-img-top" src="${loginUser.logoFp}" style="width:200px;" />
+                    	<img src="${pageContext.request.contextPath}/resources/images/withdrawalNotice.jpg">
+                    	<br><br><br><br><br>
+                  <h3>회원탈퇴를 위해 비밀번호를 입력해주세요.</h3>
+                      <div class="mb-3 col-md-6" align="center">
+                            <input class="form-control" type="password" name="userPwd" id="inputPwd" />
+                            <p id="checkResult" style="font-size: 10px; display:none;" required>비밀번호가 일치하지 않습니다.</p>
+                          </div>
+                          
+                          
+                          <div class="mt-2" align="center">
+                          <button type="reset" class="btn btn-outline-secondary" onclick="goCancel();">취소</button>
+                          <button type="button" class="btn btn-primary me-2" id="withdrawalCompany">탈퇴하기</button>
+                        </div>
                   </div>
+                  
+                  
                   </div>
+                  
+                  <script>
+                  	$(function(){
+                  		$("#withdrawalCompany").click(function(){
+                  			$.ajax({
+                  				url : "checkbooth.co",
+                  				data : {comNo : ${loginUser.userNo}},
+                  				success : function(result){
+                  					console.log(result);
+                  					if(result>0){
+                  						alert("현재 부스 및 상품(체험)이 등록된 상태로 탈퇴가 어렵습니다.");
+                  					}else{
+                  						$.ajax({
+                  							url : "pwdCheck.co",
+                  							data : {checkPwd : $("#inputPwd").val()},
+                  							success : function(result){
+                  								console.log("비밀번호체크 통신성공");
+                  								if(result=='YYYYY'){
+			                  						$.ajax({
+			                  							url : "withdrawal.co",
+			                  							data : {comNo : ${loginUser.userNo}},
+			                  							success : function(result){
+			                  								console.log("탈퇴 통신성공");
+			                  								if(result>0){
+			                  										location.href="logout.me";
+			                  									}
+			                  							},
+			                  							error : function(){
+			                  								console.log("탈퇴 통신실패");
+				                  							}
+				                  						})
+                  								}else{
+                  									$("#checkResult").css("display", "block").css("color", "red").text("비밀번호가 일치하지 않습니다.");
+                  								}
+                  							},
+                  							error : function(){
+                  								console.log("비밀번호체크 통신실패");
+                  							}
+                  						})
+                  					}
+                  				},
+                  				error : function(){
+                  					console.log("통신실패");
+                  				}
+                  			})
+                  		})
+                  	})
+                  </script>
 
 
 
@@ -265,6 +328,12 @@
     </div>
     <!-- / Layout wrapper -->
 
+
+<script>
+		function goCancel(){
+			location.href="mypage.co";
+		}
+	</script>
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script  src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>

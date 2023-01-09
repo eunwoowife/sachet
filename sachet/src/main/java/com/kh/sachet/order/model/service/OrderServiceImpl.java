@@ -82,5 +82,25 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.selectProductNo(sqlSession, integer);
 	}
 
+	@Override
+	public int selectOdn(int orderNo) {
+		return orderDao.selectOdn(sqlSession, orderNo);
+	}
+
+	@Override
+	public int selectComNo(int orderDetailNo) {
+		return orderDao.selectComNo(sqlSession, orderDetailNo);
+	}
+
+	@Override
+	public int selectComNo2(int orderDetailNo) {
+		return orderDao.selectComNo2(sqlSession, orderDetailNo);
+	}
+
+	@Override
+	public int insertSachetMoney(int totalPrice) {
+		return orderDao.insertSachetMoney(sqlSession, totalPrice);
+	}
+
 	
 }

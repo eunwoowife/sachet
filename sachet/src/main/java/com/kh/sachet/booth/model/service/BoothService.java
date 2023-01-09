@@ -3,6 +3,8 @@ package com.kh.sachet.booth.model.service;
 import java.util.ArrayList;
 
 import com.kh.sachet.booth.model.vo.Booth;
+import com.kh.sachet.member.model.vo.SachetMoney;
+import com.kh.sachet.order.model.vo.OrderDetail;
 
 public interface BoothService {
 	
@@ -27,4 +29,8 @@ public interface BoothService {
 	String checkBoothStatus(int comNo);
 
 	ArrayList<Booth> selectDeniedBoothList();
+
+	SachetMoney selectSachetMoney();
+
+	ArrayList<OrderDetail> selectproductCalculationList();
 }

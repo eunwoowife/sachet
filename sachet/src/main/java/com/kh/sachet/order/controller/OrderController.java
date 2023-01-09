@@ -65,6 +65,9 @@ public class OrderController {
 		
 		int result = orderService.insertOrder(o);
 		
+		//샤쉐관리자 머니에 돈 넣기
+		orderService.insertSachetMoney(totalPrice);
+		
 		
 		
 		//오더넘버 뽑아오기
@@ -197,6 +200,9 @@ public class OrderController {
 		
 		int result = orderService.insertOrder(o);
 		
+		//샤쉐관리자 머니에 돈 넣기
+		orderService.insertSachetMoney(totalPrice);
+		
 		//오더넘버 뽑아오기
 		int orderNo = orderService.selectOrderNo(userNo);
 		
@@ -218,7 +224,22 @@ public class OrderController {
 					cartOd.setCount(goodsCount);
 					
 					result2 = orderService.insertOdPro(cartOd);
-			}else{
+					
+					//오더디테일넘버 가져오기
+					int orderDetailNo = orderService.selectOdn(orderNo);
+//					System.out.println(orderDetailNo);
+					
+					//해당 상품의 회사번호 가져오기
+					int comNo = orderService.selectComNo(orderDetailNo);
+//					System.out.println(comNo);
+					
+					//Sales 테이블에 위에서 찾아준 주문상세번호와 그 주문에 대한
+					//회사번호를 통해 insert 시켜준다.
+					Sales sales = new Sales();
+					sales.setOrderDetailNo(orderDetailNo);
+					sales.setComNo(comNo);
+					orderService.insertSales(sales);
+			}else{ //체험 디테일 집어넣는 insert
 				OrderDetail cartEx = new OrderDetail();
 				cartEx.setOrderNo(orderNo);
 				cartEx.setUserNo(userNo);
@@ -226,6 +247,21 @@ public class OrderController {
 				cartEx.setCount(goodsCount);
 				
 				result3 = orderService.insertOdExer(cartEx);
+				
+				//오더디테일넘버 가져오기
+				int orderDetailNo = orderService.selectOdn(orderNo);
+//				System.out.println(orderDetailNo);
+				
+				//해당 체험의 회사번호 가져오기
+				int comNo = orderService.selectComNo2(orderDetailNo);
+//				System.out.println(comNo);
+				
+				//Sales 테이블에 위에서 찾아준 주문상세번호와 그 주문에 대한
+				//회사번호를 통해 insert 시켜준다.
+				Sales sales = new Sales();
+				sales.setOrderDetailNo(orderDetailNo);
+				sales.setComNo(comNo);
+				orderService.insertSales(sales);
 			}	
 		}
 		

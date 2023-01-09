@@ -28,4 +28,8 @@ public class OrderDetail {
 
 	private int productPrice;
 	private int experPrice;
+	
+	private String boothName;
+	private int pay;
+	private String comName;
 }

@@ -3,7 +3,6 @@ package com.kh.sachet.booth.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +18,8 @@ import com.google.gson.Gson;
 import com.kh.sachet.booth.model.service.BoothService;
 import com.kh.sachet.booth.model.vo.Booth;
 import com.kh.sachet.company.model.vo.Company;
+import com.kh.sachet.member.model.vo.SachetMoney;
+import com.kh.sachet.order.model.vo.OrderDetail;
 
 @Controller
 public class BoothController3 {
@@ -195,6 +196,18 @@ public class BoothController3 {
 		 ArrayList<Booth> booList = boothService.selectDeniedBoothList();
 		 model.addAttribute("booList", booList);
 		 return "booth/deniedBoothSetting";
+	 }
+	 
+	 
+	 @RequestMapping("calculationProductForm.sm")
+	 public String prdouctCalculation(Model model) {
+		 SachetMoney sachetMoney = boothService.selectSachetMoney();
+		 model.addAttribute("sachetMoney", sachetMoney);
+		 
+		 ArrayList<OrderDetail> pcList = boothService.selectproductCalculationList();
+//		 System.out.println(pcList);
+		 model.addAttribute("pcList", pcList);
+		 return "booth/productCalculation";
 	 }
 	
 

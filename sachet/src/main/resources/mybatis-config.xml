@@ -12,7 +12,7 @@
 		<typeAlias type="com.kh.sachet.product.model.vo.Product" alias="product"/>
 		<typeAlias type="com.kh.sachet.ticketing.model.vo.Ticket" alias="ticket"/>
 		<typeAlias type="com.kh.sachet.order.model.vo.Order" alias="order"/>
-		<typeAlias type="com.kh.sachet.order.model.vo.Order" alias="orderDetail"/>
+		<typeAlias type="com.kh.sachet.order.model.vo.OrderDetail" alias="orderDetail"/>
 		<typeAlias type="com.kh.sachet.payment.model.vo.Payment" alias="payment"/>
 		<typeAlias type="com.kh.sachet.experience.model.vo.Experience" alias="experience"/>
 		<typeAlias type="com.kh.sachet.booth.model.vo.Booth" alias="booth"/>
@@ -21,6 +21,7 @@
 		<typeAlias type="com.kh.sachet.cart.model.vo.Cart" alias="cart"/>
 		<typeAlias type="com.kh.sachet.cart.model.vo.CartList" alias="cartList"/>
 		<typeAlias type="com.kh.sachet.company.model.vo.Sales" alias="sales"/>
+		<typeAlias type="com.kh.sachet.member.model.vo.SachetMoney" alias="sachetMoney"/>
 	</typeAliases>
 
 
@@ -36,6 +37,7 @@
 		<mapper resource="/mappers/notice-mapper.xml"/>
 		<mapper resource="/mappers/cart-mapper.xml"/>
 		<mapper resource="/mappers/sales-mapper.xml"/>
+		<mapper resource="/mappers/sachetMoney-mapper.xml"/>
 	</mappers>
 
 	

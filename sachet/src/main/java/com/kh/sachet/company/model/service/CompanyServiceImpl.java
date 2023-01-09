@@ -82,6 +82,16 @@ public class CompanyServiceImpl implements CompanyService{
 		return result;
 	}
 
+	@Override
+	public int checkBooth(int comNo) {
+		return companyDao.checkBooth(sqlSession, comNo);
+	}
+
+	@Override
+	public int withdrawalCompany(int comNo) {
+		return companyDao.withdrawalCompany(sqlSession, comNo);
+	}
+
 	
 	
 }
