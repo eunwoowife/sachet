@@ -17,6 +17,7 @@
 		<typeAlias type="com.kh.sachet.experience.model.vo.Experience" alias="experience"/>
 		<typeAlias type="com.kh.sachet.booth.model.vo.Booth" alias="booth"/>
 		<typeAlias type="com.kh.sachet.notice.model.vo.Notice" alias="notice"/>
+		<typeAlias type="com.kh.sachet.notice.model.vo.NoticeList" alias="noticeList"/>
 		<typeAlias type="com.kh.sachet.cart.model.vo.Cart" alias="cart"/>
 		<typeAlias type="com.kh.sachet.cart.model.vo.CartList" alias="cartList"/>
 		<typeAlias type="com.kh.sachet.company.model.vo.Sales" alias="sales"/>

@@ -99,5 +99,21 @@
 	WHERE USER_NO = #{userNo}
 	AND EXPER_NO = #{goodsNo}
 </delete>
+
+
+<update id="countUpdatePro">
+	UPDATE CART
+	SET COUNT = #{goodsCount}
+	WHERE USER_NO =#{userNo}
+	AND PRODUCT_NO=#{goodsNo}
+
+</update>
+
+<update id="countUpdateExper">
+	UPDATE CART
+	SET COUNT = #{goodsCount}
+	WHERE USER_NO =#{userNo}
+	AND EXPER_NO = #{goodsNo}
+</update>
   
 </mapper>

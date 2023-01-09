@@ -202,9 +202,7 @@ border: none;
         </div>
     </div>
     
-    
-    <a href="ticketBook3.ti">bokk3 </a>
-    
+       
     <br><br><br><br><br><br><br><br><br>
     
     <script>

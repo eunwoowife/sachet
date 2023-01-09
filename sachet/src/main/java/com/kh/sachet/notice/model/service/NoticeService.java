@@ -15,4 +15,14 @@ public interface NoticeService  {
 
 	int countPlus(int nno);
 
+	int noticeInsert(Notice n);
+
+	String selectPre(int i);
+
+	int noticeInsertNo();
+
+	int noticeDelete(int nno);
+
+	ArrayList<Notice> searchNotice(String keyword);
+
 }

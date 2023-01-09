@@ -131,17 +131,31 @@ public class CartController {
 			result = cartService.selectProDelete(c);
 		}else if(goodsNum>1000) {
 			result = cartService.selectExperDelete(c);
-		}else {
-			
 		}
-		
-		
-
-		
 		
 		return result;
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping("countUpdate.ca")
+	public int countUpdate (HttpSession session, int pnum, int count) {
+		
+		Member m= (Member) session.getAttribute("loginUser");
+		int userNo = m.getUserNo();
+		
+		CartList c = new CartList();
+		
+		c.setUserNo(userNo);
+		c.setGoodsNo(pnum);
+		c.setGoodsCount(count);
+		int result =0;
+		
+		result = cartService.countUpdate(c);
+		
+		
+		return result;
+	}
 
 	
 	

@@ -8,6 +8,27 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/demo.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="${pageContext.request.contextPath}/resources/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="${pageContext.request.contextPath}/resources/js/config.js"></script>
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
+
 
 <style>
 
@@ -210,6 +231,8 @@ section.notice {
 
 
 </style>
+
+
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />
@@ -224,10 +247,10 @@ section.notice {
       <div id="board-search">
           <div class="container">
               <div class="search-window">
-                  <form action="">
+                  <form action="searchNotice.no">
                       <div class="search-wrap">
                           <label for="search" class="blind">공지사항 내용 검색</label>
-                          <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+                          <input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
                           <button type="submit" class="btn btn-dark">검색</button>
                       </div>
                   </form>
@@ -245,20 +268,28 @@ section.notice {
                       <th scope="col" class="th-title">제목</th>
                       <th scope="col" class="th-date">등록일</th>
                       <th scope="col" class="th-view">조회수</th>
-                      <th scope="col" class="th-file">첨부파일</th>
+                      <th scope="col" class="th-file"></th>
                   </tr>
                   </thead>
                   <tbody>
-                  
+
                   <c:forEach var="n" items="${nList }">
                   <tr>
                       <td>${n.noticeNo }</td>
                       <th>
                         <a href='detail.no?nno=${n.noticeNo}'>${n.noticeTitle }</a>
+
+						<c:set var="now" value="<%=new java.util.Date()%>" /><!-- 현재시간 -->
+						<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today" /><!-- 현재시간을 숫자로 -->
+						<fmt:parseNumber value="${n.noticeCreateDate.time / (1000*60*60*24)}" integerOnly="true" var="chgDttm" /><!-- 게시글 작성날짜를 숫자로 -->
+						<c:if test="${today - chgDttm le 2}"><!-- 3일동안은 new 표시 -->
+							<span class="badge bg-label-info">NEW!</span>
+						</c:if>
+
                       </th>
-                      <td>${n.noticeCreateDate}</td>
+                      <td class="createDate">${n.noticeCreateDate}</td>
                       <td>${n.count}</td>
-                      <td>${n.fileNo}</td>
+                      <td>${n.noticeFile}</td>
                   </tr>
   				</c:forEach>
                   
@@ -308,7 +339,25 @@ section.notice {
           		  </div>
  
 
-
-
 </body>
+
+<script>
+	let today = new Date();   
+	
+	let year = today.getFullYear(); // 년도
+	let month = ("0" + (1 + today.getMonth())).slice(-2);  // 월
+	let date = ("0" + today.getDate()).slice(-2);  // 날짜
+	
+	let year2 = (year).toString();
+	let month2 = (month).toString();
+	let date2 = (date).toString();
+	
+	let today2 = year2+month2+date2;
+	
+	console.log(today2);
+
+	
+</script>
+
+
 </html>

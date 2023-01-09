@@ -26,4 +26,6 @@ public interface CartService {
 	int selectProDelete(CartList c);
 
 	int selectExperDelete(CartList c);
+
+	int countUpdate(CartList c);
 }

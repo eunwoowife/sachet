@@ -136,6 +136,20 @@ body.ml-calendar-demo {
 		.calendar-day.active:hover{
 			cursor:pointer;
 			background-color: gray;
+			transition-duration :0.5s;
+			
+		  }
+		  
+		  .calendar-day.active:active{
+			cursor:pointer;
+			transition-duration :0.2s;
+			background-color: blue;
+			
+		  }
+		  
+		  .calendar-day.active:focus{
+			cursor:pointer;
+			background-color: skyblue;
 			
 		  }
 		  

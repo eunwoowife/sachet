@@ -530,10 +530,26 @@ function pCount(result, pnum) {
             count=10;
         }
 	}
-	console.log("상품 수량"+count);
 
-	$('#ppCount'+pnum).val(count);
-	onePriceCal(count, pnum);
+	$.ajax({
+		url: "countUpdate.ca",
+		data : {
+			pnum: pnum,
+			count: count
+		},
+		type : "post",
+		success :function(result){
+			
+				$('#ppCount'+pnum).val(count);
+				onePriceCal(count, pnum);
+		},
+		error : function (){
+			
+		}
+	});
+	
+	
+	location.reload();
 
 }
 

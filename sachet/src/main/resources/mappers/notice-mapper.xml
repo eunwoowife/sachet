@@ -4,13 +4,15 @@
 
 <resultMap type="notice" id="noticeResultSet">
 	<result column="NOTICE_NO" property="noticeNo"/>
-	<result column="FILE_NO" property="fileNo"/>
+	<result column="NOTICE_FILE" property="noticeFile"/>
+	<result column="NOTICE_FILE_FP" property="noticeFileFp"/>
 	<result column="NOTICE_TITLE" property="noticeTitle"/>
 	<result column="NOTICE_CONTENT" property="noticeContent"/>
 	<result column="NOTICE_COUNT" property="count"/>
 	<result column="NOTICE_CREATE_DATE" property="noticeCreateDate"/>
 	<result column="NOTICE_STATUS" property="noticeStatus"/>
 </resultMap>
+
 
   
 	<select id="selectListCount" resultType="_int">
@@ -42,6 +44,53 @@
 	</update>
 	
 	
+	<insert id="noticeInsert">
+	INSERT INTO NOTICE VALUES (SEQ_NNO.NEXTVAL,
+							   #{noticeFile},
+							   #{noticeFileFp},
+							   #{noticeTitle},
+							   #{noticeContent},
+							   0,
+							   SYSDATE,
+							   'Y'
+							   )
+	
+	</insert>
+	
+	<select id="selectPre" resultType="string">
+	
+	SELECT NOTICE_TITLE
+	FROM NOTICE
+	WHERE NOTICE_NO = #{i}
+	
+	</select>
+	
+	
+	<select id="noticeInsertNo" resultType="_int">
+	
+	SELECT *
+	FROM (
+	        SELECT NOTICE_NO
+	        FROM NOTICE
+	        ORDER BY NOTICE_NO DESC)
+	WHERE ROWNUM=1    
+	
+	</select>
+	
+	
+	<update id="noticeDelete">
+		
+	UPDATE NOTICE
+	SET NOTICE_STATUS = 'N'
+	WHERE NOTICE_NO = #{nno}
+	</update>
+	
+	<select id="searchNotice" resultMap="noticeResultSet">
+	SELECT *
+	FROM NOTICE
+	WHERE NOTICE_CONTENT LIKE  #{keyword}
+	
+	</select>
 	
 	
 	

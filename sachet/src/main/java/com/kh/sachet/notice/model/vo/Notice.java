@@ -16,7 +16,8 @@ import lombok.ToString;
 public class Notice {
 	
 	private int noticeNo;
-	private String fileNo;
+	private String noticeFile;
+	private String noticeFileFp;
 	private String noticeTitle;
 	private String noticeContent;
 	private int count;
