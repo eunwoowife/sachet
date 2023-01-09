@@ -63,4 +63,8 @@ public class CompanyDao {
 		return sqlSession.update("companyMapper.withdrawalCompany", comNo);
 	}
 
+	public int selectBalance(SqlSessionTemplate sqlSession, int comNo) {
+		return sqlSession.selectOne("companyMapper.selectBalance", comNo);
+	}
+
 }

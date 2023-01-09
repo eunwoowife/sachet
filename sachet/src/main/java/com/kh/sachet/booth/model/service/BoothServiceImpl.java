@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.sachet.booth.model.dao.BoothDao;
 import com.kh.sachet.booth.model.vo.Booth;
+import com.kh.sachet.company.model.vo.Company;
 import com.kh.sachet.member.model.vo.SachetMoney;
 import com.kh.sachet.order.model.vo.OrderDetail;
 
@@ -90,6 +91,18 @@ public class BoothServiceImpl implements BoothService{
 	public ArrayList<OrderDetail> selectproductCalculationList() {
 		ArrayList<OrderDetail> pcList = boothdao.productCalculationList(sqlSession);
 		return pcList;
+	}
+
+	@Override
+	public int calculationProduct(int pay) {
+		int result = boothdao.calculationProduct(sqlSession, pay);
+		return result;
+	}
+
+	@Override
+	public int depositProduct(Company c) {
+		int result = boothdao.depositProduct(sqlSession, c);
+		return result;
 	}
 
 

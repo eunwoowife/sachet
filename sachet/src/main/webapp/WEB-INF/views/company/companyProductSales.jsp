@@ -313,8 +313,8 @@
                             </div>
                           </div>
                           <span class="w-semibold d-block mb-1" style="font-weight:bold;">정산받은 금액</span>
-                          <h3 class="card-title text-nowrap mb-2">₩2,456</h3>
-                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i>남은 금액 : ₩1000</small>
+                          <h3 class="card-title text-nowrap mb-2">₩<fmt:formatNumber value="${balance }" type="number"/></h3>
+                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i>잔여 정산 금액 : ₩<fmt:formatNumber value="${sum-balance }" type="number"/></small>
                         </div>
                       </div>
                     </div>

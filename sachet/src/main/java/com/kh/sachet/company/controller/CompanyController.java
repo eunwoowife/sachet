@@ -419,8 +419,12 @@ public class CompanyController {
 		}
 //		System.out.println(sum);
 		
+		//잔고(정산받은 금액)
+		int balance = companyService.selectBalance(comNo);
+		
 		model.addAttribute("sList", sList);
 		model.addAttribute("sum", sum);
+		model.addAttribute("balance", balance);
 		
 		return "company/companyProductSales";
 	}
