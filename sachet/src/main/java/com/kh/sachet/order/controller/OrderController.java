@@ -23,41 +23,12 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	
+	
+	
+	
+	
 	@RequestMapping("allOrderForm.or")
-	public ModelAndView allOrderForm (HttpSession session, ModelAndView mv) {
-		Member m = (Member)session.getAttribute("loginUser");
-		int userNo = m.getUserNo();
-		
-		//수령상품 담기
-		ArrayList <CartList> cartPro = new ArrayList<CartList>();
-		cartPro= orderService.selectCartPro(userNo);
-				
-		//체험상품 장바구니에 담기
-		ArrayList <CartList> cartExper = new ArrayList<CartList>();
-		cartExper= orderService.selectCartExper(userNo);
-				
-		//두개 합친 최종 장바구니 껍데기
-		ArrayList <CartList> cartList = new ArrayList<CartList>();
-				
-		//담는다.
-		cartList.addAll(cartPro);
-		cartList.addAll(cartExper);
-				
-		for(int i=0; i<cartList.size(); i++) {
-			cartList.get(i).setSelectSum(cartList.get(i).getGoodsCount()*cartList.get(i).getGoodsPrice());
-		}
-		
-		mv.addObject("c", cartList);
-		mv.addObject("m",m);
-		
-		mv.setViewName("order/allOrderForm");
-		return mv;
-	}
-	
-	
-	
-	@RequestMapping("allOrderComplete.or")
-	public ModelAndView allOrderComplete (HttpSession session, ModelAndView mv) {
+	public ModelAndView selectOrderForm (HttpSession session, ModelAndView mv) {
 		
 		Member m = (Member)session.getAttribute("loginUser");
 		int userNo = m.getUserNo();
@@ -70,8 +41,6 @@ public class OrderController {
 		ArrayList <CartList> cartExper = new ArrayList<CartList>();
 		cartExper= orderService.selectCartExper(userNo);
 		
-		System.out.println(cartPro);
-		System.out.println(cartExper);
 		
 		
 		//토탈썸 구하기
@@ -100,6 +69,8 @@ public class OrderController {
 		
 		//오더넘버 뽑아오기
 		int orderNo = orderService.selectOrderNo(userNo);
+		
+		o.setOrderNo(orderNo);
 		
 		int result2 =0;
 		int result3=0;
@@ -167,11 +138,107 @@ public class OrderController {
 			
 			orderService.insertSales(sales);
 		}
+		
+		
 	
-		mv.addObject("m",m);
+		mv.addObject("o",o);
 		
 		mv.setViewName("order/orderComplete");
 		return mv;
 	}
+	
+	
+	@RequestMapping("selectOrderForm.or")
+	public ModelAndView selectOrder (ModelAndView mv, HttpSession session, CartList c) {
+		
+		Member m = (Member)session.getAttribute("loginUser");
+		int userNo = m.getUserNo();
+		
+		CartList cartList = new CartList();
+		cartList.setUserNo(userNo);
+		cartList.setGoodsCount(c.getGoodsCount());
+		cartList.setGoodsNo(c.getGoodsNo());
+		cartList.setBoothName(c.getBoothName());
+		cartList.setGoodsPrice(c.getGoodsPrice());
+		cartList.setGoodsImgFp(c.getGoodsImgFp());
+		//cartList.setSelectSum(c.getGoodsPrice()*c.getGoodsCount());
+		
+		int gp = c.getGoodsPrice();
+		int gc = c.getGoodsCount();
+		
+		int selectSum = gp*gc;
+		
+		cartList.setSelectSum(selectSum);
+	
+		
+		mv.addObject("c", c);
+		mv.addObject("m",m);
+		
+		mv.setViewName("order/selectOrderForm");
+		return mv;
+		
+	}
+	
+	
+	//개별 주문 db에 insert하는 메소드
+	@RequestMapping("selectComplete.or")
+	public ModelAndView selectOrder (HttpSession session, ModelAndView mv, int goodsNo, int goodsCount, int goodsPrice) {
+
+		Member m = (Member)session.getAttribute("loginUser");
+		int userNo = m.getUserNo();
+		
+		//토탈썸 구하기
+		int totalPrice=goodsPrice*goodsCount;
+		
+		Order o = new Order();
+		
+		o.setUserNo(userNo);
+		o.setTotalPrice(totalPrice);
+		
+		int result = orderService.insertOrder(o);
+		
+		//오더넘버 뽑아오기
+		int orderNo = orderService.selectOrderNo(userNo);
+		
+		o.setOrderNo(orderNo);
+		
+		int result2 =0;
+		int result3=0;
+		
+		//오더테이블 성공시 오더 디테일 테이블에 또 insert
+		if(result>0) {
+			
+			//프로덕트 디테일 집어넣는 insert
+			if(goodsNo<1000) {
+				OrderDetail cartOd = new OrderDetail();
+				
+					cartOd.setOrderNo(orderNo);
+					cartOd.setUserNo(userNo);
+					cartOd.setProductNo(goodsNo);
+					cartOd.setCount(goodsCount);
+					
+					result2 = orderService.insertOdPro(cartOd);
+			}else{
+				OrderDetail cartEx = new OrderDetail();
+				cartEx.setOrderNo(orderNo);
+				cartEx.setUserNo(userNo);
+				cartEx.setExperNo(goodsNo);
+				cartEx.setCount(goodsCount);
+				
+				result3 = orderService.insertOdExer(cartEx);
+			}	
+		}
+		
+		
+		mv.addObject("o",o);
+		mv.setViewName("order/orderComplete");
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
 
 }

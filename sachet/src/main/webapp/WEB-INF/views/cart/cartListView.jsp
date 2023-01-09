@@ -346,7 +346,7 @@
 				<hr style="background-color: gray;">
 
 
-					<c:choose>
+						 <c:choose>
 				         <c:when test = "${empty c}">
 				        		 장바구니가 비어있습니다.
 				         </c:when>
@@ -364,18 +364,17 @@
 					<div class="cartheader thumbnail"> <img src="${pageContext.request.contextPath}/${c.goodsImgFp}" alt=""></div>
 					<div class="cartheader productDetail">
 						<div class="productCinfo">
-					<c:choose>
-				         <c:when test = "${c.goodsNo<1000}">
-				        		   [수령상품]
-				         </c:when>
-				         <c:when test = "${c.goodsNo > 1000}">
-				          		  [체험상품]
-				         </c:when>
-				         <c:otherwise>
-				        		   [구매 상품]
-				         </c:otherwise>
-				      </c:choose>
-										
+			         <c:choose>
+			         <c:when test = "${c.goodsNo<1000}">
+			        	<span class="badge rounded-pill bg-info" style="color:white">수령상품</span>
+			         </c:when>
+			         <c:when test = "${c.goodsNo > 1000}">
+			          <span class="badge rounded-pill bg-success" style="color:white">체험상품</span>
+			         </c:when>
+			         <c:otherwise>
+			        	[구매상품]
+			         </c:otherwise>
+		    	 	 </c:choose>
 						${c.boothName}
 						</div>
 						<br>
@@ -403,15 +402,16 @@
 					
 					disabled></div>
 					<div class="cartheader productbtnarea">
-						<input type="button" class="pbtn selOderBtn" id="spayment${c.goodsNo}" value="주문하기">
+						<input type="button" class="pbtn selOderBtn" id="spayment${c.goodsNo}" value="주문하기"
+						onclick="selectOrder('${c.goodsNo}','${c.goodsCount}','${c.goodsPrice }','${c.goodsName }','${c.boothName}','${c.goodsImgFp}');">
 						<input type="button" class="pbtn selWishBtn" id="swish${c.goodsNo}" value="위시리스트">
-						<input type="button" class="pbtn selDelBtn" id="sdelete${c.goodsNo}"value="삭제하기" onclick="selectDelete(${c.goodsNo});">
+						<input type="button" class="pbtn selDelBtn" id="sdelete${c.goodsNo}" value="삭제하기" onclick="selectDelete(${c.goodsNo});">
 					</div>
 
 					<hr class="hr1">
 				</div>
 				
-</c:forEach>			
+	</c:forEach>			
 				        </c:otherwise>
 				      </c:choose>
 				
@@ -653,6 +653,63 @@ function pCount(result, pnum) {
 		var proTotal = parseInt($("#totalPrice1").text());
 		var experTotal = parseInt($("#totalPrice2").text());
 		$("#totalPrice0").text(proTotal+experTotal);
+	}
+	
+	
+	function selectOrder(goodsNo,goodsCount,goodsPrice,goodsName,boothName,goodsImgFp){
+		var goodsNo = goodsNo;
+		var goodsCount = goodsCount;
+		var goodsPrice= goodsPrice;
+		var goodsName=goodsName;
+		var boothName=boothName;
+		var goodsImgFp =goodsImgFp;
+		
+		
+		var form = document.createElement("form");
+		form.setAttribute("charset", "UTF-8");
+		form.setAttribute("method", "Post"); 
+		form.setAttribute("action", "selectOrderForm.or"); 
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "goodsNo");
+		hiddenField.setAttribute("value", goodsNo);
+		form.appendChild(hiddenField);
+		
+		var hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "boothName");
+		hiddenField.setAttribute("value", boothName);
+		form.appendChild(hiddenField);
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "goodsName");
+		hiddenField.setAttribute("value", goodsName);
+		form.appendChild(hiddenField);
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "goodsPrice");
+		hiddenField.setAttribute("value", goodsPrice);
+		form.appendChild(hiddenField);
+						         
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "goodsCount");
+		hiddenField.setAttribute("value", goodsCount);
+		form.appendChild(hiddenField);
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "goodsImgFp");
+		hiddenField.setAttribute("value", goodsImgFp);
+		form.appendChild(hiddenField);
+		
+		document.body.appendChild(form);
+		
+		form.submit();
+		
 	}
 
 

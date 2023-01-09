@@ -205,30 +205,31 @@
 									</thead>
 									<tbody class="table-border-bottom-0">
 
-<c:forEach var="c" items="${c}">
+
 									  <tr>
 										<td>
+										
 										<c:choose>
 									         <c:when test = "${c.goodsNo<1000}">
-									        	<span class="badge rounded-pill bg-info">수령상품</span>
+									        	<span class="badge rounded-pill bg-info" style="color:white">수령상품</span>
 									         </c:when>
 									         <c:when test = "${c.goodsNo > 1000}">
-									          <span class="badge rounded-pill bg-success">체험상품</span>
+									          <span class="badge rounded-pill bg-success" style="color:white">체험상품</span>
 									         </c:when>
 									         <c:otherwise>
 									        	[구매상품]
 									         </c:otherwise>
 								    	  </c:choose>
-								    	  
-								    	  </td>
+										
+										
+										</td>
 										<td><img src="${pageContext.request.contextPath}/${c.goodsImgFp}" alt=""  width="30px;"></td>
-										<td>${c.goodsName }</td>
-										<td>${c.goodsCount}</td>
-										<td>${c.goodsPrice }</td>
-										<td>${c.boothName}</td>
-										<td class="goodsPrice">${c.selectSum}</td>
+										<td>${c.goodsName}</td>
+										<td id="gCount">${c.goodsCount}</td>
+										<td id="gPrice">${c.goodsPrice}</td>
+										<td >${c.boothName}</td>
+										<td class="goodsPrice"></td>
 									  </tr>
-</c:forEach>
 
 
 									</tbody>
@@ -333,7 +334,7 @@
 							<div class="mb-3">
 								<label for="exampleFormControlReadOnlyInputPlain1" class="form-label"></label>
 								<div class="paySubmitArea">
-									<div>구매 상품: </div> <div style="margin-bottom: 20px;"> ${c.goodsName } 등 </div>
+									<div>구매 상품: </div> <div style="margin-bottom: 20px;"> ${c.goodsName } </div>
 									<br><br>
 									<div style="font-size:1.5em">
 										최종 결제 금액:
@@ -352,7 +353,7 @@
 
 
 						<input type="button" class="btn btn-info paySub" type="button" value="결제하기"
-									onclick="requestPay();" style="background-color: #67B4D2; border: none;">
+									onclick="requestPay(${c.goodsNo},${c.goodsCount});" style="background-color: #67B4D2; border: none;">
 					  </div>
 
 					 
@@ -388,6 +389,14 @@
 
 
 window.onload = function(){
+	var price = $("#gPrice").text();
+	var count = $("#gCount").text();
+	
+	var selectSum = parseInt(price)*parseInt(count);
+	
+	$(".goodsPrice").text(selectSum);
+	
+	
 	var sum=0;
 	$('.goodsPrice').each(function(){
 		sum += parseInt($(this).text()); 
@@ -401,9 +410,42 @@ window.onload = function(){
 var IMP = window.IMP;
 IMP.init("imp46720743");
 
-function requestPay() {
+function requestPay(goodsNo, goodsCount) {
 	
-	location.href="allOrderComplete.or";
+	var goodsNo = goodsNo;
+	var goodsCount = goodsCount;
+	var goodsPrice = $("#gPrice").text();
+	
+	
+	var form = document.createElement("form");
+	form.setAttribute("charset", "UTF-8");
+	form.setAttribute("method", "Post"); 
+	form.setAttribute("action", "selectComplete.or"); 
+	
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "goodsNo");
+	hiddenField.setAttribute("value", goodsNo);
+	form.appendChild(hiddenField);
+	
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "goodsPrice");
+	hiddenField.setAttribute("value", goodsPrice);
+	form.appendChild(hiddenField);
+	
+	var hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "goodsCount");
+	hiddenField.setAttribute("value", goodsCount);
+	form.appendChild(hiddenField);
+	
+	form.appendChild(hiddenField);
+	
+	document.body.appendChild(form);
+	form.submit();
+	
+	console.log(form);
 
 // 	//merchan_uid는 고유번호를 따야하므로 결제시 시간으로함
 // 	var today = new Date();   
