@@ -34,4 +34,12 @@ public interface OrderService {
 	Integer selectComNoList2(Integer integer);
 
 	int selectProductNo(Integer integer);
+
+	int selectOdn(int orderNo);
+
+	int selectComNo(int orderDetailNo);
+
+	int selectComNo2(int orderDetailNo);
+
+	int insertSachetMoney(int totalPrice);
 }

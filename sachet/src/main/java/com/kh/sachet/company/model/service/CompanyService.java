@@ -26,4 +26,8 @@ public interface CompanyService {
 	int changeStatusYes(Integer integer);
 
 	int changeStatusNo(Integer integer);
+
+	int checkBooth(int comNo);
+
+	int withdrawalCompany(int comNo);
 }

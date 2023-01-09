@@ -151,4 +151,10 @@
 		WHERE BOOTH_STATUS='D'
 		ORDER BY BOOTH_NAME DESC
   </select>
+  
+  <select id="checkBooth" resultType="_int">
+  		SELECT COUNT(*)
+  		FROM BOOTH
+  		WHERE COM_NO=#{comNo}
+  </select>
 </mapper>

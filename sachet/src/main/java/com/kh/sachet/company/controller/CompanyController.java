@@ -489,4 +489,29 @@ public class CompanyController {
 		return result;
 	}
 	
+	//기업탈퇴 폼으로 이동
+	@RequestMapping("withdrawalForm.co")
+	public String withdrawalCompanyForm(Model model) {
+		return "company/withdrawalCompany";
+	}
+	
+	//기업탈퇴 요청시, 부스가 있는지 체크하기
+	@ResponseBody
+	@RequestMapping(value="checkbooth.co")
+	public int checkBooth(int comNo, Model model) {
+//		System.out.println(comNo);
+		int count = companyService.checkBooth(comNo);
+		
+		return count;
+	}
+	
+	//기업탈퇴하기
+	@ResponseBody
+	@RequestMapping(value="withdrawal.co")
+	public int withdrawalCompany(int comNo, Model model) {
+//		System.out.println(userPwd);
+		int result = companyService.withdrawalCompany(comNo);
+		return result;
+	}
+	
 }

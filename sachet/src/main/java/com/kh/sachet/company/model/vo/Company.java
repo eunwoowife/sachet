@@ -30,6 +30,7 @@ public class Company {
 //	COM_STATUS	VARCHAR2(1 BYTE)
 //	COM_LOGO_ON	VARCHAR2(500 BYTE)
 //	COM_LOGO_FP	VARCHAR2(500 BYTE)
+// BALANCE NUMBER DEFAULT 0 NOT NULL
 	
 	private int userNo;
 	private String userId;
@@ -47,4 +48,6 @@ public class Company {
 	private String status;
 	private String logoOn;
 	private String logoFp;
+	
+	private int balance;
 }

@@ -19,6 +19,7 @@
 		<result column="COM_STATUS" property="status"/>
 		<result column="COM_LOGO_ON" property="logoOn"/>
 		<result column="COM_LOGO_FP" property="logoFp"/>
+		<result column="BALANCE" property="balance"/>
   </resultMap>
   
   <select id="loginMember" parameterType="company" resultMap="companyResultSet">
@@ -48,7 +49,8 @@
   											COM_ADDRESS,
   											COM_POSTNO,
   											COM_LOGO_ON,
-  											COM_LOGO_FP)
+  											COM_LOGO_FP,
+  											BALANCE)
 		VALUES(SEQ_CNO.NEXTVAL,
 					#{userId},
 					#{comBrnum},
@@ -61,7 +63,8 @@
 					#{address},
 					#{postNo},
 					#{logoOn},
-					#{logoFp})
+					#{logoFp},
+					DEFAULT)
   </insert>
   
   <update id="updateCompanyUser" parameterType="company">
@@ -75,5 +78,10 @@
   											COM_MODIFYDATE=SYSDATE
 		WHERE COM_ID=#{userId}
 		AND COM_STATUS='Y'
+  </update>
+  
+  <update id="withdrawalCompany">
+  	 UPDATE COMPANY SET COM_STATUS='N'
+  	 WHERE USER_NO=#{comNo}
   </update>
 </mapper>

@@ -51,7 +51,7 @@
 	}
 	
 	 th, td{
-        padding-left: 98px;
+        padding-left: 80px;
     }
 
     th, td{
@@ -64,6 +64,10 @@
     
     th{
     	padding-bottom:20px;
+    }
+    
+    #hohoho:hover{
+    	cursor:pointer;
     }
 	
 </style>
@@ -314,9 +318,9 @@
             <c:forEach var="s" items="${sList }">
             <tr>
                 <td><input class="form-check-input" type="checkbox" name="checkedOrderDetailNo" id="orderDetailNo" value="${s.orderDetailNo }"></td>
-                <td>${s.orderDetailNo}</td>
+                <td>SACHET-20230112${s.orderDetailNo}</td>
                 <td>${s.orderDate }</td>
-                <td>${s.experTitle }</td>
+                <td id="hohoho" onclick="location.href='experienceDetail.co?eno=${s.experNo}'">${s.experTitle }</td>
                 <td>${s.count }</td>
                 <td><fmt:formatNumber value="${s.experPrice * s.count }" type="number"/></td>
                 <td>${s.userId }<br>

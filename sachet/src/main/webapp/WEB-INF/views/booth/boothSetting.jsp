@@ -127,25 +127,20 @@
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">MY BOOTH</div>
+                <div data-i18n="Authentications">CALCULATION</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="boothStatus.co" class="menu-link" >
-                    <div data-i18n="Basic">나의 부스 조회</div>
+                <li class="menu-item active open">
+                  <a href="calculationProductForm.sm" class="menu-link" >
+                    <div data-i18n="Basic">판매 상품 정산</div>
                   </a>
                 </li>
                  <li class="menu-item">
                   <a href="productList.co" class="menu-link" >
-                    <div data-i18n="Basic">상품 관리</div>
-                  </a>
-                </li>
-                 <li class="menu-item">
-                  <a href="experienceList.co" class="menu-link" >
-                    <div data-i18n="Basic">체험 관리</div>
+                    <div data-i18n="Basic">판매 체험 정산</div>
                   </a>
                 </li>
              

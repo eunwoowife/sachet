@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.sachet.booth.model.vo.Booth;
+import com.kh.sachet.member.model.vo.SachetMoney;
+import com.kh.sachet.order.model.vo.OrderDetail;
 
 @Repository
 public class BoothDao {
@@ -55,6 +57,15 @@ public class BoothDao {
 	public ArrayList<Booth> selectDeniedBoothList(SqlSessionTemplate sqlSession) {
 		ArrayList<Booth> booList = (ArrayList)sqlSession.selectList("boothMapper.selectDeniedBoothList");
 		return booList;
+	}
+
+	public SachetMoney selectSachetMoney(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("sachetMoneyMapper.selectSachetMoney");
+	}
+
+	public ArrayList<OrderDetail> productCalculationList(SqlSessionTemplate sqlSession) {
+		ArrayList<OrderDetail> pcList = (ArrayList)sqlSession.selectList("OrderMapper.productCalculationList");
+		return pcList;
 	}
 
 }

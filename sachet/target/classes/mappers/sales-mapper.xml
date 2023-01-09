@@ -18,7 +18,7 @@
 	<result column="EXPER_NO"	 property="experNo"/>
 </resultMap>
 
-<insert id="insertProductSales">
+<insert id="insertSales">
 	INSERT INTO SALES VALUES(#{orderDetailNo}, DEFAULT, #{comNo})
 </insert>
 

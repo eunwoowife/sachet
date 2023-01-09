@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="sachetMoneyMapper">
+  
+<resultMap type="sachetMoney" id="sachetResultSet">
+	<result column="BALANCE" property="balance"/>
+	<result column="WITHDRAW" property="withdraw"/>
+	<result column="MODIFY_DATE" property="modifyDate"/>
+</resultMap>
+
+	<update id="insertSachetMoney">
+		UPDATE SACHET_MONEY SET BALANCE=BALANCE+#{totalPrice},
+													MODIFY_DATE=SYSDATE
+	</update>
+	
+	<select id="selectSachetMoney" resultMap="sachetResultSet">
+		SELECT *
+		FROM SACHET_MONEY
+	</select>
+
+
+</mapper>

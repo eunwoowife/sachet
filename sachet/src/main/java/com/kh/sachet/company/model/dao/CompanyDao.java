@@ -55,4 +55,12 @@ public class CompanyDao {
 		return sqlSession.update("salesMapper.changeStatusNo", integer);
 	}
 
+	public int checkBooth(SqlSessionTemplate sqlSession, int comNo) {
+		return sqlSession.selectOne("boothMapper.checkBooth", comNo);
+	}
+
+	public int withdrawalCompany(SqlSessionTemplate sqlSession, int comNo) {
+		return sqlSession.update("companyMapper.withdrawalCompany", comNo);
+	}
+
 }
