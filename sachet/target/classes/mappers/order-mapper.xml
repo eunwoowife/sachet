@@ -23,6 +23,7 @@
   		<result column="BOOTH_NAME" property="boothName"/>
   		<result column="PAY" property="pay"/>
   		<result column="COM_NAME" property="comName"/>
+  		<result column="COM_NO" property="comNo"/>
   </resultMap>
   
   
@@ -118,12 +119,12 @@
   </select>
   
   <select id="productCalculationList" resultMap="orderDetailResultSet" parameterType="orderDetail">
-  	SELECT BOOTH_NAME, SUM(COUNT*PRODUCT_PRICE) PAY, COM_NAME
+  	SELECT BOOTH_NAME, SUM(COUNT*PRODUCT_PRICE) PAY, COM_NAME, COM_NO
     FROM ORDER_DETAIL OD
     JOIN PRODUCT P USING(PRODUCT_NO)
     JOIN BOOTH B USING(BOOTH_NO)
     JOIN COMPANY C ON (C.USER_NO=B.COM_NO)
-    GROUP BY BOOTH_NAME, COM_NAME
+    GROUP BY BOOTH_NAME, COM_NAME, COM_NO
   </select>
   
   

@@ -30,4 +30,6 @@ public interface CompanyService {
 	int checkBooth(int comNo);
 
 	int withdrawalCompany(int comNo);
+
+	int selectBalance(int comNo);
 }

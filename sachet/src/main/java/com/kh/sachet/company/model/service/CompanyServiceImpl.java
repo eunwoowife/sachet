@@ -92,6 +92,11 @@ public class CompanyServiceImpl implements CompanyService{
 		return companyDao.withdrawalCompany(sqlSession, comNo);
 	}
 
+	@Override
+	public int selectBalance(int comNo) {
+		return companyDao.selectBalance(sqlSession, comNo);
+	}
+
 	
 	
 }

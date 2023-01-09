@@ -84,4 +84,15 @@
   	 UPDATE COMPANY SET COM_STATUS='N'
   	 WHERE USER_NO=#{comNo}
   </update>
+  
+  <update id="depositProduct">
+  	UPDATE COMPANY SET BALANCE=BALANCE+#{balance}
+  	WHERE USER_NO=#{userNo}
+  </update>
+  
+  <select id="selectBalance" resultType="_int">
+  	SELECT BALANCE
+  	FROM COMPANY
+  	WHERE USER_NO=#{comNo}
+  </select>
 </mapper>

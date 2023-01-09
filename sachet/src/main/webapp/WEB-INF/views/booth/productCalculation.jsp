@@ -234,7 +234,7 @@
         
         <br><br><br><br><br><br>
         <div class="psHead" align="center" style="margin-right:100px;">
-            <h1>상품 정산</h1>
+            <h1>판매 상품 정산</h1>
         </div>
         
            <div class="col-lg-4 col-md-4 order-1">
@@ -298,16 +298,38 @@
             <tr>
                 <td style="cursor:pointer;">${pc.comName }</td>
                 <td style="cursor:pointer;">${pc.boothName }</td>
-                <td>₩<fmt:formatNumber value="${pc.pay }" type="number"/></td>
+                <td id="pay${pc.comNo }">${pc.pay }</td>
                 <td>
-                	<button type="button" class="btn btn-primary">정산하기</button>
+                	<button type="button" class="btn btn-primary" onclick="calculation(${pc.comNo});">정산하기</button>
                 </td>
             </tr>
             </c:forEach>
-            
-            	
-            
+
         </table>
+            
+        <script>
+        	function calculation(number){
+        		var pay = $("#pay"+number).text();
+        		console.log(pay);
+        		$.ajax({
+        			url : "calculationProduct.sm",
+        			data : {comNo : number,
+        						pay : pay},
+        			success : function(result){
+        				console.log("통신완료");
+        				if(result>0){
+	        				location.reload();
+        				}else{
+        					alert("정산에 실패하였습니다.");
+        				}
+        			},
+        			error : function(){
+        				console.log("통신실패");
+        			}
+        		})
+        	}
+        </script>
+        
     </div>
 
     </div>

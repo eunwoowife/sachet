@@ -32,4 +32,5 @@ public class OrderDetail {
 	private String boothName;
 	private int pay;
 	private String comName;
+	private int comNo;
 }

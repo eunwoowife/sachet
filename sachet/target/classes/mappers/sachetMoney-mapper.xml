@@ -17,6 +17,12 @@
 		SELECT *
 		FROM SACHET_MONEY
 	</select>
+	
+	<update id="calculationProduct">
+		UPDATE SACHET_MONEY SET BALANCE=BALANCE-#{pay},
+												WITHDRAW=WITHDRAW+#{pay},
+												MODIFY_DATE=SYSDATE
+	</update>
 
 
 </mapper>

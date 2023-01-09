@@ -210,6 +210,20 @@ public class BoothController3 {
 		 return "booth/productCalculation";
 	 }
 	 
+	 @ResponseBody
+	 @RequestMapping(value="calculationProduct.sm")
+	 public int calculationProduct(int comNo, int pay, Model model) {
+		 int result = boothService.calculationProduct(pay);
+		 
+		 Company c = new Company();
+		 c.setUserNo(comNo);
+		 c.setBalance(pay);
+		 int result2 = boothService.depositProduct(c);
+		 
+		 int lastResult = result*result2;
+		 
+		 return lastResult;
+	 }
 	 
 	 
 	 @ResponseBody
