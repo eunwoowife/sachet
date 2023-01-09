@@ -248,7 +248,39 @@
 		    
 				const loginUser = '${loginUser.userNo}';				
 				if(loginUser<=1000){
-					location.href='boothparticipationForm.boo';
+					
+					
+					 $.ajax({
+							url: "confirmBooth.boo",
+							data : {
+								loginUser : loginUser,
+							},
+							type : "post",
+							success :function(result){
+								
+								if(result=="YYYY"){
+									alert("이미 등록된 부스가 있습니다.");
+									location.href='boothParticipatingInfo.bo';
+								
+								}else{
+								location.href='boothparticipationForm.boo';
+								}
+							
+							
+							},
+							error : function (){
+								console.log("통신실패");
+								return false;
+							}
+						});
+					
+					
+					
+					
+					
+					
+					
+					
 				}else if(loginUser>1000){
 					window.alert("기업 로그인 후 이용 가능한 서비스입니다.");
 					return false;

@@ -209,6 +209,28 @@ public class BoothController3 {
 		 model.addAttribute("pcList", pcList);
 		 return "booth/productCalculation";
 	 }
+	 
+	 
+	 
+	 @ResponseBody
+	 @RequestMapping("confirmBooth.boo")
+	 public String confirmBooth (int loginUser) {
+		 
+		 ArrayList<Booth> booList = boothService.selectBoothList();
+		 
+		 String result = "";
+		 
+		 for(int i=0; i<booList.size(); i++) {
+			 if(loginUser==booList.get(i).getComNo()) {
+				 result="YYYY";
+			 }
+		 }
+		 
+		 
+		return result;
+	 }
+	 
+	 
 	
 
 }

@@ -107,9 +107,10 @@
     }
 
     .listBtn{
-        width: 150px;
+        width: 130px;
         height: 50px;
         float: right;
+        margin-left: 10px;
     }
 
     .prenextarea table{
@@ -164,10 +165,12 @@
                 </div>
 
                 <div class="btnarea">
-                    <input type="button" class="listBtn" value="목록" onclick="location.href='noticeListView.no'">
-                    <input type="button" class="listBtn" value="삭제" onclick="confirmDelete();">
+                    <input type="button" class="listBtn btn btn-outline-secondary" value="목록" onclick="location.href='noticeListView.no'">
+                    
+                     <c:if test="${loginUser.userNo eq 1001 || loginUser.userNo eq 1002}">
+                   	 <input type="button" class="listBtn btn btn-danger" value="삭제" onclick="confirmDelete();">
+      				 </c:if>
                 </div>
-
                 <div class="prenextarea">
 
                     <table class="prenextarea tab">

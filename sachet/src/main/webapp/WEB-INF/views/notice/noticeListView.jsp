@@ -228,6 +228,11 @@ section.notice {
   transform: translateX(-50%);
 }
 
+.writeBtnArea{
+	float: right;
+	margin: 30px;
+}
+
 
 
 </style>
@@ -295,12 +300,16 @@ section.notice {
                   
                   </tbody>
               </table>
+      <div class="writeBtnArea">
+      <c:if test="${loginUser.userNo eq 1001 || loginUser.userNo eq 1002}">
+              <button type="button" class="btn btn-primary" onclick="location.href='noticeInsert.no'">공지사항 작성하기</button>
+       </c:if>
+      </div>
           </div>
       </div>
-      
         </section>
         
-        <a href="noticeInsert.no">공지사항쓰는 하퍼링크~</a>
+ 
   
   
   <div id="pagingArea">

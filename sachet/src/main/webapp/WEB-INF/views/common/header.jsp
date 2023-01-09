@@ -17,6 +17,9 @@
     
     <!-- 부트스트랩에서 제공하고 있는 스크립트 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    
+    
 </head>
 <style>
 * {
@@ -24,12 +27,12 @@
         padding: 0;
         list-style: none;
     } 
-    .outer{
+    .outer1{
         width: 70%;
         align-items: center;
         margin-left: 280px;
     }
-    a {
+    .sachetA {
         text-decoration: none;
         color:#333;
     }
@@ -48,44 +51,44 @@
         margin-left: 0;
         width: 300px;
     }
-    nav {
+    #sachetNav {
         width: 100%;
         mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 25%, #FFFFFF 75%, rgba(255, 255, 255, 0) 100%);
         margin: 0 auto;
         margin-top: 80px;
         }
-    nav ul {
+    #sachetNav #nav1 {
     text-align: center;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
     }
-    nav ul li {
+    #sachetNav #nav1 .nav2 {
         float:left;
         width:180px;
         position:relative;
     }
-    nav ul li a {
+    #sachetNav #nav1 .nav2 .sachetA {
         padding: 10px;
         color: rgba(0, 35, 122, 0.5);
         font-size: 18px;
         text-decoration: none;
         display: block;
         }
-        nav ul li a:hover {
+        #sachetNav #nav1 .nav2 .sachetA:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
         background: rgba(255, 255, 255, 0.1);
         color: rgba(0, 35, 122, 0.7);
         }
-    nav ul li ul {
+    #sachetNav #nav1 .nav2 ul {
         width:100%;
         display:none;
         position: absolute;
         font-size:14px;
     }
-    nav ul li:hover ul {
+    #sachetNav #nav1 .nav2:hover .nav3 {
         display:block;
     }
-    nav ul li ul li:hover {
+    #sachetNav #nav1 .nav2 .nav3 li:hover {
         transition: ease 1s;
         }
     #userarea ul li{
@@ -119,7 +122,7 @@
 		<c:remove var="alertMessage" scope="session"/>
 	</c:if>
 	
-    <div class="outer">
+    <div class="outer1">
     <div id="top">
         <div id="logo">
             <img id="gomain" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="300px";>
@@ -176,36 +179,36 @@
   
         
     </div>
-    <nav>
-		<ul>
-			<li><a href="#">Sachet</a>
-				<ul>
-					<li><a href="#">About Sachet</a></li>
-					<li><a href="noticeListView.no">공지사항</a></li>
-					<li><a href="map.sc">찾아오시는 길</a></li>
+    <nav id="sachetNav">
+		<ul id="nav1">
+			<li class="nav2"><a class="sachetA" href="#">Sachet</a>
+				<ul class="nav3">
+					<li><a class="sachetA" href="#">About Sachet</a></li>
+					<li><a class="sachetA" href="noticeListView.no">공지사항</a></li>
+					<li><a class="sachetA" href="map.sc">찾아오시는 길</a></li>
 				</ul>
 			</li>
-			<li><a href="ticketInfo.ti">Ticketing</a>
-				<ul>
-					<li><a href="ticketInfo.ti">티켓 안내 </a></li>
-					<li><a href="ticketBook1.ti">티켓 예매</a></li>
+			<li class="nav2"><a class="sachetA"  href="ticketInfo.ti">Ticketing</a>
+				<ul class="nav3">
+					<li><a class="sachetA" href="ticketInfo.ti">티켓 안내 </a></li>
+					<li><a class="sachetA" href="ticketBook1.ti">티켓 예매</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Product</a>
-				<ul>
-					<li><a href="boothListView.bo">BOOTH</a></li>
-					<li><a href="productListView.pro">PRODUCT</a></li>
-					<li><a href="experienceListView.exp">EXPERIENCE</a></li>
+			<li class="nav2"><a class="sachetA" href="#">Product</a>
+				<ul class="nav3">
+					<li><a class="sachetA" href="boothListView.bo">BOOTH</a></li>
+					<li><a class="sachetA" href="productListView.pro">PRODUCT</a></li>
+					<li><a class="sachetA" href="experienceListView.exp">EXPERIENCE</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Booth Info</a>
-				<ul>
-					<li><a href="boothParticipatingInfo.bo">부스 참가 안내</a></li>
-					<li><a href="#">SUB_MENU2</a></li>
-					<li><a href="#">SUB_MENU3</a></li>
+			<li class="nav2"><a class="sachetA"  href="#">Booth Info</a>
+				<ul class="nav3">
+					<li><a class="sachetA" href="boothParticipatingInfo.bo">부스 참가 안내</a></li>
+					<li><a class="sachetA" href="#">SUB_MENU2</a></li>
+					<li><a class="sachetA" href="#">SUB_MENU3</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Help</a></li>
+			<li class="nav2"><a class="sachetA" href="#">Help</a></li>
 		</ul>
 	</nav>
 </div>

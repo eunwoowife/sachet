@@ -8,6 +8,28 @@
 <title>Insert title here</title>
  <!-- iamport.payment.js -->
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+	 <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/demo.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="${pageContext.request.contextPath}/resources/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="${pageContext.request.contextPath}/resources/js/config.js"></script>
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
+
 </head>
 <style>
 
@@ -22,7 +44,7 @@
       margin: 0 auto;
 }
 .confirm{
-    margin-top: 200px;
+    margin-top: 270px;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 70px;
@@ -80,24 +102,33 @@
     margin-top: 100px;
     margin-bottom: 100px;
 }
-.btn{
-    width: 100px;
-    height: 30px;
-    background-color:white
-    border: none;
-    cursor: pointer;
+.btnA{
+    width: 180px;
+    height: 60px;
+    margin-left: 10px;
 }
-.btn:hover{
-width: 100px;
-height: 30px;
-background-color: rgb(193, 205, 224);
-border: none;
-}
+
+.stepArea{
+		  position: absolute;
+ 		 left: 50%;
+ 		 transform: translateX(-50%);
+ 		 margin-top: 150px;
+ 		
+		}
+		
+		.stepArea img{
+		  width: 500px;
+		}
 </style>
 <body>
 <jsp:include page="../common/header.jsp" />
 
     <div class="outerarea">
+    
+    <div class="stepArea">
+		<img src="${pageContext.request.contextPath}/resources/images/ticket-step2.png">
+		</div>
+    
     <div class="centerarea">
     <table class="confirm">
         <thead>
@@ -196,8 +227,7 @@ border: none;
             <input type= "checkbox" id="agree" onChange="agreeCh();"> <label>(필수) 동의합니다</label>
             </div>
             <div class="btnarea">
-            <button class="btn">취소하기</button>
-            <button class="btn" id="submit" disabled onclick="requestPay();">예매하기</button>
+            <button class="btnA btn btn-primary" id="submit" disabled onclick="requestPay();">예매하기</button>
             </div>
         </div>
     </div>

@@ -79,8 +79,8 @@
     }
 
     .listBtn{
-        width: 150px;
-        height: 50px;
+        width: 130px;
+        height: 40px;
         
     }
 
@@ -153,8 +153,8 @@
                 </div>
 
                 <div class="btnarea">
-                    <input type="button" class="listBtn" value="등록" onclick="onWrite();">
-                    <input type="button" class="listBtn" type="reset" value="취소">
+                    <input type="button" class="listBtn btn btn-outline-primary" value="등록" onclick="onWrite();">
+                    <input type="button" class="listBtn btn btn-secondary" type="reset" value="취소">
                     
                 </div>
 </form>
