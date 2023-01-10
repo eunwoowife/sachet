@@ -12,9 +12,9 @@
 
     <br>
     <div align="center">
-        <img src="https://cdn2.iconfinder.com/data/icons/oops-404-error/64/208_balloon-bubble-chat-conversation-sorry-speech-256.png">
+        <img src="${pageContext.request.contextPath}/resources/images/errr.png" width="1100px;">
         <br><br>
-        <h1 style="font-weight:bold;">${errorMsg }</h1>
+<%--         <h1 style="font-weight:bold;">${errorMsg }</h1> --%>
   
     </div>
     <br>
