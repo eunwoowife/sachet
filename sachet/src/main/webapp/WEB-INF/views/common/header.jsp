@@ -58,17 +58,20 @@
         mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 25%, #FFFFFF 75%, rgba(255, 255, 255, 0) 100%);
         margin: 0 auto;
         margin-top: 80px;
+         background-color: white;
         
         }
     #sachetNav #nav1 {
     text-align: center;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+     background-color: white;
     }
     #sachetNav #nav1 .nav2 {
         float:left;
         width:180px;
         position:relative;
+         background-color: white;
     }
     #sachetNav #nav1 .nav2 .sachetA {
         padding: 10px;
@@ -76,23 +79,29 @@
         font-size: 18px;
         text-decoration: none;
         display: block;
+         background-color: white;
         }
         #sachetNav #nav1 .nav2 .sachetA:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
         background: rgba(255, 255, 255, 0.1);
         color: rgba(0, 35, 122, 0.7);
+         background-color: white;
         }
     #sachetNav #nav1 .nav2 ul {
         width:100%;
         display:none;
         position: absolute;
         font-size:14px;
+         background-color: white;
     }
+    
     #sachetNav #nav1 .nav2:hover .nav3 {
         display:block;
+         background-color: white;
     }
     #sachetNav #nav1 .nav2 .nav3 li:hover {
         transition: ease 1s;
+         background-color: white;
         }
     #userarea ul li{
         float: left;

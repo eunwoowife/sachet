@@ -15,6 +15,7 @@
     .outerarea{
         width: 70%;
         margin-top: 200px;
+        
     }
 
     .area{
@@ -22,6 +23,7 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+        margin-top: 100px;
     }
 
     .hrbold{

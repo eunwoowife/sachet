@@ -420,7 +420,7 @@ function requestPay(goodsNo, goodsCount) {
 	var form = document.createElement("form");
 	form.setAttribute("charset", "UTF-8");
 	form.setAttribute("method", "Post"); 
-	form.setAttribute("action", "selectComplete.or"); 
+	form.setAttribute("action", "orderComplete1.or"); 
 	
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");
@@ -443,43 +443,48 @@ function requestPay(goodsNo, goodsCount) {
 	form.appendChild(hiddenField);
 	
 	document.body.appendChild(form);
-	form.submit();
 	
-	console.log(form);
+	
+	
+	
+	
 
-// 	//merchan_uid는 고유번호를 따야하므로 결제시 시간으로함
-// 	var today = new Date();   
-// 	var year = today.getFullYear();
-// 	var month = today.getMonth();
-// 	var date = today.getDate();
-// 	var hours = ('0' + today.getHours()).slice(-2); 
-// 	var minutes = ('0' + today.getMinutes()).slice(-2);
-// 	var seconds = ('0' + today.getSeconds()).slice(-2); 
+	//merchan_uid는 고유번호를 따야하므로 결제시 시간으로함
+	var today = new Date();   
+	var year = today.getFullYear();
+	var month = today.getMonth();
+	var date = today.getDate();
+	var hours = ('0' + today.getHours()).slice(-2); 
+	var minutes = ('0' + today.getMinutes()).slice(-2);
+	var seconds = ('0' + today.getSeconds()).slice(-2); 
 
-// 	var paydate = "sa-"+year+month+date+hours+ minutes+ seconds;
+	var paydate = "sa-"+year+month+date+hours+ minutes+ seconds;
 	
 	
-//     // IMP.request_pay(param, callback) 결제창 호출
-//        IMP.request_pay({ // param
+    // IMP.request_pay(param, callback) 결제창 호출
+       IMP.request_pay({ // param
     	
-//         pg: "html5_inicis.INIpayTest",
-//         pay_method: "card",
-//         merchant_uid: paydate,
-//         name: "Sachet 상품 구매",
-//         amount: "150",
-//         buyer_email: '${m.email }',
-//         buyer_name: '${m.userName }',
-//         buyer_tel: '${m.phone}'
-//     }, 
+        pg: "html5_inicis.INIpayTest",
+        pay_method: "card",
+        merchant_uid: paydate,
+        name: "Sachet 상품 구매",
+        amount: "150",
+        buyer_email: '${m.email }',
+        buyer_name: '${m.userName }',
+        buyer_tel: '${m.phone}'
+    }, 
     
-//     function (rsp) { // callback
-//         if (rsp.success) {
-//  		location.href="allOrderComplete.or";
-//         } else {
-//             // 결제 실패 시 로직,
-//         	 alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
-//         }
-//     });
+    function (rsp) { // callback
+        if (rsp.success) {
+        	
+        	form.submit();
+        	
+        	
+        } else {
+            // 결제 실패 시 로직,
+        	 alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+        }
+    });
 
         	 
         	 

@@ -333,7 +333,7 @@
 							<div class="mb-3">
 								<label for="exampleFormControlReadOnlyInputPlain1" class="form-label"></label>
 								<div class="paySubmitArea">
-									<div>구매 상품: </div> <div style="margin-bottom: 20px;"> ${c.goodsName } 등 </div>
+									<br>*결제 내용을 잘 확인해주세요<br>
 									<br><br>
 									<div style="font-size:1.5em">
 										최종 결제 금액:
@@ -393,7 +393,6 @@ window.onload = function(){
 		sum += parseInt($(this).text()); 
 	});
 	$("#lastTotal").text(sum);
-	
 }
 
 
@@ -403,41 +402,38 @@ IMP.init("imp46720743");
 
 function requestPay() {
 	
-	location.href="allOrderComplete.or";
 
-// 	//merchan_uid는 고유번호를 따야하므로 결제시 시간으로함
-// 	var today = new Date();   
-// 	var year = today.getFullYear();
-// 	var month = today.getMonth();
-// 	var date = today.getDate();
-// 	var hours = ('0' + today.getHours()).slice(-2); 
-// 	var minutes = ('0' + today.getMinutes()).slice(-2);
-// 	var seconds = ('0' + today.getSeconds()).slice(-2); 
-
-// 	var paydate = "sa-"+year+month+date+hours+ minutes+ seconds;
+	//merchan_uid는 고유번호를 따야하므로 결제시 시간으로함
+	var today = new Date();   
+	var year = today.getFullYear();
+	var month = today.getMonth();
+	var date = today.getDate();
+	var hours = ('0' + today.getHours()).slice(-2); 
+	var minutes = ('0' + today.getMinutes()).slice(-2);
+	var seconds = ('0' + today.getSeconds()).slice(-2); 
+	var paydate = "sa-"+year+month+date+hours+ minutes+ seconds;
 	
-	
-//     // IMP.request_pay(param, callback) 결제창 호출
-//        IMP.request_pay({ // param
+    // IMP.request_pay(param, callback) 결제창 호출
+       IMP.request_pay({ // param
     	
-//         pg: "html5_inicis.INIpayTest",
-//         pay_method: "card",
-//         merchant_uid: paydate,
-//         name: "Sachet 상품 구매",
-//         amount: "150",
-//         buyer_email: '${m.email }',
-//         buyer_name: '${m.userName }',
-//         buyer_tel: '${m.phone}'
-//     }, 
+        pg: "html5_inicis.INIpayTest",
+        pay_method: "card",
+        merchant_uid: paydate,
+        name: "Sachet 상품 구매",
+        amount: "150",
+        buyer_email: '${m.email }',
+        buyer_name: '${m.userName }',
+        buyer_tel: '${m.phone}'
+    }, 
     
-//     function (rsp) { // callback
-//         if (rsp.success) {
-//  		location.href="allOrderComplete.or";
-//         } else {
-//             // 결제 실패 시 로직,
-//         	 alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
-//         }
-//     });
+    function (rsp) { // callback
+        if (rsp.success) {
+ 		location.href="allOrderComplete.or";
+        } else {
+            // 결제 실패 시 로직,
+        	 alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+        }
+    });
 
         	 
         	 

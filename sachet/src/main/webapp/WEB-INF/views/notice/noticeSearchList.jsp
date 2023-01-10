@@ -32,7 +32,7 @@
 
 <style>
 
-    table {
+  table {
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -42,6 +42,7 @@ section.notice {
 
 .page-title {
   margin-bottom: 60px;
+  margin-top: 100px;
 }
 .page-title h3 {
   font-size: 28px;
@@ -272,6 +273,9 @@ section.notice {
                   </tr>
                   </thead>
                   <tbody>
+                  
+                  
+                 
 
                   <c:forEach var="n" items="${searchL}">
                   <tr>
@@ -294,7 +298,7 @@ section.notice {
                   
                   
                   <tr>
-                  <td colspan="5">
+                  <td colspan="5" style="text-align: left;">
                   ${n.noticeContent}
                   <td>
                   </tr>
@@ -304,12 +308,15 @@ section.notice {
                   
                   </tbody>
               </table>
+               <c:if test = "${empty searchL}">
+				      <div style="text-align:center; font-size: 2em; padding:50px;">
+				        		검색 내용이 없습니다.</div>
+				    </c:if>
           </div>
       </div>
       
         </section>
         
-        <a href="noticeInsert.no">공지사항쓰는 하퍼링크~</a>
   
   
 <!--   <div id="pagingArea"> -->

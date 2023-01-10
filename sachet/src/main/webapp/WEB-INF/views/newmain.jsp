@@ -363,6 +363,7 @@
             <section id="section0" class="section color2022 fp-section active fp-table fp-completely" data-anchor="homePage" style="height: 944px; padding-top: 88px; background-color: rgb(180 81 81)" >
             	<div class="fp-tableCell" style="height: 944px !important; background-image:url(${pageContext.request.contextPath}/resources/images/002.jpg); !important">
 				 
+				 <!-- 메인 이미지 페이지인듯 함 -->
 				<div class="mainVisual mainTop" style="display: none;">
                     <a href="detail.pro?pno=2" style="background-image:url(${pageContext.request.contextPath}/resources/images/spellonyou.jpg);">
                     </a>
@@ -373,37 +374,38 @@
                             <p class="more">VIEW MORE</p>
                         </div>
                 </div>
-                
+                <!-- 섹션1이미지끝-->
+               
           	
 			 <div class="mainSection mainTop" >
                     <!-- h3 class="tit"># BIAF 미디어관</h3 -->
                     <div class="mainSlide">
                         <div class="mainFor">
-                            <div class="slider" style="margin-top:200px;">
+                            <div class="slider">
 								
 								<!-- 로딩 preloadResponse 오류 -->
-								<div class="item">
-                                    <div class="video">
-                                        	<video src="${pageContext.request.contextPath}/resources/images/hehe.mp4" controls width="1080px" autoplay loop></video>
+								<div class="item" >
+                                    <div class="video" style="padding-top: 15%;">
+                                        	<video src="${pageContext.request.contextPath}/resources/images/hehe.mp4" controls width="720px" autoplay loop></video>
                                     </div>
-                                    <p class="midiaTit"><span>[다슈X차은우] DASHUXCHA EUN-WOO <br>아쿠아 다이브</span></p>
                                 </div>
 								<div class="item">
-                                    <div class="video">
-                                    		<video src="${pageContext.request.contextPath}/resources/images/hehe2.mp4" controls width="1080px" autoplay></video>
+                                    <div class="video" style="padding-top: 15%;">
+                                    		<video src="${pageContext.request.contextPath}/resources/images/hehe2.mp4" controls width="720px" autoplay></video>
                                     </div>
-                                    <p class="midiaTit"><span>YSL LIBRE</span></p>
                                 </div>
 								<div class="item">
-                                    <div class="video">
-                                    	<video src="${pageContext.request.contextPath}/resources/images/hehe3.mp4" controls width="1080px" autoplay></video>
+                                    <div class="video" style="padding-top: 15%;">
+                                    	<video src="${pageContext.request.contextPath}/resources/images/hehe3.mp4" controls width="720px" autoplay></video>
                                     </div>
-                                    <p class="midiaTit"><span>CELINE HAUTE PARFUMERIE </span></p>
                                 </div>
                                 <!-- 동영상 영역 끝 -->
                                 
-                                
-                                
+
+
+
+
+
                               </div>
                         </div>
                         
@@ -422,7 +424,7 @@
 								-->
 								
 								
-								<div class="item">
+								<div class="item" style="padding-top: 20%;">
                                     <a href="javascript:;">
                                         <div class="thumb">
                                             <img src="${pageContext.request.contextPath}/resources/images/eunwoo.jpg" alt="">

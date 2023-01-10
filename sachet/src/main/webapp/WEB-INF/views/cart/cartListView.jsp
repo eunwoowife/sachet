@@ -348,7 +348,9 @@
 
 						 <c:choose>
 				         <c:when test = "${empty c}">
-				        		 장바구니가 비어있습니다.
+				        		
+				        		<div style="text-align:center; font-size: 2em; padding:50px;">
+				        		장바구니가 비어있습니다.</div>
 				         </c:when>
 				         <c:otherwise>
 				        		  
@@ -404,7 +406,6 @@
 					<div class="cartheader productbtnarea">
 						<input type="button" class="pbtn selOderBtn" id="spayment${c.goodsNo}" value="주문하기"
 						onclick="selectOrder('${c.goodsNo}','${c.goodsCount}','${c.goodsPrice }','${c.goodsName }','${c.boothName}','${c.goodsImgFp}');">
-						<input type="button" class="pbtn selWishBtn" id="swish${c.goodsNo}" value="위시리스트">
 						<input type="button" class="pbtn selDelBtn" id="sdelete${c.goodsNo}" value="삭제하기" onclick="selectDelete(${c.goodsNo});">
 					</div>
 
@@ -421,8 +422,17 @@
 				
 
 				<div class="cartbtnarea">
-                    <input type="button" class="pbtn cartbtn" value="돌아가기">
-					<input type="button" class="pbtn cartbtn" value="장바구니 비우기" onclick="delAllItem();">
+                    <input type="button" class="pbtn cartbtn" value="돌아가기" onclick="goBack();">
+                    <c:if test = "${!empty c}">
+				      <input type="button" class="pbtn cartbtn" value="장바구니 비우기" onclick="delAllItem();">
+				    </c:if>
+				    
+				    <script>
+				    function goBack() {
+				        window.history.back();
+				    }
+					</script>    		 
+									
 				</div>
 			
 
@@ -475,13 +485,18 @@
 					</div>
 					
 					
-					<form action="allOrderForm.or">
 					<div class="paybtnArea">
-					<input type="submit" class="pbtn lastbtn" value="결제하기">
+					 <c:if test = "${!empty c}">
+				     <input type="button" class="pbtn lastbtn" value="결제하기" onclick="location.href='allOrderForm.or'">
+				     </c:if>
+				     <c:if test = "${empty c}">
+				     <input type="button" class="pbtn lastbtn" value="장바구니가 비어있습니다." disabled>
+				     </c:if>
+				        		 
+					
+					
 					</div>
 					
-					</form>
-
 
 
 				</div>
