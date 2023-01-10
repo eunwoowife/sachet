@@ -384,19 +384,19 @@
 								<!-- 로딩 preloadResponse 오류 -->
 								<div class="item">
                                     <div class="video">
-                                        <iframe data-ssrc="https://www.youtube.com/embed/NiqUAmStcfs?rel=0&vq=hd720" title="[다슈X차은우] DASHUXCHA EUN-WOO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        	<video src="${pageContext.request.contextPath}/resources/images/hehe.mp4" controls width="1080px" autoplay loop></video>
                                     </div>
                                     <p class="midiaTit"><span>[다슈X차은우] DASHUXCHA EUN-WOO <br>아쿠아 다이브</span></p>
                                 </div>
 								<div class="item">
                                     <div class="video">
-                                        <iframe data-ssrc="https://www.youtube.com/embed/0XNLob4LmUA" title="YSL LIBRE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    		<video src="${pageContext.request.contextPath}/resources/images/hehe2.mp4" controls width="1080px" autoplay></video>
                                     </div>
                                     <p class="midiaTit"><span>YSL LIBRE</span></p>
                                 </div>
 								<div class="item">
                                     <div class="video">
-                                        <iframe data-ssrc="https://www.youtube.com/embed/eblAcAObqYw" title="CELINE HAUTE PARFUMERIE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    	<video src="${pageContext.request.contextPath}/resources/images/hehe3.mp4" controls width="1080px" autoplay></video>
                                     </div>
                                     <p class="midiaTit"><span>CELINE HAUTE PARFUMERIE </span></p>
                                 </div>
