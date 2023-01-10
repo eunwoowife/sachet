@@ -126,49 +126,23 @@
                   </a>
                 </li>
               </ul>
-            </li>
+              </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">MY BOOTH</div>
+                <div data-i18n="Authentications">CALCULATION</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="boothStatus.co" class="menu-link" >
-                    <div data-i18n="Basic">나의 부스 조회</div>
+                  <a href="calculationProductForm.sm" class="menu-link" >
+                    <div data-i18n="Basic">판매 상품 정산</div>
                   </a>
                 </li>
                  <li class="menu-item">
                   <a href="productList.co" class="menu-link" >
-                    <div data-i18n="Basic">상품 관리</div>
+                    <div data-i18n="Basic">판매 체험 정산</div>
                   </a>
                 </li>
-                 <li class="menu-item">
-                  <a href="experienceList.co" class="menu-link" >
-                    <div data-i18n="Basic">체험 관리</div>
-                  </a>
-                </li>
-             
-              </ul>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Misc">SALES DETAIL</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="productSales.co" class="menu-link">
-                    <div data-i18n="Error">상품 판매 내역</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="experienceSales.co" class="menu-link">
-                    <div data-i18n="Under Maintenance">체험 판매 내역</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
          
 
     

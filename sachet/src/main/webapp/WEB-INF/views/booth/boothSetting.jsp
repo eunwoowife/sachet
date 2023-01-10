@@ -127,7 +127,7 @@
                 </li>
               </ul>
             </li>
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">CALCULATION</div>
@@ -144,26 +144,7 @@
                   </a>
                 </li>
              
-              </ul>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Misc">SALES DETAIL</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="productSales.co" class="menu-link">
-                    <div data-i18n="Error">상품 판매 내역</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="experienceSales.co" class="menu-link">
-                    <div data-i18n="Under Maintenance">체험 판매 내역</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
+           
          
 
     

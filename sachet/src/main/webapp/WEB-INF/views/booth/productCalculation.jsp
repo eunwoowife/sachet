@@ -125,15 +125,16 @@
                     <div data-i18n="Notifications">승인 거절된 부스</div>
                   </a>
                 </li>
+              
               </ul>
             </li>
-            <li class="menu-item active">
+            <li class="menu-item active open">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">CALCULATION</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item active open">
+                <li class="menu-item active">
                   <a href="boothStatus.co" class="menu-link" >
                     <div data-i18n="Basic">판매 상품 정산</div>
                   </a>
@@ -143,27 +144,11 @@
                     <div data-i18n="Basic">판매 체험 정산</div>
                   </a>
                 </li>
+                </ul>
+                </li>
+                </ul>
              
-              </ul>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Misc">SALES DETAIL</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="productSales.co" class="menu-link">
-                    <div data-i18n="Error">상품 판매 내역</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="experienceSales.co" class="menu-link">
-                    <div data-i18n="Under Maintenance">체험 판매 내역</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
+           
          
 
     
@@ -300,7 +285,7 @@
                 <td style="cursor:pointer;">${pc.boothName }</td>
                 <td id="pay${pc.comNo }">${pc.pay }</td>
                 <td>
-                	<button type="button" class="btn btn-primary" onclick="calculation(${pc.comNo});">정산하기</button>
+                	<button id="cal${pc.comNo }" type="button" class="btn btn-primary" onclick="calculation(${pc.comNo});">정산하기</button>
                 </td>
             </tr>
             </c:forEach>
@@ -319,6 +304,7 @@
         				console.log("통신완료");
         				if(result>0){
 	        				location.reload();
+		     				$("#cal"+number).attr("disabled", true);
         				}else{
         					alert("정산에 실패하였습니다.");
         				}
