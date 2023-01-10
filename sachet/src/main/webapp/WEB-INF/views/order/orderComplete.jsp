@@ -143,7 +143,8 @@
         				 
         				 <br><br><br>
         				 <button type="button" class="btn btn-primary">마이페이지</button>
-        				 <button type="button" class="btn btn-outline-secondary">계속 쇼핑하기</button>
+        				 <button type="button" class="btn btn-outline-secondary" onclick="location.href='productListView.pro'">
+        				 계속 쇼핑하기</button>
         				 </th>
                       </tr>
                     </thead>

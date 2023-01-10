@@ -42,6 +42,7 @@
   width: 1100px;
   margin: 0 auto;
   margin-bottom : 100px;
+  margin-top: 100px;
   
 }
 

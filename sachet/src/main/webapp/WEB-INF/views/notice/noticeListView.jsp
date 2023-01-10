@@ -42,6 +42,7 @@ section.notice {
 
 .page-title {
   margin-bottom: 60px;
+  margin-top: 100px;
 }
 .page-title h3 {
   font-size: 28px;
