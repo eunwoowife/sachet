@@ -232,31 +232,31 @@
     <div class="outer1" style="width:100%">
     <div id="top">
         <div id="logo">
-            <img id="gomain" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="300px;">
+            <a href="${pageContext.request.contextPath}/index.jsp"><img id="gomain" src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="300px;"></a>
         </div>
         <div id="userarea">
        <c:if test="${not empty loginUser }">
-       		${loginUser.userName }님, 안녕
+       		${loginUser.userName }님, 안녕하세요.
        </c:if>
             <ul>
             	<c:choose>
             	<c:when test="${empty loginUser }">
-                <li><img src="${pageContext.request.contextPath}/resources/images/login.png" alt="" onclick="goLogin();"></li>
+                <li><a href="loginForm.me"><img src="${pageContext.request.contextPath}/resources/images/login.png" alt="" onclick="goLogin();"></a></li>
                 </c:when>
                 <c:otherwise>
-	                 <li><img src="${pageContext.request.contextPath}/resources/images/logout.png" alt=""  style="width:28px;" onclick="goLogout();"></li>
+	                 <li><a href="logout.me"><img src="${pageContext.request.contextPath}/resources/images/logout.png" alt=""  style="width:28px;" onclick="goLogout();"></a></li>
 	                <c:choose>
 	                <c:when test="${loginUser.userNo>1000 }">       
-	                 <li><img src="${pageContext.request.contextPath}/resources/images//user.png" alt="" onclick="goMypage();"></li>
+	                 <li><a href="myPage.me"><img src="${pageContext.request.contextPath}/resources/images//user.png" alt="" onclick="goMypage();"></a></li>
 	                </c:when>
 	                <c:otherwise>
-	                <li><img src="${pageContext.request.contextPath}/resources/images//user.png" alt="" onclick="goMycomPage();"></li>
+	                <li><a href="mypage.co"><img src="${pageContext.request.contextPath}/resources/images//user.png" alt="" onclick="goMycomPage();"></a></li>
 	                </c:otherwise>
 	                </c:choose>
                 </c:otherwise>
                 </c:choose>
-                <li><img src="${pageContext.request.contextPath}/resources/images/shopping-cart.png" alt=""></li>
-                <li><img src="${pageContext.request.contextPath}/resources/images/settings.png" alt="" onclick="goSettingPage();"></li>
+                <li><a href="selectCart.ca"><img src="${pageContext.request.contextPath}/resources/images/shopping-cart.png" alt=""></a></li>
+                <li><a href="boothSetting.boo"><img src="${pageContext.request.contextPath}/resources/images/settings.png" alt="" onclick="goSettingPage();"></a></li>
             </ul>
         </div>
         
@@ -303,18 +303,16 @@
 					<li><a class="sachetA" href="ticketBook1.ti">티켓 예매</a></li>
 				</ul>
 			</li>
-			<li class="nav2"><a class="sachetA" href="#">Product</a>
+			<li class="nav2"><a class="sachetA" href="#">Product & Exper</a>
 				<ul class="nav3">
-					<li><a class="sachetA" href="boothListView.bo">BOOTH</a></li>
-					<li><a class="sachetA" href="productListView.pro">PRODUCT</a></li>
-					<li><a class="sachetA" href="experienceListView.exp">EXPERIENCE</a></li>
+					<li><a class="sachetA" href="productListView.pro">상품</a></li>
+					<li><a class="sachetA" href="experienceListView.exp">체험</a></li>
 				</ul>
 			</li>
 			<li class="nav2"><a class="sachetA"  href="#">Booth Info</a>
 				<ul class="nav3">
 					<li><a class="sachetA" href="boothParticipatingInfo.bo">부스 참가 안내</a></li>
-					<li><a class="sachetA" href="#">SUB_MENU2</a></li>
-					<li><a class="sachetA" href="#">SUB_MENU3</a></li>
+					<li><a class="sachetA" href="boothListView.bo">참가 업체</a></li>
 				</ul>
 			</li>
 			<li class="nav2"><a class="sachetA" href="#">Help</a></li>
@@ -349,9 +347,9 @@
                 <li class="sns04"><a href="https://www.youtube.com/user/anipisaf" target="_blank">유튜브</a></li>
             </ul>
             <ul class="quickMenu">
-                <li class="quick07"><a href="/kr/sub.html?pid=174">부스<br>배치도</a></li>
-                <li class="quick04"><a href="/kr/sub.html?pid=19">오시는길</a></li>
-                <li class="quick06"><a href="/kr/sub.html?pid=51">굿즈</a></li>
+                <li class="quick07"><a href="boothListView.bo">부스<br>목록</a></li>
+                <li class="quick04"><a href="map.sc">오시는길</a></li>
+                <li class="quick06"><a href="productListView.pro">상품</a></li>
             </ul>
             <a href="#homePage" class="btnTop"><img src="${pageContext.request.contextPath}/resources/images/btn_top.png" alt="TOP"></a>
         </aside>
@@ -366,7 +364,7 @@
             	<div class="fp-tableCell" style="height: 944px !important; background-image:url(${pageContext.request.contextPath}/resources/images/002.jpg); !important">
 				 
 				<div class="mainVisual mainTop" style="display: none;">
-                    <a href="#" style="background-image:url(${pageContext.request.contextPath}/resources/images/spellonyou.jpg);">
+                    <a href="detail.pro?pno=2" style="background-image:url(${pageContext.request.contextPath}/resources/images/spellonyou.jpg);">
                     </a>
                 
 						<div class="visualTxt">
@@ -492,7 +490,7 @@
                 <div class="programWrap">
                     <div class="sectionTit" style="margin-top:100px;">
                         <p><img src="https://mblogthumb-phinf.pstatic.net/MjAyMDExMDJfMjc5/MDAxNjA0MjkzMjEzODM3.WISPFery1EmVckylvGY5RprHMms7I0VMZF9eCPjblsAg.j-tPj4aQsYXhOhuNcK3HCWe0UKHM-xBmub9mSB6JG3wg.JPEG.esom1225/Screenshot_2020-11-02_at_13.57.41.jpg?type=w800" alt="BIAF 2022"></p>
-                        <h2><strong>체험</strong> 프로그램안내</h2>
+                        <h2><strong>샤쉐</strong> 프로그램안내</h2>
                     </div>
 				
 					
@@ -501,16 +499,16 @@
                         <ul class="programInfo">
                       
                             <li class="first">
-                                <a href="/kr/sub.html?pid=174">
+                                <a href="https://es.vecteezy.com/arte-vectorial/3262387-perfume-personaje-caricatura-con-gesto-beso">
                                     <picture>
                                         <source media="(max-width: 960px)" srcset="/img/main_2022/img_program_bn01_mo.jpg">
-                                        <img src="${pageContext.request.contextPath}/resources/images/img_program_bn01.jpg" alt="부스배치안">
+                                        <img src="${pageContext.request.contextPath}/resources/images/mmm1.png" alt="부스배치안">
                                     </picture>
                                 </a>
                             </li>
                             <li class="second">
                                 <!-- a href="/kr/sub.html?pid=59" onclick="alert('예매 준비중입니다.'); return false;" -->
-                                <a href="/kr/sub.html?pid=185">
+                                <a href="ticketInfo.ti">
                                     <picture>
                                         <source media="(max-width: 960px)" srcset="/img/main_2022/img_program_bn02_mo.jpg">
                                         <img src="${pageContext.request.contextPath}/resources/images/img_program_bn02.jpg" alt="티켓예매 티켓 예매 방법 및 혜택 등 안내">
@@ -520,10 +518,10 @@
                         </ul>
                         <ul class="eventSlide">
 							<li>
-                                <a href="/kr/sub.html?pid=51">
+                                <a href="experienceListView.exp">
                                     <picture>
                                         <source media="(max-width: 960px)" srcset="/img/main_2022/img_program_bn03_mo.jpg">
-                                        <img src="${pageContext.request.contextPath}/resources/images/img_program_bn03.jpg" alt="비아프 2022 굿즈. 아기자기하고 실용적인 굿즈">
+                                        <img src="${pageContext.request.contextPath}/resources/images/mmm2.png" alt="비아프 2022 굿즈. 아기자기하고 실용적인 굿즈">
                                     </picture>
                                 </a>
                             </li>
@@ -544,31 +542,31 @@
                         <div id="tab1" class="left tabCon active">
                             <h3>공지사항</h3>
 							<div class="latestTop">
-<span class="date">2022-12<em>10</em></span>
-<a href="/kr/sub.html?pid=52&amp;table_id=notice&amp;formtype=view&amp;code=2607">
-<p class="tit">BIAF2022 국제경쟁 수상작 발표</p>
+<span class="date">2023-01<em>12</em></span>
+<a href="detail.no?nno=1">
+<p class="tit">SACHET 2023 개최 안내</p>
 <p class="dottxt">
 </p>
 </a>
 </div>
 <ul class="postListMain">
-<li><a href="/kr/sub.html?pid=52&amp;table_id=notice&amp;formtype=view&amp;code=2605">
-[SC2022] 본선심사 결과 안내</a>
+<li><a href="detail.no?nno=2">
+SACHET 2023 부스 신청 안내</a>
 </li>
-<li><a href="/kr/sub.html?pid=52&amp;table_id=notice&amp;formtype=view&amp;code=2604">
-[SC2022] 단편애니메이션제작지원 본선심사 결과 안내</a>
+<li><a href="/detail.no?nno=3">
+SACHET 2023 관람객 안내</a>
 </li>
-<li><a href="/kr/sub.html?pid=52&amp;table_id=notice&amp;formtype=view&amp;code=2601">
-[안내] SC2022 장편 수상작 상영작 리스트</a>
+<li><a href="detail.no?nno=4">
+SACHET 2023 기업 안내</a>
 </li>
-<li><a href="/kr/sub.html?pid=52&amp;table_id=notice&amp;formtype=view&amp;code=2599">
-SC2022 애니메이션 유튜브 접속 링크 및 책자 파일 공유</a>
+<li><a href="detail.no?nno=5">
+이용 전반적인 공지사항</a>
 </li>
-<li><a href="/kr/sub.html?pid=52&amp;table_id=notice&amp;formtype=view&amp;code=2587">
-SC2022 제4회 나도 감독! ‘11초 애니메이션영화제’ 수상작 발표</a>
+<li><a href="detail.no?nno=6">
+상품 구매 약관</a>
 </li>
-<li><a href="/kr/sub.html?pid=52&amp;table_id=notice&amp;formtype=view&amp;code=2586">
-BIAF2022 단편애니메이션제작지원 예선심사 결과안내</a>
+<li><a href="detail.no?nno=7">
+부스 신청시 유의사항</a>
 </li>
 </ul>
 				<a href="/kr/sub.html?pid=52" class="btnMore">더보기</a>                        </div>
@@ -576,38 +574,33 @@ BIAF2022 단편애니메이션제작지원 예선심사 결과안내</a>
                             <h3>보도자료</h3>
 							<div class="latestTop">
 <span class="date">2022-12<em>09</em></span>
-<a href="/kr/sub.html?pid=54&amp;table_id=press&amp;formtype=view&amp;code=2624">
-<p class="tit">(사)한국만화애니메이션학회 제14대 학회장으로 선출된 서채환 교수, BIAF 조직위원장 연임</p>
+<a href="https://tenasia.hankyung.com/topic/article/2021090264354">
+<p class="tit">‘차은우 향수래’ 다슈, 올리브영 한정 ‘프리미엄 퍼퓸 기획세트’ 순항</p>
 <p class="dottxt">
-PRESS. 56
-(사)한국만화애니메이션학회 제14대 학회장으로 선출된
-서채환 교수, BIAF 조직위원장 연임
-▲ BIAF 조직위원장 서채환 교수
-지난, 2022년 12월 10일 (사)한국만화애니메이션학회 정기총회에서 제14대 학회장으로 선출된 서채환 교수가 부천국제애니메이션페스티벌 조직위원장에 연임되었다. 임기는 2023년 1월 1일부터 2024년 12월 31일까지 2년간이다.
-서채환 조직위원장은 아카데미아트오브유니버스티(AAU) 석사, 중앙대학교 첨단영상대학원 영상예술학 박사 학위를 받았으며, 현 가톨릭대학교 미디어기술콘텐츠학과 교수로 재직 중이다. 방송통신위원회 애니메이션인증위원회 위원장, 한국만화영상진흥원 이사, BIAF 집행위원장, 제12대 BIAF 조직위원장 등을 역임했다.
-
-
+토탈 뷰티 브랜드 다슈는 올리브영 한정 ‘프리미엄 퍼퓸 기획세트’가 판매 순항을 이어가고 있다고 2일 밝혔다.
+브랜드 측은 “다슈의 프리미엄 향수는 물론 다슈 향수의 뮤즈, 차은우의 포토 굿즈까지 만나볼 수 있도록 구성한 기획세트로, 관련 카테고리 랭킹 상위에 오를 정도로 관심이 높다”고 설명했다.
+다슈의 ‘프리미엄 퍼퓸 기획세트’는 향수 본품 50ml, 차은우 포토액자(1개), 차은우 포토카드(2개), 액자 받침대로 구성됐다. 아쿠아 다이브, 보타닉 리프, 선데이 코튼 총 3가지 향으로 만나볼 수 있다.
 </p>
 </a>
 </div>
 		<ul class="postListMain">
-		<li><a href="/kr/sub.html?pid=54&amp;table_id=press&amp;formtype=view&amp;code=2612">
-		애니메이션 활성화 사업을 위한 BIAF2022 애니페어 프로그램 선정작 발표!</a>
+		<li><a href="https://www.busan.com/view/busan/view.php?code=2019032517223810262">
+		루이 비통, 첫 유니섹스 향수 '레 콜로뉴 컬렉션' 출시</a>
 		</li>
-		<li><a href="/kr/sub.html?pid=54&amp;table_id=press&amp;formtype=view&amp;code=2609">
-		BIAF2022 수상 결과 발표! 장편 대상 &lt;개와 이탈리아 사람은 출입할 수 없음&gt; 수상!</a>
+		<li><a href="https://www.seoul.co.kr/news/newsView.php?id=20220510020005&wlog_tag3=naver">
+		입생로랑 향수 팝업스토어</a>
 		</li>
-		<li><a href="/kr/sub.html?pid=54&amp;table_id=press&amp;formtype=view&amp;code=2606">
-		BIAF2022 워크 인 프로그레스, ‘스페셜 토크: 어느 남매의 이야기’, ‘잡 세미나’ 등 개최 성료!</a>
+		<li><a href="https://www.fashionn.com/board/read_new.php?table=1025&number=29887">
+		에디 슬리만의 파워풀 행보...셀린느 남성복 이어 향수 런칭</a>
 		</li>
-		<li><a href="/kr/sub.html?pid=54&amp;table_id=press&amp;formtype=view&amp;code=2603">
-		BIAF2022 관객과 함께 즐기고 소통한 주말 프로그램!</a>
+		<li><a href="http://www.pinpointnews.co.kr/news/articleView.html?idxno=167804">
+		조 말론 런던, 코롱 인텐스 컬렉션 선봬</a>
 		</li>
-		<li><a href="/kr/sub.html?pid=54&amp;table_id=press&amp;formtype=view&amp;code=2600">
-		BIAF2022 개막식 성료! 10월 21일(금) 오후 6시 개막식 개최!</a>
+		<li><a href="/https://www.wikitree.co.kr/articles/815971">
+		3위 디올, 2위 조말론, 1위는… '향수 1월 브랜드평판’ 순위</a>
 		</li>
-		<li><a href="/kr/sub.html?pid=54&amp;table_id=press&amp;formtype=view&amp;code=2598">
-		BIAF2022 내일 개막! 10월 21일(금) 오후 6시 개막식 개최!</a>
+		<li><a href="/https://www.elle.co.kr/article/45679">
+		루이 비통 최초의 향수</a>
 		</li>
                 </ul>
 				<a href="/kr/sub.html?pid=54" class="btnMore">더보기</a> 

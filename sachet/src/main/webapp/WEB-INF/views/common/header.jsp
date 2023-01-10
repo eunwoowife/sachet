@@ -132,7 +132,7 @@
         </div>
         <div id="userarea">
        <c:if test="${not empty loginUser }">
-       		${loginUser.userName }님, 안녕
+       		${loginUser.userName }님, 안녕하세요.
        </c:if>
             <ul>
             	<c:choose>
@@ -197,18 +197,16 @@
 					<li><a class="sachetA" href="ticketBook1.ti">티켓 예매</a></li>
 				</ul>
 			</li>
-			<li class="nav2"><a class="sachetA" href="#">Product</a>
+			<li class="nav2"><a class="sachetA" href="#">Product & Exper</a>
 				<ul class="nav3">
-					<li><a class="sachetA" href="boothListView.bo">BOOTH</a></li>
-					<li><a class="sachetA" href="productListView.pro">PRODUCT</a></li>
-					<li><a class="sachetA" href="experienceListView.exp">EXPERIENCE</a></li>
+					<li><a class="sachetA" href="productListView.pro">상품</a></li>
+					<li><a class="sachetA" href="experienceListView.exp">체험</a></li>
 				</ul>
 			</li>
 			<li class="nav2"><a class="sachetA"  href="#">Booth Info</a>
 				<ul class="nav3">
 					<li><a class="sachetA" href="boothParticipatingInfo.bo">부스 참가 안내</a></li>
-					<li><a class="sachetA" href="#">SUB_MENU2</a></li>
-					<li><a class="sachetA" href="#">SUB_MENU3</a></li>
+					<li><a class="sachetA" href="boothListView.bo">참가 업체</a></li>
 				</ul>
 			</li>
 			<li class="nav2"><a class="sachetA" href="#">Help</a></li>

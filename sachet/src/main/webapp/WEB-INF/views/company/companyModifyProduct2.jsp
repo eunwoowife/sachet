@@ -253,7 +253,7 @@
                         <div class="col-md-10">
                           <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1" name="productStock" value="${p.productStock }"/>
                         </div>
-                        
+
                           <label for="html5-number-input" class="col-md-2 col-form-label">상품가격(￦)</label>
                         <div class="col-md-10">
                           <input class="form-control" type="number" id="html5-number-input" style="width:700px;" min="1000" name="productPrice" value="${p.productPrice }"/>
