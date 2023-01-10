@@ -232,7 +232,7 @@
     <div class="outer1" style="width:100%">
     <div id="top">
         <div id="logo">
-            <img id="gomain" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="300px";>
+            <img id="gomain" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" src="${pageContext.request.contextPath}/resources/images/로고10.png" alt="" width="300px;">
         </div>
         <div id="userarea">
        <c:if test="${not empty loginUser }">
@@ -359,7 +359,10 @@
         
         
       <div id="fullpage" class="fullpage-wrapper" style="height: 100%; position: relative; transform: translate3d(0px, 0px, 0px); touch-action: none;">
-            <section id="section0" class="section color2022 fp-section active fp-table fp-completely" data-anchor="homePage" style="height: 944px; padding-top: 88px; background-color: rgb(180 81 81);">
+            
+            
+            <!-- 섹션1 시작 -->
+            <section id="section0" class="section color2022 fp-section active fp-table fp-completely" data-anchor="homePage" style="height: 944px; padding-top: 88px; background-color: rgb(180 81 81)" >
             	<div class="fp-tableCell" style="height: 944px !important; background-image:url(${pageContext.request.contextPath}/resources/images/002.jpg); !important">
 				 
 				<div class="mainVisual mainTop" style="display: none;">
@@ -378,13 +381,12 @@
                     <!-- h3 class="tit"># BIAF 미디어관</h3 -->
                     <div class="mainSlide">
                         <div class="mainFor">
-                            <div class="slider">
-								
+                            <div class="slider" style="margin-top:200px;">
 								
 								<!-- 로딩 preloadResponse 오류 -->
 								<div class="item">
                                     <div class="video">
-                                        <iframe data-ssrc="https://www.youtube.com/embed/NiqUAmStcfs" title="[다슈X차은우] DASHUXCHA EUN-WOO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <iframe data-ssrc="https://www.youtube.com/embed/NiqUAmStcfs?rel=0&vq=hd720" title="[다슈X차은우] DASHUXCHA EUN-WOO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     </div>
                                     <p class="midiaTit"><span>[다슈X차은우] DASHUXCHA EUN-WOO <br>아쿠아 다이브</span></p>
                                 </div>
@@ -422,13 +424,12 @@
 								-->
 								
 								
-								
 								<div class="item">
                                     <a href="javascript:;">
                                         <div class="thumb">
                                             <img src="${pageContext.request.contextPath}/resources/images/eunwoo.jpg" alt="">
                                         </div>
-                                        <p class="midiaTit dottxt">BIAF2022 트레일러</p>
+                                        <p class="midiaTit dottxt">[다슈X차은우] DASHUXCHA EUN-WOO</p>
                                         <p class="time">0 : 40</p>
                                     </a>
                                 </div>
@@ -437,7 +438,7 @@
                                         <div class="thumb">
                                             <img src="${pageContext.request.contextPath}/resources/images/ysldualipa.jpg" alt="">
                                         </div>
-                                        <p class="midiaTit dottxt">BIAF 2022 하이라이트 영상(EPK)</p>
+                                        <p class="midiaTit dottxt">YSL LIBRE</p>
                                         <p class="time">3 : 32</p>
                                     </a>
                                 </div>
@@ -446,7 +447,7 @@
                                         <div class="thumb">
                                             <img src="${pageContext.request.contextPath}/resources/images/celinelisa.jpg" alt="">
                                         </div>
-                                        <p class="midiaTit dottxt">BIAF2022 Highlight Film</p>
+                                        <p class="midiaTit dottxt">CELINE HAUTE PARFUMERIE</p>
                                         <p class="time">5 : 34</p>
                                     </a>
                                 </div>
@@ -457,9 +458,14 @@
                             </div>
                         </div>
                     </div>
-                </div>                <div class="mainPager">
-                    <button type="button" class="prev" data-visual="mainVisual">prev</button>
-                    <button type="button" class="next" data-visual="mainSection">next</button>
+                </div>
+                
+                
+                
+                
+                <div class="mainPager">
+                    <button type="button" class="prev" style="color:white;" data-visual="mainVisual">prev</button>
+                    <button type="button" class="next" style="color:white;" data-visual="mainSection">next</button>
                 </div>
                <div class="">
                     <div class="">
@@ -475,9 +481,16 @@
                 </div>
             </div>
             </section>
+            
+            
+            <!-- 섹션1 끝 -->
+            
+            
+            
+            <!--  섹션2 시작 -->
             <section id="section1" class="section" style="background-image:url(${pageContext.request.contextPath}/resources/images/003.jpg);">
                 <div class="programWrap">
-                    <div class="sectionTit">
+                    <div class="sectionTit" style="margin-top:100px;">
                         <p><img src="https://mblogthumb-phinf.pstatic.net/MjAyMDExMDJfMjc5/MDAxNjA0MjkzMjEzODM3.WISPFery1EmVckylvGY5RprHMms7I0VMZF9eCPjblsAg.j-tPj4aQsYXhOhuNcK3HCWe0UKHM-xBmub9mSB6JG3wg.JPEG.esom1225/Screenshot_2020-11-02_at_13.57.41.jpg?type=w800" alt="BIAF 2022"></p>
                         <h2><strong>체험</strong> 프로그램안내</h2>
                     </div>
@@ -492,7 +505,6 @@
                                     <picture>
                                         <source media="(max-width: 960px)" srcset="/img/main_2022/img_program_bn01_mo.jpg">
                                         <img src="${pageContext.request.contextPath}/resources/images/img_program_bn01.jpg" alt="부스배치안">
-                                        
                                     </picture>
                                 </a>
                             </li>
@@ -519,6 +531,9 @@
                     </div>
                 </div>
             </section>
+            <!-- 섹션2 끝 -->
+            
+            
             <section id="section3" class="section">
                 <div class="boardBanner">
                     <div class="latestWrap clearfix">
@@ -555,7 +570,7 @@ SC2022 제4회 나도 감독! ‘11초 애니메이션영화제’ 수상작 발
 <li><a href="/kr/sub.html?pid=52&amp;table_id=notice&amp;formtype=view&amp;code=2586">
 BIAF2022 단편애니메이션제작지원 예선심사 결과안내</a>
 </li>
-                </ul>
+</ul>
 				<a href="/kr/sub.html?pid=52" class="btnMore">더보기</a>                        </div>
                         <div id="tab2" class="right tabCon">
                             <h3>보도자료</h3>
@@ -570,8 +585,7 @@ PRESS. 56
 ▲ BIAF 조직위원장 서채환 교수
 지난, 2022년 12월 10일 (사)한국만화애니메이션학회 정기총회에서 제14대 학회장으로 선출된 서채환 교수가 부천국제애니메이션페스티벌 조직위원장에 연임되었다. 임기는 2023년 1월 1일부터 2024년 12월 31일까지 2년간이다.
 서채환 조직위원장은 아카데미아트오브유니버스티(AAU) 석사, 중앙대학교 첨단영상대학원 영상예술학 박사 학위를 받았으며, 현 가톨릭대학교 미디어기술콘텐츠학과 교수로 재직 중이다. 방송통신위원회 애니메이션인증위원회 위원장, 한국만화영상진흥원 이사, BIAF 집행위원장, 제12대 BIAF 조직위원장 등을 역임했다.
-BIAF 서채환 조직위원장은 &quot;25주년을 맞이하는 부천국제애니메이션페스티벌의 안정적이고 성공적인 개최를 위해 집행부 및 사무국 직원들과의 소통과 화합으로 세계적인 영화제를 만들 수 있도록 최선을 다하겠다&quot;라고 소감을 밝혔다.
-한편, 아카데미 공식 지정 국제영화제 BIFA2023는 10월 20일부터 25일까지 5일간 개최될 예정이다.
+
 
 </p>
 </a>
