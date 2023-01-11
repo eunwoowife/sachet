@@ -30,7 +30,9 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Accordion - UI elements | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+<title>SACHET</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/favicon-2.ico" />
+
 
     <meta name="description" content="" />
 
