@@ -65,7 +65,7 @@ public class QuestionController {
 		//게시글 조회수 증가 
 		int result = qs.increaseCount(quesNo);
 		
-		System.out.println(quesNo);
+		//System.out.println(quesNo);
 		
 		//조회수 증가가 성공적으로 이루어지면 해당 게시글 정보 조회 
 		if(result>0) {
@@ -208,6 +208,8 @@ public class QuestionController {
 			
 			//업로드 세팅이 끝났으니 해당 데이터를 service에 전달 
 			int result = qs.updateQuestion(q);
+			
+			System.out.println(q);
 			
 			if(result>0) {
 				//상세보기 페이지로 재요청

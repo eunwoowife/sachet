@@ -175,7 +175,7 @@
         	}
         	
         	function goMypage(){
-        		location.href="myPage.me";
+        		location.href="myPageForm.me";
         	}
         	
         	function goMycomPage(){

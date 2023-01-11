@@ -34,6 +34,7 @@
 </head>
 <body>
         
+         <jsp:include page="../common/header.jsp"/>
   
     <div class="content">
         <br><br>
@@ -45,7 +46,7 @@
             <h2>게시글 상세보기</h2>
             <br>
 
-            <a class="btn btn-secondary" style="float:right;" href="">목록으로</a>
+            <a class="btn btn-secondary" style="float:right;" href="javascript:history.back();">목록으로</a>
             <br><br>
 
             <table id="contentArea" algin="center" class="table">
@@ -60,13 +61,31 @@
                     <th>작성일</th>
                     <td>${que.quesDate}</td>
                 </tr>
-                <tr>
-                    <th>카테고리</th>
+                
+                
+                
+                 <tr>
+                        <th>카테고리</th>
+                        
+                         <c:if test ="${que.quesCate eq '1'}">
+               			 <td colspan="3"> 회원 정보 관련</td>
+                        </c:if>
+                        <c:if test ="${que.quesCate eq '2'}">
+               			 <td colspan="3"> 예매 구매 관련</td>
+                        </c:if>
+                         <c:if test ="${que.quesCate eq '3'}">
+               			 <td colspan="3"> 기업 관련</td>
+                        </c:if>
+                         <c:if test ="${que.quesCate eq '4'}">
+               			 <td colspan="3" >기타문의</td>
+                        </c:if>
                     
-                    <td colspan="3">
-                        ${que.quesCate}
-                    </td>
-                </tr>
+                        
+                    </tr>
+                
+                
+                
+                
                 <tr>
                     <th>내용</th>
                     <td colspan="3"></td>
@@ -144,6 +163,7 @@
 								<th colspan="2"><textarea class="form-control"
 										name="rcontent" id="content" cols="55" rows="2"
 										style="resize: none; width: 100%;" readonly>관리자만 작성할 수 있습니다.</textarea>
+										
 								</th>
 								<th style="vertical-align: middle"><button
 										class="btn btn-secondary" disabled>등록하기</button></th>
@@ -168,6 +188,7 @@
         <c:otherwise>
         		<script>
         			alert('글작성자만 확인할 수 있습니다.');
+        			javascript:history.back();
         		</script>
         </c:otherwise>
         </c:choose>

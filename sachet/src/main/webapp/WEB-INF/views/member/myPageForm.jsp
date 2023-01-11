@@ -120,12 +120,12 @@
               <div data-i18n="Account Settings">ACCOUNT</div>
             </a>
             <ul class="menu-sub">
-              <li class="menu-item">
+              <li class="menu-item active">
                 <a href="myPageForm.me" class="menu-link">
                   <div data-i18n="Notifications">회원 정보</div>
                 </a>
               </li>
-              <li class="menu-item active">
+              <li class="menu-item ">
                 <a href="myPage.me" class="menu-link">
                   <div data-i18n="Notifications">회원 정보 수정</div>
                 </a>
@@ -197,7 +197,7 @@
          
                     <hr class="my-0" />
                     <div class="card-body">
-                      <form id="formAccountSettings" action="update.me" method="POST">
+                   
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">아이디</label>
@@ -209,6 +209,7 @@
                               value="${loginUser.userId }" 
                               autofocus
                               required
+                              
                             />
                             <p id="idCheck" style="font-size: 10px; display: none;">이미 있는 아이디입니다.</p>
                           </div>
@@ -268,14 +269,8 @@
                           
                         </div>
                
-                        <div class="mt-2">
-                          
-                         <button type="submit" class="btn btn-primary me-2" >수정하기</button>
-                        <button type="button" class="btn btn-primary me-2" onclick="location.href='deleteMember.me';">탈퇴하기</button>
-                          <button type="reset" class="btn btn-outline-secondary">취소</button>
-                        </div>
-                      </form>
-                    
+                      
+                      
                     </div>
                     
                     <!-- /Account -->

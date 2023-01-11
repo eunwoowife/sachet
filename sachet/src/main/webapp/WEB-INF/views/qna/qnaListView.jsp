@@ -58,15 +58,17 @@
 
   <body>
    
-   		   <jsp:include page="../common/header.jsp"/>
+   		   <jsp:include page="../common/newheader.jsp"/>
    		    
+   		    
+   
 		<div class="qnaouter" style="padding:20% 10%;">
 		
 			<!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
 
-            <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Q&A</h4>
 
               <!-- Accordion -->
@@ -80,7 +82,7 @@
                   <small class="text-light fw-semibold">회원정보</small>
                   </c:if>
                 <c:if test="${q.qnaCate eq '2'}">
-                  <small class="text-light fw-semibold">예매구매</small>
+                  <small class="text-light fw-semibold">예매구매✍</small>
                   </c:if>
                   <c:if test="${q.qnaCate eq '3'}">
                   <small class="text-light fw-semibold">기업관련</small>
@@ -96,14 +98,14 @@
                           type="button"
                           class="accordion-button collapsed"
                           data-bs-toggle="collapse"
-                          data-bs-target="#accordionIcon-1"
-                          aria-controls="accordionIcon-1"
+                          data-bs-target="#accordionIcon-${q.qnaNo}"
+                          aria-controls="accordionIcon-${q.qnaNo}"
                         >
                            ${q.qnaTitle}
                         </button>
                       </h2>
 						
-                      <div id="accordionIcon-1" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
+                      <div id="accordionIcon-${q.qnaNo}" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
                         <div class="accordion-body">
                         ${q.qnaContent }
                         </div>
