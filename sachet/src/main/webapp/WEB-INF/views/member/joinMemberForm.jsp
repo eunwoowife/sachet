@@ -305,12 +305,12 @@
                             <input
                               class="form-control"
                               type="text"
-                              id="firstName"
+                              id="inputId"
                               name="userId"
                               autofocus
                               required
                             />
-                            <p id="idCheck" style="font-size: 10px;">사용중인 아이디입니다.</p>
+                            <p id="checkResult1" style="font-size: 10px; display:none;">사용중인 아이디입니다.</p>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">이름</label>
@@ -318,11 +318,11 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">비밀번호</label>
-                            <input class="form-control" type="text" name="userPwd" id="userPwd" required/>
+                            <input class="form-control" type="password" name="userPwd" id="userPwd" required/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">비밀번호 확인</label>
-                            <input class="form-control" type="text" name="checkPwd" id="checkPwd" required/>
+                            <input class="form-control" type="password" name="checkPwd" id="checkPwd" required/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">이메일</label>
@@ -342,7 +342,7 @@
                               <input
                                 type="text"
                                 id="phoneNumber"
-                                name="phoneNumber"
+                                name="phone"
                                 class="form-control"
                                 placeholder="010-1111-1111　'-'포함하여 입력"
                               />
@@ -499,6 +499,35 @@
             }
         }).open();
     }
+</script>
+
+<script>
+	$(function(){
+  		var $idInput = $("#inputId");
+  		
+  		$idInput.keyup(function(){
+  		
+  		if($idInput.val().length>=3){
+  			$.ajax({
+  				url : "idCheck.me",
+  				data : {checkId : $idInput.val()},
+  				success : function(result){
+  					if(result=='NNNNN'){
+  						$("#checkResult1").css("display", "block").css("color", "red").text("이미 존재하거나 탈퇴한 회원입니다.");
+  						$("#inputId").focus();
+  					}else{
+  						$("#checkResult1").css("display", "block").css("color", "green").text("사용가능한 아이디입니다.");
+  					}
+  				},
+  				error : function(){
+  					console.log("통신실패");
+  				}
+  			})
+  		}
+  		})
+  	})
+
+
 </script>
   </body>
 </html>

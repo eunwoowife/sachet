@@ -2,18 +2,6 @@
     pageEncoding="UTF-8" import="java.util.Date, java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -103,7 +91,7 @@
          
                     <hr class="my-0" />
                     <div class="card-body">
-                      <form id="formAccountSettings" action="update.me" method="POST">
+                      <form id="formAccountSettings" action="deleteMember.me" method="POST">
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">아이디</label>
@@ -124,7 +112,7 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">비밀번호</label>
-                            <input class="form-control" type="password" name="userPwd" id="lastName" required/>
+                            <input class="form-control" type="password" name="userPwd" id="lastName" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">비밀번호 확인</label>
@@ -176,8 +164,8 @@
                
                         <div class="mt-2">
                           
-                         <button type="submit" class="btn btn-primary me-2" >수정하기</button>
-                        <button type="button" class="btn btn-primary me-2" onclick="location.href='deleteMember.me';">탈퇴하기</button>
+                         <button type="submit" class="btn btn-primary me-2" >탈퇴하기</button>
+                    
                           <button type="reset" class="btn btn-outline-secondary">취소</button>
                         </div>
                       </form>

@@ -341,10 +341,10 @@
         <!-- 사이드 네비바 -->
         <aside class="sideNav">
             <ul class="snsList">
-                <li class="sns01"><a href="https://www.instagram.com/biaf.ani" target="_blank">인스타그램</a></li>
-                <li class="sns02"><a href="https://www.facebook.com/ani.biaf" target="_blank">페이스북</a></li>
-                <li class="sns03"><a href="https://twitter.com/biaf2017" target="_blank">트위터</a></li>
-                <li class="sns04"><a href="https://www.youtube.com/user/anipisaf" target="_blank">유튜브</a></li>
+                <li class="sns01"><a href="https://www.instagram.com/" target="_blank">인스타그램</a></li>
+                <li class="sns02"><a href="https://www.facebook.com/" target="_blank">페이스북</a></li>
+                <li class="sns03"><a href="https://twitter.com/biaf" target="_blank">트위터</a></li>
+                <li class="sns04"><a href="https://www.youtube.com/" target="_blank">유튜브</a></li>
             </ul>
             <ul class="quickMenu">
                 <li class="quick07"><a href="boothListView.bo">부스<br>목록</a></li>

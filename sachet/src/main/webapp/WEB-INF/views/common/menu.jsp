@@ -134,7 +134,7 @@
                
                 <li class="menu-item">
                  
-                  	<a href="#" onclick="javascript:myticket()"	class="menu-link">
+                  	<a href="myticketList.me"	class="menu-link">
                     <div data-i18n="Notifications">예매 내역 조회</div>
                   </a>
                 </li>
@@ -152,12 +152,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="#" class="menu-link" target="_blank">
+                  <a href="myPage.me" class="menu-link" target="_blank">
                     <div data-i18n="Basic">회원 정보 수정</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="#" onclick="javascript:deleteMember()" class="menu-link" target="_blank">
+                  <a href="mydeleteForm.me" class="menu-link" target="_blank">
                     <div data-i18n="Basic">회원 탈퇴</div>
                   </a>
                 </li>
@@ -171,12 +171,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                <a href="#" onclick="javascript:volunteer()"	class="menu-link">
+                <a href="volunteer.vo" onclick="javascript:volunteer()"	class="menu-link">
                     <div data-i18n="Error">봉사활동신청</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                  <a href="volunteerlist.qs" class="menu-link">
                     <div data-i18n="Under Maintenance">봉사활동 승인 확인</div>
                   </a>
                 </li>

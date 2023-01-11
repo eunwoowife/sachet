@@ -71,6 +71,14 @@
 
 	</select>
 	
+	
+		<!-- My Page-->
+	
+	<select id="myticketList" resultMap="ticketResultSet">
+	SELECT * FROM TICKET
+	WHERE USER_NO=#{userNo}
+	
+	</select>
 
 	
 	
