@@ -16,12 +16,12 @@
     	font-family: 'IBM Plex Sans KR', sans-serif;
     }
         .content {
-            background-color:rgb(247, 245, 245);
+            background-color:white;
             width:80%;
             margin:auto;
         }
         .innerOuter {
-            border:1px solid lightgray;
+            border:1px solid white;
             width:80%;
             margin:auto;
             padding:5% 10%;
@@ -33,12 +33,16 @@
     </style>
 </head>
 <body>
+	
+	<div>
+	
         
-   
+    <jsp:include page="../common/header.jsp"/>
 
-    <div class="content">
+	</div>
+    <div class="content" >
         <br><br>
-        <div class="innerOuter">
+        <div class="innerOuter" style="padding:70px 20px" >
             <h2>게시글 수정하기</h2>
             <br>
 <!-- update.qs?quesNo=${que.quesNo} -->
@@ -56,12 +60,18 @@
                         <td><input type="text" id="writer" class="form-control" value="${que.quesWritter}" name="quesWritter" readonly></td>
                     </tr>
                     
-                    <tr>
-                        <th><label for="upfile">카테고리</label></th>
-               			 <td> <input type="text" id="quesCate" class="form-control" value="${que.quesCate}" name="quesCate"></td>
-                        
-                    </tr>
                     
+                	<tr>
+                        <th><label for="upfile">카테고리</label></th>
+                        <td>
+                        
+                        <select id="cate" class="form-control" name="quesCate">
+                        <option value="1">회원정보 관련</option>
+                        <option value="2">예매 구매 관련</option>
+                        <option value="3">기업 관련</option>
+                        </select>
+                        </td>
+                    </tr>
                     <tr>
                         <th><label for="content">내용</label></th>
                         <td><textarea id="content" class="form-control" rows="10" style="resize:none;" name="quesConte" required>${que.quesConte}</textarea></td>

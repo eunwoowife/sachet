@@ -270,7 +270,7 @@
         	}
         	
         	function goMypage(){
-        		location.href="myPage.me";
+        		location.href="myPageForm.me";
         	}
         	
         	function goMycomPage(){
@@ -658,7 +658,7 @@ SACHET 2023 기업 안내</a>
         	}
         	
         	function goMypage(){
-        		location.href="myPage.me";
+        		location.href="myPageForm.me";
         	}
         	
         	function goMycomPage(){

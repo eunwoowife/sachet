@@ -35,6 +35,13 @@ public class MemberController {
 		return "member/loginForm";
 	}
 	
+	
+	//마이페이지 이동 
+		@RequestMapping("myPageForm.me")
+		public String myPage() {
+			return "member/myPageForm";
+		}
+		
 	//일반회원이냐 기업회원이냐 찾아서 로그인시켜준다.
 	@RequestMapping("login.me")
 	public String loginMember(Member m, Company c, HttpSession session, Model model) {
@@ -187,7 +194,7 @@ public class MemberController {
 		
 		model.addAttribute("myticketList", myticketList);
 
-			System.out.println(myticketList);
+			//System.out.println(myticketList);
 		return "member/myTicket";
 	}
 
