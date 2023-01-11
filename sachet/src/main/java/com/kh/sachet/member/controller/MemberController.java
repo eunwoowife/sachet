@@ -126,7 +126,7 @@ public class MemberController {
 			Member updateMember=memberService.loginMember(m.getUserId());
 			session.setAttribute("loginUser", updateMember);
 			session.setAttribute("alertMsg", "회원 정보 수정이 완료되었습니다.");
-			return "redirect/myPage.me";
+			return "member/myPage";
 		}else {
 			model.addAttribute("erroMsg", "회원 정보 수정실패했습니다. 다시 시도해주세요.");
 			return "common/erroPage";
@@ -143,10 +143,11 @@ public class MemberController {
 		if (result>0) {
 		
 			
-			session.setAttribute("alertMsg", "회원 정보 수정이 완료되었습니다.");
-			return "redirect/myPage.me";
+			session.setAttribute("alertMsg", "회원 정보 탈퇴가 완료되었습니다.");
+			session.removeAttribute("loginUser");
+			return "redirect:/";
 		}else {
-			model.addAttribute("erroMsg", "회원 정보 수정실패했습니다. 다시 시도해주세요.");
+			model.addAttribute("erroMsg", "회원 정보 탈퇴 실패했습니다. 다시 시도해주세요.");
 			return "common/erroPage";
 		}
 		

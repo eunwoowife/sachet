@@ -271,7 +271,6 @@
                         <div class="mt-2">
                           
                          <button type="submit" class="btn btn-primary me-2" >수정하기</button>
-                        <button type="button" class="btn btn-primary me-2" onclick="location.href='deleteMember.me';">탈퇴하기</button>
                           <button type="reset" class="btn btn-outline-secondary">취소</button>
                         </div>
                       </form>
