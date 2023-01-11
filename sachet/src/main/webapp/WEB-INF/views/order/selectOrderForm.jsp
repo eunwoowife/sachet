@@ -195,7 +195,7 @@
 									<thead>
 									  <tr>
 										<th></th>
-										<th>썸네일 들어갈 곳</th>
+										<th></th>
 										<th>상품명</th>
 										<th>개수</th>
 										<th>가격</th>
