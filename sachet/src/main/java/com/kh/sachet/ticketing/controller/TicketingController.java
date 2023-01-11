@@ -88,7 +88,7 @@ public class TicketingController {
 		insertT.setTicketDate(t.getTicketDate());
 		insertT.setTicketAdult(t.getTicketAdult());
 		insertT.setTicketKid(t.getTicketKid());
-		insertT.setTicketFree(t.getTotalPeople());
+		insertT.setTicketFree(t.getTicketFree());
 		
 		
 		//티켓 insert

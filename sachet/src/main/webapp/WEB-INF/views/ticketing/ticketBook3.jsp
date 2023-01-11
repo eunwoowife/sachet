@@ -230,14 +230,10 @@
                     <th>결제금액</th>
                     <td>${t.totalPrice}</td>
                   </tr>
-                  <tr>
-                    <th>결제수단</th>
-                    <td>신한카드</td>
-                  </tr>
                 </table>
                 <div class="btnarea">
                   <button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/index.jsp'">메인으로</button>
-                  <button class="btn btn-info">마이페이지로</button>
+                  <button class="btn btn-info" onclick="location.href='myPage.me'" >마이페이지로</button>
                   </div>
                   
                   

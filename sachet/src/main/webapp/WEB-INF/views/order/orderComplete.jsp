@@ -142,7 +142,7 @@
         				 주문번호: SACHET-20230112${o.orderNo } <br><br> 이용해주셔서 감사합니다.
         				 
         				 <br><br><br>
-        				 <button type="button" class="btn btn-primary">마이페이지</button>
+        				 <button type="button" class="btn btn-primary" onclick="location.href='myPage.me'">마이페이지</button>
         				 <button type="button" class="btn btn-outline-secondary" onclick="location.href='productListView.pro'">
         				 계속 쇼핑하기</button>
         				 </th>
