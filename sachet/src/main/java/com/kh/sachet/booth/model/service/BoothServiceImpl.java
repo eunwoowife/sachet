@@ -83,8 +83,9 @@ public class BoothServiceImpl implements BoothService{
 	}
 
 	@Override
-	public SachetMoney selectSachetMoney() {
-		return boothdao.selectSachetMoney(sqlSession);
+	public ArrayList<SachetMoney> selectSachetMoney() {
+		ArrayList<SachetMoney> smList =  boothdao.selectSachetMoney(sqlSession);
+		return smList;
 	}
 
 	@Override

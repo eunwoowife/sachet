@@ -198,12 +198,15 @@ public class BoothController3 {
 		 return "booth/deniedBoothSetting";
 	 }
 	 
+	 @ResponseBody
+	 @RequestMapping(value="selectSachetMoney.sm", produces="application/json; charset=UTF-8")
+	 public String selectSachetMoney() {
+		 ArrayList<SachetMoney> smList = boothService.selectSachetMoney();
+		 return new Gson().toJson(smList);
+	 }
 	 
 	 @RequestMapping("calculationProductForm.sm")
 	 public String prdouctCalculation(Model model) {
-		 SachetMoney sachetMoney = boothService.selectSachetMoney();
-		 model.addAttribute("sachetMoney", sachetMoney);
-		 
 		 ArrayList<OrderDetail> pcList = boothService.selectproductCalculationList();
 //		 System.out.println(pcList);
 		 model.addAttribute("pcList", pcList);

@@ -31,7 +31,7 @@ public interface BoothService {
 
 	ArrayList<Booth> selectDeniedBoothList();
 
-	SachetMoney selectSachetMoney();
+	ArrayList<SachetMoney> selectSachetMoney();
 
 	ArrayList<OrderDetail> selectproductCalculationList();
 

@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+ <!-- jQuery 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
 
@@ -249,14 +251,41 @@
                             </div>
                           </div>
                           <span class="w-semibold d-block mb-1" style="font-weight:bold;">잔고</span>
-                          <h3 class="card-title text-nowrap mb-2">₩<fmt:formatNumber value="${sachetMoney.balance }" type="number"/></h3>
-                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i>누적 출금액 : ₩<fmt:formatNumber value="${sachetMoney.withdraw }" type="number"/></small>
+                          
+                          <div id="balance">
+                          </div>
+                          
                         </div>
                       </div>
                     </div>
                     </div>
                     </div>
                     
+                    
+                    <script>
+                    	$(function(){
+                    		selectSachetMoney();
+                    	});
+                    	
+                    	function selectSachetMoney(){
+                    		$.ajax({
+                    			url : "selectSachetMoney.sm",
+                    			success : function(smList){
+                    				console.log("머니 성공"+smList);
+                    				
+                    				var str = "";
+                    				
+                    				str+="<h3 class='card-title text-nowrap mb-2'>￦"+smList[0].balance+"</h3>"
+                    					+"<small class='text-danger fw-semibold'><i class='bx bx-down-arrow-alt'></i>"+"<p>누적 출금액 : ￦"+smList[0].withdraw+"</p></small>"
+                    				
+                    				$("#balance").html(str);
+                    			},
+                    			error : function(){
+                    				console.log("머니 실패");
+                    			}
+                    		});
+                    	}
+                    </script>
     <br><br>
     <div style="margin-left: 150px;">
         <p>총${pcList.size() }부스</p>
@@ -303,8 +332,8 @@
         			success : function(result){
         				console.log("통신완료");
         				if(result>0){
-	        				location.reload();
 		     				$("#cal"+number).attr("disabled", true);
+		     				selectSachetMoney();
         				}else{
         					alert("정산에 실패하였습니다.");
         				}
