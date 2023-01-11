@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="questionMapper">
+
+<resultMap type="question" id="questionResultSet">
+<result column="QUESTION_NO" property="quesNo"/>
+<result column="COM_NO" property="comNo"/>
+<result column="USER_NO" property="userNo"/>
+<result column="QUESTION_WRITER" property="quesWritter"/>
+<result column="QUESTION_CATEGORY" property="quesCate"/>
+<result column="QUESTION_TITLE" property="quesTitle"/>
+<result column="QUESTION_CONTENT" property="quesConte"/>
+<result column="QUESTION_STATUS" property="questatus"/>
+<result column="QUESTION_COU" property="quesCount"/>
+<result column="QUESTION_CREATE_DATE" property="quesDate"/>
+</resultMap>
+
+
+<resultMap type="questionReply" id="questionReplyResultSet">
+<result column="QUESTION_REF_NO" property="quesReFNo"/>
+<result column="QUESTION_REPLY_NO" property="quesRePlyNo"/>
+<result column="USER_NO" property="userNo"/>
+<result column="COM_NO" property="comNo"/>
+<result column="QUESTION_REPLY_CONTENT" property="questionReplyContent"/>
+<result column="QUESTION_REPLY_CREATE_DATE" property="questionReplyCreateDate"/>
+<result column="QUSETION_REPLY_STATUS" property="quesReFNo"/>
+<result column="REPLY_WRITTER" property="replyWriter"/>
+
+</resultMap>
+
+  <select id="selectListCount" resultType="_int">
+  	SELECT COUNT(*)
+  	FROM QUESTION
+  	WHERE QUESTION_STATUS='Y'
+  </select>
+  
+  <select id="selectList" resultMap="questionResultSet">
+  	SELECT QUESTION_NO,
+  		   QUESTION_TITLE,
+  		   QUESTION_WRITER,
+  		   QUESTION_CREATE_DATE,
+  		   QUESTION_CONTENT,
+  		   QUESTION_COU,
+  		   QUESTION_CATEGORY,
+  		   QUESTION_STATUS,
+  		   USER_NO,
+  		   COM_NO
+  	FROM QUESTION
+  	WHERE QUESTION_STATUS = 'Y'
+  	OR QUESTION_STATUS = 'G'
+  	ORDER BY QUESTION_CREATE_DATE DESC
+  </select>
+  
+ 
+  
+  <insert id="insertQuestion">
+INSERT INTO QUESTION VALUES (SEQ_QUNO.NEXTVAL, NULL, #{userNo},DEFAULT, #{quesWritter}, #{quesCate},#{quesTitle},#{quesConte}, DEFAULT,DEFAULT)
+  </insert>
+  
+ 
+<update id="increaseCount">
+UPDATE QUESTION SET QUESTION_COU=QUESTION_COU+1
+WHERE QUESTION_NO = #{quesNo}
+  
+</update>
+
+<select id="detailQuestion" resultMap="questionResultSet">
+SELECT QUESTION_NO,QUESTION_TITLE,QUESTION_WRITER,QUESTION_CREATE_DATE,QUESTION_CONTENT,QUESTION_COU,QUESTION_CATEGORY,
+QUESTION_STATUS,USER_NO FROM QUESTION WHERE QUESTION_NO=#{quesNo}
+ORDER BY QUESTION_CREATE_DATE DESC
+
+</select>
+
+<update id="updateQuestion">
+UPDATE QUESTION
+SET QUESTION_TITLE = #{quesTitle}
+,QUESTION_CONTENT = #{quesConte}
+,QUESTION_CATEGORY = #{quesCate}
+WHERE QUESTION_NO = #{quesNo}
+AND QUESTION_STATUS = 'Y'
+</update>
+
+  <update id="deleteQuestion">
+  	UPDATE QUESTION
+  	SET QUESTION_STATUS = 'N'
+  	WHERE QUESTION_NO = #{quesNo}
+  	AND QUESTION_STATUS = 'Y'
+  </update>
+  
+  
+  
+  
+  
+  <!-- 답글  -->
+  <select id="replyList" resultMap="questionReplyResultSet">
+  	SELECT USER_NO,QUESTION_REPLY_CONTENT,QUESTION_REPLY_CREATE_DATE,REPLY_WRITTER
+  	FROM QUESTION_REPLY
+  	WHERE QUESTION_REF_NO = #{quesReFNo}
+  	AND QUSETION_REPLY_STATUS ='Y'
+  </select>
+  
+  <insert id="insertreply">
+  INSERT INTO QUESTION_REPLY VALUES (#{quesReFNo},SEQ_QENO.NEXTVAL, #{userNo},NULL,#{replyWriter},#{questionReplyContent}, SYSDATE,DEFAULT)
+  </insert>
+  
+  <update id="updateReply">
+  UPDATE QUESTION SET QUESTION_STATUS = 'G'
+  WHERE QUESTION_NO = #{quesNo}
+  
+  </update>
+  
+
+</mapper>
