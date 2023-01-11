@@ -71,11 +71,11 @@
             <div class="footUtil">
                 <div class="utilInner">
                     <ul class="util">
-                        <li><a href="/kr/sub.html?pid=12">BIAF소개</a></li>
-                        <li><a href="/kr/sub.html?pid=97">이용약관/저작권</a></li>
-                        <li><a href="/kr/sub.html?pid=98">개인정보취급방침</a></li>
-                        <li><a href="/kr/sub.html?pid=99">이메일 무단수집 거부</a></li>
-                        <li><a href="/kr/sub.html?pid=19">찾아오시는 길</a></li>
+                        <li><a href="#">SACHET 소개</a></li>
+                        <li><a href="#">이용약관/저작권</a></li>
+                        <li><a href="#">개인정보취급방침</a></li>
+                        <li><a href="#">이메일 무단수집 거부</a></li>
+                        <li><a href="#">찾아오시는 길</a></li>
                     </ul>
                    
                 </div>
@@ -89,22 +89,21 @@
                     </a></p>
                 <div class="ftInfo">
                     <ul class="footerLink">
-                        <li><a href="/kr/sub.html?pid=12">BIAF소개</a></li>
-                        <li><a href="/kr/sub.html?pid=97">이용약관/저작권</a></li>
-                        <li><a href="/kr/sub.html?pid=98">개인정보취급방침</a></li>
-                        <li><a href="/kr/sub.html?pid=99">이메일 무단수집 거부</a></li>
-                        <li><a href="/kr/sub.html?pid=19">찾아오시는 길</a></li>
+                        <li><a href="#">SACHET 소개</a></li>
+                        <li><a href="#">이용약관/저작권</a></li>
+                        <li><a href="#">개인정보취급방침</a></li>
+                        <li><a href="#">이메일 무단수집 거부</a></li>
+                        <li><a href="#">찾아오시는 길</a></li>
                     </ul>
                     
                     <address>
                         <ul>
-                            <li>단체명: BIAF 조직위원회</li>
-                            <li>단체장: 서채환 </li>
-                            <li>고유번호: 130-82-11347 통신판매신고번호: 제 2013-경기부천-1186호</li>
-                            <li>주소: 14505 경기도 부천시 길주로1 한국만화영상진흥원 비즈니스센터 302호</li>
+                            <li>프로젝트명: SACHET 조직위원회</li>
+                            <li>팀원: 이민경 김병주 배주현 </li>
+                            <li>KH당산 E-Class</li>
                         </ul>
                     </address>
-                    <p class="copyright">Copyrightⓒ2023 BIAF ALL rights reserved.</p>
+                    <p class="copyright">Copyrightⓒ2023 SACHET ALL rights reserved.</p>
                 </div>
             </div>
         </footer>       
