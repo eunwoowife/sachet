@@ -60,8 +60,9 @@ public class BoothDao {
 		return booList;
 	}
 
-	public SachetMoney selectSachetMoney(SqlSessionTemplate sqlSession) {
-		return sqlSession.selectOne("sachetMoneyMapper.selectSachetMoney");
+	public ArrayList<SachetMoney> selectSachetMoney(SqlSessionTemplate sqlSession) {
+		ArrayList<SachetMoney> smList = (ArrayList)sqlSession.selectList("sachetMoneyMapper.selectSachetMoney");
+		return smList;
 	}
 
 	public ArrayList<OrderDetail> productCalculationList(SqlSessionTemplate sqlSession) {
