@@ -36,7 +36,7 @@ public class Member {
 	private String phone;
 	private String email;
 	private String gender;
-	private Date birth;
+	private String birth;
 	private String address;
 	private Date enrollDate;
 	private Date modifyDate;

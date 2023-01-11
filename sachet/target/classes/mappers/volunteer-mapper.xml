@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="volunteerMapper">
+
+<resultMap type="volunteer" id="volunteerResultSet">
+	<result column="VOL_NO" property="volNo"/>
+	<result column="USER_NO" property="userNo"/>
+		<result column="VOL_NAMEKOR" property="volNameKor"/>
+		<result column="VOL_NAMEENG" property="volNameEng"/>
+		<result column="VOL_ADDRESS" property="volAddress"/>
+		<result column="VOL_PHONE" property="volPhone"/>
+		<result column="VOL_COUNTNO" property="volCountNo"/>
+		<result column="VOL_SCHOOL" property="volSchool"/>
+		<result column="VOL_VOL" property="volVol"/>
+		<result column="VOL_VOLFIELD" property="volVolified"/>
+		<result column="VOL_PATH" property="volPath"/>
+		<result column="VOL_LANG" property="volLang"/>
+		<result column="VOL_LANGRANGE" property="volLangRange"/>
+		<result column="VOL_STATUS" property="volStatus"/>
+
+</resultMap>
+
+<select id="selectvolListCount" resultType="_int">
+Select Count(*)
+FROM VOLUNTEER
+WHERE VOL_STATUS='N'
+</select>
+
+
+<select id="selectList" resultMap="volunteerResultSet">
+SELECT * FROM VOLUNTEER ORDER BY VOL_NO DESC
+</select>
+
+
+<select id="detailVolunteer" resultMap="volunteerResultSet">
+SELECT * FROM VOLUNTEER
+WHERE VOL_NO=#{volNo}
+ORDER BY VOL_NO DESC
+</select>
+
+<insert id="submitVolunteer" parameterType="volunteer">
+INSERT INTO VOLUNTEER VALUES (SEQ_VNO.NEXTVAL,#{userNo},#{volNameKor},#{volNameEng},#{volAddress},#{volPhone},DEFAULT,#{volSchool},#{volVol},#{volVolified},#{volPath},#{volLang},#{volLangRange},DEFAULT)
+</insert>
+
+
+
+<update id="increaseCount">
+UPDATE VOLUNTEER SET VOL_COUNTNO=VOL_COUNTNO+1
+WHERE VOL_NO=#{volNo}
+</update>
+</mapper>
