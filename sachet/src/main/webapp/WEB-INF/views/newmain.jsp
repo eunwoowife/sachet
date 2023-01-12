@@ -317,7 +317,13 @@
 					<li><a class="sachetA" href="boothListView.bo">참가 업체</a></li>
 				</ul>
 			</li>
-			<li class="nav2"><a class="sachetA" href="#">Help</a></li>
+			<li class="nav2"><a class="sachetA" href="#">Community</a>
+				<ul class="nav3">
+					<li><a class="sachetA" href="qnaListView.qo">Q&A</a></li>
+					<li><a class="sachetA" href="list.qs">1:1문의</a></li>
+					<li><a class="sachetA" href="volunteer.vo">자원봉사 신청</a></li>
+				</ul>
+			</li>
 		</ul>
 	</nav>
 </div> 

@@ -8,14 +8,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.sachet.common.model.vo.PageInfo;
 import com.kh.sachet.common.template.Pagination;
 import com.kh.sachet.member.model.vo.Member;
-import com.kh.sachet.question.model.vo.Question;
 import com.kh.sachet.volunteer.model.service.VolunteerService;
 import com.kh.sachet.volunteer.model.vo.Volunteer;
 
@@ -78,7 +79,7 @@ public class VolunteerController {
 		 int submit= volunteerService.submitVolunteer(v);
 		 
 		 
-	//	System.out.println(submit);
+		 //	System.out.println(submit);
 		
 		
 		 
@@ -132,35 +133,38 @@ public class VolunteerController {
 			return "volunteer/volunteerListView";
 		}
 		
-				
 		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		//봉사 승인 
-		
-		@RequestMapping("volunteerAccept.vo")
-		public ModelAndView acceptVolunteer(int userNo,HttpSession session,ModelAndView mv) {
-			int result=volunteerService.acceptVolunteer(userNo);
-			
-			if(result>0) {
-				session.setAttribute("alertMsg","승인성공.");
-				
-			}else {
-				session.setAttribute("alertMsg", "승인에 실패하였습니다. 다시 시도해주세요.");
-			}
-			
-			
-			return mv;
-			
+		@RequestMapping("volunteerlistMy.qs")
+		public String selectVolunteerMy() {
+			return "volunteer/volunteerListMemView";
 		}
 		
-		 * */
+				
+		
+		
+		//회원승인 
+		@ResponseBody
+		@PostMapping("volunteerAppr.vo")
+				public String volunteerAppr(String userNo) {
+			int result=volunteerService.volunteerAppr(userNo);
+			return String.valueOf(result);
+		}
+		
+		
+		//부적합 
+		
+		@ResponseBody
+		@PostMapping("volunteerDeny.vo")
+		public String volunteerDeny(String userNo) {
+			int result=volunteerService.volunteerDeny(userNo);
+			return String.valueOf(result);
+		}
+		
+		
+		
+		
+		
+
 		
 		//자원봉사자 상세조회 
 		

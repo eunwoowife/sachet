@@ -96,10 +96,6 @@ public class MemberController {
 		return "member/myPage";
 	}
 	
-	@RequestMapping("myOrder.me")
-	public String myOrderForm() {
-		return "member/myOrder";
-	}
 	
 	@RequestMapping("mydeleteForm.me")
 	public String myDeleteForm() {
@@ -157,7 +153,7 @@ public class MemberController {
 	
 	
 	//Mypage 
-	
+	/*
 	//구매내역 
 	@RequestMapping("myOrderList.me")
 	public String myOrderList(HttpSession session,Model model) {
@@ -177,6 +173,7 @@ public class MemberController {
 	
 		return "member/myOrder";
 	}
+	 * */
 	
 	
 	//예매내역 

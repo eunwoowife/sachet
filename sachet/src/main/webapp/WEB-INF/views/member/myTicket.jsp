@@ -30,7 +30,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>예매내역 조회</title>
+    <title>SACHET</title>
 
     <meta name="description" content="" />
 
@@ -61,6 +61,13 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="${pageContext.request.contextPath}/resources/js/config.js"></script>
   <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
+  <style>
+  
+  ::placeholder !important{
+  color:black;
+  }
+  </style>
+  
   </head>
 
   <body>
@@ -96,7 +103,7 @@
          
 
           <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">MY COMPANY PAGE</span>
+              <span class="menu-header-text">MY PAGE</span>
           </li>
           <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -256,7 +263,7 @@
                   <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
                       <h5 class="mb-0">사용자 정보</h5>
-                      <small class="text-muted float-end">Merged input group</small>
+                      <small class="text-muted float-end"></small>
                     </div>
                     <div class="card-body">
                       <form>
