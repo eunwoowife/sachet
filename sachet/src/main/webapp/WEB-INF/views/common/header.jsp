@@ -221,7 +221,7 @@
 				</ul>
 			</li>
 			
-			<li class="nav2"><a class="sachetA" href="#">Help</a>
+			<li class="nav2"><a class="sachetA" href="#">Community</a>
 				<ul class="nav3">
 					<li><a class="sachetA" href="qnaListView.qo">Q&A</a></li>
 					<li><a class="sachetA" href="list.qs">1:1문의</a></li>

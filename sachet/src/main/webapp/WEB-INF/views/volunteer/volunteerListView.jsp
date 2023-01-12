@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>SACHET</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -110,7 +110,7 @@
          
 
           <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">MY COMPANY PAGE</span>
+            <span class="menu-header-text">MY PAGE</span>
           </li>
           <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -194,11 +194,11 @@
                     <tr>
                     	
                         <th>지원번호</th>
-                        <th>이름</th>
-                        <th></th>
-                        <th>핸드폰 번호</th>
-                        <th></th>
-                        <th></th>
+                        <th>지원자 성명</th>
+                        <th>주소지</th>
+                        <th>지원팀</th>
+                        <th>지원분야</th>
+                        <th>합격여부</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -206,28 +206,37 @@
                     <tr>
                     	
                         <td>${vo.volNo}</td>
-                        <td>${vo.volNameEng}</td>
+                        <td>${vo.volNameKor}</td>
                         <td>${vo.volAddress}</td>
-                        <td>${vo.volPhone}</td>
-                        <td>${vo.volPhone}</td>
-                        <td></td>
+                        <td>${vo.volVol}</td>                        
+                        <td>${vo.volVolified}</td>
+                        <c:if test="${vo.volStatus eq 'A'}">
+                        <td><a style="color: blue;">합격</a></td>
+                        </c:if>
+                        <c:if test="${vo.volStatus eq 'N'}">
+                        <td><a style="color: red;">불합격</a></td>
+                        </c:if>
+                          <c:if test="${vo.volStatus eq 'Y'}">
+                        <td>미승인</td>
+                        </c:if>
+                        
                        
                     </tr>
                          </c:forEach>
                   
-                   
+              
                    
                 
                 </tbody>
             </table>
             <br>
 
-            <div id="pagingArea">
+            <div id="pagingArea" style="padding:20px">
                 <ul class="pagination">
                 	<!-- currentPage가 1이면 숨기기 -->
                 	<c:choose>
                 		<c:when test="${pi.currentPage ne 1 }">
-                			<li class="page-item"><a class="page-link" href="list.qs?currentPage=${pi.currentPage-1}">Previous</a></li>
+                			<li class="page-item"><a class="page-link" href="volunteerlist.qs?currentPage=${pi.currentPage-1}">Previous</a></li>
                 		</c:when>
 	                    <c:otherwise><!-- currentPage가 1일경우 (1페이지) -->
 	                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
@@ -236,10 +245,10 @@
                 	<c:forEach begin="${pi.startPage }" end="${pi.endPage }" var="p">
 	                  <c:choose>
                 		<c:when test="${pi.currentPage eq p }">
-                			<li class="page-item disabled"><a class="page-link" href="list.qs?currentPage=${p}">${p}</a></li>
+                			<li class="page-item disabled"><a class="page-link" href="volunteerlist.qs?currentPage=${p}">${p}</a></li>
                 		</c:when>
                 		<c:otherwise>
-	                    	<li class="page-item"><a class="page-link" href="list.qs?currentPage=${p}">${p}</a></li>
+	                    	<li class="page-item"><a class="page-link" href="volunteerlist.qs?currentPage=${p}">${p}</a></li>
                 		</c:otherwise>
                 		</c:choose>
                 	</c:forEach>
@@ -273,7 +282,21 @@
             	})
             
             </script>
+            
+    <script  src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+    <script  src="${pageContext.request.contextPath}/resources/js/popper.js"></script>
+    <script  src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+    <script  src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.js"></script>
+
+    <script  src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+     <script  src="${pageContext.request.contextPath }/resources/js/main.js"></script>
   
 
 </body>
+
 </html>

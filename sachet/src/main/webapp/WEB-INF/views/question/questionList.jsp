@@ -81,7 +81,7 @@
     <div class="content">
         <br><br>
         <div class="innerOuter" style="padding:5% 10%;">
-            <h2>1:1문의 게시판 </h2>
+            <h2>SACHET</h2>
             <br>
           
           <!-- 

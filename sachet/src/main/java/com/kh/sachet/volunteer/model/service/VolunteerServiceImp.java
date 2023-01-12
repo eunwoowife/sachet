@@ -23,12 +23,6 @@ public class VolunteerServiceImp implements VolunteerService{
 	private VolunteerDao volunteerDao; 
 	
 	
-
-	@Override
-	public int deleteVolunteer(int volNo) {
-		return 0;
-	}
-
 	@Override
 	public int submitVolunteer(Volunteer v) {
 		int submit=volunteerDao.submitVolunteer(sqlSession,v);
@@ -55,6 +49,16 @@ public class VolunteerServiceImp implements VolunteerService{
 	@Override
 	public int increaseCount(int volNo) {
 		return volunteerDao.increaseCount(sqlSession,volNo);
+	}
+
+	@Override
+	public int volunteerAppr(String userNo) {
+		return volunteerDao.volunteerAppr(sqlSession,userNo);
+	}
+
+	@Override
+	public int volunteerDeny(String userNo) {
+		return volunteerDao.volunteerDeny(sqlSession,userNo);
 	}
 
 	

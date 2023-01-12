@@ -12,24 +12,16 @@ public interface VolunteerService {
 			//상세조회 
 	
 		
-	
-			//봉사 조회(로그인)
-		//	ArrayList<Volunteer> selectList(int userNo);
-			
-			//상세조회 
-			
-			//int selectDetail(int userNo);
-			
+		
 			Volunteer selectVolunteer(int volNo);
 			
 			//삭제 or 선택
 			
-			int deleteVolunteer(int volNo);
-			//volno가져가서 삭제할거ㅅ체크 
+			
 
 			
 	
-	//자원봉사 신청 
+			//자원봉사 신청 
 			
 			int submitVolunteer(Volunteer v);
 
@@ -45,6 +37,12 @@ public interface VolunteerService {
 			ArrayList<Volunteer> selectList(PageInfo pi);
 
 			int increaseCount(int volNo);
+			
+			//관리자 회원승인 
+			int volunteerAppr(String userNo);
+			
+			//관리자 회원 부적합 처리  
+			int volunteerDeny(String userNo);
 
 		
 

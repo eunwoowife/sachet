@@ -19,18 +19,19 @@
 		<result column="VOL_STATUS" property="volStatus"/>
 
 </resultMap>
-
+<!-- 총 개수  -->
 <select id="selectvolListCount" resultType="_int">
 Select Count(*)
 FROM VOLUNTEER
-WHERE VOL_STATUS='N'
 </select>
 
+<!-- 리스트 조회  -->
 
 <select id="selectList" resultMap="volunteerResultSet">
 SELECT * FROM VOLUNTEER ORDER BY VOL_NO DESC
 </select>
 
+<!--상세보기  -->
 
 <select id="detailVolunteer" resultMap="volunteerResultSet">
 SELECT * FROM VOLUNTEER
@@ -38,14 +39,34 @@ WHERE VOL_NO=#{volNo}
 ORDER BY VOL_NO DESC
 </select>
 
+<!-- 신청  -->
+
 <insert id="submitVolunteer" parameterType="volunteer">
 INSERT INTO VOLUNTEER VALUES (SEQ_VNO.NEXTVAL,#{userNo},#{volNameKor},#{volNameEng},#{volAddress},#{volPhone},DEFAULT,#{volSchool},#{volVol},#{volVolified},#{volPath},#{volLang},#{volLangRange},DEFAULT)
 </insert>
 
-
+<!--조회수   -->
 
 <update id="increaseCount">
 UPDATE VOLUNTEER SET VOL_COUNTNO=VOL_COUNTNO+1
 WHERE VOL_NO=#{volNo}
 </update>
+
+<!-- 관리자  -->
+
+<update id="volunteerAppr">
+UPDATE VOLUNTEER 
+SET VOL_STATUS='A'
+WHERE USER_NO=#{userNo}
+
+</update>
+
+<update id="volunteerDeny">
+UPDATE VOLUNTEER 
+SET VOL_STATUS='N'
+WHERE USER_NO=#{userNo}
+
+</update>
+
+
 </mapper>

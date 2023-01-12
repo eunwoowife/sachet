@@ -17,7 +17,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Account settings - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>SACHET</title>
 
     <meta name="description" content="" />
 
@@ -109,7 +109,7 @@
          
 
           <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">MY COMPANY PAGE</span>
+              <span class="menu-header-text">MY PAGE</span>
           </li>
           <li class="menu-item active open">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
