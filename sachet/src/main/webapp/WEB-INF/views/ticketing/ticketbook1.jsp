@@ -4,7 +4,9 @@
 <!doctype html>
 <html>
 <head>
-	<title>Medialoot CSS Calendar Template</title>
+<title>SACHET</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/favicon-2.ico" />
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
@@ -13,9 +15,6 @@
 	
 	<!-- iamport.payment.js -->
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-
-	 <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boxicons.css" />

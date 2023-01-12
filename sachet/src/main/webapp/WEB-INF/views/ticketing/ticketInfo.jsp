@@ -3,12 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+
+<head>
+
+<title>SACHET</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/favicon-2.ico" />
+
+
+
     <!-- Icons. Uncomment required icon fonts -->
    <link href="${pageContext.request.contextPath}/resources/css/boxicons.css" />
     <!-- Core CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/core.css" class="template-customizer-core-css" />
 <link href="${pageContext.request.contextPath}/resources/css/theme-default.css" class="template-customizer-theme-css" />
 <link href="${pageContext.request.contextPath}/resources/css/demo.css" />
+</head>
 <style>
     .outerarea{
         width: 70%;

@@ -9,14 +9,15 @@
 -->
 <html>
 	<head>
-		<title>Phantom by HTML5 UP</title>
+<title>SACHET</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/favicon-2.ico" />
+
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css2/main.css" />
 		<noscript><link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css2/noscript.css" /></noscript>
 	
 	<!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
